@@ -1,7 +1,5 @@
 # 50道 AI Agent Harness 面试题（含详细解答、图解与代码示例）
 
-大家好，我是Q。
-
 期待已久的Agent Harness面试题来啦~
 
 > 核心等式：**Agent = Model + Harness**
