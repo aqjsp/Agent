@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#475569"/>
+    </marker>
+    <linearGradient id="threat" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fee2e2"/><stop offset="100%" stop-color="#fecaca"/>
+    </linearGradient>
+    <linearGradient id="guard" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#dcfce7"/><stop offset="100%" stop-color="#bbf7d0"/>
+    </linearGradient>
+    <linearGradient id="agent" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#dbeafe"/><stop offset="100%" stop-color="#bfdbfe"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="620" fill="#f8fafc"/>
+  <text x="450" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">生产级 Agent 安全架构全景</text>
+  <text x="450" y="58" text-anchor="middle" font-size="12" fill="#64748b">三类攻击面 × 四层防御 × 沙箱隔离 × 审计回路</text>
+
+  <!-- Threat sources (left side) -->
+  <rect x="30" y="90" width="200" height="220" rx="10" fill="url(#threat)" stroke="#dc2626" stroke-width="2"/>
+  <text x="130" y="115" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">攻击面</text>
+
+  <rect x="45" y="130" width="170" height="48" rx="6" fill="#fff" stroke="#dc2626"/>
+  <text x="130" y="150" text-anchor="middle" font-size="12" font-weight="600" fill="#7f1d1d">直接注入</text>
+  <text x="130" y="167" text-anchor="middle" font-size="11" fill="#991b1b">用户输入中的恶意指令</text>
+
+  <rect x="45" y="186" width="170" height="48" rx="6" fill="#fff" stroke="#dc2626"/>
+  <text x="130" y="206" text-anchor="middle" font-size="12" font-weight="600" fill="#7f1d1d">间接注入</text>
+  <text x="130" y="223" text-anchor="middle" font-size="11" fill="#991b1b">工具/网页/RAG中的埋雷</text>
+
+  <rect x="45" y="242" width="170" height="48" rx="6" fill="#fff" stroke="#dc2626"/>
+  <text x="130" y="262" text-anchor="middle" font-size="12" font-weight="600" fill="#7f1d1d">多轮注入</text>
+  <text x="130" y="279" text-anchor="middle" font-size="11" fill="#991b1b">渐进式上下文操纵</text>
+
+  <!-- Guardrail Pipeline (center) -->
+  <rect x="270" y="90" width="380" height="430" rx="12" fill="#fff" stroke="#0f172a" stroke-width="2"/>
+  <text x="460" y="115" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">SecureAgentRuntime</text>
+
+  <!-- Step 1 -->
+  <rect x="290" y="135" width="340" height="50" rx="8" fill="url(#guard)" stroke="#15803d"/>
+  <text x="305" y="156" font-size="12" font-weight="600" fill="#14532d">① InputGuard</text>
+  <text x="305" y="174" font-size="11" fill="#166534">注入分类器 + 模式匹配 + 风险打分</text>
+
+  <!-- Step 2 -->
+  <rect x="290" y="195" width="340" height="60" rx="8" fill="url(#agent)" stroke="#1d4ed8"/>
+  <text x="305" y="216" font-size="12" font-weight="600" fill="#1e3a8a">② LLM Loop（按 agent_role 限定工具）</text>
+  <text x="305" y="234" font-size="11" fill="#1e3a8a">最小权限 = AGENT_PERMISSIONS[role]</text>
+  <text x="305" y="250" font-size="11" fill="#1e3a8a">推理 → 选择工具 → 出参数</text>
+
+  <!-- Step 3 -->
+  <rect x="290" y="265" width="340" height="56" rx="8" fill="url(#guard)" stroke="#15803d"/>
+  <text x="305" y="285" font-size="12" font-weight="600" fill="#14532d">③ ToolGuard</text>
+  <text x="305" y="302" font-size="11" fill="#166534">权限校验 / 危险参数模式 / 组合风险</text>
+  <text x="305" y="316" font-size="11" fill="#166534">L3/L4 → 触发 HITL 人工审批</text>
+
+  <!-- Step 4 -->
+  <rect x="290" y="331" width="340" height="60" rx="8" fill="url(#threat)" stroke="#dc2626"/>
+  <text x="305" y="352" font-size="12" font-weight="600" fill="#7f1d1d">④ Sandbox 执行（代码类工具）</text>
+  <text x="305" y="370" font-size="11" fill="#991b1b">文件/网络/资源/系统调用隔离</text>
+  <text x="305" y="385" font-size="11" fill="#991b1b">一次性实例，执行完即销毁</text>
+
+  <!-- Step 5 -->
+  <rect x="290" y="401" width="340" height="56" rx="8" fill="url(#guard)" stroke="#15803d"/>
+  <text x="305" y="421" font-size="12" font-weight="600" fill="#14532d">⑤ Tool-Output Sanitizer</text>
+  <text x="305" y="438" font-size="11" fill="#166534">剥离隐藏指令、来源标注、信任分级</text>
+  <text x="305" y="452" font-size="11" fill="#166534">→ 经清洗后才能进入 LLM 上下文</text>
+
+  <!-- Step 6 -->
+  <rect x="290" y="467" width="340" height="40" rx="8" fill="url(#guard)" stroke="#15803d"/>
+  <text x="305" y="487" font-size="12" font-weight="600" fill="#14532d">⑥ OutputGuard</text>
+  <text x="305" y="501" font-size="11" fill="#166534">PII脱敏 + Schema 校验 + 泄漏检测</text>
+
+  <!-- Arrows attack -> guard -->
+  <line x1="230" y1="155" x2="288" y2="160" stroke="#dc2626" stroke-width="2" marker-end="url(#arr2)"/>
+  <line x1="230" y1="210" x2="288" y2="420" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr2)"/>
+  <line x1="230" y1="266" x2="288" y2="220" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr2)"/>
+
+  <!-- Audit (right side) -->
+  <rect x="690" y="90" width="180" height="430" rx="10" fill="#fff" stroke="#0f172a" stroke-width="2"/>
+  <text x="780" y="115" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">审计 &amp; 监控</text>
+
+  <rect x="705" y="135" width="150" height="50" rx="6" fill="#f1f5f9" stroke="#475569"/>
+  <text x="780" y="155" text-anchor="middle" font-size="12" font-weight="600" fill="#0f172a">不可变审计日志</text>
+  <text x="780" y="173" text-anchor="middle" font-size="11" fill="#475569">每个步骤全量留痕</text>
+
+  <rect x="705" y="195" width="150" height="50" rx="6" fill="#f1f5f9" stroke="#475569"/>
+  <text x="780" y="215" text-anchor="middle" font-size="12" font-weight="600" fill="#0f172a">异常行为监控</text>
+  <text x="780" y="233" text-anchor="middle" font-size="11" fill="#475569">突增/越权/敏感访问</text>
+
+  <rect x="705" y="255" width="150" height="50" rx="6" fill="#f1f5f9" stroke="#475569"/>
+  <text x="780" y="275" text-anchor="middle" font-size="12" font-weight="600" fill="#0f172a">HITL 决策记录</text>
+  <text x="780" y="293" text-anchor="middle" font-size="11" fill="#475569">谁批准 / 何时 / 看到啥</text>
+
+  <rect x="705" y="315" width="150" height="50" rx="6" fill="#f1f5f9" stroke="#475569"/>
+  <text x="780" y="335" text-anchor="middle" font-size="12" font-weight="600" fill="#0f172a">攻击样本提取</text>
+  <text x="780" y="353" text-anchor="middle" font-size="11" fill="#475569">反哺评估集 / 红队</text>
+
+  <rect x="705" y="375" width="150" height="50" rx="6" fill="#f1f5f9" stroke="#475569"/>
+  <text x="780" y="395" text-anchor="middle" font-size="12" font-weight="600" fill="#0f172a">合规审计</text>
+  <text x="780" y="413" text-anchor="middle" font-size="11" fill="#475569">SOC2 / ISO27001</text>
+
+  <line x1="650" y1="160" x2="688" y2="160" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arr2)"/>
+  <line x1="650" y1="295" x2="688" y2="295" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arr2)"/>
+  <line x1="650" y1="430" x2="688" y2="430" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arr2)"/>
+
+  <!-- Bottom principles -->
+  <rect x="30" y="540" width="840" height="60" rx="8" fill="#fef9c3" stroke="#ca8a04"/>
+  <text x="450" y="563" text-anchor="middle" font-size="13" font-weight="700" fill="#713f12">核心原则</text>
+  <text x="50" y="583" font-size="11" fill="#713f12">• 模型层做软防御（声明、识别）  • 架构层做硬防御（拦截、隔离、审批）  • 默认拒绝，按需放行</text>
+  <text x="50" y="597" font-size="11" fill="#713f12">• 信任要明确边界，每个边界做检查  • 安全是平台默认能力，不是上线后的补丁</text>
+</svg>
