@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" font-family="'SF Pro Display','PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="900" height="520" rx="16" fill="url(#bg)"/>
+
+  <!-- 标题 -->
+  <text x="450" y="42" text-anchor="middle" font-size="20" font-weight="700" fill="#1e293b">上下文窗口的四个竞争者</text>
+  <text x="450" y="66" text-anchor="middle" font-size="13" fill="#64748b">128K Token 总预算，谁该优先？</text>
+
+  <!-- 竞争者一：系统指令 -->
+  <rect x="40" y="95" width="195" height="380" rx="12" fill="#ffffff" stroke="#3b82f6" stroke-width="2"/>
+  <rect x="40" y="95" width="195" height="50" rx="12" fill="#3b82f6"/>
+  <rect x="40" y="125" width="195" height="20" fill="#3b82f6"/>
+  <text x="137" y="126" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">系统指令</text>
+  <text x="137" y="170" text-anchor="middle" font-size="28" font-weight="700" fill="#3b82f6">5%</text>
+  <text x="137" y="195" text-anchor="middle" font-size="12" fill="#64748b">≈ 6.4K tokens</text>
+  <line x1="60" y1="210" x2="215" y2="210" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="137" y="235" text-anchor="middle" font-size="12" font-weight="600" fill="#1e293b">角色 · 规则 · 约束</text>
+  <text x="137" y="260" text-anchor="middle" font-size="11" fill="#64748b">恒定不变，每次调用都在</text>
+  <text x="137" y="280" text-anchor="middle" font-size="11" fill="#64748b">信息密度最高</text>
+  <line x1="60" y1="300" x2="215" y2="300" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="60" y="315" width="155" height="28" rx="6" fill="#dbeafe"/>
+  <text x="137" y="334" text-anchor="middle" font-size="11" font-weight="600" fill="#1d4ed8">优先级：最高</text>
+  <rect x="60" y="355" width="155" height="28" rx="6" fill="#dcfce7"/>
+  <text x="137" y="374" text-anchor="middle" font-size="11" font-weight="600" fill="#15803d">不可压缩</text>
+  <text x="137" y="420" text-anchor="middle" font-size="11" fill="#94a3b8">删了就出事</text>
+
+  <!-- 竞争者二：对话历史 -->
+  <rect x="255" y="95" width="195" height="380" rx="12" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+  <rect x="255" y="95" width="195" height="50" rx="12" fill="#f59e0b"/>
+  <rect x="255" y="125" width="195" height="20" fill="#f59e0b"/>
+  <text x="352" y="126" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">对话历史</text>
+  <text x="352" y="170" text-anchor="middle" font-size="28" font-weight="700" fill="#f59e0b">40%</text>
+  <text x="352" y="195" text-anchor="middle" font-size="12" fill="#64748b">≈ 51.2K tokens</text>
+  <line x1="275" y1="210" x2="430" y2="210" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="352" y="235" text-anchor="middle" font-size="12" font-weight="600" fill="#1e293b">用户输入 · Agent 回复</text>
+  <text x="352" y="260" text-anchor="middle" font-size="11" fill="#64748b">每轮 500-1000 token</text>
+  <text x="352" y="280" text-anchor="middle" font-size="11" fill="#64748b">最贪婪的竞争者</text>
+  <line x1="275" y1="300" x2="430" y2="300" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="275" y="315" width="155" height="28" rx="6" fill="#fef3c7"/>
+  <text x="352" y="334" text-anchor="middle" font-size="11" font-weight="600" fill="#b45309">优先级：第二</text>
+  <rect x="275" y="355" width="155" height="28" rx="6" fill="#fee2e2"/>
+  <text x="352" y="374" text-anchor="middle" font-size="11" font-weight="600" fill="#dc2626">需控制增长</text>
+  <text x="352" y="420" text-anchor="middle" font-size="11" fill="#94a3b8">越短越好，但不能没有</text>
+
+  <!-- 竞争者三：工具输出 -->
+  <rect x="470" y="95" width="195" height="380" rx="12" fill="#ffffff" stroke="#8b5cf6" stroke-width="2"/>
+  <rect x="470" y="95" width="195" height="50" rx="12" fill="#8b5cf6"/>
+  <rect x="470" y="125" width="195" height="20" fill="#8b5cf6"/>
+  <text x="567" y="126" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">工具输出</text>
+  <text x="567" y="170" text-anchor="middle" font-size="28" font-weight="700" fill="#8b5cf6">30%</text>
+  <text x="567" y="195" text-anchor="middle" font-size="12" fill="#64748b">≈ 38.4K tokens</text>
+  <line x1="490" y1="210" x2="645" y2="210" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="567" y="235" text-anchor="middle" font-size="12" font-weight="600" fill="#1e293b">搜索 · 查询 · API</text>
+  <text x="567" y="260" text-anchor="middle" font-size="11" fill="#64748b">单次最大 token 消耗者</text>
+  <text x="567" y="280" text-anchor="middle" font-size="11" fill="#64748b">原始数据量大，密度低</text>
+  <line x1="490" y1="300" x2="645" y2="300" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="490" y="315" width="155" height="28" rx="6" fill="#ede9fe"/>
+  <text x="567" y="334" text-anchor="middle" font-size="11" font-weight="600" fill="#6d28d9">优先级：第三</text>
+  <rect x="490" y="355" width="155" height="28" rx="6" fill="#fee2e2"/>
+  <text x="567" y="374" text-anchor="middle" font-size="11" font-weight="600" fill="#dc2626">按需截断</text>
+  <text x="567" y="420" text-anchor="middle" font-size="11" fill="#94a3b8">够用就行，不需要全部</text>
+
+  <!-- 竞争者四：检索结果 -->
+  <rect x="685" y="95" width="195" height="380" rx="12" fill="#ffffff" stroke="#10b981" stroke-width="2"/>
+  <rect x="685" y="95" width="195" height="50" rx="12" fill="#10b981"/>
+  <rect x="685" y="125" width="195" height="20" fill="#10b981"/>
+  <text x="782" y="126" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">检索结果</text>
+  <text x="782" y="170" text-anchor="middle" font-size="28" font-weight="700" fill="#10b981">12%</text>
+  <text x="782" y="195" text-anchor="middle" font-size="12" fill="#64748b">≈ 15.4K tokens</text>
+  <line x1="705" y1="210" x2="860" y2="210" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="782" y="235" text-anchor="middle" font-size="12" font-weight="600" fill="#1e293b">RAG · 知识库</text>
+  <text x="782" y="260" text-anchor="middle" font-size="11" fill="#64748b">质量参差不齐</text>
+  <text x="782" y="280" text-anchor="middle" font-size="11" fill="#64748b">不相关检索 = 噪音</text>
+  <line x1="705" y1="300" x2="860" y2="300" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="705" y="315" width="155" height="28" rx="6" fill="#d1fae5"/>
+  <text x="782" y="334" text-anchor="middle" font-size="11" font-weight="600" fill="#047857">优先级：最低</text>
+  <rect x="705" y="355" width="155" height="28" rx="6" fill="#fee2e2"/>
+  <text x="782" y="374" text-anchor="middle" font-size="11" font-weight="600" fill="#dc2626">严格筛选</text>
+  <text x="782" y="420" text-anchor="middle" font-size="11" fill="#94a3b8">不相关的比没有更糟</text>
+
+  <!-- 底部预留 -->
+  <rect x="40" y="490" width="840" height="22" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="450" y="506" text-anchor="middle" font-size="11" fill="#64748b">预留 10%（≈12.8K tokens）给模型输出 —— 输入越短，模型"思考"空间越大</text>
+</svg>

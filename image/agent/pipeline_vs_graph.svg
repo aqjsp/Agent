@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560">
+  <rect width="840" height="560" rx="12" fill="#fafafa"/>
+  <g transform="translate(30,30)">
+    <!-- Title -->
+    <text x="390" y="20" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1a1a1a">线性管道 vs 图编排：Agent 需要循环</text>
+    <text x="390" y="42" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#888">同样的三个步骤，管道无法处理的场景，图可以原生表达</text>
+
+    <!-- ===== LEFT: Linear Pipeline ===== -->
+    <rect x="30" y="70" width="360" height="420" rx="10" fill="#ffebee" stroke="#f44336" stroke-width="2"/>
+    <text x="210" y="100" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#c62828">线性管道（LangChain LCEL）</text>
+
+    <!-- Pipeline flow: A → B → C → END -->
+    <rect x="160" y="125" width="100" height="45" rx="8" fill="#f44336" opacity="0.8"/>
+    <text x="210" y="143" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="white">推理 LLM</text>
+    <text x="210" y="158" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#ffcdd2">reason</text>
+
+    <line x1="210" y1="170" x2="210" y2="195" stroke="#f44336" stroke-width="1.5"/>
+    <polygon points="210,195 205,188 215,188" fill="#f44336"/>
+
+    <rect x="160" y="200" width="100" height="45" rx="8" fill="#f44336" opacity="0.8"/>
+    <text x="210" y="218" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="white">调用工具</text>
+    <text x="210" y="233" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#ffcdd2">exec tool</text>
+
+    <line x1="210" y1="245" x2="210" y2="270" stroke="#f44336" stroke-width="1.5"/>
+    <polygon points="210,270 205,263 215,263" fill="#f44336"/>
+
+    <rect x="160" y="275" width="100" height="45" rx="8" fill="#f44336" opacity="0.8"/>
+    <text x="210" y="293" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="white">生成回答</text>
+    <text x="210" y="308" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#ffcdd2">answer</text>
+
+    <line x1="210" y1="320" x2="210" y2="340" stroke="#f44336" stroke-width="1.5"/>
+    <polygon points="210,340 205,333 215,333" fill="#f44336"/>
+
+    <rect x="175" y="345" width="70" height="25" rx="13" fill="#b71c1c"/>
+    <text x="210" y="362" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="white">END</text>
+
+    <!-- Pipeline problems -->
+    <text x="210" y="400" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#c62828">无法处理</text>
+    <rect x="55" y="412" width="310" height="22" rx="4" fill="#ffcdd2"/>
+    <text x="210" y="428" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#b71c1c">工具结果不行？管道无法回头重新推理</text>
+    <rect x="55" y="438" width="310" height="22" rx="4" fill="#ffcdd2"/>
+    <text x="210" y="454" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#b71c1c">需要再调一个工具？管道已经走完了</text>
+
+    <!-- ===== RIGHT: Graph ===== -->
+    <rect x="420" y="70" width="360" height="420" rx="10" fill="#e8f5e9" stroke="#4CAF50" stroke-width="2"/>
+    <text x="600" y="100" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#2e7d32">图编排（LangGraph StateGraph）</text>
+
+    <!-- Graph: reasoning ↔ tools, then answer, with loop -->
+    <rect x="490" y="125" width="100" height="45" rx="8" fill="#4CAF50" opacity="0.85"/>
+    <text x="540" y="143" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="white">推理 LLM</text>
+    <text x="540" y="158" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#e0ffe0">reasoning</text>
+
+    <!-- Conditional edge: reasoning → tools (has tool_calls) -->
+    <path d="M 585,147 Q 620,147 620,185 Q 620,210 585,210" fill="none" stroke="#4CAF50" stroke-width="1.5"/>
+    <polygon points="585,210 590,203 580,203" fill="#4CAF50"/>
+    <text x="635" y="180" font-family="Arial,sans-serif" font-size="9" fill="#2e7d32">有工具调用</text>
+
+    <!-- Tools node -->
+    <rect x="510" y="210" width="100" height="45" rx="8" fill="#2196F3" opacity="0.85"/>
+    <text x="560" y="228" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="white">调用工具</text>
+    <text x="560" y="243" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#e3f2fd">tool_exec</text>
+
+    <!-- Loop back: tools → reasoning -->
+    <path d="M 510,232 Q 470,232 470,195 Q 470,147 490,147" fill="none" stroke="#2196F3" stroke-width="1.5" stroke-dasharray="5,3"/>
+    <polygon points="490,147 495,153 486,151" fill="#2196F3"/>
+    <text x="460" y="180" font-family="Arial,sans-serif" font-size="9" fill="#1565c0">结果返回</text>
+    <text x="460" y="192" font-family="Arial,sans-serif" font-size="9" fill="#1565c0">重新推理</text>
+
+    <!-- Conditional edge: reasoning → answer (no tool_calls) -->
+    <line x1="540" y1="170" x2="540" y2="280" stroke="#4CAF50" stroke-width="1.5"/>
+    <polygon points="540,280 535,273 545,273" fill="#4CAF50"/>
+    <text x="550" y="235" font-family="Arial,sans-serif" font-size="9" fill="#2e7d32">无工具调用</text>
+
+    <!-- Answer node -->
+    <rect x="490" y="285" width="100" height="45" rx="8" fill="#FF9800" opacity="0.85"/>
+    <text x="540" y="303" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="white">生成回答</text>
+    <text x="540" y="318" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#fff3e0">answer</text>
+
+    <line x1="540" y1="330" x2="540" y2="360" stroke="#FF9800" stroke-width="1.5"/>
+    <polygon points="540,360 535,353 545,353" fill="#FF9800"/>
+
+    <rect x="505" y="365" width="70" height="25" rx="13" fill="#1b5e20"/>
+    <text x="540" y="382" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="white">END</text>
+
+    <!-- Graph advantages -->
+    <text x="600" y="400" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#2e7d32">原生支持</text>
+    <rect x="445" y="412" width="310" height="22" rx="4" fill="#c8e6c9"/>
+    <text x="600" y="428" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#1b5e20">工具结果不足 → 条件边自动循环回 reasoning</text>
+    <rect x="445" y="438" width="310" height="22" rx="4" fill="#c8e6c9"/>
+    <text x="600" y="454" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#1b5e20">需要更多工具 → 继续循环直到 LLM 判断够了</text>
+  </g>
+</svg>

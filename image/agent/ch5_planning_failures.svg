@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 430">
+  <rect x="0" y="0" width="800" height="430" rx="12" fill="#f5f8f5"/>
+  <rect x="0" y="0" width="800" height="430" rx="12" fill="none" stroke="#e0e0e0" stroke-width="1"/>
+  <defs>
+    <marker id="ar5g" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2e7d32"/>
+    </marker>
+    <marker id="ar5r" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#c62828"/>
+    </marker>
+  </defs>
+  <g transform="translate(30,30)">
+
+  <!-- 过度规划 -->
+  <rect x="10" y="10" width="225" height="330" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+  <text x="122" y="38" text-anchor="middle" font-size="14" font-weight="bold" fill="#2e7d32">过度规划</text>
+
+  <rect x="25" y="55" width="195" height="28" rx="4" fill="#c8e6c9"/>
+  <text x="122" y="74" text-anchor="middle" font-size="11">用户: "今天北京天气？"</text>
+
+  <!-- Agent 规划了5步 -->
+  <line x1="122" y1="83" x2="122" y2="98" stroke="#2e7d32" stroke-width="2" marker-end="url(#ar5g)"/>
+  <rect x="30" y="98" width="185" height="22" rx="3" fill="#ffcc80"/>
+  <text x="122" y="113" text-anchor="middle" font-size="10">1. 查天气</text>
+  <rect x="30" y="124" width="185" height="22" rx="3" fill="#ffcc80"/>
+  <text x="122" y="139" text-anchor="middle" font-size="10">2. 查空气质量</text>
+  <rect x="30" y="150" width="185" height="22" rx="3" fill="#ffcc80"/>
+  <text x="122" y="165" text-anchor="middle" font-size="10">3. 查紫外线指数</text>
+  <rect x="30" y="176" width="185" height="22" rx="3" fill="#ffcc80"/>
+  <text x="122" y="191" text-anchor="middle" font-size="10">4. 查花粉浓度</text>
+  <rect x="30" y="202" width="185" height="22" rx="3" fill="#ffcc80"/>
+  <text x="122" y="217" text-anchor="middle" font-size="10">5. 综合分析报告</text>
+
+  <text x="122" y="248" text-anchor="middle" font-size="11" fill="#c62828">用户只需要温度！</text>
+
+  <!-- 应对 -->
+  <rect x="25" y="265" width="195" height="65" rx="4" fill="#c8e6c9" stroke="#2e7d32"/>
+  <text x="122" y="285" text-anchor="middle" font-size="10" font-weight="bold" fill="#2e7d32">应对：</text>
+  <text x="122" y="303" text-anchor="middle" font-size="10" fill="#2e7d32">规划提示中加约束：</text>
+  <text x="122" y="321" text-anchor="middle" font-size="10" fill="#2e7d32">"简单任务1-2步即可"</text>
+
+  <!-- 规划偏离 -->
+  <rect x="248" y="10" width="225" height="330" rx="10" fill="#fce4ec" stroke="#c62828" stroke-width="2"/>
+  <text x="360" y="38" text-anchor="middle" font-size="14" font-weight="bold" fill="#c62828">规划偏离</text>
+
+  <rect x="263" y="55" width="195" height="28" rx="4" fill="#f8bbd0"/>
+  <text x="360" y="74" text-anchor="middle" font-size="11">目标: "调研AIGC教育应用"</text>
+
+  <line x1="360" y1="83" x2="360" y2="98" stroke="#c62828" stroke-width="2" marker-end="url(#ar5r)"/>
+
+  <!-- 偏离过程 -->
+  <rect x="268" y="98" width="185" height="24" rx="3" fill="#c8e6c9" stroke="#2e7d32"/>
+  <text x="360" y="115" text-anchor="middle" font-size="10">搜索 "AIGC教育" ✓</text>
+  <line x1="360" y1="122" x2="360" y2="136" stroke="#c62828" stroke-width="2" marker-end="url(#ar5r)"/>
+
+  <rect x="268" y="136" width="185" height="24" rx="3" fill="#fff9c4" stroke="#f9a825"/>
+  <text x="360" y="153" text-anchor="middle" font-size="10">发现某AI工具 → 深入分析 ⚠</text>
+  <line x1="360" y1="160" x2="360" y2="174" stroke="#c62828" stroke-width="2" marker-end="url(#ar5r)"/>
+
+  <rect x="268" y="174" width="185" height="24" rx="3" fill="#ef9a9a" stroke="#c62828"/>
+  <text x="360" y="191" text-anchor="middle" font-size="10">输出产品评测 ✗ 偏离目标！</text>
+
+  <!-- 偏离箭头 -->
+  <path d="M 453 115 Q 480 140 453 165" fill="none" stroke="#c62828" stroke-width="2" marker-end="url(#ar5r)"/>
+  <text x="488" y="145" font-size="9" fill="#c62828">偏离</text>
+
+  <!-- 应对 -->
+  <rect x="263" y="215" width="195" height="75" rx="4" fill="#c8e6c9" stroke="#2e7d32"/>
+  <text x="360" y="235" text-anchor="middle" font-size="10" font-weight="bold" fill="#2e7d32">应对：goal_check()</text>
+  <text x="360" y="255" text-anchor="middle" font-size="10" fill="#2e7d32">每步执行后检查：</text>
+  <text x="360" y="273" text-anchor="middle" font-size="10" fill="#2e7d32">ON_TRACK → 继续</text>
+  <text x="360" y="288" text-anchor="middle" font-size="10" fill="#c62828">OFF_TRACK → 重规划</text>
+
+  <!-- 死循环 -->
+  <rect x="486" y="10" width="225" height="330" rx="10" fill="#e8eaf6" stroke="#283593" stroke-width="2"/>
+  <text x="598" y="38" text-anchor="middle" font-size="14" font-weight="bold" fill="#283593">死循环</text>
+
+  <rect x="501" y="55" width="195" height="28" rx="4" fill="#c5cae9"/>
+  <text x="598" y="74" text-anchor="middle" font-size="11">搜索冷门话题</text>
+
+  <!-- 循环箭头 -->
+  <rect x="510" y="100" width="176" height="28" rx="3" fill="#ef9a9a" stroke="#c62828"/>
+  <text x="598" y="119" text-anchor="middle" font-size="10">搜索 "X" → 无结果</text>
+  <line x1="598" y1="128" x2="598" y2="142" stroke="#c62828" stroke-width="2" marker-end="url(#ar5r)"/>
+
+  <rect x="510" y="142" width="176" height="28" rx="3" fill="#ef9a9a" stroke="#c62828"/>
+  <text x="598" y="161" text-anchor="middle" font-size="10">搜索 "X变体" → 无结果</text>
+  <line x1="598" y1="170" x2="598" y2="184" stroke="#c62828" stroke-width="2" marker-end="url(#ar5r)"/>
+
+  <rect x="510" y="184" width="176" height="28" rx="3" fill="#ef9a9a" stroke="#c62828"/>
+  <text x="598" y="203" text-anchor="middle" font-size="10">搜索 "X同义词" → 无结果</text>
+  <line x1="598" y1="212" x2="598" y2="226" stroke="#c62828" stroke-width="2" marker-end="url(#ar5r)"/>
+
+  <text x="598" y="248" text-anchor="middle" font-size="12" fill="#c62828">... 无限循环 ...</text>
+
+  <!-- 循环标记 -->
+  <path d="M 510 116 Q 490 165 510 200" fill="none" stroke="#c62828" stroke-width="2" marker-end="url(#ar5r)"/>
+  <text x="480" y="165" font-size="9" fill="#c62828">循环</text>
+
+  <!-- 应对 -->
+  <rect x="501" y="265" width="195" height="65" rx="4" fill="#c8e6c9" stroke="#2e7d32"/>
+  <text x="598" y="285" text-anchor="middle" font-size="10" font-weight="bold" fill="#2e7d32">应对：</text>
+  <text x="598" y="303" text-anchor="middle" font-size="10" fill="#2e7d32">max_iterations 硬限制</text>
+  <text x="598" y="321" text-anchor="middle" font-size="10" fill="#2e7d32">单步重试上限 ≤ 2次</text>
+  </g>
+</svg>

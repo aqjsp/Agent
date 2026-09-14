@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 530" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 7" refX="9" refY="3.5" markerWidth="7" markerHeight="5" orient="auto">
+      <polygon points="0 0,10 3.5,0 7" fill="#475569"/>
+    </marker>
+    <marker id="arrD" viewBox="0 0 10 7" refX="9" refY="3.5" markerWidth="7" markerHeight="5" orient="auto">
+      <polygon points="0 0,10 3.5,0 7" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="620" height="470" fill="#f8fafc" rx="10"/>
+
+  <!-- 标题 -->
+  <text x="310" y="30" text-anchor="middle" font-size="15" font-weight="700" fill="#1e293b">生产级 ReAct 循环</text>
+
+  <!-- ① LLM 推理 -->
+  <rect x="140" y="50" width="200" height="42" rx="8" fill="#3b82f6"/>
+  <text x="240" y="76" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">LLM 推理</text>
+
+  <!-- ① → 菱形 -->
+  <line x1="240" y1="92" x2="240" y2="115" stroke="#475569" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ② 有 tool_calls? -->
+  <polygon points="240,115 325,145 240,175 155,145" fill="#fde68a" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="240" y="149" text-anchor="middle" font-size="11" font-weight="600" fill="#78350f">有 tool_calls?</text>
+
+  <!-- 否 → 返回 -->
+  <line x1="155" y1="145" x2="52" y2="145" stroke="#475569" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="105" y="138" text-anchor="middle" font-size="10" fill="#475569">否</text>
+  <rect x="4" y="128" width="48" height="34" rx="6" fill="#10b981"/>
+  <text x="28" y="150" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">返回</text>
+
+  <!-- 是 ↓ -->
+  <line x1="240" y1="175" x2="240" y2="200" stroke="#475569" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="255" y="192" font-size="10" fill="#475569">是</text>
+
+  <!-- ③ 权限检查 -->
+  <rect x="140" y="200" width="200" height="42" rx="8" fill="#f97316"/>
+  <text x="240" y="226" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">权限检查</text>
+
+  <!-- 高权限 → -->
+  <line x1="340" y1="221" x2="418" y2="221" stroke="#ef4444" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="378" y="214" text-anchor="middle" font-size="9" fill="#ef4444">高权限</text>
+
+  <!-- [需要确认] -->
+  <rect x="418" y="203" width="110" height="36" rx="6" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="473" y="225" text-anchor="middle" font-size="11" font-weight="600" fill="#dc2626">[需要确认]</text>
+
+  <!-- [需要确认] 虚线回 LLM -->
+  <path d="M 528 221 L 570 221 L 570 71 L 340 71" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,3" fill="none" marker-end="url(#arrD)"/>
+  <text x="566" y="148" font-size="8" fill="#94a3b8" text-anchor="end">用户确认后</text>
+  <text x="566" y="160" font-size="8" fill="#94a3b8" text-anchor="end">下一轮重试</text>
+
+  <!-- 通过 ↓ -->
+  <line x1="240" y1="242" x2="240" y2="270" stroke="#475569" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="222" y="260" font-size="9" fill="#16a34a" text-anchor="end">通过</text>
+
+  <!-- ④ 执行工具（含重试） -->
+  <rect x="120" y="270" width="240" height="50" rx="8" fill="#8b5cf6"/>
+  <text x="240" y="292" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">执行工具</text>
+  <text x="240" y="308" text-anchor="middle" font-size="9" fill="#ede9fe">可恢复→重试｜不可恢复→直接返回</text>
+
+  <!-- ④ → ⑤ -->
+  <line x1="240" y1="320" x2="240" y2="348" stroke="#475569" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ⑤ 拼回 messages -->
+  <rect x="130" y="348" width="220" height="38" rx="8" fill="#64748b"/>
+  <text x="240" y="372" text-anchor="middle" font-size="12" font-weight="500" fill="#fff">拼回 messages</text>
+
+  <!-- 虚线回 LLM -->
+  <path d="M 130 367 L 48 367 L 48 71 L 140 71" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,3" fill="none" marker-end="url(#arrD)"/>
+  <text x="42" y="220" font-size="8" fill="#94a3b8" text-anchor="end" writing-mode="tb">下一轮循环</text>
+
+  <!-- 安全阀 -->
+  <line x1="240" y1="386" x2="240" y2="410" stroke="#fca5a5" stroke-width="1" stroke-dasharray="3,3"/>
+  <rect x="148" y="410" width="184" height="22" rx="4" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+  <text x="240" y="425" text-anchor="middle" font-size="9" fill="#b91c1c">max_iterations 超限 → 强制终止</text>
+
+  <!-- 增强说明框 -->
+  <rect x="420" y="280" width="186" height="108" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="513" y="298" text-anchor="middle" font-size="10" font-weight="700" fill="#334155">对比裸机版新增</text>
+  <line x1="432" y1="306" x2="594" y2="306" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="440" cy="322" r="3" fill="#f97316"/>
+  <text x="448" y="326" font-size="9" fill="#475569">权限检查：高权限需人类确认</text>
+  <circle cx="440" cy="342" r="3" fill="#8b5cf6"/>
+  <text x="448" y="346" font-size="9" fill="#475569">重试：可恢复/不可恢复区分</text>
+  <circle cx="440" cy="362" r="3" fill="#64748b"/>
+  <text x="448" y="366" font-size="9" fill="#475569">串行执行：逐个处理 tool_calls</text>
+  <circle cx="440" cy="382" r="3" fill="#3b82f6"/>
+  <text x="448" y="386" font-size="9" fill="#475569">JSON 解析错误捕获</text>
+</svg>

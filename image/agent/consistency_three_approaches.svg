@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="900" height="420" rx="12" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="450" y="38" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a1a2e">三种图间一致性方案对比</text>
+  
+  <!-- 乐观锁 Column -->
+  <rect x="40" y="65" width="260" height="320" rx="10" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+  <text x="170" y="95" text-anchor="middle" font-size="16" font-weight="bold" fill="#2e7d32">乐观锁</text>
+  <text x="170" y="118" text-anchor="middle" font-size="12" fill="#555">Optimistic Locking</text>
+  
+  <text x="60" y="148" font-size="13" fill="#333">思路：</text>
+  <text x="60" y="168" font-size="12" fill="#555">先执行，提交时检查版本号</text>
+  <text x="60" y="188" font-size="12" fill="#555">冲突了再处理</text>
+  
+  <line x1="60" y1="200" x2="280" y2="200" stroke="#a5d6a7" stroke-width="1"/>
+  
+  <text x="60" y="222" font-size="13" font-weight="bold" fill="#2e7d32">✓ 适用场景</text>
+  <text x="70" y="242" font-size="12" fill="#555">冲突率 &lt; 5%</text>
+  <text x="70" y="262" font-size="12" fill="#555">读多写少</text>
+  <text x="70" y="282" font-size="12" fill="#555">无锁开销</text>
+  
+  <line x1="60" y1="295" x2="280" y2="295" stroke="#a5d6a7" stroke-width="1"/>
+  
+  <text x="60" y="317" font-size="13" font-weight="bold" fill="#c62828">✗ 风险</text>
+  <text x="70" y="337" font-size="12" fill="#555">冲突后 LLM 推理浪费</text>
+  <text x="70" y="357" font-size="12" fill="#555">不能让 LLM 重试</text>
+  <text x="70" y="377" font-size="12" fill="#555">需用户介入或语义合并</text>
+  
+  <!-- Flow diagram for optimistic -->
+  <rect x="80" y="130" width="0" height="0"/>
+  
+  <!-- 悲观锁 Column -->
+  <rect x="320" y="65" width="260" height="320" rx="10" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+  <text x="450" y="95" text-anchor="middle" font-size="16" font-weight="bold" fill="#1565c0">悲观锁</text>
+  <text x="450" y="118" text-anchor="middle" font-size="12" fill="#555">Pessimistic Locking</text>
+  
+  <text x="340" y="148" font-size="13" fill="#333">思路：</text>
+  <text x="340" y="168" font-size="12" fill="#555">先锁住资源，再操作</text>
+  <text x="340" y="188" font-size="12" fill="#555">其他 Agent 排队等待</text>
+  
+  <line x1="340" y1="200" x2="560" y2="200" stroke="#90caf9" stroke-width="1"/>
+  
+  <text x="340" y="222" font-size="13" font-weight="bold" fill="#1565c0">✓ 适用场景</text>
+  <text x="350" y="242" font-size="12" fill="#555">冲突率 5%-30%</text>
+  <text x="350" y="262" font-size="12" fill="#555">写多，冲突频繁</text>
+  <text x="350" y="282" font-size="12" fill="#555">先锁后推理，不浪费 LLM</text>
+  
+  <line x1="340" y1="295" x2="560" y2="295" stroke="#90caf9" stroke-width="1"/>
+  
+  <text x="340" y="317" font-size="13" font-weight="bold" fill="#c62828">✗ 风险</text>
+  <text x="350" y="337" font-size="12" fill="#555">锁超时 / 死锁</text>
+  <text x="350" y="357" font-size="12" fill="#555">需要心跳续约</text>
+  <text x="350" y="377" font-size="12" fill="#555">锁粒度选择困难</text>
+  
+  <!-- 消息传递 Column -->
+  <rect x="600" y="65" width="260" height="320" rx="10" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+  <text x="730" y="95" text-anchor="middle" font-size="16" font-weight="bold" fill="#e65100">消息传递</text>
+  <text x="730" y="118" text-anchor="middle" font-size="12" fill="#555">Message Passing</text>
+  
+  <text x="620" y="148" font-size="13" fill="#333">思路：</text>
+  <text x="620" y="168" font-size="12" fill="#555">Agent 间显式协调</text>
+  <text x="620" y="188" font-size="12" fill="#555">中心化资源分配</text>
+  
+  <line x1="620" y1="200" x2="840" y2="200" stroke="#ffcc80" stroke-width="1"/>
+  
+  <text x="620" y="222" font-size="13" font-weight="bold" fill="#e65100">✓ 适用场景</text>
+  <text x="630" y="242" font-size="12" fill="#555">冲突率 &gt; 30%</text>
+  <text x="630" y="262" font-size="12" fill="#555">需要显式调度</text>
+  <text x="630" y="282" font-size="12" fill="#555">语义最清晰</text>
+  
+  <line x1="620" y1="295" x2="840" y2="295" stroke="#ffcc80" stroke-width="1"/>
+  
+  <text x="620" y="317" font-size="13" font-weight="bold" fill="#c62828">✗ 风险</text>
+  <text x="630" y="337" font-size="12" fill="#555">协调器是单点 / 瓶颈</text>
+  <text x="630" y="357" font-size="12" fill="#555">实现复杂度高</text>
+  <text x="630" y="377" font-size="12" fill="#555">消息协议设计困难</text>
+  
+  <!-- Bottom arrow: conflict rate increasing -->
+  <line x1="80" y1="405" x2="820" y2="405" stroke="#999" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#999"/>
+    </marker>
+  </defs>
+  <text x="450" y="418" text-anchor="middle" font-size="11" fill="#999">冲突率递增 →</text>
+</svg>

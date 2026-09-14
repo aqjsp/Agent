@@ -7,6 +7,7 @@ tutorial/       按章教程
 architecture/   架构系列
 harness/        DeepSeek Harness
 interview/      面试题
+image/          配图
 ```
 
 ## 教程
@@ -22,21 +23,21 @@ interview/      面试题
 
 ## 架构系列
 
-- [第1篇 State 设计](architecture/第1篇_Agent的State设计是最容易被忽视的架构灾难.md)
-- [第2篇 HITL 三种架构](architecture/第2篇_给Agent加个人工审批没那么简单_HITL的三种架构模式.md)
-- [第3篇 上下文工程](architecture/第3篇_上下文工程_2026年Agent最核心的技能.md)
-- [第4篇 长时运行任务](architecture/第4篇_Agent要跑2小时_长时运行任务的架构设计.md)
-- [第5篇 多 Agent 一致性](architecture/第5篇_两个Agent同时改一条数据谁覆盖谁_多Agent一致性设计.md)
-- [第6篇 级联故障](architecture/第6篇_一个Agent挂了整个系统跟着挂_级联故障怎么防.md)
-- [第7篇 怎么测](architecture/第7篇_Agent怎么测_非确定性系统的评估架构.md)
-- [第8篇 安全架构](architecture/第8篇_一句话让你的Agent删库跑路_Agent安全架构.md)
-- [Agent 架构设计](architecture/Agent架构设计.md)
-- [Agent 架构设计（续）](architecture/Agent架构设计1.md)
+图编排是后面各篇的底座，排在第 0 篇。第 9–20 篇还没写，目录在 [architecture/](architecture/README.md)。
+
+- [第 0 篇：LangGraph 不是 LangChain 的插件](architecture/第0篇_图编排.md)
+- [第 1 篇：State 设计](architecture/第1篇_State设计.md)
+- [第 2 篇：HITL](architecture/第2篇_HITL.md)
+- [第 3 篇：上下文工程](architecture/第3篇_上下文工程.md)
+- [第 4 篇：长时运行](architecture/第4篇_长时运行.md)
+- [第 5 篇：多 Agent 一致性](architecture/第5篇_多Agent一致性.md)
+- [第 6 篇：级联故障](architecture/第6篇_级联故障.md)
+- [第 7 篇：评估](architecture/第7篇_评估.md)
+- [第 8 篇：安全](architecture/第8篇_安全.md)
 
 ## Harness
 
-- [Model + Harness 才是 Agent](harness/Model加上Harness才是Agent_DeepSeek把执行层开源了.md)
-- [DeepSeek 开源了自己的 Harness](harness/DeepSeek开源了自己的Harness_不是又一个ClaudeCode.md)
+- [同一个模型，换套马具，Agent 能差一截](harness/同一个模型换套马具.md)
 
 ## 面试
 

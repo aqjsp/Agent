@@ -46,7 +46,7 @@ Harness = Agent − Model
 
 在一个 Agent 系统中，除了模型本身之外，几乎所有决定它能不能稳定交付的东西，都属于 Harness。模型决定"能不能想"，Harness 决定"能不能持续做对"。
 
-![Agent=Model+Harness](/Users/qinteng/Downloads/svg_harness/agent_equals_model_harness.png)
+![Agent=Model+Harness](../image/interview/agent_equals_model_harness.png)
 
 **Harness 包含的内容（对照模型不包含的）：**
 
@@ -67,7 +67,7 @@ Harness = Agent − Model
 
 **核心架构：**
 
-![Harness六层架构](/Users/qinteng/Downloads/svg_harness/harness_6layers.png)
+![Harness六层架构](../image/interview/harness_6layers.png)
 
 **分三组理解：**
 - **输入侧（1、4层）**：上下文 + 记忆 → 让模型看到正确的信息
@@ -503,7 +503,7 @@ tools = [{
 
 **MCP 架构：**
 
-![MCP架构](/Users/qinteng/Downloads/svg_harness/mcp_architecture.png)
+![MCP架构](../image/interview/mcp_architecture.png)
 
 **MCP 的三大资源类型：**
 - **Tools**：可调用的函数（如搜索、计算、数据库查询）
@@ -737,7 +737,7 @@ def test_eval_regression():
 
 **ReAct = Reasoning + Acting**，经典循环：
 
-![ReAct循环](/Users/qinteng/Downloads/svg_harness/react_loop.png)
+![ReAct循环](../image/interview/react_loop.png)
 
 **ReAct vs 纯 CoT 的本质区别：**
 - CoT：只在模型内部做线性推理，**无法与外部交互**，极易产生幻觉——模型可能"推理"出一个看似合理但完全错误的事实
@@ -985,7 +985,7 @@ class HumanInTheLoop:
 
 **三层记忆模型：**
 
-![三层记忆模型](/Users/qinteng/Downloads/svg_harness/three_layer_memory.png)
+![三层记忆模型](../image/interview/three_layer_memory.png)
 
 | 记忆类型 | 存储位置 | 生命周期 | 示例 | 容量 |
 |---------|---------|---------|------|------|
@@ -1534,7 +1534,7 @@ result = app.invoke({"topic": "AI Agent Harness"})
 
 **三步走策略：**
 
-![从零搭建Harness三步走](/Users/qinteng/Downloads/svg_harness/three_step_strategy.png)
+![从零搭建Harness三步走](../image/interview/three_step_strategy.png)
 
 **第一步：工具层（1-2周）**
 - 给工具加拦截器：参数校验、权限检查、审计日志

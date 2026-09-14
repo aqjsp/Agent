@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580">
+  <rect width="1000" height="580" rx="12" fill="#fafafa"/>
+  <g transform="translate(70,60)">
+    <text x="420" y="20" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1a1a1a">Agent 执行模型：while 循环 vs 图编排</text>
+
+    <!-- Left: While loop -->
+    <rect x="30" y="55" width="380" height="400" rx="10" fill="#ffebee" stroke="#f44336" stroke-width="1.5"/>
+    <text x="220" y="80" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#c62828">while 循环模型</text>
+    <text x="220" y="97" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#c62828">简单但脆弱</text>
+
+    <!-- Loop diagram -->
+    <rect x="100" y="115" width="240" height="35" rx="6" fill="#2196F3" opacity="0.7"/>
+    <text x="220" y="137" text-anchor="middle" font-family="monospace" font-size="10" fill="white">user_input → state</text>
+
+    <line x1="220" y1="153" x2="220" y2="170" stroke="#c62828" stroke-width="1.5"/>
+    <polygon points="220,170 215,165 225,165" fill="#c62828"/>
+
+    <rect x="100" y="175" width="240" height="35" rx="6" fill="#4CAF50" opacity="0.7"/>
+    <text x="220" y="197" text-anchor="middle" font-family="monospace" font-size="10" fill="white">thought = llm(state)</text>
+
+    <line x1="220" y1="213" x2="220" y2="230" stroke="#c62828" stroke-width="1.5"/>
+    <polygon points="220,230 215,225 225,225" fill="#c62828"/>
+
+    <rect x="100" y="235" width="240" height="35" rx="6" fill="#FF9800" opacity="0.7"/>
+    <text x="220" y="257" text-anchor="middle" font-family="monospace" font-size="10" fill="white">result = execute(action)</text>
+
+    <line x1="220" y1="273" x2="220" y2="290" stroke="#c62828" stroke-width="1.5"/>
+    <polygon points="220,290 215,285 225,285" fill="#c62828"/>
+
+    <rect x="100" y="295" width="240" height="35" rx="6" fill="#9C27B0" opacity="0.7"/>
+    <text x="220" y="317" text-anchor="middle" font-family="monospace" font-size="10" fill="white">state.update(result)</text>
+
+    <!-- Loop arrow -->
+    <path d="M 345 312 L 370 312 L 370 195 L 345 195" stroke="#c62828" stroke-width="1.5" fill="none"/>
+    <polygon points="345,195 350,190 350,200" fill="#c62828"/>
+    <text x="378" y="255" font-family="monospace" font-size="9" fill="#c62828">while</text>
+    <text x="378" y="268" font-family="monospace" font-size="9" fill="#c62828">not done</text>
+
+    <!-- Problems -->
+    <rect x="55" y="350" width="330" height="90" rx="6" fill="#ffcdd2"/>
+    <text x="220" y="370" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="bold" fill="#c62828">三个硬伤</text>
+    <text x="80" y="390" font-family="Arial,sans-serif" font-size="10" fill="#c62828">1. 状态和逻辑耦合 → 500 行 while 循环</text>
+    <text x="80" y="408" font-family="Arial,sans-serif" font-size="10" fill="#c62828">2. 流程不可追溯 → 出了 bug 无法回溯</text>
+    <text x="80" y="426" font-family="Arial,sans-serif" font-size="10" fill="#c62828">3. 并行灾难 → while 天然串行</text>
+
+    <!-- Right: Graph -->
+    <rect x="460" y="55" width="420" height="400" rx="10" fill="#e8f5e9" stroke="#4CAF50" stroke-width="1.5"/>
+    <text x="670" y="80" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#2e7d32">图编排模型（StateGraph）</text>
+    <text x="670" y="97" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#2e7d32">复杂但可靠</text>
+
+    <!-- Nodes -->
+    <rect x="580" y="115" width="120" height="30" rx="6" fill="#2196F3" opacity="0.8"/>
+    <text x="640" y="135" text-anchor="middle" font-family="monospace" font-size="10" fill="white">reasoning</text>
+
+    <line x1="640" y1="148" x2="640" y2="165" stroke="#2e7d32" stroke-width="1.5"/>
+    <polygon points="640,165 635,160 645,160" fill="#2e7d32"/>
+
+    <rect x="580" y="170" width="120" height="30" rx="6" fill="#FF9800" opacity="0.8"/>
+    <text x="640" y="190" text-anchor="middle" font-family="monospace" font-size="10" fill="white">tool_call</text>
+
+    <line x1="640" y1="203" x2="640" y2="220" stroke="#2e7d32" stroke-width="1.5"/>
+    <polygon points="640,220 635,215 645,215" fill="#2e7d32"/>
+
+    <!-- Conditional -->
+    <polygon points="640,225 680,250 640,275 600,250" fill="#9C27B0" opacity="0.7"/>
+    <text x="640" y="255" text-anchor="middle" font-family="monospace" font-size="8" fill="white">route</text>
+
+    <!-- Branches -->
+    <line x1="600" y1="250" x2="530" y2="300" stroke="#2e7d32" stroke-width="1.5"/>
+    <text x="555" y="275" font-family="monospace" font-size="8" fill="#2e7d32">continue</text>
+
+    <line x1="680" y1="250" x2="760" y2="300" stroke="#e65100" stroke-width="1.5"/>
+    <text x="725" y="275" font-family="monospace" font-size="8" fill="#e65100">review</text>
+
+    <rect x="490" y="300" width="80" height="25" rx="4" fill="#4CAF50" opacity="0.7"/>
+    <text x="530" y="317" text-anchor="middle" font-family="monospace" font-size="8" fill="white">reason</text>
+
+    <rect x="720" y="300" width="80" height="25" rx="4" fill="#f44336" opacity="0.7"/>
+    <text x="760" y="317" text-anchor="middle" font-family="monospace" font-size="8" fill="white">review</text>
+
+    <!-- Loop back -->
+    <path d="M 530 300 L 530 132 L 575 132" stroke="#4CAF50" stroke-width="1" stroke-dasharray="3,2" fill="none"/>
+    <polygon points="575,132 570,127 570,137" fill="#4CAF50"/>
+
+    <!-- State box -->
+    <rect x="480" y="350" width="200" height="25" rx="4" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1" stroke-dasharray="4,2"/>
+    <text x="580" y="367" text-anchor="middle" font-family="monospace" font-size="9" fill="#2e7d32">State (共享数据协议)</text>
+
+    <!-- Checkpoint -->
+    <rect x="480" y="385" width="200" height="25" rx="4" fill="#e3f2fd" stroke="#2196F3" stroke-width="1" stroke-dasharray="4,2"/>
+    <text x="580" y="402" text-anchor="middle" font-family="monospace" font-size="9" fill="#1565c0">Checkpoint (不可变快照)</text>
+
+    <!-- Advantages -->
+    <rect x="490" y="425" width="360" height="25" rx="4" fill="#c8e6c9"/>
+    <text x="670" y="442" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#2e7d32">循环支持 · 持久化 · 并行安全 · 可回溯 · HITL</text>
+  </g>
+</svg>

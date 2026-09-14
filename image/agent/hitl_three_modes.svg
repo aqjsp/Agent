@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" font-family="system-ui, -apple-system, sans-serif">
+  <!-- 背景 -->
+  <rect width="720" height="380" fill="#f8fafc" rx="10"/>
+
+  <!-- 标题 -->
+  <text x="360" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#1e293b">HITL 三种介入模式的架构差异</text>
+
+  <!-- === 审批模式 === -->
+  <rect x="20" y="50" width="216" height="310" rx="8" fill="#fff7ed" stroke="#fb923c" stroke-width="1.5"/>
+  <rect x="20" y="50" width="216" height="32" rx="8" fill="#f97316"/>
+  <text x="128" y="72" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">审批模式 Approval</text>
+
+  <text x="36" y="102" font-size="10" fill="#78350f" font-weight="600">触发：工具权限标记 permission="high"</text>
+  <text x="36" y="120" font-size="10" fill="#78350f">人做：同意 / 拒绝（二元决策）</text>
+
+  <!-- 审批流程图 -->
+  <rect x="52" y="134" width="80" height="26" rx="4" fill="#3b82f6"/>
+  <text x="92" y="151" text-anchor="middle" font-size="9" fill="#fff">LLM 推理</text>
+  <line x1="92" y1="160" x2="92" y2="174" stroke="#475569" stroke-width="1"/>
+  <rect x="52" y="174" width="80" height="26" rx="4" fill="#f97316"/>
+  <text x="92" y="191" text-anchor="middle" font-size="9" fill="#fff">权限检查</text>
+  <line x1="92" y1="200" x2="92" y2="214" stroke="#475569" stroke-width="1"/>
+  <rect x="42" y="214" width="100" height="26" rx="4" fill="#fef2f2" stroke="#ef4444" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="92" y="231" text-anchor="middle" font-size="9" fill="#dc2626">⏸ 等待人工确认</text>
+  <line x1="92" y1="240" x2="92" y2="254" stroke="#475569" stroke-width="1"/>
+  <rect x="52" y="254" width="80" height="26" rx="4" fill="#8b5cf6"/>
+  <text x="92" y="271" text-anchor="middle" font-size="9" fill="#fff">执行工具</text>
+
+  <text x="36" y="304" font-size="9" fill="#9a3412">暂停：interrupt_before</text>
+  <text x="36" y="318" font-size="9" fill="#9a3412">恢复：update_state + invoke</text>
+  <text x="36" y="332" font-size="9" fill="#9a3412">超时：必须（按风险分级）</text>
+  <text x="36" y="348" font-size="9" fill="#dc2626" font-weight="600">成本：高（全图暂停）</text>
+
+  <!-- === 纠错模式 === -->
+  <rect x="252" y="50" width="216" height="310" rx="8" fill="#f0fdf4" stroke="#4ade80" stroke-width="1.5"/>
+  <rect x="252" y="50" width="216" height="32" rx="8" fill="#16a34a"/>
+  <text x="360" y="72" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">纠错模式 Correction</text>
+
+  <text x="268" y="102" font-size="10" fill="#14532d" font-weight="600">触发：人主动介入 / 事后审查</text>
+  <text x="268" y="120" font-size="10" fill="#14532d">人做：修改 State 字段值</text>
+
+  <!-- 纠错流程图 -->
+  <rect x="284" y="134" width="80" height="26" rx="4" fill="#3b82f6"/>
+  <text x="324" y="151" text-anchor="middle" font-size="9" fill="#fff">LLM 推理</text>
+  <line x1="324" y1="160" x2="324" y2="174" stroke="#475569" stroke-width="1"/>
+  <rect x="284" y="174" width="80" height="26" rx="4" fill="#8b5cf6"/>
+  <text x="324" y="191" text-anchor="middle" font-size="9" fill="#fff">执行工具</text>
+  <line x1="324" y1="200" x2="324" y2="214" stroke="#475569" stroke-width="1"/>
+  <rect x="284" y="214" width="80" height="26" rx="4" fill="#3b82f6"/>
+  <text x="324" y="231" text-anchor="middle" font-size="9" fill="#fff">LLM 推理</text>
+  <line x1="364" y1="227" x2="400" y2="227" stroke="#16a34a" stroke-width="1.5"/>
+  <rect x="400" y="214" width="56" height="26" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="428" y="231" text-anchor="middle" font-size="8" fill="#16a34a">人修改</text>
+  <path d="M 428 214 L 428 205 L 324 205 L 324 214" stroke="#16a34a" stroke-width="1" stroke-dasharray="4,2" fill="none" marker-end="url(#arrG)"/>
+  <text x="390" y="200" font-size="8" fill="#16a34a">as_node</text>
+  <line x1="324" y1="240" x2="324" y2="254" stroke="#475569" stroke-width="1"/>
+  <rect x="284" y="254" width="80" height="26" rx="4" fill="#64748b"/>
+  <text x="324" y="271" text-anchor="middle" font-size="9" fill="#fff">继续执行</text>
+
+  <text x="268" y="304" font-size="9" fill="#14532d">暂停：interrupt_after 或不暂停</text>
+  <text x="268" y="318" font-size="9" fill="#14532d">恢复：update_state(as_node=...)</text>
+  <text x="268" y="332" font-size="9" fill="#14532d">超时：不需要</text>
+  <text x="268" y="348" font-size="9" fill="#16a34a" font-weight="600">成本：中（只改部分 State）</text>
+
+  <!-- === 引导模式 === -->
+  <rect x="484" y="50" width="216" height="310" rx="8" fill="#eff6ff" stroke="#60a5fa" stroke-width="1.5"/>
+  <rect x="484" y="50" width="216" height="32" rx="8" fill="#3b82f6"/>
+  <text x="592" y="72" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">引导模式 Guidance</text>
+
+  <text x="500" y="102" font-size="10" fill="#1e3a5f" font-weight="600">触发：Agent 置信度低主动请求</text>
+  <text x="500" y="120" font-size="10" fill="#1e3a5f">人做：提供信息 / 建议</text>
+
+  <!-- 引导流程图 -->
+  <rect x="516" y="134" width="80" height="26" rx="4" fill="#3b82f6"/>
+  <text x="556" y="151" text-anchor="middle" font-size="9" fill="#fff">LLM 推理</text>
+  <line x1="556" y1="160" x2="556" y2="174" stroke="#475569" stroke-width="1"/>
+  <rect x="516" y="174" width="80" height="26" rx="4" fill="#bfdbfe" stroke="#3b82f6" stroke-width="1"/>
+  <text x="556" y="191" text-anchor="middle" font-size="9" fill="#1e40af">置信度检查</text>
+  <line x1="556" y1="200" x2="556" y2="214" stroke="#475569" stroke-width="1"/>
+  <text x="540" y="208" font-size="8" fill="#64748b">低</text>
+  <rect x="506" y="214" width="100" height="26" rx="4" fill="#dbeafe" stroke="#3b82f6" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="556" y="231" text-anchor="middle" font-size="9" fill="#1e40af">请求人类引导</text>
+  <line x1="556" y1="240" x2="556" y2="254" stroke="#475569" stroke-width="1"/>
+  <rect x="516" y="254" width="80" height="26" rx="4" fill="#64748b"/>
+  <text x="556" y="271" text-anchor="middle" font-size="9" fill="#fff">注入后继续</text>
+
+  <text x="500" y="304" font-size="9" fill="#1e3a5f">暂停：当前步骤（轻量）</text>
+  <text x="500" y="318" font-size="9" fill="#1e3a5f">恢复：消息注入，正常继续</text>
+  <text x="500" y="332" font-size="9" fill="#1e3a5f">超时：不需要</text>
+  <text x="500" y="348" font-size="9" fill="#3b82f6" font-weight="600">成本：低（注入少量信息）</text>
+</svg>

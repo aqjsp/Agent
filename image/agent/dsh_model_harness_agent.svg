@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 420" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#eef2ff"/>
+    </linearGradient>
+    <linearGradient id="model" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#dbeafe"/><stop offset="100%" stop-color="#bfdbfe"/>
+    </linearGradient>
+    <linearGradient id="harness" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fef3c7"/><stop offset="100%" stop-color="#fde68a"/>
+    </linearGradient>
+    <linearGradient id="agent" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#dcfce7"/><stop offset="100%" stop-color="#bbf7d0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="920" height="420" rx="16" fill="url(#bg1)"/>
+  <text x="460" y="44" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">Model + Harness = Agent</text>
+  <text x="460" y="68" text-anchor="middle" font-size="12" fill="#64748b">模型给智能上限，Harness 负责接到真实环境并不让它脱缰</text>
+
+  <rect x="48" y="104" width="230" height="232" rx="14" fill="url(#model)" stroke="#2563eb" stroke-width="2"/>
+  <text x="163" y="142" text-anchor="middle" font-size="16" font-weight="700" fill="#1e3a8a">Model</text>
+  <text x="163" y="168" text-anchor="middle" font-size="12" fill="#1e40af">推理 · 规划 · 选工具</text>
+  <line x1="78" y1="184" x2="248" y2="184" stroke="#93c5fd" stroke-width="1"/>
+  <text x="163" y="214" text-anchor="middle" font-size="12" fill="#1e3a8a">决定「下一步想做什么」</text>
+  <text x="163" y="238" text-anchor="middle" font-size="12" fill="#1e3a8a">看不到真实文件系统</text>
+  <text x="163" y="262" text-anchor="middle" font-size="12" fill="#1e3a8a">也执行不了终端命令</text>
+  <rect x="78" y="286" width="170" height="28" rx="6" fill="#ffffff" opacity="0.85"/>
+  <text x="163" y="305" text-anchor="middle" font-size="11" font-weight="600" fill="#1d4ed8">智能的上限</text>
+
+  <text x="302" y="228" text-anchor="middle" font-size="28" font-weight="700" fill="#334155">+</text>
+
+  <rect x="336" y="104" width="248" height="232" rx="14" fill="url(#harness)" stroke="#d97706" stroke-width="2"/>
+  <text x="460" y="142" text-anchor="middle" font-size="16" font-weight="700" fill="#78350f">Harness</text>
+  <text x="460" y="168" text-anchor="middle" font-size="12" fill="#92400e">接入 · 约束 · 记录 · 恢复</text>
+  <line x1="366" y1="184" x2="554" y2="184" stroke="#fbbf24" stroke-width="1"/>
+  <text x="460" y="210" text-anchor="middle" font-size="12" fill="#78350f">工具 / 沙箱 / 审批 / 会话</text>
+  <text x="460" y="234" text-anchor="middle" font-size="12" fill="#78350f">上下文组装与压缩</text>
+  <text x="460" y="258" text-anchor="middle" font-size="12" fill="#78350f">失败后重试、取消或交还人</text>
+  <rect x="366" y="286" width="188" height="28" rx="6" fill="#ffffff" opacity="0.85"/>
+  <text x="460" y="305" text-anchor="middle" font-size="11" font-weight="600" fill="#b45309">执行层与约束层</text>
+
+  <text x="610" y="228" text-anchor="middle" font-size="28" font-weight="700" fill="#334155">=</text>
+
+  <rect x="642" y="104" width="230" height="232" rx="14" fill="url(#agent)" stroke="#15803d" stroke-width="2"/>
+  <text x="757" y="142" text-anchor="middle" font-size="16" font-weight="700" fill="#14532d">Agent</text>
+  <text x="757" y="168" text-anchor="middle" font-size="12" fill="#166534">能在真实环境里连续干活</text>
+  <line x1="672" y1="184" x2="842" y2="184" stroke="#86efac" stroke-width="1"/>
+  <text x="757" y="214" text-anchor="middle" font-size="12" fill="#14532d">读改代码 · 跑测试</text>
+  <text x="757" y="238" text-anchor="middle" font-size="12" fill="#14532d">拆任务 · 调子 Agent</text>
+  <text x="757" y="262" text-anchor="middle" font-size="12" fill="#14532d">出错后继续闭环</text>
+  <rect x="672" y="286" width="170" height="28" rx="6" fill="#ffffff" opacity="0.85"/>
+  <text x="757" y="305" text-anchor="middle" font-size="11" font-weight="600" fill="#15803d">可工作的智能体</text>
+
+  <text x="460" y="376" text-anchor="middle" font-size="12" fill="#475569">同一个模型换一套 Harness，最终表现可以差一截。差的不是智商，是执行环境。</text>
+</svg>

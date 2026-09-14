@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 580">
+  <rect width="920" height="580" rx="12" fill="#fafafa"/>
+  <g transform="translate(40,40)">
+    <!-- Title -->
+    <text x="420" y="20" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1a1a1a">Reducer 三种模式对比</text>
+    <text x="420" y="42" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#888">并行写入同一 key 时，Reducer 决定结果是覆盖、追加还是累加</text>
+
+    <!-- Card 1: Overwrite -->
+    <rect x="30" y="70" width="270" height="290" rx="10" fill="#ffebee" stroke="#f44336" stroke-width="1.5"/>
+    <text x="165" y="95" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#c62828">覆盖（LastValue）</text>
+    <text x="165" y="113" text-anchor="middle" font-family="monospace" font-size="10" fill="#e65100">status: str</text>
+
+    <!-- Before -->
+    <rect x="55" y="128" width="220" height="28" rx="4" fill="#ffcdd2"/>
+    <text x="165" y="147" text-anchor="middle" font-family="monospace" font-size="10" fill="#b71c1c">当前值: "processing"</text>
+
+    <!-- Two parallel writes -->
+    <rect x="55" y="166" width="100" height="28" rx="4" fill="#f44336" opacity="0.7"/>
+    <text x="105" y="184" text-anchor="middle" font-family="monospace" font-size="9" fill="white">Node A: "ok"</text>
+    <rect x="170" y="166" width="105" height="28" rx="4" fill="#2196F3" opacity="0.7"/>
+    <text x="222" y="184" text-anchor="middle" font-family="monospace" font-size="9" fill="white">Node B: "error"</text>
+
+    <!-- Arrow down -->
+    <line x1="165" y1="200" x2="165" y2="218" stroke="#f44336" stroke-width="1.5"/>
+    <polygon points="165,218 160,211 170,211" fill="#f44336"/>
+
+    <!-- Result -->
+    <rect x="55" y="225" width="220" height="28" rx="4" fill="#ef9a9a"/>
+    <text x="165" y="243" text-anchor="middle" font-family="monospace" font-size="10" fill="#b71c1c">结果: "ok" 或 "error"</text>
+    <text x="165" y="257" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#c62828">取决于谁最后完成（不确定！）</text>
+
+    <!-- Warning -->
+    <rect x="55" y="272" width="220" height="38" rx="4" fill="#ffcdd2"/>
+    <text x="165" y="288" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#c62828">并行写入无 Reducer → 抛异常</text>
+    <text x="165" y="304" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#c62828">LangGraph 宁可失败也不静默丢数据</text>
+
+    <!-- Use cases -->
+    <text x="165" y="335" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#555">适合：status、next_action、answer</text>
+    <text x="165" y="350" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#888">只需要最新值，历史无意义</text>
+
+    <!-- Card 2: Append -->
+    <rect x="325" y="70" width="270" height="290" rx="10" fill="#e8f5e9" stroke="#4CAF50" stroke-width="1.5"/>
+    <text x="460" y="95" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#2e7d32">追加（add_messages / operator.add）</text>
+    <text x="460" y="113" text-anchor="middle" font-family="monospace" font-size="10" fill="#2e7d32">messages: Annotated[list, add_messages]</text>
+
+    <!-- Before -->
+    <rect x="350" y="128" width="220" height="28" rx="4" fill="#c8e6c9"/>
+    <text x="460" y="147" text-anchor="middle" font-family="monospace" font-size="10" fill="#1b5e20">当前值: [msg1, msg2]</text>
+
+    <!-- Two parallel writes -->
+    <rect x="350" y="166" width="100" height="28" rx="4" fill="#4CAF50" opacity="0.7"/>
+    <text x="400" y="184" text-anchor="middle" font-family="monospace" font-size="9" fill="white">A: [msg3]</text>
+    <rect x="465" y="166" width="105" height="28" rx="4" fill="#2196F3" opacity="0.7"/>
+    <text x="517" y="184" text-anchor="middle" font-family="monospace" font-size="9" fill="white">B: [msg4]</text>
+
+    <!-- Arrow down -->
+    <line x1="460" y1="200" x2="460" y2="218" stroke="#4CAF50" stroke-width="1.5"/>
+    <polygon points="460,218 455,211 465,211" fill="#4CAF50"/>
+
+    <!-- Result -->
+    <rect x="350" y="225" width="220" height="28" rx="4" fill="#a5d6a7"/>
+    <text x="460" y="243" text-anchor="middle" font-family="monospace" font-size="10" fill="#1b5e20">结果: [msg1, msg2, msg3, msg4]</text>
+
+    <!-- Special behavior -->
+    <rect x="350" y="268" width="220" height="42" rx="4" fill="#c8e6c9"/>
+    <text x="460" y="284" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#2e7d32">add_messages 特殊能力：</text>
+    <text x="460" y="300" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#2e7d32">按 ID 去重 + 同 ID 新版本替换旧版本</text>
+
+    <!-- Use cases -->
+    <text x="460" y="335" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#555">适合：messages、tool_results、logs</text>
+    <text x="460" y="350" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#888">历史需要完整保留</text>
+
+    <!-- Card 3: Accumulate -->
+    <rect x="620" y="70" width="220" height="290" rx="10" fill="#e3f2fd" stroke="#2196F3" stroke-width="1.5"/>
+    <text x="730" y="95" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#1565c0">累加（operator.add）</text>
+    <text x="730" y="113" text-anchor="middle" font-family="monospace" font-size="10" fill="#1565c0">count: Annotated[int, operator.add]</text>
+
+    <!-- Before -->
+    <rect x="645" y="128" width="180" height="28" rx="4" fill="#bbdefb"/>
+    <text x="735" y="147" text-anchor="middle" font-family="monospace" font-size="10" fill="#0d47a1">当前值: 3</text>
+
+    <!-- Two parallel writes -->
+    <rect x="645" y="166" width="80" height="28" rx="4" fill="#2196F3" opacity="0.7"/>
+    <text x="685" y="184" text-anchor="middle" font-family="monospace" font-size="9" fill="white">A: +1</text>
+    <rect x="740" y="166" width="80" height="28" rx="4" fill="#FF9800" opacity="0.7"/>
+    <text x="780" y="184" text-anchor="middle" font-family="monospace" font-size="9" fill="white">B: +2</text>
+
+    <!-- Arrow down -->
+    <line x1="730" y1="200" x2="730" y2="218" stroke="#2196F3" stroke-width="1.5"/>
+    <polygon points="730,218 725,211 735,211" fill="#2196F3"/>
+
+    <!-- Result -->
+    <rect x="645" y="225" width="180" height="28" rx="4" fill="#90caf9"/>
+    <text x="735" y="243" text-anchor="middle" font-family="monospace" font-size="10" fill="#0d47a1">结果: 6</text>
+
+    <!-- Anti-pattern warning -->
+    <rect x="645" y="268" width="180" height="42" rx="4" fill="#ffcdd2"/>
+    <text x="735" y="284" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#c62828">常见误用</text>
+    <text x="735" y="300" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#c62828">返回 {count: 3} 想设为 3</text>
+    <text x="735" y="312" font-family="Arial,sans-serif" font-size="9" fill="#c62828" text-anchor="middle">实际是 3 + 3 = 6！</text>
+
+    <!-- Use cases -->
+    <text x="730" y="335" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#555">适合：retry_count、call_count</text>
+    <text x="730" y="350" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#888">计数器和累加器</text>
+
+    <!-- Bottom: Decision guide -->
+    <rect x="30" y="385" width="810" height="70" rx="8" fill="#f5f5f5"/>
+    <text x="420" y="408" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#333">选型口诀</text>
+    <text x="420" y="428" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#555">只需最新值 → 覆盖 │ 历史要完整 → 追加 │ 计数要累积 → 累加</text>
+    <text x="420" y="446" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#c62828">并行写入无 Reducer → LangGraph 抛异常，这是特性不是 bug</text>
+  </g>
+</svg>

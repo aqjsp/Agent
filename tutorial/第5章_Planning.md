@@ -18,7 +18,7 @@ LLM 天然擅长分解任务——你给它一个目标，它能列出子步骤�
 
 ### LLM 做任务分解的三个陷阱
 
-![](../image/ch5_task_decomposition_traps.svg)
+![](../image/agent/ch5_task_decomposition_traps.svg)
 
 **陷阱一：步骤粒度不一致。** LLM 可能把"搜索资料"作为一个步骤（太粗），同时把"打开浏览器、输入关键词、点击搜索"作为三个步骤（太细）。正确粒度是每个步骤对应一次工具调用。
 
@@ -88,7 +88,7 @@ PLANNING_PROMPT = """你是一个任务规划助手。根据用户的目标，�
 
 ## 2 两种规划模式：ReAct vs Plan-and-Execute
 
-![](../image/ch5_react_vs_plan_execute.svg)
+![](../image/agent/ch5_react_vs_plan_execute.svg)
 
 ### ReAct：边做边想
 
@@ -145,7 +145,7 @@ Plan-and-Execute 的优点是有全局视角——先想清楚再做，不容易
 
 手动实现 Plan-and-Execute Agent。核心是四个函数：规划、执行、判断完成、生成回答，用循环串起来。第6章会用 LangGraph 的 StateGraph 重新实现 Supervisor 模式——这里先理解原理。
 
-![](../image/ch5_plan_execute_flow.svg)
+![](../image/agent/ch5_plan_execute_flow.svg)
 
 ```python
 import json
@@ -305,7 +305,7 @@ print(state["response"])
 
 规划不是一次就对的。执行中可能发现：搜索结果跟预期不符、某个步骤执行失败、信息不足以得出结论。这时候需要自反思——让 Agent 检查自己的输出，发现问题并修正。
 
-![](../image/ch5_self_refine_vs_reflexion.svg)
+![](../image/agent/ch5_self_refine_vs_reflexion.svg)
 
 ### Self-Refine
 
@@ -407,7 +407,7 @@ Self-Refine 和 Reflexion 的代价是多次 LLM 调用。只在质量要求高�
 
 即使有了规划，Agent 还是会失败。三种常见的失败模式：
 
-![](../image/ch5_planning_failures.svg)
+![](../image/agent/ch5_planning_failures.svg)
 
 ### 过度规划
 

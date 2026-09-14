@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 640" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="880" height="580" fill="#fafafa" rx="10"/>
+  <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1a1a2e">Agent = Model + Harness</text>
+
+  <!-- ====== Model 区域 ====== -->
+  <rect x="30" y="52" width="280" height="510" rx="14" fill="#f3f4f9" stroke="#5c6bc0" stroke-width="2.5" stroke-dasharray="8,4"/>
+  <rect x="30" y="52" width="280" height="40" rx="14" fill="#5c6bc0"/>
+  <rect x="30" y="80" width="280" height="12" fill="#5c6bc0"/>
+  <text x="170" y="78" text-anchor="middle" font-size="16" font-weight="bold" fill="white">Model（大脑）</text>
+
+  <rect x="50" y="108" width="240" height="64" rx="8" fill="#e8eaf6" stroke="#3f51b5" stroke-width="1.5"/>
+  <text x="170" y="134" text-anchor="middle" font-size="14" font-weight="bold" fill="#283593">LLM 推理核心</text>
+  <text x="170" y="156" text-anchor="middle" font-size="10" fill="#3f51b5">Next-Token Prediction</text>
+
+  <rect x="50" y="184" width="240" height="52" rx="8" fill="#e8eaf6" stroke="#5c6bc0" stroke-width="1.5"/>
+  <text x="170" y="207" text-anchor="middle" font-size="12" font-weight="bold" fill="#283593">推理与决策</text>
+  <text x="170" y="225" text-anchor="middle" font-size="9.5" fill="#5c6bc0">CoT / 工具选择 / 意图理解</text>
+
+  <rect x="50" y="248" width="240" height="52" rx="8" fill="#e8eaf6" stroke="#7986cb" stroke-width="1.5"/>
+  <text x="170" y="271" text-anchor="middle" font-size="12" font-weight="bold" fill="#283593">System Prompt</text>
+  <text x="170" y="289" text-anchor="middle" font-size="9.5" fill="#5c6bc0">角色 / 约束 / 行为定义</text>
+
+  <rect x="50" y="312" width="240" height="52" rx="8" fill="#e8eaf6" stroke="#9fa8da" stroke-width="1.5"/>
+  <text x="170" y="335" text-anchor="middle" font-size="12" font-weight="bold" fill="#3949ab">参数化知识</text>
+  <text x="170" y="353" text-anchor="middle" font-size="9.5" fill="#5c6bc0">训练时习得，会过时</text>
+
+  <!-- 能做 / 做不到 -->
+  <rect x="50" y="384" width="116" height="44" rx="8" fill="#c8e6c9" stroke="#43a047" stroke-width="1.5"/>
+  <text x="108" y="404" text-anchor="middle" font-size="11" font-weight="bold" fill="#2e7d32">能做</text>
+  <text x="108" y="420" text-anchor="middle" font-size="9" fill="#43a047">理解/推理/决策</text>
+
+  <rect x="174" y="384" width="116" height="44" rx="8" fill="#ffcdd2" stroke="#e53935" stroke-width="1.5"/>
+  <text x="232" y="404" text-anchor="middle" font-size="11" font-weight="bold" fill="#c62828">做不到</text>
+  <text x="232" y="420" text-anchor="middle" font-size="9" fill="#e53935">搜索/执行/记忆</text>
+
+  <!-- ====== 中间交互 ====== -->
+  <rect x="340" y="90" width="200" height="280" rx="12" fill="#fff8e1" stroke="#ffb300" stroke-width="2"/>
+  <text x="440" y="114" text-anchor="middle" font-size="13" font-weight="bold" fill="#e65100">交互通道</text>
+
+  <rect x="356" y="128" width="168" height="44" rx="6" fill="#ffe0b2"/>
+  <text x="440" y="148" text-anchor="middle" font-size="11" font-weight="bold" fill="#e65100">决策 &amp; 指令</text>
+  <text x="440" y="164" text-anchor="middle" font-size="9.5" fill="#ff8f00">Model → Harness</text>
+
+  <rect x="356" y="184" width="168" height="44" rx="6" fill="#c8e6c9"/>
+  <text x="440" y="204" text-anchor="middle" font-size="11" font-weight="bold" fill="#2e7d32">观察 &amp; 反馈</text>
+  <text x="440" y="220" text-anchor="middle" font-size="9.5" fill="#388e3c">Harness → Model</text>
+
+  <rect x="356" y="240" width="168" height="52" rx="6" fill="#e1bee7" stroke="#8e24aa" stroke-width="1.5"/>
+  <text x="440" y="260" text-anchor="middle" font-size="11" font-weight="bold" fill="#6a1b9a">Function Calling</text>
+  <text x="440" y="278" text-anchor="middle" font-size="9.5" fill="#8e24aa">标准化交互协议</text>
+
+  <rect x="356" y="304" width="168" height="44" rx="6" fill="#b3e5fc"/>
+  <text x="440" y="324" text-anchor="middle" font-size="11" font-weight="bold" fill="#0277bd">状态管理</text>
+  <text x="440" y="340" text-anchor="middle" font-size="9.5" fill="#0288d1">messages 列表</text>
+
+  <!-- 用户 -->
+  <rect x="370" y="400" width="140" height="40" rx="20" fill="#e3f2fd" stroke="#1976d2" stroke-width="1.5"/>
+  <text x="440" y="426" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565c0">User</text>
+
+  <!-- 连线 -->
+  <line x1="290" y1="150" x2="356" y2="150" stroke="#e65100" stroke-width="2"/>
+  <polygon points="356,150 348,144 348,156" fill="#e65100"/>
+  <line x1="356" y1="206" x2="290" y2="206" stroke="#2e7d32" stroke-width="2"/>
+  <polygon points="290,206 298,200 298,212" fill="#2e7d32"/>
+  <line x1="524" y1="266" x2="570" y2="266" stroke="#8e24aa" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <polygon points="570,266 562,260 562,272" fill="#8e24aa"/>
+  <line x1="570" y1="326" x2="524" y2="326" stroke="#0277bd" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <polygon points="524,326 532,320 532,332" fill="#0277bd"/>
+
+  <!-- ====== Harness 区域 ====== -->
+  <rect x="570" y="52" width="280" height="510" rx="14" fill="#f4f9f0" stroke="#66bb6a" stroke-width="2.5" stroke-dasharray="8,4"/>
+  <rect x="570" y="52" width="280" height="40" rx="14" fill="#66bb6a"/>
+  <rect x="570" y="80" width="280" height="12" fill="#66bb6a"/>
+  <text x="710" y="78" text-anchor="middle" font-size="16" font-weight="bold" fill="white">Harness（四肢 / 感官）</text>
+
+  <rect x="590" y="108" width="240" height="64" rx="8" fill="#e8f5e9" stroke="#2E7D32" stroke-width="1.5"/>
+  <text x="710" y="134" text-anchor="middle" font-size="14" font-weight="bold" fill="#2E7D32">工具系统 Tools</text>
+  <text x="710" y="156" text-anchor="middle" font-size="9.5" fill="#388e3c">搜索 / 执行 / API / 文件 IO</text>
+
+  <rect x="590" y="184" width="240" height="64" rx="8" fill="#e8f5e9" stroke="#43a047" stroke-width="1.5"/>
+  <text x="710" y="210" text-anchor="middle" font-size="14" font-weight="bold" fill="#2E7D32">记忆系统 Memory</text>
+  <text x="710" y="232" text-anchor="middle" font-size="9.5" fill="#388e3c">短期 / 中期 / 长期</text>
+
+  <rect x="590" y="260" width="240" height="64" rx="8" fill="#e8f5e9" stroke="#66bb6a" stroke-width="1.5"/>
+  <text x="710" y="286" text-anchor="middle" font-size="14" font-weight="bold" fill="#2E7D32">规划系统 Planning</text>
+  <text x="710" y="308" text-anchor="middle" font-size="9.5" fill="#388e3c">任务分解 / 步骤编排 / 反思</text>
+
+  <rect x="590" y="336" width="240" height="56" rx="8" fill="#e8f5e9" stroke="#81c784" stroke-width="1.5"/>
+  <text x="710" y="360" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">编排 Orchestration</text>
+  <text x="710" y="380" text-anchor="middle" font-size="9.5" fill="#388e3c">ReAct 循环 / 状态机 / 错误恢复</text>
+
+  <rect x="590" y="404" width="240" height="52" rx="8" fill="#fff9c4" stroke="#f9a825" stroke-width="1.5"/>
+  <text x="710" y="426" text-anchor="middle" font-size="12" font-weight="bold" fill="#f57f17">安全护栏 Guardrails</text>
+  <text x="710" y="444" text-anchor="middle" font-size="9.5" fill="#f9a825">权限 / 过滤 / 重试 / 预算</text>
+
+  <!-- 底部注释 -->
+  <text x="440" y="558" text-anchor="middle" font-size="11" fill="#78909c">Model 负责"想"，Harness 负责"做"，两者通过 Function Calling 协议交互</text>
+</svg>

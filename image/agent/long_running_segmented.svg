@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" font-family="'SF Pro Display','PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="900" height="620" rx="16" fill="url(#bg)"/>
+
+  <!-- 标题 -->
+  <text x="450" y="38" text-anchor="middle" font-size="20" font-weight="700" fill="#1e293b">长时 Agent 的分段执行架构</text>
+  <text x="450" y="60" text-anchor="middle" font-size="13" fill="#64748b">每个阶段独立上下文，阶段间传递摘要 + 决策记录</text>
+
+  <!-- ===== 阶段一：数据收集 ===== -->
+  <rect x="30" y="85" width="270" height="410" rx="12" fill="#ffffff" stroke="#3b82f6" stroke-width="1.5"/>
+  <rect x="30" y="85" width="270" height="42" rx="12" fill="#3b82f6"/>
+  <rect x="30" y="110" width="270" height="17" fill="#3b82f6"/>
+  <text x="165" y="113" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">阶段一：数据收集</text>
+
+  <!-- 独立上下文窗口 -->
+  <rect x="50" y="142" width="230" height="30" rx="6" fill="#dbeafe"/>
+  <text x="165" y="162" text-anchor="middle" font-size="11" font-weight="600" fill="#1d4ed8">独立上下文窗口</text>
+
+  <!-- ReAct 循环 -->
+  <rect x="50" y="185" width="230" height="32" rx="6" fill="#f1f5f9" stroke="#3b82f6" stroke-width="1"/>
+  <text x="165" y="206" text-anchor="middle" font-size="11" fill="#334155">Agent 思考 → 调用搜索工具</text>
+  <rect x="50" y="225" width="230" height="32" rx="6" fill="#f1f5f9" stroke="#3b82f6" stroke-width="1"/>
+  <text x="165" y="246" text-anchor="middle" font-size="11" fill="#334155">工具返回数据 → Agent 分析</text>
+  <rect x="50" y="265" width="230" height="32" rx="6" fill="#f1f5f9" stroke="#3b82f6" stroke-width="1"/>
+  <text x="165" y="286" text-anchor="middle" font-size="11" fill="#334155">继续收集 → 直到数据完整</text>
+
+  <!-- Checkpoint 链 -->
+  <text x="165" y="320" text-anchor="middle" font-size="11" font-weight="600" fill="#3b82f6">Checkpoint 链</text>
+  <rect x="60" y="332" width="40" height="20" rx="4" fill="#bfdbfe"/>
+  <text x="80" y="347" text-anchor="middle" font-size="9" fill="#1d4ed8">ck1</text>
+  <text x="105" y="347" font-size="10" fill="#94a3b8">→</text>
+  <rect x="115" y="332" width="40" height="20" rx="4" fill="#bfdbfe"/>
+  <text x="135" y="347" text-anchor="middle" font-size="9" fill="#1d4ed8">ck2</text>
+  <text x="160" y="347" font-size="10" fill="#94a3b8">→</text>
+  <rect x="170" y="332" width="40" height="20" rx="4" fill="#bfdbfe"/>
+  <text x="190" y="347" text-anchor="middle" font-size="9" fill="#1d4ed8">ck3</text>
+  <text x="215" y="347" font-size="10" fill="#94a3b8">→</text>
+  <rect x="225" y="332" width="40" height="20" rx="4" fill="#93c5fd"/>
+  <text x="245" y="347" text-anchor="middle" font-size="9" font-weight="600" fill="#1d4ed8">ck4</text>
+
+  <!-- 输出 -->
+  <rect x="50" y="370" width="230" height="110" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
+  <text x="165" y="390" text-anchor="middle" font-size="11" font-weight="600" fill="#15803d">阶段输出（PhaseHandoff）</text>
+  <text x="165" y="410" text-anchor="middle" font-size="10" fill="#166534">摘要：Q1销售额1200万，同比-15%</text>
+  <text x="165" y="428" text-anchor="middle" font-size="10" fill="#166534">决策：排除了季节因素</text>
+  <text x="165" y="446" text-anchor="middle" font-size="10" fill="#166534">关键数据：华南区-32%、线上+8%</text>
+  <text x="165" y="464" text-anchor="middle" font-size="10" fill="#166534">问题：部分渠道数据缺失</text>
+
+  <!-- ===== 交接箭头 ===== -->
+  <line x1="305" y1="420" x2="330" y2="420" stroke="#f59e0b" stroke-width="3" marker-end="url(#arrowOrange)"/>
+  <rect x="308" y="400" width="16" height="40" rx="3" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>
+  <text x="316" y="415" text-anchor="middle" font-size="8" font-weight="700" fill="#b45309">传</text>
+  <text x="316" y="430" text-anchor="middle" font-size="8" font-weight="700" fill="#b45309">递</text>
+
+  <!-- ===== 阶段二：数据分析 ===== -->
+  <rect x="335" y="85" width="270" height="410" rx="12" fill="#ffffff" stroke="#8b5cf6" stroke-width="1.5"/>
+  <rect x="335" y="85" width="270" height="42" rx="12" fill="#8b5cf6"/>
+  <rect x="335" y="110" width="270" height="17" fill="#8b5cf6"/>
+  <text x="470" y="113" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">阶段二：数据分析</text>
+
+  <!-- 独立上下文窗口 -->
+  <rect x="355" y="142" width="230" height="30" rx="6" fill="#ede9fe"/>
+  <text x="470" y="162" text-anchor="middle" font-size="11" font-weight="600" fill="#6d28d9">独立上下文窗口（干净的！）</text>
+
+  <!-- ReAct 循环 -->
+  <rect x="355" y="185" width="230" height="32" rx="6" fill="#f1f5f9" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="470" y="206" text-anchor="middle" font-size="11" fill="#334155">接收摘要 → 制定分析计划</text>
+  <rect x="355" y="225" width="230" height="32" rx="6" fill="#f1f5f9" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="470" y="246" text-anchor="middle" font-size="11" fill="#334155">调用统计工具 → 生成图表</text>
+  <rect x="355" y="265" width="230" height="32" rx="6" fill="#f1f5f9" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="470" y="286" text-anchor="middle" font-size="11" fill="#334155">对比分析 → 发现异常</text>
+
+  <!-- Checkpoint 链 -->
+  <text x="470" y="320" text-anchor="middle" font-size="11" font-weight="600" fill="#8b5cf6">Checkpoint 链</text>
+  <rect x="365" y="332" width="40" height="20" rx="4" fill="#ddd6fe"/>
+  <text x="385" y="347" text-anchor="middle" font-size="9" fill="#6d28d9">ck5</text>
+  <text x="410" y="347" font-size="10" fill="#94a3b8">→</text>
+  <rect x="420" y="332" width="40" height="20" rx="4" fill="#ddd6fe"/>
+  <text x="440" y="347" text-anchor="middle" font-size="9" fill="#6d28d9">ck6</text>
+  <text x="465" y="347" font-size="10" fill="#94a3b8">→</text>
+  <rect x="475" y="332" width="40" height="20" rx="4" fill="#ddd6fe"/>
+  <text x="495" y="347" text-anchor="middle" font-size="9" fill="#6d28d9">ck7</text>
+  <text x="520" y="347" font-size="10" fill="#94a3b8">→</text>
+  <rect x="530" y="332" width="40" height="20" rx="4" fill="#c4b5fd"/>
+  <text x="550" y="347" text-anchor="middle" font-size="9" font-weight="600" fill="#6d28d9">ck8</text>
+
+  <!-- 输出 -->
+  <rect x="355" y="370" width="230" height="110" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
+  <text x="470" y="390" text-anchor="middle" font-size="11" font-weight="600" fill="#15803d">阶段输出（PhaseHandoff）</text>
+  <text x="470" y="410" text-anchor="middle" font-size="10" fill="#166534">摘要：华南区线下渠道下滑是主因</text>
+  <text x="470" y="428" text-anchor="middle" font-size="10" fill="#166534">决策：排除了产品质量问题</text>
+  <text x="470" y="446" text-anchor="middle" font-size="10" fill="#166534">关键数据：竞品同期+20%市场份额</text>
+  <text x="470" y="464" text-anchor="middle" font-size="10" fill="#166534">问题：竞品数据可信度待验证</text>
+
+  <!-- ===== 交接箭头 ===== -->
+  <line x1="610" y1="420" x2="635" y2="420" stroke="#f59e0b" stroke-width="3"/>
+  <rect x="613" y="400" width="16" height="40" rx="3" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>
+  <text x="621" y="415" text-anchor="middle" font-size="8" font-weight="700" fill="#b45309">传</text>
+  <text x="621" y="430" text-anchor="middle" font-size="8" font-weight="700" fill="#b45309">递</text>
+
+  <!-- ===== 阶段三：报告生成 ===== -->
+  <rect x="640" y="85" width="230" height="410" rx="12" fill="#ffffff" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="640" y="85" width="230" height="42" rx="12" fill="#10b981"/>
+  <rect x="640" y="110" width="230" height="17" fill="#10b981"/>
+  <text x="755" y="113" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">阶段三：报告生成</text>
+
+  <!-- 独立上下文窗口 -->
+  <rect x="655" y="142" width="200" height="30" rx="6" fill="#d1fae5"/>
+  <text x="755" y="162" text-anchor="middle" font-size="11" font-weight="600" fill="#047857">独立上下文窗口</text>
+
+  <!-- ReAct 循环 -->
+  <rect x="655" y="185" width="200" height="32" rx="6" fill="#f1f5f9" stroke="#10b981" stroke-width="1"/>
+  <text x="755" y="206" text-anchor="middle" font-size="11" fill="#334155">接收分析结论 → 生成大纲</text>
+  <rect x="655" y="225" width="200" height="32" rx="6" fill="#f1f5f9" stroke="#10b981" stroke-width="1"/>
+  <text x="755" y="246" text-anchor="middle" font-size="11" fill="#334155">填充数据 → 格式化输出</text>
+  <rect x="655" y="265" width="200" height="32" rx="6" fill="#f1f5f9" stroke="#10b981" stroke-width="1"/>
+  <text x="755" y="286" text-anchor="middle" font-size="11" fill="#334155">检查完整性 → 最终报告</text>
+
+  <!-- Checkpoint 链 -->
+  <text x="755" y="320" text-anchor="middle" font-size="11" font-weight="600" fill="#10b981">Checkpoint 链</text>
+  <rect x="665" y="332" width="40" height="20" rx="4" fill="#a7f3d0"/>
+  <text x="685" y="347" text-anchor="middle" font-size="9" fill="#047857">ck9</text>
+  <text x="710" y="347" font-size="10" fill="#94a3b8">→</text>
+  <rect x="720" y="332" width="40" height="20" rx="4" fill="#a7f3d0"/>
+  <text x="740" y="347" text-anchor="middle" font-size="9" fill="#047857">ck10</text>
+  <text x="765" y="347" font-size="10" fill="#94a3b8">→</text>
+  <rect x="775" y="332" width="40" height="20" rx="4" fill="#6ee7b7"/>
+  <text x="795" y="347" text-anchor="middle" font-size="9" font-weight="600" fill="#047857">ck11</text>
+
+  <!-- 最终输出 -->
+  <rect x="655" y="370" width="200" height="110" rx="8" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1"/>
+  <text x="755" y="390" text-anchor="middle" font-size="11" font-weight="600" fill="#15803d">最终输出</text>
+  <text x="755" y="412" text-anchor="middle" font-size="10" fill="#166534">Q1 销售分析报告</text>
+  <text x="755" y="430" text-anchor="middle" font-size="10" fill="#166534">含：数据、图表、结论</text>
+  <text x="755" y="448" text-anchor="middle" font-size="10" fill="#166534">建议：华南线下渠道</text>
+  <text x="755" y="466" text-anchor="middle" font-size="10" fill="#166534">策略调整方案</text>
+
+  <!-- 底部说明 -->
+  <rect x="30" y="520" width="840" height="80" rx="10" fill="#fffbeb" stroke="#fcd34d" stroke-width="1"/>
+  <text x="450" y="545" text-anchor="middle" font-size="12" font-weight="600" fill="#92400e">关键设计</text>
+  <text x="200" y="568" text-anchor="middle" font-size="11" fill="#78350f">每个阶段独立 thread_id</text>
+  <text x="480" y="568" text-anchor="middle" font-size="11" fill="#78350f">阶段间只传 PhaseHandoff（摘要+决策+关键数据）</text>
+  <text x="770" y="568" text-anchor="middle" font-size="11" fill="#78350f">崩溃恢复只影响当前阶段</text>
+</svg>

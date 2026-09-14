@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 560" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="700" height="500" fill="#fafafa" rx="8"/>
+  <text x="350" y="26" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a1a1a">Research Agent 完整架构</text>
+
+  <!-- ====== 协调层 ====== -->
+  <rect x="20" y="40" width="660" height="90" rx="8" fill="#e3f2fd" stroke="#1976D2" stroke-width="1.5"/>
+  <text x="350" y="62" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">协调层（Supervisor）</text>
+
+  <rect x="38" y="72" width="195" height="44" rx="5" fill="#bbdefb" stroke="#1976D2" stroke-width="1"/>
+  <text x="135" y="90" text-anchor="middle" font-size="11" fill="#1565C0">Plan-and-Execute</text>
+  <text x="135" y="106" text-anchor="middle" font-size="9" fill="#1565C0">规划研究步骤</text>
+
+  <rect x="252" y="72" width="195" height="44" rx="5" fill="#bbdefb" stroke="#1976D2" stroke-width="1"/>
+  <text x="350" y="90" text-anchor="middle" font-size="11" fill="#1565C0">Supervisor Router</text>
+  <text x="350" y="106" text-anchor="middle" font-size="9" fill="#1565C0">分配任务给 Worker</text>
+
+  <rect x="466" y="72" width="195" height="44" rx="5" fill="#bbdefb" stroke="#1976D2" stroke-width="1"/>
+  <text x="563" y="90" text-anchor="middle" font-size="11" fill="#1565C0">Result Integrator</text>
+  <text x="563" y="106" text-anchor="middle" font-size="9" fill="#1565C0">整合 Worker 输出</text>
+
+  <!-- 层间连接（垂直箭头）-->
+  <line x1="135" y1="130" x2="135" y2="152" stroke="#1976D2" stroke-width="1.5"/>
+  <polygon points="135,152 129,142 141,142" fill="#1976D2"/>
+  <line x1="350" y1="130" x2="350" y2="152" stroke="#1976D2" stroke-width="1.5"/>
+  <polygon points="350,152 344,142 356,142" fill="#1976D2"/>
+  <line x1="563" y1="130" x2="563" y2="152" stroke="#1976D2" stroke-width="1.5"/>
+  <polygon points="563,152 557,142 569,142" fill="#1976D2"/>
+
+  <!-- ====== 工作层 ====== -->
+  <rect x="20" y="156" width="660" height="170" rx="8" fill="#e8f5e9" stroke="#388E3C" stroke-width="1.5"/>
+  <text x="350" y="178" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">工作层（Workers）</text>
+
+  <!-- Researcher -->
+  <rect x="38" y="190" width="195" height="122" rx="5" fill="#fff" stroke="#388E3C" stroke-width="1"/>
+  <text x="135" y="210" text-anchor="middle" font-size="12" font-weight="bold" fill="#2E7D32">Researcher</text>
+
+  <rect x="50" y="220" width="170" height="22" rx="3" fill="#c8e6c9" stroke="#388E3C" stroke-width="0.8"/>
+  <text x="135" y="235" text-anchor="middle" font-size="9" fill="#2E7D32">工具: search_web, get_date</text>
+
+  <rect x="50" y="248" width="170" height="22" rx="3" fill="#fff3e0" stroke="#F57C00" stroke-width="0.8"/>
+  <text x="135" y="263" text-anchor="middle" font-size="9" fill="#E65100">模型: gpt-4o</text>
+
+  <text x="135" y="296" text-anchor="middle" font-size="9" fill="#666">搜索 → 整理 → 结构化笔记</text>
+
+  <!-- Writer -->
+  <rect x="252" y="190" width="195" height="122" rx="5" fill="#fff" stroke="#388E3C" stroke-width="1"/>
+  <text x="350" y="210" text-anchor="middle" font-size="12" font-weight="bold" fill="#2E7D32">Writer</text>
+
+  <rect x="264" y="220" width="170" height="22" rx="3" fill="#c8e6c9" stroke="#388E3C" stroke-width="0.8"/>
+  <text x="350" y="235" text-anchor="middle" font-size="9" fill="#2E7D32">工具: 无（纯推理）</text>
+
+  <rect x="264" y="248" width="170" height="22" rx="3" fill="#fff3e0" stroke="#F57C00" stroke-width="0.8"/>
+  <text x="350" y="263" text-anchor="middle" font-size="9" fill="#E65100">模型: gpt-4o-mini（低成本）</text>
+
+  <text x="350" y="296" text-anchor="middle" font-size="9" fill="#666">研究笔记 → 结构化报告</text>
+
+  <!-- Reviewer -->
+  <rect x="466" y="190" width="195" height="122" rx="5" fill="#fff" stroke="#388E3C" stroke-width="1"/>
+  <text x="563" y="210" text-anchor="middle" font-size="12" font-weight="bold" fill="#2E7D32">Reviewer</text>
+
+  <rect x="478" y="220" width="170" height="22" rx="3" fill="#c8e6c9" stroke="#388E3C" stroke-width="0.8"/>
+  <text x="563" y="235" text-anchor="middle" font-size="9" fill="#2E7D32">工具: 无（纯推理）</text>
+
+  <rect x="478" y="248" width="170" height="22" rx="3" fill="#fff3e0" stroke="#F57C00" stroke-width="0.8"/>
+  <text x="563" y="263" text-anchor="middle" font-size="9" fill="#E65100">模型: gpt-4o（强推理）</text>
+
+  <text x="563" y="296" text-anchor="middle" font-size="9" fill="#666">审查 → 修改建议 / APPROVED</text>
+
+  <!-- 层间连接（垂直箭头）-->
+  <line x1="110" y1="326" x2="110" y2="354" stroke="#78909c" stroke-width="1.2"/>
+  <polygon points="110,354 104,344 116,344" fill="#78909c"/>
+  <line x1="275" y1="326" x2="275" y2="354" stroke="#78909c" stroke-width="1.2"/>
+  <polygon points="275,354 269,344 281,344" fill="#78909c"/>
+  <line x1="440" y1="326" x2="440" y2="354" stroke="#78909c" stroke-width="1.2"/>
+  <polygon points="440,354 434,344 446,344" fill="#78909c"/>
+  <line x1="605" y1="326" x2="605" y2="354" stroke="#78909c" stroke-width="1.2"/>
+  <polygon points="605,354 599,344 611,344" fill="#78909c"/>
+
+  <!-- ====== 基础设施层 ====== -->
+  <rect x="20" y="354" width="660" height="128" rx="8" fill="#fff3e0" stroke="#F57C00" stroke-width="1.5"/>
+  <text x="350" y="376" text-anchor="middle" font-size="13" font-weight="bold" fill="#E65100">基础设施层</text>
+
+  <rect x="38" y="388" width="145" height="78" rx="5" fill="#fff" stroke="#F57C00" stroke-width="1"/>
+  <text x="110" y="408" text-anchor="middle" font-size="11" font-weight="bold" fill="#E65100">记忆系统</text>
+  <text x="110" y="426" text-anchor="middle" font-size="9" fill="#666">短期: messages</text>
+  <text x="110" y="440" text-anchor="middle" font-size="9" fill="#666">中期: SessionMemory</text>
+  <text x="110" y="454" text-anchor="middle" font-size="9" fill="#666">长期: ChromaDB</text>
+
+  <rect x="203" y="388" width="145" height="78" rx="5" fill="#fff" stroke="#F57C00" stroke-width="1"/>
+  <text x="275" y="408" text-anchor="middle" font-size="11" font-weight="bold" fill="#E65100">工具注册表</text>
+  <text x="275" y="426" text-anchor="middle" font-size="9" fill="#666">@tool 装饰器</text>
+  <text x="275" y="440" text-anchor="middle" font-size="9" fill="#666">自动生成 schema</text>
+  <text x="275" y="454" text-anchor="middle" font-size="9" fill="#666">权限/超时/重试</text>
+
+  <rect x="368" y="388" width="145" height="78" rx="5" fill="#fff" stroke="#F57C00" stroke-width="1"/>
+  <text x="440" y="408" text-anchor="middle" font-size="11" font-weight="bold" fill="#E65100">安全护栏</text>
+  <text x="440" y="426" text-anchor="middle" font-size="9" fill="#666">权限检查</text>
+  <text x="440" y="440" text-anchor="middle" font-size="9" fill="#666">预算限制</text>
+  <text x="440" y="454" text-anchor="middle" font-size="9" fill="#666">超时控制</text>
+
+  <rect x="533" y="388" width="145" height="78" rx="5" fill="#fff" stroke="#F57C00" stroke-width="1"/>
+  <text x="605" y="408" text-anchor="middle" font-size="11" font-weight="bold" fill="#E65100">可观测性</text>
+  <text x="605" y="426" text-anchor="middle" font-size="9" fill="#666">调用链追踪</text>
+  <text x="605" y="440" text-anchor="middle" font-size="9" fill="#666">Token 计数</text>
+  <text x="605" y="454" text-anchor="middle" font-size="9" fill="#666">LangSmith</text>
+
+  <!-- 底部说明 -->
+  <text x="350" y="494" text-anchor="middle" font-size="10" fill="#757575">协调层调度 → 工作层执行 → 基础设施层支撑</text>
+</svg>

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 620" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="core" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/><stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="940" height="620" rx="16" fill="url(#bg2)"/>
+  <text x="470" y="42" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">DeepSeek Harness：一切皆插件</text>
+  <text x="470" y="66" text-anchor="middle" font-size="12" fill="#64748b">运行中的 dsh 本质是一个 Cordis Context，配置决定装入哪些能力</text>
+
+  <rect x="300" y="250" width="340" height="150" rx="16" fill="url(#core)"/>
+  <text x="470" y="292" text-anchor="middle" font-size="16" font-weight="700" fill="#f8fafc">Cordis Context</text>
+  <text x="470" y="318" text-anchor="middle" font-size="12" fill="#cbd5e1">服务 · 类型化事件 · 可撤销副作用</text>
+  <text x="470" y="344" text-anchor="middle" font-size="12" fill="#94a3b8">ctx.sessions / ctx.tools / ctx.llm</text>
+  <text x="470" y="368" text-anchor="middle" font-size="12" fill="#94a3b8">ctx.agents / ctx.agentLoop / ctx.fs</text>
+
+  <!-- top row -->
+  <rect x="48" y="96" width="196" height="78" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="146" y="126" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">llm 适配器</text>
+  <text x="146" y="148" text-anchor="middle" font-size="11" fill="#475569">换模型，不换循环</text>
+
+  <rect x="268" y="96" width="196" height="78" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="366" y="126" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">system-prompt</text>
+  <text x="366" y="148" text-anchor="middle" font-size="11" fill="#475569">提示词分段组装</text>
+
+  <rect x="488" y="96" width="196" height="78" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="586" y="126" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">agent-loop</text>
+  <text x="586" y="148" text-anchor="middle" font-size="11" fill="#475569">默认驱动，可替换</text>
+
+  <rect x="708" y="96" width="184" height="78" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="800" y="126" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">session</text>
+  <text x="800" y="148" text-anchor="middle" font-size="11" fill="#475569">仅追加事件日志</text>
+
+  <!-- mid sides -->
+  <rect x="48" y="286" width="196" height="78" rx="10" fill="#ffffff" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="146" y="316" text-anchor="middle" font-size="13" font-weight="700" fill="#115e59">tools / sandbox</text>
+  <text x="146" y="338" text-anchor="middle" font-size="11" fill="#475569">守卫后的执行管道</text>
+
+  <rect x="708" y="286" width="184" height="78" rx="10" fill="#ffffff" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="800" y="316" text-anchor="middle" font-size="13" font-weight="700" fill="#115e59">fs / shell</text>
+  <text x="800" y="338" text-anchor="middle" font-size="11" fill="#475569">接口 / 实现 / 消费者</text>
+
+  <!-- bottom row -->
+  <rect x="48" y="456" width="196" height="78" rx="10" fill="#ffffff" stroke="#b45309" stroke-width="1.5"/>
+  <text x="146" y="486" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">skill / subagent</text>
+  <text x="146" y="508" text-anchor="middle" font-size="11" fill="#475569">技能与委派</text>
+
+  <rect x="268" y="456" width="196" height="78" rx="10" fill="#ffffff" stroke="#b45309" stroke-width="1.5"/>
+  <text x="366" y="486" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">workflow / goals</text>
+  <text x="366" y="508" text-anchor="middle" font-size="11" fill="#475569">计划、目标、后台任务</text>
+
+  <rect x="488" y="456" width="196" height="78" rx="10" fill="#ffffff" stroke="#b45309" stroke-width="1.5"/>
+  <text x="586" y="486" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">Web / TUI / Headless</text>
+  <text x="586" y="508" text-anchor="middle" font-size="11" fill="#475569">同一内核，不同组装</text>
+
+  <rect x="708" y="456" width="184" height="78" rx="10" fill="#ffffff" stroke="#b45309" stroke-width="1.5"/>
+  <text x="800" y="486" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">ACP / JSON-RPC</text>
+  <text x="800" y="508" text-anchor="middle" font-size="11" fill="#475569">给程序用的前门</text>
+
+  <line x1="146" y1="174" x2="380" y2="250" stroke="#94a3b8" stroke-width="1.2"/>
+  <line x1="366" y1="174" x2="430" y2="250" stroke="#94a3b8" stroke-width="1.2"/>
+  <line x1="586" y1="174" x2="510" y2="250" stroke="#94a3b8" stroke-width="1.2"/>
+  <line x1="800" y1="174" x2="560" y2="250" stroke="#94a3b8" stroke-width="1.2"/>
+  <line x1="244" y1="325" x2="300" y2="325" stroke="#94a3b8" stroke-width="1.2"/>
+  <line x1="640" y1="325" x2="708" y2="325" stroke="#94a3b8" stroke-width="1.2"/>
+  <line x1="146" y1="456" x2="380" y2="400" stroke="#94a3b8" stroke-width="1.2"/>
+  <line x1="366" y1="456" x2="430" y2="400" stroke="#94a3b8" stroke-width="1.2"/>
+  <line x1="586" y1="456" x2="510" y2="400" stroke="#94a3b8" stroke-width="1.2"/>
+  <line x1="800" y1="456" x2="560" y2="400" stroke="#94a3b8" stroke-width="1.2"/>
+
+  <text x="470" y="578" text-anchor="middle" font-size="12" fill="#475569">官方架构文档写得很直白：模型适配器、工具注册、Session Log，连 Agent Loop 本身都是插件。</text>
+</svg>

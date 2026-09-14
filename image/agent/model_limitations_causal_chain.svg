@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 500" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="860" height="440" fill="#fafafa" rx="8"/>
+
+  <text x="430" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a2e">Model "五个不能" 的因果链 → Harness 解法</text>
+
+  <!-- ====== 根因 ====== -->
+  <rect x="300" y="46" width="260" height="52" rx="10" fill="#ffcdd2" stroke="#c62828" stroke-width="2"/>
+  <text x="430" y="68" text-anchor="middle" font-size="14" font-weight="bold" fill="#c62828">不能执行动作</text>
+  <text x="430" y="88" text-anchor="middle" font-size="9.5" fill="#c62828">根因：next-token prediction 无副作用</text>
+
+  <!-- 三条箭头 -->
+  <line x1="355" y1="98" x2="155" y2="136" stroke="#78909c" stroke-width="1.8"/>
+  <polygon points="155,136 165,129 167,141" fill="#78909c"/>
+  <line x1="430" y1="98" x2="430" y2="136" stroke="#78909c" stroke-width="1.8"/>
+  <polygon points="430,136 424,126 436,126" fill="#78909c"/>
+  <line x1="505" y1="98" x2="705" y2="136" stroke="#78909c" stroke-width="1.8"/>
+  <polygon points="705,136 695,129 697,141" fill="#78909c"/>
+
+  <!-- 三个派生"不能" -->
+  <rect x="30" y="138" width="230" height="48" rx="8" fill="#ffe0b2" stroke="#E65100" stroke-width="1.5"/>
+  <text x="145" y="159" text-anchor="middle" font-size="13" font-weight="bold" fill="#E65100">不能获取实时信息</text>
+  <text x="145" y="177" text-anchor="middle" font-size="9.5" fill="#E65100">没法调 API → 数据是静态的</text>
+
+  <rect x="315" y="138" width="230" height="48" rx="8" fill="#ffe0b2" stroke="#E65100" stroke-width="1.5"/>
+  <text x="430" y="159" text-anchor="middle" font-size="13" font-weight="bold" fill="#E65100">不能持久化记忆</text>
+  <text x="430" y="177" text-anchor="middle" font-size="9.5" fill="#E65100">没法写存储 → 无状态</text>
+
+  <rect x="600" y="138" width="230" height="48" rx="8" fill="#ffe0b2" stroke="#E65100" stroke-width="1.5"/>
+  <text x="715" y="159" text-anchor="middle" font-size="13" font-weight="bold" fill="#E65100">不能自主规划</text>
+  <text x="715" y="177" text-anchor="middle" font-size="9.5" fill="#E65100">没动作能力 → 无法驱动循环</text>
+
+  <!-- 独立根因 -->
+  <rect x="300" y="220" width="260" height="48" rx="8" fill="#e1bee7" stroke="#5e35b1" stroke-width="1.5"/>
+  <text x="430" y="241" text-anchor="middle" font-size="13" font-weight="bold" fill="#5e35b1">不能保证输出可靠</text>
+  <text x="430" y="259" text-anchor="middle" font-size="9.5" fill="#5e35b1">概率模型固有属性，与动作能力无关</text>
+
+  <!-- 独立根因标注 -->
+  <line x1="560" y1="244" x2="598" y2="244" stroke="#5e35b1" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="604" y="248" font-size="10" fill="#5e35b1" font-style="italic">独立根因</text>
+
+  <!-- ====== 分割线 ====== -->
+  <line x1="40" y1="294" x2="820" y2="294" stroke="#bdbdbd" stroke-width="1" stroke-dasharray="6,4"/>
+  <text x="430" y="314" text-anchor="middle" font-size="11" fill="#757575">每一个"不能" → 对应一个 Harness 组件</text>
+
+  <!-- ====== Harness 解法 ====== -->
+  <rect x="30" y="336" width="195" height="50" rx="10" fill="#c8e6c9" stroke="#2E7D32" stroke-width="1.5"/>
+  <text x="127" y="358" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">工具系统</text>
+  <text x="127" y="376" text-anchor="middle" font-size="9.5" fill="#2E7D32">搜索 / 执行 / 读写 / 验证</text>
+
+  <rect x="240" y="336" width="155" height="50" rx="10" fill="#c8e6c9" stroke="#43a047" stroke-width="1.5"/>
+  <text x="317" y="358" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">记忆系统</text>
+  <text x="317" y="376" text-anchor="middle" font-size="9.5" fill="#2E7D32">持久化 + 检索</text>
+
+  <rect x="410" y="336" width="155" height="50" rx="10" fill="#c8e6c9" stroke="#66bb6a" stroke-width="1.5"/>
+  <text x="487" y="358" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">规划 + 编排</text>
+  <text x="487" y="376" text-anchor="middle" font-size="9.5" fill="#2E7D32">分解 + 状态机</text>
+
+  <rect x="580" y="336" width="155" height="50" rx="10" fill="#c8e6c9" stroke="#81c784" stroke-width="1.5"/>
+  <text x="657" y="358" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">安全护栏</text>
+  <text x="657" y="376" text-anchor="middle" font-size="9.5" fill="#2E7D32">验证 / 重试</text>
+
+  <!-- 映射连线 -->
+  <line x1="145" y1="186" x2="105" y2="336" stroke="#2E7D32" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.7"/>
+  <line x1="380" y1="98" x2="200" y2="336" stroke="#2E7D32" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.7"/>
+  <line x1="430" y1="186" x2="317" y2="336" stroke="#43a047" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.7"/>
+  <line x1="715" y1="186" x2="487" y2="336" stroke="#66bb6a" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.7"/>
+  <line x1="500" y1="268" x2="657" y2="336" stroke="#81c784" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.7"/>
+
+  <!-- 底部结论 -->
+  <rect x="80" y="404" width="700" height="26" rx="6" fill="#e8f5e9" stroke="#43a047" stroke-width="1"/>
+  <text x="430" y="422" text-anchor="middle" font-size="11" font-weight="bold" fill="#2E7D32">工具系统是钥匙 —— 解决"动作能力"一件事，连锁解锁实时信息、记忆、规划三大能力</text>
+</svg>

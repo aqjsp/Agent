@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 460" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="700" height="400" fill="#fafafa" rx="8"/>
+  <text x="350" y="26" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a1a1a">工具注册-发现-执行流程</text>
+
+  <defs>
+    <marker id="m1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#1976D2"/></marker>
+    <marker id="m2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#388E3C"/></marker>
+    <marker id="m3" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#9E9E9E"/></marker>
+    <marker id="m4" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#E65100"/></marker>
+  </defs>
+
+  <!-- ====== 注册阶段 ====== -->
+  <rect x="15" y="42" width="200" height="310" rx="8" fill="#e3f2fd" stroke="#1976D2" stroke-width="1.5"/>
+  <text x="115" y="62" text-anchor="middle" font-size="12" font-weight="bold" fill="#1565C0">注册阶段（开发时）</text>
+
+  <rect x="28" y="76" width="174" height="48" rx="5" fill="#fff" stroke="#1976D2" stroke-width="1"/>
+  <text x="115" y="94" text-anchor="middle" font-size="11" fill="#333">@tool 装饰器</text>
+  <text x="115" y="110" text-anchor="middle" font-size="9" fill="#666">函数 + docstring + 类型注解</text>
+
+  <line x1="115" y1="124" x2="115" y2="146" stroke="#1976D2" stroke-width="1.2" marker-end="url(#m1)"/>
+
+  <rect x="28" y="146" width="174" height="40" rx="5" fill="#bbdefb" stroke="#1976D2" stroke-width="1"/>
+  <text x="115" y="164" text-anchor="middle" font-size="11" fill="#1565C0">自动生成 JSON Schema</text>
+  <text x="115" y="178" text-anchor="middle" font-size="9" fill="#1565C0">从函数签名提取参数</text>
+
+  <line x1="115" y1="186" x2="115" y2="208" stroke="#1976D2" stroke-width="1.2" marker-end="url(#m1)"/>
+
+  <rect x="28" y="208" width="174" height="44" rx="5" fill="#fff" stroke="#1976D2" stroke-width="1"/>
+  <text x="115" y="226" text-anchor="middle" font-size="11" fill="#333">注册表 _tool_registry</text>
+  <text x="115" y="242" text-anchor="middle" font-size="9" fill="#666">{name: {func, schema, config}}</text>
+
+  <!-- ====== 运行时阶段 ====== -->
+  <rect x="240" y="42" width="445" height="310" rx="8" fill="#e8f5e9" stroke="#388E3C" stroke-width="1.5"/>
+  <text x="462" y="62" text-anchor="middle" font-size="12" font-weight="bold" fill="#2E7D32">运行时（Agent 循环中）</text>
+
+  <!-- 发现 -->
+  <rect x="258" y="76" width="180" height="40" rx="5" fill="#fff" stroke="#388E3C" stroke-width="1"/>
+  <text x="348" y="94" text-anchor="middle" font-size="11" fill="#333">get_tools_schema()</text>
+  <text x="348" y="108" text-anchor="middle" font-size="9" fill="#666">从注册表提取 schema 列表</text>
+
+  <!-- 注册表→发现 连线 -->
+  <path d="M 202 230 L 230 230 L 230 96 L 258 96" stroke="#9E9E9E" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#m3)" fill="none"/>
+  <rect x="215" y="155" width="30" height="22" rx="3" fill="#fafafa" stroke="#9E9E9E" stroke-width="0.5"/>
+  <text x="230" y="167" text-anchor="middle" font-size="7" fill="#757575">提供</text>
+  <text x="230" y="177" text-anchor="middle" font-size="7" fill="#757575">schema</text>
+
+  <line x1="348" y1="116" x2="348" y2="138" stroke="#388E3C" stroke-width="1.2" marker-end="url(#m2)"/>
+
+  <!-- LLM 选择 -->
+  <rect x="258" y="138" width="180" height="40" rx="5" fill="#c8e6c9" stroke="#388E3C" stroke-width="1"/>
+  <text x="348" y="156" text-anchor="middle" font-size="11" fill="#2E7D32">LLM 选择工具</text>
+  <text x="348" y="170" text-anchor="middle" font-size="9" fill="#2E7D32">输出 tool_calls JSON</text>
+
+  <line x1="348" y1="178" x2="348" y2="200" stroke="#388E3C" stroke-width="1.2" marker-end="url(#m2)"/>
+
+  <!-- 执行 -->
+  <rect x="258" y="200" width="180" height="56" rx="5" fill="#fff" stroke="#E65100" stroke-width="1"/>
+  <text x="348" y="218" text-anchor="middle" font-size="11" fill="#E65100">Harness 执行</text>
+  <text x="348" y="234" text-anchor="middle" font-size="9" fill="#666">1. 权限检查</text>
+  <text x="348" y="248" text-anchor="middle" font-size="9" fill="#666">2. 重试 + 超时控制</text>
+
+  <!-- 注册表→执行 连线 -->
+  <path d="M 202 240 L 230 240 L 230 228 L 258 228" stroke="#9E9E9E" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#m3)" fill="none"/>
+  <text x="236" y="234" font-size="8" fill="#757575">查找函数+配置</text>
+
+  <line x1="348" y1="256" x2="348" y2="278" stroke="#388E3C" stroke-width="1.2" marker-end="url(#m2)"/>
+
+  <!-- 结果 -->
+  <rect x="258" y="278" width="180" height="36" rx="5" fill="#fff" stroke="#388E3C" stroke-width="1"/>
+  <text x="348" y="296" text-anchor="middle" font-size="11" fill="#333">结果拼回 messages</text>
+  <text x="348" y="308" text-anchor="middle" font-size="9" fill="#666">role: tool, tool_call_id 配对</text>
+
+  <!-- MCP 远程工具 -->
+  <rect x="478" y="100" width="190" height="100" rx="6" fill="#fff3e0" stroke="#E65100" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="573" y="120" text-anchor="middle" font-size="11" font-weight="bold" fill="#E65100">MCP Server（远程）</text>
+  <text x="573" y="140" text-anchor="middle" font-size="9" fill="#666">1. 暴露工具列表 + schema</text>
+  <text x="573" y="156" text-anchor="middle" font-size="9" fill="#666">2. 接收远程调用</text>
+  <text x="573" y="172" text-anchor="middle" font-size="9" fill="#666">3. 返回执行结果</text>
+
+  <line x1="478" y1="120" x2="438" y2="96" stroke="#E65100" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#m4)"/>
+  <text x="456" y="102" font-size="8" fill="#E65100">发现</text>
+
+  <line x1="478" y1="160" x2="438" y2="220" stroke="#E65100" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#m4)"/>
+  <text x="456" y="186" font-size="8" fill="#E65100">调用</text>
+
+  <!-- 图例 -->
+  <rect x="478" y="268" width="190" height="78" rx="5" fill="#fff" stroke="#ddd" stroke-width="1"/>
+  <text x="573" y="286" text-anchor="middle" font-size="10" font-weight="bold" fill="#333">图例</text>
+  <line x1="490" y1="298" x2="515" y2="298" stroke="#1976D2" stroke-width="1.5"/>
+  <text x="522" y="302" font-size="9" fill="#333">注册流程</text>
+  <line x1="490" y1="314" x2="515" y2="314" stroke="#388E3C" stroke-width="1.5"/>
+  <text x="522" y="318" font-size="9" fill="#333">运行时流程</text>
+  <line x1="490" y1="330" x2="515" y2="330" stroke="#E65100" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="522" y="334" font-size="9" fill="#333">MCP 远程</text>
+</svg>

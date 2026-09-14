@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 620" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="640" height="560" fill="#fafafa" rx="8"/>
+  <text x="260" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a2e">Agent 循环：ReAct 模式</text>
+
+  <!-- 用户输入 -->
+  <rect x="180" y="48" width="160" height="36" rx="18" fill="#e3f2fd" stroke="#1976d2" stroke-width="1.5"/>
+  <text x="260" y="72" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565c0">用户输入</text>
+
+  <!-- 箭头：用户 → Thought -->
+  <line x1="260" y1="84" x2="260" y2="110" stroke="#78909c" stroke-width="2"/>
+  <polygon points="260,110 254,100 266,100" fill="#78909c"/>
+
+  <!-- Thought（Model） -->
+  <rect x="140" y="110" width="240" height="52" rx="10" fill="#e8eaf6" stroke="#3f51b5" stroke-width="2"/>
+  <text x="260" y="134" text-anchor="middle" font-size="15" font-weight="bold" fill="#283593">Thought（思考）</text>
+  <text x="260" y="152" text-anchor="middle" font-size="10" fill="#3f51b5">Model：分析信息，决定下一步</text>
+  <rect x="384" y="122" width="48" height="18" rx="4" fill="#e8eaf6" stroke="#3f51b5" stroke-width="1"/>
+  <text x="408" y="135" text-anchor="middle" font-size="9" font-weight="bold" fill="#3f51b5">Model</text>
+
+  <!-- 箭头：Thought → 判断 -->
+  <line x1="260" y1="162" x2="260" y2="190" stroke="#78909c" stroke-width="2"/>
+  <polygon points="260,190 254,180 266,180" fill="#78909c"/>
+
+  <!-- 判断菱形 -->
+  <polygon points="260,190 340,225 260,260 180,225" fill="#fff8e1" stroke="#ffb300" stroke-width="2"/>
+  <text x="260" y="229" text-anchor="middle" font-size="12" font-weight="bold" fill="#e65100">需要工具？</text>
+
+  <!-- 左分支：否 → 输出回答 -->
+  <line x1="180" y1="225" x2="110" y2="225" stroke="#43a047" stroke-width="2"/>
+  <polygon points="110,225 120,219 120,231" fill="#43a047"/>
+  <text x="148" y="218" text-anchor="middle" font-size="10" font-weight="bold" fill="#43a047">否</text>
+
+  <rect x="20" y="207" width="90" height="36" rx="18" fill="#c8e6c9" stroke="#43a047" stroke-width="1.5"/>
+  <text x="65" y="230" text-anchor="middle" font-size="12" font-weight="bold" fill="#2e7d32">输出回答</text>
+
+  <!-- 下分支：是 → Action -->
+  <line x1="260" y1="260" x2="260" y2="290" stroke="#c62828" stroke-width="2"/>
+  <polygon points="260,290 254,280 266,280" fill="#c62828"/>
+  <text x="278" y="278" font-size="10" font-weight="bold" fill="#c62828">是</text>
+
+  <!-- Action（Harness） -->
+  <rect x="145" y="290" width="230" height="48" rx="10" fill="#ffebee" stroke="#c62828" stroke-width="2"/>
+  <text x="260" y="312" text-anchor="middle" font-size="15" font-weight="bold" fill="#c62828">Action（执行）</text>
+  <text x="260" y="330" text-anchor="middle" font-size="10" fill="#c62828">Harness：调用工具，获取结果</text>
+  <rect x="379" y="300" width="60" height="18" rx="4" fill="#ffebee" stroke="#c62828" stroke-width="1"/>
+  <text x="409" y="313" text-anchor="middle" font-size="9" font-weight="bold" fill="#c62828">Harness</text>
+
+  <!-- 箭头：Action → Observation -->
+  <line x1="260" y1="338" x2="260" y2="368" stroke="#78909c" stroke-width="2"/>
+  <polygon points="260,368 254,358 266,358" fill="#78909c"/>
+
+  <!-- Observation（Harness） -->
+  <rect x="135" y="368" width="250" height="48" rx="10" fill="#fff3e0" stroke="#E65100" stroke-width="2"/>
+  <text x="260" y="390" text-anchor="middle" font-size="15" font-weight="bold" fill="#E65100">Observation（观察）</text>
+  <text x="260" y="408" text-anchor="middle" font-size="10" fill="#E65100">工具结果拼回 messages</text>
+  <rect x="389" y="378" width="60" height="18" rx="4" fill="#fff3e0" stroke="#E65100" stroke-width="1"/>
+  <text x="419" y="391" text-anchor="middle" font-size="9" font-weight="bold" fill="#E65100">Harness</text>
+
+  <!-- 循环回环箭头 -->
+  <path d="M 385 392 L 480 392 L 480 136 L 380 136" stroke="#3f51b5" stroke-width="2.5" fill="none"/>
+  <polygon points="380,136 392,130 392,142" fill="#3f51b5"/>
+
+  <!-- 循环标注 -->
+  <rect x="456" y="230" width="80" height="52" rx="4" fill="#e8eaf6" stroke="#3f51b5" stroke-width="1"/>
+  <text x="496" y="250" text-anchor="middle" font-size="10" fill="#3f51b5" font-weight="bold">信息增加</text>
+  <text x="496" y="268" text-anchor="middle" font-size="10" fill="#3f51b5" font-weight="bold">重新思考</text>
+
+  <!-- 安全阀 -->
+  <rect x="130" y="445" width="260" height="28" rx="6" fill="#ffebee" stroke="#ef9a9a" stroke-width="1"/>
+  <text x="260" y="464" text-anchor="middle" font-size="11" fill="#c62828">max_iterations 超限 → 强制终止（Harness 安全阀）</text>
+
+  <line x1="260" y1="416" x2="260" y2="445" stroke="#ef9a9a" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- 底部总结 -->
+  <text x="260" y="510" text-anchor="middle" font-size="10" fill="#78909c">Thought→Action→Observation 构成一个 ReAct 循环</text>
+  <text x="260" y="528" text-anchor="middle" font-size="10" fill="#78909c">每次循环 messages 列表增长，Model 看到更多信息</text>
+</svg>

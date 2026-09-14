@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" font-family="'SF Pro Display','PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="900" height="520" rx="16" fill="url(#bg3)"/>
+
+  <!-- 标题 -->
+  <text x="450" y="38" text-anchor="middle" font-size="20" font-weight="700" fill="#1e293b">进程恢复的三个层级</text>
+  <text x="450" y="60" text-anchor="middle" font-size="13" fill="#64748b">自动恢复兜底，人工恢复纠偏，降级恢复保命</text>
+
+  <!-- ===== 层级一：自动恢复 ===== -->
+  <rect x="30" y="80" width="270" height="420" rx="12" fill="#ffffff" stroke="#3b82f6" stroke-width="1.5"/>
+  <rect x="30" y="80" width="270" height="42" rx="12" fill="#3b82f6"/>
+  <rect x="30" y="105" width="270" height="17" fill="#3b82f6"/>
+  <text x="165" y="108" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">层级一：自动恢复</text>
+
+  <text x="165" y="148" text-anchor="middle" font-size="12" font-weight="600" fill="#3b82f6">触发条件</text>
+  <rect x="50" y="158" width="230" height="55" rx="6" fill="#dbeafe"/>
+  <text x="165" y="178" text-anchor="middle" font-size="11" fill="#1d4ed8">进程崩溃、Pod 被杀、OOM</text>
+  <text x="165" y="196" text-anchor="middle" font-size="11" fill="#1d4ed8">基础设施故障（非业务错误）</text>
+
+  <text x="165" y="238" text-anchor="middle" font-size="12" font-weight="600" fill="#3b82f6">恢复方式</text>
+  <rect x="50" y="248" width="230" height="75" rx="6" fill="#f1f5f9" stroke="#3b82f6" stroke-width="1"/>
+  <text x="165" y="268" text-anchor="middle" font-size="11" fill="#334155">K8s Job 自动重启 Pod</text>
+  <text x="165" y="288" text-anchor="middle" font-size="11" fill="#334155">用同一个 thread_id 调用</text>
+  <text x="165" y="308" text-anchor="middle" font-size="11" fill="#334155">app.invoke(None, config)</text>
+
+  <text x="165" y="348" text-anchor="middle" font-size="12" font-weight="600" fill="#3b82f6">质量影响</text>
+  <rect x="50" y="358" width="230" height="32" rx="6" fill="#dcfce7"/>
+  <text x="165" y="379" text-anchor="middle" font-size="11" font-weight="600" fill="#15803d">无——从断点精确继续</text>
+
+  <text x="165" y="415" text-anchor="middle" font-size="12" font-weight="600" fill="#3b82f6">前提条件</text>
+  <rect x="50" y="425" width="230" height="55" rx="6" fill="#fef3c7"/>
+  <text x="165" y="445" text-anchor="middle" font-size="11" fill="#92400e">必须用 PostgresSaver/RedisSaver</text>
+  <text x="165" y="463" text-anchor="middle" font-size="11" fill="#92400e">不能用 MemorySaver（进程内）</text>
+
+  <!-- ===== 层级二：人工恢复 ===== -->
+  <rect x="315" y="80" width="270" height="420" rx="12" fill="#ffffff" stroke="#f59e0b" stroke-width="1.5"/>
+  <rect x="315" y="80" width="270" height="42" rx="12" fill="#f59e0b"/>
+  <rect x="315" y="105" width="270" height="17" fill="#f59e0b"/>
+  <text x="450" y="108" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">层级二：人工恢复</text>
+
+  <text x="450" y="148" text-anchor="middle" font-size="12" font-weight="600" fill="#f59e0b">触发条件</text>
+  <rect x="335" y="158" width="230" height="55" rx="6" fill="#fef3c7"/>
+  <text x="450" y="178" text-anchor="middle" font-size="11" fill="#92400e">Agent 行为异常（死循环/幻觉）</text>
+  <text x="450" y="196" text-anchor="middle" font-size="11" fill="#92400e">需要人工判断恢复点</text>
+
+  <text x="450" y="238" text-anchor="middle" font-size="12" font-weight="600" fill="#f59e0b">恢复方式</text>
+  <rect x="335" y="248" width="230" height="75" rx="6" fill="#f1f5f9" stroke="#f59e0b" stroke-width="1"/>
+  <text x="450" y="268" text-anchor="middle" font-size="11" fill="#334155">查看 Checkpoint 历史</text>
+  <text x="450" y="288" text-anchor="middle" font-size="11" fill="#334155">选择恢复点 + 修改 State</text>
+  <text x="450" y="308" text-anchor="middle" font-size="11" fill="#334155">app.update_state() → invoke()</text>
+
+  <text x="450" y="348" text-anchor="middle" font-size="12" font-weight="600" fill="#f59e0b">质量影响</text>
+  <rect x="335" y="358" width="230" height="32" rx="6" fill="#fef3c7"/>
+  <text x="450" y="379" text-anchor="middle" font-size="11" font-weight="600" fill="#b45309">取决于修改——可能更好也可能更差</text>
+
+  <text x="450" y="415" text-anchor="middle" font-size="12" font-weight="600" fill="#f59e0b">前提条件</text>
+  <rect x="335" y="425" width="230" height="55" rx="6" fill="#fef3c7"/>
+  <text x="450" y="445" text-anchor="middle" font-size="11" fill="#92400e">有人值守 + 可视化工具</text>
+  <text x="450" y="463" text-anchor="middle" font-size="11" fill="#92400e">理解 State 结构和业务逻辑</text>
+
+  <!-- ===== 层级三：降级恢复 ===== -->
+  <rect x="600" y="80" width="270" height="420" rx="12" fill="#ffffff" stroke="#ef4444" stroke-width="1.5"/>
+  <rect x="600" y="80" width="270" height="42" rx="12" fill="#ef4444"/>
+  <rect x="600" y="105" width="270" height="17" fill="#ef4444"/>
+  <text x="735" y="108" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">层级三：降级恢复</text>
+
+  <text x="735" y="148" text-anchor="middle" font-size="12" font-weight="600" fill="#ef4444">触发条件</text>
+  <rect x="620" y="158" width="230" height="55" rx="6" fill="#fee2e2"/>
+  <text x="735" y="178" text-anchor="middle" font-size="11" fill="#991b1b">外部服务持续故障</text>
+  <text x="735" y="196" text-anchor="middle" font-size="11" fill="#991b1b">自动恢复重复失败</text>
+
+  <text x="735" y="238" text-anchor="middle" font-size="12" font-weight="600" fill="#ef4444">恢复方式</text>
+  <rect x="620" y="248" width="230" height="75" rx="6" fill="#f1f5f9" stroke="#ef4444" stroke-width="1"/>
+  <text x="735" y="268" text-anchor="middle" font-size="11" fill="#334155">跳过失败步骤</text>
+  <text x="735" y="288" text-anchor="middle" font-size="11" fill="#334155">用 fallback 值替代</text>
+  <text x="735" y="308" text-anchor="middle" font-size="11" fill="#334155">update_state() + invoke()</text>
+
+  <text x="735" y="348" text-anchor="middle" font-size="12" font-weight="600" fill="#ef4444">质量影响</text>
+  <rect x="620" y="358" width="230" height="32" rx="6" fill="#fee2e2"/>
+  <text x="735" y="379" text-anchor="middle" font-size="11" font-weight="600" fill="#dc2626">有损——结果可能不完整或不准确</text>
+
+  <text x="735" y="415" text-anchor="middle" font-size="12" font-weight="600" fill="#ef4444">前提条件</text>
+  <rect x="620" y="425" width="230" height="55" rx="6" fill="#fee2e2"/>
+  <text x="735" y="445" text-anchor="middle" font-size="11" fill="#991b1b">每个工具有预定义的 fallback</text>
+  <text x="735" y="463" text-anchor="middle" font-size="11" fill="#991b1b">业务容忍不完整结果</text>
+</svg>

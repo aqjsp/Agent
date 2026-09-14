@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 520" font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif">
+  <rect width="920" height="520" rx="16" fill="#f8fafc"/>
+  <text x="460" y="42" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">Agent 三层评估架构</text>
+  <text x="460" y="66" text-anchor="middle" font-size="13" fill="#64748b">从确定性组件到非确定性整体，每层用不同方法验证不同属性</text>
+
+  <!-- Layer 1: Component -->
+  <rect x="60" y="100" width="800" height="110" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="90" y="130" font-size="16" font-weight="700" fill="#1d4ed8">L1 组件级评估</text>
+  <text x="90" y="155" font-size="13" fill="#334155">对象：单个工具 / 节点函数 / Reducer / Prompt</text>
+  <text x="90" y="178" font-size="13" fill="#334155">方法：传统 assert / Mock LLM / 确定性验证</text>
+  <rect x="560" y="112" width="140" height="30" rx="6" fill="#eff6ff" stroke="#93c5fd"/>
+  <text x="630" y="132" text-anchor="middle" font-size="12" font-weight="600" fill="#1d4ed8">每次 Commit</text>
+  <rect x="560" y="150" width="140" height="30" rx="6" fill="#eff6ff" stroke="#93c5fd"/>
+  <text x="630" y="170" text-anchor="middle" font-size="12" font-weight="600" fill="#1d4ed8">秒级 / 无 LLM</text>
+  <rect x="720" y="112" width="120" height="68" rx="6" fill="#2563eb"/>
+  <text x="780" y="140" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">assert</text>
+  <text x="780" y="158" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">精确值</text>
+  <text x="780" y="172" text-anchor="middle" font-size="10" fill="#bfdbfe">assertEqual</text>
+
+  <!-- Layer 2: Graph -->
+  <rect x="60" y="230" width="800" height="110" rx="14" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+  <text x="90" y="260" font-size="16" font-weight="700" fill="#15803d">L2 图级评估</text>
+  <text x="90" y="285" font-size="13" fill="#334155">对象：执行轨迹 / State 变化 / 路径约束</text>
+  <text x="90" y="308" font-size="13" fill="#334155">方法：TrajectoryValidator / 步数限制 / 顺序约束</text>
+  <rect x="560" y="242" width="140" height="30" rx="6" fill="#f0fdf4" stroke="#86efac"/>
+  <text x="630" y="262" text-anchor="middle" font-size="12" font-weight="600" fill="#15803d">PR 合入前</text>
+  <rect x="560" y="280" width="140" height="30" rx="6" fill="#f0fdf4" stroke="#86efac"/>
+  <text x="630" y="300" text-anchor="middle" font-size="12" font-weight="600" fill="#15803d">分钟级 / Mock</text>
+  <rect x="720" y="242" width="120" height="68" rx="6" fill="#22c55e"/>
+  <text x="780" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">assert</text>
+  <text x="780" y="288" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">轨迹约束</text>
+  <text x="780" y="302" text-anchor="middle" font-size="10" fill="#bbf7d0">路径 + 步数</text>
+
+  <!-- Layer 3: E2E -->
+  <rect x="60" y="360" width="800" height="110" rx="14" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="90" y="390" font-size="16" font-weight="700" fill="#b45309">L3 端到端评估</text>
+  <text x="90" y="415" font-size="13" fill="#334155">对象：最终输出质量 / 任务完成度 / 用户满意度</text>
+  <text x="90" y="438" font-size="13" fill="#334155">方法：LLM-as-Judge / 混合评估 / 多次运行取统计</text>
+  <rect x="560" y="372" width="140" height="30" rx="6" fill="#fffbeb" stroke="#fcd34d"/>
+  <text x="630" y="392" text-anchor="middle" font-size="12" font-weight="600" fill="#b45309">发版 / 日常</text>
+  <rect x="560" y="410" width="140" height="30" rx="6" fill="#fffbeb" stroke="#fcd34d"/>
+  <text x="630" y="430" text-anchor="middle" font-size="12" font-weight="600" fill="#b45309">小时级 / 真实 LLM</text>
+  <rect x="720" y="372" width="120" height="68" rx="6" fill="#f59e0b"/>
+  <text x="780" y="400" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">assert</text>
+  <text x="780" y="418" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">成功率≥基线</text>
+  <text x="780" y="432" text-anchor="middle" font-size="10" fill="#fef3c7">统计趋势</text>
+
+  <!-- Bottom insight -->
+  <rect x="160" y="488" width="600" height="24" rx="6" fill="#0f172a"/>
+  <text x="460" y="505" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">核心范式转变：从 assert output == value → assert output satisfies constraints</text>
+</svg>

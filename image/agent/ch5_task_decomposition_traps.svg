@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420">
+  <rect x="0" y="0" width="760" height="420" rx="12" fill="#fafafa"/>
+  <rect x="0" y="0" width="760" height="420" rx="12" fill="none" stroke="#e0e0e0" stroke-width="1"/>
+  <defs>
+    <marker id="ar1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#c62828"/>
+    </marker>
+    <marker id="ag1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2e7d32"/>
+    </marker>
+  </defs>
+  <g transform="translate(30,30)">
+
+  <!-- 陷阱一：粒度不一致 -->
+  <rect x="10" y="10" width="210" height="320" rx="10" fill="#fff3e0" stroke="#e65100" stroke-width="2"/>
+  <text x="115" y="40" text-anchor="middle" font-size="14" font-weight="bold" fill="#e65100">陷阱一：粒度不一致</text>
+
+  <text x="25" y="70" font-size="11" fill="#333">LLM 规划的步骤：</text>
+  <rect x="25" y="82" width="180" height="28" rx="4" fill="#ffcc80"/>
+  <text x="115" y="101" text-anchor="middle" font-size="11">"搜索资料" (太粗)</text>
+  <rect x="25" y="118" width="60" height="24" rx="4" fill="#ffcc80"/>
+  <text x="55" y="135" text-anchor="middle" font-size="9">打开浏览器</text>
+  <rect x="90" y="118" width="55" height="24" rx="4" fill="#ffcc80"/>
+  <text x="117" y="135" text-anchor="middle" font-size="9">输入关键词</text>
+  <rect x="150" y="118" width="55" height="24" rx="4" fill="#ffcc80"/>
+  <text x="177" y="135" text-anchor="middle" font-size="9">点击搜索</text>
+  <text x="115" y="155" text-anchor="middle" font-size="10" fill="#c62828">(太细)</text>
+
+  <line x1="25" y1="168" x2="205" y2="168" stroke="#e65100" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="25" y="188" font-size="11" fill="#2e7d32" font-weight="bold">正确粒度：1步 = 1次工具调用</text>
+  <rect x="25" y="198" width="180" height="26" rx="4" fill="#c8e6c9" stroke="#2e7d32"/>
+  <text x="115" y="216" text-anchor="middle" font-size="11" fill="#2e7d32">search_web("AIGC教育")</text>
+  <rect x="25" y="232" width="180" height="26" rx="4" fill="#c8e6c9" stroke="#2e7d32"/>
+  <text x="115" y="250" text-anchor="middle" font-size="11" fill="#2e7d32">search_web("AI教学案例")</text>
+
+  <!-- 陷阱二：忽略依赖 -->
+  <rect x="235" y="10" width="210" height="320" rx="10" fill="#fce4ec" stroke="#c62828" stroke-width="2"/>
+  <text x="340" y="40" text-anchor="middle" font-size="14" font-weight="bold" fill="#c62828">陷阱二：忽略依赖</text>
+
+  <text x="250" y="70" font-size="11" fill="#333">LLM 规划的顺序：</text>
+  <rect x="260" y="82" width="160" height="28" rx="4" fill="#ef9a9a"/>
+  <text x="340" y="101" text-anchor="middle" font-size="11">1. 写总结</text>
+  <rect x="260" y="118" width="160" height="28" rx="4" fill="#ef9a9a"/>
+  <text x="340" y="137" text-anchor="middle" font-size="11">2. 搜索资料</text>
+  <text x="340" y="160" text-anchor="middle" font-size="12" fill="#c62828">❌ 顺序反了！</text>
+
+  <line x1="250" y1="175" x2="430" y2="175" stroke="#c62828" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="250" y="195" font-size="11" fill="#2e7d32" font-weight="bold">正确的依赖顺序：</text>
+  <rect x="260" y="207" width="160" height="28" rx="4" fill="#c8e6c9" stroke="#2e7d32"/>
+  <text x="340" y="226" text-anchor="middle" font-size="11">1. 搜索资料 (前置)</text>
+  <line x1="340" y1="235" x2="340" y2="248" stroke="#2e7d32" stroke-width="2" marker-end="url(#ag1)"/>
+  <rect x="260" y="250" width="160" height="28" rx="4" fill="#c8e6c9" stroke="#2e7d32"/>
+  <text x="340" y="269" text-anchor="middle" font-size="11">2. 写总结 (依赖1)</text>
+  <text x="340" y="300" text-anchor="middle" font-size="10" fill="#2e7d32">依赖关系必须显式标注</text>
+
+  <!-- 陷阱三：幻觉能力 -->
+  <rect x="460" y="10" width="210" height="320" rx="10" fill="#e8eaf6" stroke="#283593" stroke-width="2"/>
+  <text x="565" y="40" text-anchor="middle" font-size="14" font-weight="bold" fill="#283593">陷阱三：幻觉能力</text>
+
+  <text x="475" y="70" font-size="11" fill="#333">LLM 规划的步骤：</text>
+  <rect x="475" y="82" width="180" height="28" rx="4" fill="#c5cae9"/>
+  <text x="565" y="101" text-anchor="middle" font-size="11">调用数据库查询</text>
+  <rect x="475" y="118" width="180" height="28" rx="4" fill="#c5cae9"/>
+  <text x="565" y="137" text-anchor="middle" font-size="11">调用邮件发送API</text>
+  <text x="565" y="160" text-anchor="middle" font-size="12" fill="#c62828">❌ Agent 没有这些工具！</text>
+
+  <line x1="475" y1="175" x2="655" y2="175" stroke="#283593" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="475" y="195" font-size="11" fill="#2e7d32" font-weight="bold">解决：列出可用工具清单</text>
+  <rect x="475" y="207" width="180" height="22" rx="4" fill="#c8e6c9" stroke="#2e7d32"/>
+  <text x="565" y="222" text-anchor="middle" font-size="10">✓ get_weather(city)</text>
+  <rect x="475" y="235" width="180" height="22" rx="4" fill="#c8e6c9" stroke="#2e7d32"/>
+  <text x="565" y="250" text-anchor="middle" font-size="10">✓ search_web(query)</text>
+  <rect x="475" y="263" width="180" height="22" rx="4" fill="#c8e6c9" stroke="#2e7d32"/>
+  <text x="565" y="278" text-anchor="middle" font-size="10">✓ calculate(expr)</text>
+  <text x="565" y="310" text-anchor="middle" font-size="10" fill="#c62828">✗ 数据库查询 (不存在)</text>
+  </g>
+</svg>

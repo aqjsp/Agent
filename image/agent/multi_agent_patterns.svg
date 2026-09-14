@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 560" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="720" height="500" fill="#fafafa" rx="8"/>
+  <text x="360" y="26" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a1a1a">四种 Multi-Agent 协作模式</text>
+
+  <defs>
+    <marker id="mg" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#388E3C"/></marker>
+    <marker id="mo" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#E65100"/></marker>
+    <marker id="mo_r" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto"><path d="M8,0 L0,3 L8,6" fill="#E65100"/></marker>
+    <marker id="mb" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#1976D2"/></marker>
+    <marker id="mp" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#6A1B9A"/></marker>
+  </defs>
+
+  <!-- ====== Router ====== -->
+  <rect x="15" y="42" width="335" height="200" rx="8" fill="#e3f2fd" stroke="#1976D2" stroke-width="1.5"/>
+  <text x="182" y="64" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">Router 模式</text>
+
+  <!-- Router 中心 -->
+  <rect x="122" y="78" width="120" height="32" rx="6" fill="#bbdefb" stroke="#1976D2" stroke-width="1.5"/>
+  <text x="182" y="99" text-anchor="middle" font-size="11" font-weight="bold" fill="#1565C0">Router</text>
+
+  <!-- 三个 Agent -->
+  <rect x="38" y="140" width="76" height="34" rx="5" fill="#fff" stroke="#1976D2" stroke-width="1"/>
+  <text x="76" y="162" text-anchor="middle" font-size="10" fill="#333">天气</text>
+
+  <rect x="144" y="140" width="76" height="34" rx="5" fill="#fff" stroke="#1976D2" stroke-width="1"/>
+  <text x="182" y="162" text-anchor="middle" font-size="10" fill="#333">搜索</text>
+
+  <rect x="250" y="140" width="76" height="34" rx="5" fill="#fff" stroke="#1976D2" stroke-width="1"/>
+  <text x="288" y="162" text-anchor="middle" font-size="10" fill="#333">计算</text>
+
+  <!-- 箭头 -->
+  <line x1="150" y1="110" x2="90" y2="140" stroke="#1976D2" stroke-width="1.2"/>
+  <line x1="182" y1="110" x2="182" y2="140" stroke="#1976D2" stroke-width="1.2"/>
+  <line x1="214" y1="110" x2="274" y2="140" stroke="#1976D2" stroke-width="1.2"/>
+
+  <text x="182" y="196" text-anchor="middle" font-size="9" fill="#1565C0">单向分发，无反馈</text>
+  <text x="182" y="212" text-anchor="middle" font-size="9" fill="#757575">适用：意图分类 | 复杂度：低</text>
+
+  <!-- ====== Supervisor ====== -->
+  <rect x="370" y="42" width="335" height="200" rx="8" fill="#e8f5e9" stroke="#388E3C" stroke-width="1.5"/>
+  <text x="537" y="64" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">Supervisor 模式</text>
+
+  <!-- Supervisor 中心 -->
+  <rect x="477" y="78" width="120" height="32" rx="6" fill="#c8e6c9" stroke="#388E3C" stroke-width="1.5"/>
+  <text x="537" y="99" text-anchor="middle" font-size="11" font-weight="bold" fill="#2E7D32">Supervisor</text>
+
+  <!-- 三个 Worker -->
+  <rect x="395" y="140" width="76" height="34" rx="5" fill="#fff" stroke="#388E3C" stroke-width="1"/>
+  <text x="433" y="162" text-anchor="middle" font-size="10" fill="#333">研究</text>
+
+  <rect x="499" y="140" width="76" height="34" rx="5" fill="#fff" stroke="#388E3C" stroke-width="1"/>
+  <text x="537" y="162" text-anchor="middle" font-size="10" fill="#333">写作</text>
+
+  <rect x="603" y="140" width="76" height="34" rx="5" fill="#fff" stroke="#388E3C" stroke-width="1"/>
+  <text x="641" y="162" text-anchor="middle" font-size="10" fill="#333">审查</text>
+
+  <!-- 下行箭头 -->
+  <line x1="505" y1="110" x2="450" y2="140" stroke="#388E3C" stroke-width="1.2"/>
+  <line x1="537" y1="110" x2="537" y2="140" stroke="#388E3C" stroke-width="1.2"/>
+  <line x1="569" y1="110" x2="624" y2="140" stroke="#388E3C" stroke-width="1.2"/>
+
+  <!-- 反馈箭头（回到 Supervisor 下方） -->
+  <path d="M 433 174 L 433 186 L 520 186" stroke="#388E3C" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#mg)" fill="none"/>
+  <path d="M 537 174 L 537 186" stroke="#388E3C" stroke-width="1" stroke-dasharray="4,2" fill="none"/>
+  <path d="M 641 174 L 641 186 L 554 186" stroke="#388E3C" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#mg)" fill="none"/>
+  <text x="537" y="198" text-anchor="middle" font-size="8" fill="#2E7D32">结果回到 Supervisor</text>
+
+  <text x="537" y="218" text-anchor="middle" font-size="9" fill="#2E7D32">有反馈循环，Supervisor 协调</text>
+  <text x="537" y="232" text-anchor="middle" font-size="9" fill="#757575">适用：多步骤任务 | 复杂度：中</text>
+
+  <!-- ====== Swarm ====== -->
+  <rect x="15" y="262" width="335" height="218" rx="8" fill="#fff3e0" stroke="#F57C00" stroke-width="1.5"/>
+  <text x="182" y="284" text-anchor="middle" font-size="13" font-weight="bold" fill="#E65100">Swarm 模式</text>
+
+  <circle cx="100" cy="356" r="32" fill="#fff" stroke="#F57C00" stroke-width="1.5"/>
+  <text x="100" y="353" text-anchor="middle" font-size="10" fill="#333">Agent</text>
+  <text x="100" y="366" text-anchor="middle" font-size="10" fill="#333">A</text>
+
+  <circle cx="182" cy="316" r="32" fill="#fff" stroke="#F57C00" stroke-width="1.5"/>
+  <text x="182" y="313" text-anchor="middle" font-size="10" fill="#333">Agent</text>
+  <text x="182" y="326" text-anchor="middle" font-size="10" fill="#333">B</text>
+
+  <circle cx="264" cy="356" r="32" fill="#fff" stroke="#F57C00" stroke-width="1.5"/>
+  <text x="264" y="353" text-anchor="middle" font-size="10" fill="#333">Agent</text>
+  <text x="264" y="366" text-anchor="middle" font-size="10" fill="#333">C</text>
+
+  <!-- 双向箭头 -->
+  <line x1="128" y1="336" x2="155" y2="326" stroke="#F57C00" stroke-width="1.2" marker-end="url(#mo)"/>
+  <line x1="157" y1="334" x2="131" y2="345" stroke="#F57C00" stroke-width="1.2" marker-end="url(#mo)"/>
+
+  <line x1="210" y1="326" x2="237" y2="336" stroke="#F57C00" stroke-width="1.2" marker-end="url(#mo)"/>
+  <line x1="235" y1="345" x2="208" y2="334" stroke="#F57C00" stroke-width="1.2" marker-end="url(#mo)"/>
+
+  <line x1="135" y1="368" x2="229" y2="368" stroke="#F57C00" stroke-width="1.2" marker-end="url(#mo)" marker-start="url(#mo_r)"/>
+
+  <text x="182" y="416" text-anchor="middle" font-size="9" fill="#E65100">对等协作，交出控制权</text>
+  <text x="182" y="432" text-anchor="middle" font-size="9" fill="#757575">适用：对等流转 | 复杂度：中</text>
+  <text x="182" y="448" text-anchor="middle" font-size="9" fill="#c62828">⚠ 可能死锁</text>
+
+  <!-- ====== Hierarchical ====== -->
+  <rect x="370" y="262" width="335" height="218" rx="8" fill="#f3e5f5" stroke="#9C27B0" stroke-width="1.5"/>
+  <text x="537" y="284" text-anchor="middle" font-size="13" font-weight="bold" fill="#6A1B9A">Hierarchical 模式</text>
+
+  <!-- Top -->
+  <rect x="497" y="296" width="80" height="28" rx="5" fill="#e1bee7" stroke="#9C27B0" stroke-width="1.5"/>
+  <text x="537" y="315" text-anchor="middle" font-size="10" font-weight="bold" fill="#6A1B9A">Top</text>
+
+  <!-- Mid -->
+  <rect x="420" y="344" width="70" height="24" rx="4" fill="#ce93d8" stroke="#9C27B0" stroke-width="1"/>
+  <text x="455" y="361" text-anchor="middle" font-size="9" fill="#6A1B9A">Mid-A</text>
+
+  <rect x="585" y="344" width="70" height="24" rx="4" fill="#ce93d8" stroke="#9C27B0" stroke-width="1"/>
+  <text x="620" y="361" text-anchor="middle" font-size="9" fill="#6A1B9A">Mid-B</text>
+
+  <line x1="515" y1="324" x2="465" y2="344" stroke="#9C27B0" stroke-width="1"/>
+  <line x1="559" y1="324" x2="605" y2="344" stroke="#9C27B0" stroke-width="1"/>
+
+  <!-- Bottom -->
+  <rect x="400" y="388" width="55" height="22" rx="3" fill="#fff" stroke="#9C27B0" stroke-width="1"/>
+  <text x="427" y="403" text-anchor="middle" font-size="9" fill="#333">A1</text>
+
+  <rect x="470" y="388" width="55" height="22" rx="3" fill="#fff" stroke="#9C27B0" stroke-width="1"/>
+  <text x="497" y="403" text-anchor="middle" font-size="9" fill="#333">A2</text>
+
+  <rect x="560" y="388" width="55" height="22" rx="3" fill="#fff" stroke="#9C27B0" stroke-width="1"/>
+  <text x="587" y="403" text-anchor="middle" font-size="9" fill="#333">B1</text>
+
+  <rect x="630" y="388" width="55" height="22" rx="3" fill="#fff" stroke="#9C27B0" stroke-width="1"/>
+  <text x="657" y="403" text-anchor="middle" font-size="9" fill="#333">B2</text>
+
+  <line x1="440" y1="368" x2="427" y2="388" stroke="#9C27B0" stroke-width="1"/>
+  <line x1="465" y1="368" x2="497" y2="388" stroke="#9C27B0" stroke-width="1"/>
+  <line x1="600" y1="368" x2="587" y2="388" stroke="#9C27B0" stroke-width="1"/>
+  <line x1="620" y1="368" x2="657" y2="388" stroke="#9C27B0" stroke-width="1"/>
+
+  <text x="537" y="436" text-anchor="middle" font-size="9" fill="#6A1B9A">多层管理，战略 → 战术 → 执行</text>
+  <text x="537" y="452" text-anchor="middle" font-size="9" fill="#757575">适用：大型项目 | 复杂度：高</text>
+  <text x="537" y="468" text-anchor="middle" font-size="9" fill="#c62828">⚠ 3层以上上下文损失严重</text>
+</svg>

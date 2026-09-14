@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 540" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="720" height="480" fill="#fafafa" rx="8"/>
+  <text x="360" y="26" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a1a1a">ReAct vs Plan-and-Execute 流程对比</text>
+
+  <defs>
+    <marker id="b" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#1976D2"/></marker>
+    <marker id="g" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#388E3C"/></marker>
+    <marker id="p" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#6A1B9A"/></marker>
+    <marker id="o" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#E65100"/></marker>
+  </defs>
+
+  <!-- ====== ReAct 侧 ====== -->
+  <rect x="15" y="42" width="330" height="424" rx="8" fill="#e3f2fd" stroke="#1976D2" stroke-width="1.5"/>
+  <text x="180" y="66" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565C0">ReAct 模式</text>
+  <text x="180" y="82" text-anchor="middle" font-size="10" fill="#1565C0">边想边做，逐步推进</text>
+
+  <rect x="35" y="94" width="290" height="32" rx="5" fill="#fff" stroke="#1976D2" stroke-width="1"/>
+  <text x="180" y="115" text-anchor="middle" font-size="11" fill="#333">用户输入 → 进入循环</text>
+
+  <line x1="180" y1="126" x2="180" y2="144" stroke="#1976D2" stroke-width="1.2" marker-end="url(#b)"/>
+
+  <rect x="45" y="144" width="270" height="30" rx="5" fill="#bbdefb" stroke="#1976D2" stroke-width="1"/>
+  <text x="180" y="164" text-anchor="middle" font-size="11" fill="#1565C0">Thought: 思考下一步</text>
+
+  <line x1="180" y1="174" x2="180" y2="192" stroke="#1976D2" stroke-width="1.2" marker-end="url(#b)"/>
+
+  <rect x="45" y="192" width="270" height="30" rx="5" fill="#c8e6c9" stroke="#388E3C" stroke-width="1"/>
+  <text x="180" y="212" text-anchor="middle" font-size="11" fill="#2E7D32">Action: 调用工具</text>
+
+  <line x1="180" y1="222" x2="180" y2="240" stroke="#1976D2" stroke-width="1.2" marker-end="url(#b)"/>
+
+  <rect x="45" y="240" width="270" height="30" rx="5" fill="#fff3e0" stroke="#F57C00" stroke-width="1"/>
+  <text x="180" y="260" text-anchor="middle" font-size="11" fill="#E65100">Observation: 获取结果</text>
+
+  <!-- 循环箭头 -->
+  <path d="M 315 255 L 335 255 L 335 159 L 315 159" stroke="#1976D2" stroke-width="1.5" fill="none" marker-end="url(#b)"/>
+  <text x="343" y="210" font-size="9" fill="#1565C0">循环</text>
+
+  <line x1="180" y1="270" x2="180" y2="290" stroke="#1976D2" stroke-width="1.2"/>
+
+  <!-- 判断 -->
+  <polygon points="180,290 220,312 180,334 140,312" fill="#fff" stroke="#9C27B0" stroke-width="1.5"/>
+  <text x="180" y="316" text-anchor="middle" font-size="9" fill="#6A1B9A">还有工具?</text>
+
+  <!-- 否 -->
+  <line x1="180" y1="334" x2="180" y2="356" stroke="#9C27B0" stroke-width="1.2" marker-end="url(#p)"/>
+  <text x="188" y="348" font-size="9" fill="#6A1B9A">否</text>
+
+  <rect x="45" y="356" width="270" height="32" rx="5" fill="#f3e5f5" stroke="#9C27B0" stroke-width="1"/>
+  <text x="180" y="377" text-anchor="middle" font-size="11" fill="#6A1B9A">输出最终回答</text>
+
+  <!-- 特点 -->
+  <rect x="35" y="404" width="290" height="48" rx="5" fill="#e8eaf6" stroke="#5C6BC0" stroke-width="1"/>
+  <text x="180" y="424" text-anchor="middle" font-size="10" fill="#283593">✓ 灵活，能根据中间结果调整</text>
+  <text x="180" y="442" text-anchor="middle" font-size="10" fill="#283593">✗ 缺乏全局视角，可能走偏</text>
+
+  <!-- ====== Plan-and-Execute 侧 ====== -->
+  <rect x="375" y="42" width="330" height="424" rx="8" fill="#e8f5e9" stroke="#388E3C" stroke-width="1.5"/>
+  <text x="540" y="66" text-anchor="middle" font-size="14" font-weight="bold" fill="#2E7D32">Plan-and-Execute 模式</text>
+  <text x="540" y="82" text-anchor="middle" font-size="10" fill="#2E7D32">先规划，再执行</text>
+
+  <rect x="395" y="94" width="290" height="32" rx="5" fill="#fff" stroke="#388E3C" stroke-width="1"/>
+  <text x="540" y="115" text-anchor="middle" font-size="11" fill="#333">用户输入 → 进入规划</text>
+
+  <line x1="540" y1="126" x2="540" y2="144" stroke="#388E3C" stroke-width="1.2" marker-end="url(#g)"/>
+
+  <!-- Plan -->
+  <rect x="405" y="144" width="270" height="56" rx="5" fill="#c8e6c9" stroke="#388E3C" stroke-width="1"/>
+  <text x="540" y="164" text-anchor="middle" font-size="11" font-weight="bold" fill="#2E7D32">Plan: 生成完整计划</text>
+  <text x="540" y="180" text-anchor="middle" font-size="9" fill="#2E7D32">1. 获取北京天气</text>
+  <text x="540" y="194" text-anchor="middle" font-size="9" fill="#2E7D32">2. 获取上海天气 → 3. 对比</text>
+
+  <line x1="540" y1="200" x2="540" y2="220" stroke="#388E3C" stroke-width="1.2" marker-end="url(#g)"/>
+
+  <!-- Execute -->
+  <rect x="405" y="220" width="270" height="30" rx="5" fill="#bbdefb" stroke="#1976D2" stroke-width="1"/>
+  <text x="540" y="240" text-anchor="middle" font-size="11" fill="#1565C0">Execute: 执行下一步</text>
+
+  <line x1="540" y1="250" x2="540" y2="270" stroke="#388E3C" stroke-width="1.2" marker-end="url(#g)"/>
+
+  <!-- 判断 -->
+  <polygon points="540,270 580,292 540,314 500,292" fill="#fff" stroke="#E65100" stroke-width="1.5"/>
+  <text x="540" y="296" text-anchor="middle" font-size="9" fill="#E65100">还有步骤?</text>
+
+  <!-- 是：循环 -->
+  <path d="M 500 292 L 470 292 L 470 235 L 405 235" stroke="#388E3C" stroke-width="1.5" fill="none" marker-end="url(#g)"/>
+  <text x="462" y="268" font-size="9" fill="#2E7D32">是</text>
+
+  <!-- 否 -->
+  <line x1="540" y1="314" x2="540" y2="340" stroke="#E65100" stroke-width="1.2" marker-end="url(#o)"/>
+  <text x="548" y="330" font-size="9" fill="#E65100">否</text>
+
+  <!-- 可能重规划 -->
+  <rect x="600" y="278" width="90" height="30" rx="5" fill="#fff3e0" stroke="#E65100" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="645" y="292" text-anchor="middle" font-size="9" fill="#E65100">执行出错?</text>
+  <text x="645" y="304" text-anchor="middle" font-size="9" fill="#E65100">→ 重新规划</text>
+  <line x1="580" y1="292" x2="600" y2="292" stroke="#E65100" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <!-- 回答 -->
+  <rect x="405" y="340" width="270" height="32" rx="5" fill="#f3e5f5" stroke="#9C27B0" stroke-width="1"/>
+  <text x="540" y="361" text-anchor="middle" font-size="11" fill="#6A1B9A">根据所有结果生成回答</text>
+
+  <!-- 特点 -->
+  <rect x="395" y="404" width="290" height="48" rx="5" fill="#e8eaf6" stroke="#5C6BC0" stroke-width="1"/>
+  <text x="540" y="424" text-anchor="middle" font-size="10" fill="#283593">✓ 全局视角，步骤有序</text>
+  <text x="540" y="442" text-anchor="middle" font-size="10" fill="#283593">✗ 不够灵活，需要重规划机制</text>
+</svg>

@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 580" font-family="'SF Pro Display','PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="900" height="580" rx="16" fill="url(#bg2)"/>
+
+  <!-- 标题 -->
+  <text x="450" y="38" text-anchor="middle" font-size="20" font-weight="700" fill="#1e293b">渐进式披露：三种触发方式</text>
+  <text x="450" y="60" text-anchor="middle" font-size="13" fill="#64748b">不问不加载，问什么加载什么</text>
+
+  <!-- ===== 意图触发 ===== -->
+  <rect x="30" y="80" width="270" height="480" rx="12" fill="#ffffff" stroke="#3b82f6" stroke-width="1.5"/>
+  <rect x="30" y="80" width="270" height="42" rx="12" fill="#3b82f6"/>
+  <rect x="30" y="105" width="270" height="17" fill="#3b82f6"/>
+  <text x="165" y="108" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">意图触发</text>
+
+  <!-- 触发时机 -->
+  <text x="165" y="145" text-anchor="middle" font-size="12" font-weight="600" fill="#3b82f6">触发时机</text>
+  <rect x="50" y="155" width="230" height="32" rx="6" fill="#dbeafe"/>
+  <text x="165" y="176" text-anchor="middle" font-size="11" fill="#1d4ed8">用户输入时，预判需求，提前加载</text>
+
+  <!-- 流程 -->
+  <text x="165" y="210" text-anchor="middle" font-size="12" font-weight="600" fill="#3b82f6">流程</text>
+  <rect x="55" y="220" width="220" height="30" rx="6" fill="#f1f5f9" stroke="#3b82f6" stroke-width="1"/>
+  <text x="165" y="240" text-anchor="middle" font-size="11" fill="#334155">用户消息 → 意图分类</text>
+  <line x1="165" y1="250" x2="165" y2="262" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+  <rect x="55" y="262" width="220" height="30" rx="6" fill="#f1f5f9" stroke="#3b82f6" stroke-width="1"/>
+  <text x="165" y="282" text-anchor="middle" font-size="11" fill="#334155">匹配知识片段 → 拼入 System Prompt</text>
+  <line x1="165" y1="292" x2="165" y2="304" stroke="#3b82f6" stroke-width="1.5"/>
+  <rect x="55" y="304" width="220" height="30" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
+  <text x="165" y="324" text-anchor="middle" font-size="11" font-weight="600" fill="#1d4ed8">Agent 直接获得相关知识</text>
+
+  <!-- 适用场景 -->
+  <text x="165" y="360" text-anchor="middle" font-size="12" font-weight="600" fill="#3b82f6">适用场景</text>
+  <text x="165" y="382" text-anchor="middle" font-size="11" fill="#475569">高频、确定性的信息</text>
+  <text x="165" y="400" text-anchor="middle" font-size="11" fill="#475569">如：角色设定、常见政策</text>
+
+  <!-- 优劣 -->
+  <rect x="50" y="420" width="230" height="22" rx="4" fill="#dcfce7"/>
+  <text x="165" y="436" text-anchor="middle" font-size="11" font-weight="600" fill="#15803d">✓ 零延迟，信息即用</text>
+  <rect x="50" y="450" width="230" height="22" rx="4" fill="#fee2e2"/>
+  <text x="165" y="466" text-anchor="middle" font-size="11" font-weight="600" fill="#dc2626">✗ 可能加载不需要的信息</text>
+
+  <!-- 代码示例 -->
+  <rect x="45" y="485" width="240" height="65" rx="6" fill="#1e293b"/>
+  <text x="55" y="502" font-size="9.5" fill="#93c5fd" font-family="monospace">if intent == "refund":</text>
+  <text x="55" y="516" font-size="9.5" fill="#93c5fd" font-family="monospace">  prompt += REFUND_POLICY</text>
+  <text x="55" y="530" font-size="9.5" fill="#93c5fd" font-family="monospace">elif intent == "shipping":</text>
+  <text x="55" y="544" font-size="9.5" fill="#93c5fd" font-family="monospace">  prompt += SHIPPING_POLICY</text>
+
+  <!-- ===== 工具触发 ===== -->
+  <rect x="315" y="80" width="270" height="480" rx="12" fill="#ffffff" stroke="#8b5cf6" stroke-width="1.5"/>
+  <rect x="315" y="80" width="270" height="42" rx="12" fill="#8b5cf6"/>
+  <rect x="315" y="105" width="270" height="17" fill="#8b5cf6"/>
+  <text x="450" y="108" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">工具触发</text>
+
+  <!-- 触发时机 -->
+  <text x="450" y="145" text-anchor="middle" font-size="12" font-weight="600" fill="#8b5cf6">触发时机</text>
+  <rect x="335" y="155" width="230" height="32" rx="6" fill="#ede9fe"/>
+  <text x="450" y="176" text-anchor="middle" font-size="11" fill="#6d28d9">Agent 主动调用工具，按需获取</text>
+
+  <!-- 流程 -->
+  <text x="450" y="210" text-anchor="middle" font-size="12" font-weight="600" fill="#8b5cf6">流程</text>
+  <rect x="340" y="220" width="220" height="30" rx="6" fill="#f1f5f9" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="450" y="240" text-anchor="middle" font-size="11" fill="#334155">Agent 判断需要额外信息</text>
+  <line x1="450" y1="250" x2="450" y2="262" stroke="#8b5cf6" stroke-width="1.5"/>
+  <rect x="340" y="262" width="220" height="30" rx="6" fill="#f1f5f9" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="450" y="282" text-anchor="middle" font-size="11" fill="#334155">调用 search_knowledge_base 工具</text>
+  <line x1="450" y1="292" x2="450" y2="304" stroke="#8b5cf6" stroke-width="1.5"/>
+  <rect x="340" y="304" width="220" height="30" rx="6" fill="#ede9fe" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="450" y="324" text-anchor="middle" font-size="11" font-weight="600" fill="#6d28d9">工具结果返回，拼入上下文</text>
+
+  <!-- 适用场景 -->
+  <text x="450" y="360" text-anchor="middle" font-size="12" font-weight="600" fill="#8b5cf6">适用场景</text>
+  <text x="450" y="382" text-anchor="middle" font-size="11" fill="#475569">低频、不确定的信息</text>
+  <text x="450" y="400" text-anchor="middle" font-size="11" fill="#475569">如：冷门产品规格、特殊政策</text>
+
+  <!-- 优劣 -->
+  <rect x="335" y="420" width="230" height="22" rx="4" fill="#dcfce7"/>
+  <text x="450" y="436" text-anchor="middle" font-size="11" font-weight="600" fill="#15803d">✓ 精准，只查需要的</text>
+  <rect x="335" y="450" width="230" height="22" rx="4" fill="#fee2e2"/>
+  <text x="450" y="466" text-anchor="middle" font-size="11" font-weight="600" fill="#dc2626">✗ 额外一轮 LLM + 检索延迟</text>
+
+  <!-- 代码示例 -->
+  <rect x="330" y="485" width="240" height="65" rx="6" fill="#1e293b"/>
+  <text x="340" y="502" font-size="9.5" fill="#c4b5fd" font-family="monospace">@tool</text>
+  <text x="340" y="516" font-size="9.5" fill="#c4b5fd" font-family="monospace">def search_kb(q: str) -> str:</text>
+  <text x="340" y="530" font-size="9.5" fill="#c4b5fd" font-family="monospace">  """搜索知识库"""</text>
+  <text x="340" y="544" font-size="9.5" fill="#c4b5fd" font-family="monospace">  return vector_db.search(q)</text>
+
+  <!-- ===== 状态触发 ===== -->
+  <rect x="600" y="80" width="270" height="480" rx="12" fill="#ffffff" stroke="#f59e0b" stroke-width="1.5"/>
+  <rect x="600" y="80" width="270" height="42" rx="12" fill="#f59e0b"/>
+  <rect x="600" y="105" width="270" height="17" fill="#f59e0b"/>
+  <text x="735" y="108" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">状态触发</text>
+
+  <!-- 触发时机 -->
+  <text x="735" y="145" text-anchor="middle" font-size="12" font-weight="600" fill="#f59e0b">触发时机</text>
+  <rect x="620" y="155" width="230" height="32" rx="6" fill="#fef3c7"/>
+  <text x="735" y="176" text-anchor="middle" font-size="11" fill="#b45309">Agent 状态变化时，动态注入</text>
+
+  <!-- 流程 -->
+  <text x="735" y="210" text-anchor="middle" font-size="12" font-weight="600" fill="#f59e0b">流程</text>
+  <rect x="625" y="220" width="220" height="30" rx="6" fill="#f1f5f9" stroke="#f59e0b" stroke-width="1"/>
+  <text x="735" y="240" text-anchor="middle" font-size="11" fill="#334155">监控 Agent 状态指标</text>
+  <line x1="735" y1="250" x2="735" y2="262" stroke="#f59e0b" stroke-width="1.5"/>
+  <rect x="625" y="262" width="220" height="30" rx="6" fill="#f1f5f9" stroke="#f59e0b" stroke-width="1"/>
+  <text x="735" y="282" text-anchor="middle" font-size="11" fill="#334155">轮数 / 错误数 / 情绪 阈值触发</text>
+  <line x1="735" y1="292" x2="735" y2="304" stroke="#f59e0b" stroke-width="1.5"/>
+  <rect x="625" y="304" width="220" height="30" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>
+  <text x="735" y="324" text-anchor="middle" font-size="11" font-weight="600" fill="#b45309">注入针对性指引片段</text>
+
+  <!-- 适用场景 -->
+  <text x="735" y="360" text-anchor="middle" font-size="12" font-weight="600" fill="#f59e0b">适用场景</text>
+  <text x="735" y="382" text-anchor="middle" font-size="11" fill="#475569">应急、状态相关的干预</text>
+  <text x="735" y="400" text-anchor="middle" font-size="11" fill="#475569">如：防漂移、错误恢复、情绪应对</text>
+
+  <!-- 优劣 -->
+  <rect x="620" y="420" width="230" height="22" rx="4" fill="#dcfce7"/>
+  <text x="735" y="436" text-anchor="middle" font-size="11" font-weight="600" fill="#15803d">✓ 防止 Agent 走偏</text>
+  <rect x="620" y="450" width="230" height="22" rx="4" fill="#fee2e2"/>
+  <text x="735" y="466" text-anchor="middle" font-size="11" font-weight="600" fill="#dc2626">✗ 规则难穷举，可能过度干预</text>
+
+  <!-- 代码示例 -->
+  <rect x="615" y="485" width="240" height="65" rx="6" fill="#1e293b"/>
+  <text x="625" y="502" font-size="9.5" fill="#fcd34d" font-family="monospace">if turn_count > 10:</text>
+  <text x="625" y="516" font-size="9.5" fill="#fcd34d" font-family="monospace">  inject("不要偏题")</text>
+  <text x="625" y="530" font-size="9.5" fill="#fcd34d" font-family="monospace">if error_count >= 3:</text>
+  <text x="625" y="544" font-size="9.5" fill="#fcd34d" font-family="monospace">  inject("换种方式或降级")</text>
+
+</svg>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560">
+  <rect width="840" height="560" rx="12" fill="#fafafa"/>
+  <g transform="translate(30,30)">
+    <!-- Title -->
+    <text x="390" y="20" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1a1a1a">LangChain Inc 产品矩阵</text>
+    <text x="390" y="42" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#888">LangGraph 是独立的底层运行时，LangChain 是组件框架，两者互补而非依赖</text>
+
+    <!-- Bottom layer: LangGraph (runtime) - widest -->
+    <rect x="60" y="240" width="720" height="70" rx="10" fill="#1a237e" opacity="0.9"/>
+    <text x="420" y="270" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="white">LangGraph — 编排运行时</text>
+    <text x="420" y="292" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#9fa8da">pip install langgraph（不依赖 langchain）│ 状态图引擎 │ 持久化 │ 流式输出 │ HITL │ 多Agent</text>
+
+    <!-- Middle layer: LangChain (framework) - narrower -->
+    <rect x="140" y="140" width="560" height="70" rx="10" fill="#1565c0" opacity="0.85"/>
+    <text x="420" y="170" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="white">LangChain — 组件框架</text>
+    <text x="420" y="192" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#bbdefb">pip install langchain │ 模型集成 │ Prompt模板 │ 检索器 │ 工具定义 │ Output Parser</text>
+
+    <!-- Top layer: Deep Agents + LangSmith -->
+    <rect x="240" y="70" width="180" height="45" rx="8" fill="#0277bd" opacity="0.9"/>
+    <text x="330" y="90" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white">Deep Agents</text>
+    <text x="330" y="106" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#b3e5fc">Agent Harness 层</text>
+
+    <rect x="460" y="70" width="180" height="45" rx="8" fill="#00838f" opacity="0.9"/>
+    <text x="550" y="90" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white">LangSmith</text>
+    <text x="550" y="106" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#b2ebf2">观测与部署平台</text>
+
+    <!-- Vertical dependency annotations -->
+    <!-- Deep Agents → LangGraph (built on) -->
+    <line x1="330" y1="115" x2="330" y2="137" stroke="#0277bd" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="338" y="130" font-family="Arial,sans-serif" font-size="9" fill="#0277bd">构建于</text>
+
+    <!-- LangChain → LangGraph (agent features built on) -->
+    <line x1="280" y1="210" x2="280" y2="237" stroke="#1565c0" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="288" y="227" font-family="Arial,sans-serif" font-size="9" fill="#1565c0">Agent功能构建于</text>
+
+    <!-- LangSmith → all (observes) -->
+    <text x="560" y="130" font-family="Arial,sans-serif" font-size="9" fill="#00838f">跨层观测 &amp; 部署</text>
+
+    <!-- Right side: Independence annotation -->
+    <rect x="60" y="345" width="720" height="58" rx="8" fill="#e8f5e9" stroke="#4CAF50" stroke-width="1"/>
+    <text x="420" y="370" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#2e7d32">两者是独立产品，来自同一家公司（LangChain Inc）</text>
+    <text x="420" y="392" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#555">langgraph 的依赖列表里没有 langchain。可以只用 LangGraph + 原生 OpenAI SDK。</text>
+
+    <!-- Bottom: When to use what -->
+    <rect x="60" y="430" width="340" height="70" rx="8" fill="#e3f2fd"/>
+    <text x="230" y="452" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#1565c0">什么时候只需要 LangChain</text>
+    <text x="230" y="472" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#555">线性工作流：RAG / 摘要 / 分类</text>
+    <text x="230" y="490" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#888">chain = prompt | llm | parser</text>
+
+    <rect x="440" y="430" width="340" height="70" rx="8" fill="#e8eaf6"/>
+    <text x="610" y="452" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#1a237e">什么时候需要 LangGraph</text>
+    <text x="610" y="472" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#555">循环 / 分支 / 持久化 / HITL / 多Agent</text>
+    <text x="610" y="490" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#888">graph = StateGraph(State).compile()</text>
+  </g>
+</svg>

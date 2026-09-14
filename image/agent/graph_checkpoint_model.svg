@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 550">
+  <rect width="840" height="550" rx="12" fill="#fafafa"/>
+  <g transform="translate(30,30)">
+    <!-- Title -->
+    <text x="390" y="20" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1a1a1a">Checkpoint 持久化架构</text>
+    <text x="390" y="42" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#888">每个 superstep 结束后自动保存完整 State 快照，支持暂停/恢复/回溯</text>
+
+    <!-- Superstep flow -->
+    <!-- Step 0 -->
+    <rect x="30" y="70" width="110" height="55" rx="8" fill="#f5f5f5" stroke="#ccc" stroke-width="1"/>
+    <text x="85" y="92" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#666">Step 0</text>
+    <text x="85" y="110" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#999">Entry</text>
+
+    <polygon points="145,97 158,97 158,92 168,97 158,102 158,97" fill="#ccc"/>
+
+    <!-- Step 1 -->
+    <rect x="170" y="70" width="110" height="55" rx="8" fill="#e8f5e9" stroke="#4CAF50" stroke-width="1.5"/>
+    <text x="225" y="92" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#2e7d32">Step 1</text>
+    <text x="225" y="110" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#666">LLM Call</text>
+
+    <polygon points="285,97 298,97 298,92 308,97 298,102 298,97" fill="#4CAF50"/>
+
+    <!-- Step 2 -->
+    <rect x="310" y="70" width="110" height="55" rx="8" fill="#e3f2fd" stroke="#2196F3" stroke-width="1.5"/>
+    <text x="365" y="92" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#1565c0">Step 2</text>
+    <text x="365" y="110" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#666">Tool Exec</text>
+
+    <polygon points="425,97 438,97 438,92 448,97 438,102 438,97" fill="#2196F3"/>
+
+    <!-- Step 3 -->
+    <rect x="450" y="70" width="110" height="55" rx="8" fill="#fff3e0" stroke="#FF9800" stroke-width="1.5"/>
+    <text x="505" y="92" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#e65100">Step 3</text>
+    <text x="505" y="110" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#666">Answer</text>
+
+    <polygon points="565,97 578,97 578,92 588,97 578,102 578,97" fill="#FF9800"/>
+
+    <!-- CRASH! -->
+    <rect x="590" y="70" width="70" height="55" rx="8" fill="#ffcdd2" stroke="#f44336" stroke-width="2"/>
+    <text x="625" y="90" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="bold" fill="#f44336">CRASH</text>
+    <text x="625" y="108" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#f44336">进程挂</text>
+
+    <!-- Down arrows to checkpoints -->
+    <line x1="225" y1="125" x2="225" y2="155" stroke="#4CAF50" stroke-width="1.5" stroke-dasharray="4,2"/>
+    <line x1="365" y1="125" x2="365" y2="155" stroke="#2196F3" stroke-width="1.5" stroke-dasharray="4,2"/>
+    <line x1="505" y1="125" x2="505" y2="155" stroke="#FF9800" stroke-width="1.5" stroke-dasharray="4,2"/>
+
+    <!-- Checkpoint storage -->
+    <rect x="80" y="160" width="600" height="45" rx="8" fill="#263238"/>
+    <text x="380" y="180" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#4fc3f7">Checkpointer（持久化存储层）</text>
+    <text x="380" y="198" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#81d4fa">MemorySaver │ SqliteSaver │ PostgresSaver │ CouchbaseSaver</text>
+
+    <!-- Down arrow from checkpoints -->
+    <line x1="625" y1="205" x2="625" y2="240" stroke="#f44336" stroke-width="1.5" stroke-dasharray="4,2"/>
+
+    <!-- Resume -->
+    <rect x="540" y="245" width="180" height="55" rx="8" fill="#ffebee" stroke="#f44336" stroke-width="1.5"/>
+    <text x="630" y="268" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#c62828">Resume 恢复</text>
+    <text x="630" y="286" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#555">用相同 thread_id 重新调用</text>
+
+    <!-- Arrow back -->
+    <line x1="540" y1="272" x2="500" y2="272" stroke="#f44336" stroke-width="1.5"/>
+    <polygon points="500,272 508,267 508,277" fill="#f44336"/>
+
+    <!-- Checkpoint structure -->
+    <rect x="80" y="260" width="400" height="195" rx="8" fill="#f5f5f5"/>
+    <text x="280" y="283" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#333">Checkpoint 数据模型</text>
+
+    <text x="105" y="308" font-family="monospace" font-size="11" fill="#555">values:</text>
+    <text x="165" y="308" font-family="monospace" font-size="11" fill="#888">dict</text>
+    <text x="220" y="308" font-family="monospace" font-size="11" fill="#999">所有 State Key 的最新值</text>
+
+    <text x="105" y="330" font-family="monospace" font-size="11" fill="#555">next:</text>
+    <text x="165" y="330" font-family="monospace" font-size="11" fill="#888">tuple[str]</text>
+    <text x="265" y="330" font-family="monospace" font-size="11" fill="#999">下一步待执行节点（空即结束）</text>
+
+    <text x="105" y="352" font-family="monospace" font-size="11" fill="#555">config:</text>
+    <text x="165" y="352" font-family="monospace" font-size="11" fill="#888">dict</text>
+    <text x="220" y="352" font-family="monospace" font-size="11" fill="#999">thread_id + checkpoint_id</text>
+
+    <text x="105" y="374" font-family="monospace" font-size="11" fill="#555">metadata:</text>
+    <text x="165" y="374" font-family="monospace" font-size="11" fill="#888">dict</text>
+    <text x="220" y="374" font-family="monospace" font-size="11" fill="#999">step 序号 + writes 记录</text>
+
+    <text x="105" y="396" font-family="monospace" font-size="11" fill="#555">parent_config:</text>
+    <text x="195" y="396" font-family="monospace" font-size="11" fill="#888">dict | None</text>
+    <text x="295" y="396" font-family="monospace" font-size="11" fill="#999">父 Checkpoint 引用</text>
+
+    <text x="105" y="422" font-family="monospace" font-size="11" fill="#555">created_at:</text>
+    <text x="185" y="422" font-family="monospace" font-size="11" fill="#888">ISO 8601</text>
+    <text x="265" y="422" font-family="monospace" font-size="11" fill="#999">创建时间戳</text>
+
+    <text x="280" y="448" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#888">parent_config 链形成完整不可变执行轨迹</text>
+
+    <!-- Three capabilities -->
+    <rect x="540" y="320" width="235" height="45" rx="6" fill="#e8f5e9"/>
+    <text x="657" y="338" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#2e7d32">Time Travel 调试</text>
+    <text x="657" y="355" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#555">回到任意 checkpoint 重放</text>
+
+    <rect x="540" y="375" width="235" height="45" rx="6" fill="#e3f2fd"/>
+    <text x="657" y="393" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#1565c0">Human-in-the-Loop</text>
+    <text x="657" y="410" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#555">暂停→人工修改 state→恢复</text>
+
+    <rect x="540" y="430" width="235" height="45" rx="6" fill="#fce4ec"/>
+    <text x="657" y="448" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#c62828">Fork &amp; Branch</text>
+    <text x="657" y="465" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#555">从 checkpoint 分叉出并行分支</text>
+  </g>
+</svg>

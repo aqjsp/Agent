@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="700" height="440" fill="#fafafa" rx="8"/>
+  <text x="350" y="26" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a1a1a">Agent 三层记忆架构</text>
+
+  <!-- ====== 第一层：短期记忆 ====== -->
+  <rect x="30" y="42" width="590" height="100" rx="8" fill="#e3f2fd" stroke="#1976D2" stroke-width="1.5"/>
+  <text x="55" y="64" font-size="13" font-weight="bold" fill="#1565C0">第一层：短期记忆（Working Memory）</text>
+
+  <rect x="45" y="74" width="145" height="54" rx="5" fill="#fff" stroke="#1976D2" stroke-width="1"/>
+  <text x="117" y="92" text-anchor="middle" font-size="11" fill="#333">messages 列表</text>
+  <text x="117" y="108" text-anchor="middle" font-size="9" fill="#666">System + User +</text>
+  <text x="117" y="120" text-anchor="middle" font-size="9" fill="#666">Assistant + Tool</text>
+
+  <rect x="205" y="74" width="145" height="54" rx="5" fill="#fff" stroke="#1976D2" stroke-width="1"/>
+  <text x="277" y="92" text-anchor="middle" font-size="11" fill="#333">每轮读写</text>
+  <text x="277" y="108" text-anchor="middle" font-size="9" fill="#666">存储：内存</text>
+  <text x="277" y="120" text-anchor="middle" font-size="9" fill="#666">容量：~128K tokens</text>
+
+  <rect x="365" y="74" width="240" height="54" rx="5" fill="#fff" stroke="#1976D2" stroke-width="1"/>
+  <text x="485" y="92" text-anchor="middle" font-size="11" fill="#333">生命周期：单次对话</text>
+  <text x="485" y="108" text-anchor="middle" font-size="9" fill="#666">问题：对话结束即丢失</text>
+  <text x="485" y="120" text-anchor="middle" font-size="9" fill="#666">问题：上下文窗口有限</text>
+
+  <!-- 流向 -->
+  <text x="325" y="156" text-anchor="middle" font-size="10" fill="#9E9E9E">↓ 对话结束提取关键信息 ↓</text>
+
+  <!-- ====== 第二层：中期记忆 ====== -->
+  <rect x="30" y="168" width="590" height="100" rx="8" fill="#e8f5e9" stroke="#388E3C" stroke-width="1.5"/>
+  <text x="55" y="190" font-size="13" font-weight="bold" fill="#2E7D32">第二层：中期记忆（Session Memory）</text>
+
+  <rect x="45" y="200" width="145" height="54" rx="5" fill="#fff" stroke="#388E3C" stroke-width="1"/>
+  <text x="117" y="218" text-anchor="middle" font-size="11" fill="#333">Key-Value Store</text>
+  <text x="117" y="234" text-anchor="middle" font-size="9" fill="#666">JSON / Redis /</text>
+  <text x="117" y="246" text-anchor="middle" font-size="9" fill="#666">SQLite</text>
+
+  <rect x="205" y="200" width="145" height="54" rx="5" fill="#fff" stroke="#388E3C" stroke-width="1"/>
+  <text x="277" y="218" text-anchor="middle" font-size="11" fill="#333">需要时读写</text>
+  <text x="277" y="234" text-anchor="middle" font-size="9" fill="#666">存储：持久化文件</text>
+  <text x="277" y="246" text-anchor="middle" font-size="9" fill="#666">容量：远大于上下文</text>
+
+  <rect x="365" y="200" width="240" height="54" rx="5" fill="#fff" stroke="#388E3C" stroke-width="1"/>
+  <text x="485" y="218" text-anchor="middle" font-size="11" fill="#333">生命周期：1天 ~ 7天</text>
+  <text x="485" y="234" text-anchor="middle" font-size="9" fill="#666">用途：跨对话记住关键信息</text>
+  <text x="485" y="246" text-anchor="middle" font-size="9" fill="#666">注入方式：拼入 System Prompt</text>
+
+  <!-- 流向 -->
+  <text x="325" y="282" text-anchor="middle" font-size="10" fill="#9E9E9E">↓ 重要信息持久化 ↓</text>
+
+  <!-- ====== 第三层：长期记忆 ====== -->
+  <rect x="30" y="294" width="590" height="100" rx="8" fill="#fff3e0" stroke="#F57C00" stroke-width="1.5"/>
+  <text x="55" y="316" font-size="13" font-weight="bold" fill="#E65100">第三层：长期记忆（Long-term Memory）</text>
+
+  <rect x="45" y="326" width="145" height="54" rx="5" fill="#fff" stroke="#F57C00" stroke-width="1"/>
+  <text x="117" y="344" text-anchor="middle" font-size="11" fill="#333">向量数据库</text>
+  <text x="117" y="360" text-anchor="middle" font-size="9" fill="#666">Chroma / Pinecone</text>
+  <text x="117" y="372" text-anchor="middle" font-size="9" fill="#666">/ Weaviate</text>
+
+  <rect x="205" y="326" width="145" height="54" rx="5" fill="#fff" stroke="#F57C00" stroke-width="1"/>
+  <text x="277" y="344" text-anchor="middle" font-size="11" fill="#333">偶尔读写</text>
+  <text x="277" y="360" text-anchor="middle" font-size="9" fill="#666">检索：语义相似度</text>
+  <text x="277" y="372" text-anchor="middle" font-size="9" fill="#666">容量：几乎无限</text>
+
+  <rect x="365" y="326" width="240" height="54" rx="5" fill="#fff" stroke="#F57C00" stroke-width="1"/>
+  <text x="485" y="344" text-anchor="middle" font-size="11" fill="#333">生命周期：永久</text>
+  <text x="485" y="360" text-anchor="middle" font-size="9" fill="#666">用途：跨任务知识积累</text>
+  <text x="485" y="372" text-anchor="middle" font-size="9" fill="#666">注入方式：RAG 检索拼入上下文</text>
+
+  <!-- 右侧反向箭头（检索注入）-->
+  <path d="M 635 324 L 648 324 L 648 97 L 635 97" stroke="#6A1B9A" stroke-width="1.5" fill="none"/>
+  <polygon points="635,97 643,91 643,103" fill="#6A1B9A"/>
+
+  <!-- 横向标注（避免竖排文字渲染问题）-->
+  <rect x="650" y="190" width="44" height="42" rx="3" fill="#f3e5f5" stroke="#6A1B9A" stroke-width="1"/>
+  <text x="672" y="207" text-anchor="middle" font-size="9" fill="#6A1B9A" font-weight="bold">检索</text>
+  <text x="672" y="222" text-anchor="middle" font-size="9" fill="#6A1B9A" font-weight="bold">注入</text>
+  <line x1="648" y1="211" x2="650" y2="211" stroke="#6A1B9A" stroke-width="1"/>
+
+  <!-- 底部说明 -->
+  <text x="350" y="422" text-anchor="middle" font-size="10" fill="#757575">正向：短期 → 中期（提取）→ 长期（持久化）｜反向：长期 → 中期 → 短期（检索注入）</text>
+</svg>

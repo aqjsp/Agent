@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#475569"/>
+    </marker>
+    <linearGradient id="bg3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="940" height="560" rx="16" fill="url(#bg3)"/>
+  <text x="470" y="42" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">一次用户输入如何走完：Turn → Step → Session Log</text>
+  <text x="470" y="66" text-anchor="middle" font-size="12" fill="#64748b">Step 是一次模型请求加上它调用的工具；Turn 是零到多个 Step，直到没有未清偿的工作</text>
+
+  <rect x="48" y="96" width="844" height="196" rx="14" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+  <text x="72" y="124" font-size="13" font-weight="700" fill="#0f172a">Turn</text>
+  <text x="118" y="124" font-size="12" fill="#64748b">在第一份输入被认领前打开，在「不再欠任何一步」时关闭</text>
+
+  <rect x="72" y="148" width="248" height="116" rx="10" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="196" y="178" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">Step 1</text>
+  <text x="196" y="202" text-anchor="middle" font-size="11" fill="#1e40af">组装提示词 / 工具 schema</text>
+  <text x="196" y="222" text-anchor="middle" font-size="11" fill="#1e40af">模型请求 → 工具执行</text>
+  <text x="196" y="242" text-anchor="middle" font-size="11" fill="#1e40af">流式 chunk 写入事件流</text>
+
+  <rect x="346" y="148" width="248" height="116" rx="10" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="470" y="178" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">Step 2</text>
+  <text x="470" y="202" text-anchor="middle" font-size="11" fill="#1e40af">带上工具结果继续推理</text>
+  <text x="470" y="222" text-anchor="middle" font-size="11" fill="#1e40af">只读调用可并行</text>
+  <text x="470" y="242" text-anchor="middle" font-size="11" fill="#1e40af">写操作成为屏障</text>
+
+  <rect x="620" y="148" width="248" height="116" rx="10" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="744" y="178" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">Step N</text>
+  <text x="744" y="202" text-anchor="middle" font-size="11" fill="#475569">直到模型给出最终回复</text>
+  <text x="744" y="222" text-anchor="middle" font-size="11" fill="#475569">或被取消 / 审批打断</text>
+  <text x="744" y="242" text-anchor="middle" font-size="11" fill="#475569">Turn 关闭</text>
+
+  <line x1="320" y1="206" x2="346" y2="206" stroke="#475569" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="594" y1="206" x2="620" y2="206" stroke="#475569" stroke-width="1.6" marker-end="url(#arr)"/>
+
+  <rect x="48" y="324" width="844" height="176" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text x="470" y="356" text-anchor="middle" font-size="14" font-weight="700" fill="#78350f">Session Log（仅追加）是整套系统的权威来源</text>
+
+  <rect x="72" y="378" width="184" height="92" rx="8" fill="#ffffff" stroke="#f59e0b"/>
+  <text x="164" y="410" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">系统提示词</text>
+  <text x="164" y="432" text-anchor="middle" font-size="11" fill="#78716c">模型实际看到的输入</text>
+
+  <rect x="272" y="378" width="184" height="92" rx="8" fill="#ffffff" stroke="#f59e0b"/>
+  <text x="364" y="410" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">工具参数与结果</text>
+  <text x="364" y="432" text-anchor="middle" font-size="11" fill="#78716c">含拒绝、超时、取消</text>
+
+  <rect x="472" y="378" width="184" height="92" rx="8" fill="#ffffff" stroke="#f59e0b"/>
+  <text x="564" y="410" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">审批与权限切换</text>
+  <text x="564" y="432" text-anchor="middle" font-size="11" fill="#78716c">事后审计对得上</text>
+
+  <rect x="672" y="378" width="196" height="92" rx="8" fill="#ffffff" stroke="#f59e0b"/>
+  <text x="770" y="410" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">恢复 / 分叉 / 回放</text>
+  <text x="770" y="432" text-anchor="middle" font-size="11" fill="#78716c">共享同一条事件流</text>
+
+  <text x="470" y="532" text-anchor="middle" font-size="12" fill="#475569">用户中途插入的新消息会被区分为排队、注入上下文，或 Steering，并且有回执确认模型在哪一步真正看见了它。</text>
+</svg>

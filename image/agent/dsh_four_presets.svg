@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 540" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="940" height="540" rx="16" fill="url(#bg4)"/>
+  <text x="470" y="42" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">四种 Agent 预设：同一宿主，不同能力装配</text>
+  <text x="470" y="66" text-anchor="middle" font-size="12" fill="#64748b">底层模型路由、会话持久化、沙箱和审批仍由共享宿主提供</text>
+
+  <rect x="40" y="96" width="205" height="360" rx="14" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+  <rect x="40" y="96" width="205" height="52" rx="14" fill="#2563eb"/>
+  <rect x="40" y="128" width="205" height="20" fill="#2563eb"/>
+  <text x="142" y="128" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">标准</text>
+  <text x="142" y="176" text-anchor="middle" font-size="12" font-weight="600" fill="#1e3a8a">日常开发默认档</text>
+  <line x1="60" y1="192" x2="224" y2="192" stroke="#e2e8f0"/>
+  <text x="142" y="220" text-anchor="middle" font-size="12" fill="#334155">文件编辑 / Shell</text>
+  <text x="142" y="244" text-anchor="middle" font-size="12" fill="#334155">文件与网页检索</text>
+  <text x="142" y="268" text-anchor="middle" font-size="12" fill="#334155">Skills / 计划 / 目标</text>
+  <text x="142" y="292" text-anchor="middle" font-size="12" fill="#334155">子 Agent / 工作流</text>
+  <rect x="60" y="330" width="165" height="54" rx="8" fill="#dbeafe"/>
+  <text x="142" y="352" text-anchor="middle" font-size="11" fill="#1e40af">能力最完整</text>
+  <text x="142" y="370" text-anchor="middle" font-size="11" fill="#1e40af">适合大多数编码任务</text>
+  <text x="142" y="424" text-anchor="middle" font-size="11" fill="#64748b">信任度：常规</text>
+
+  <rect x="261" y="96" width="205" height="360" rx="14" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+  <rect x="261" y="96" width="205" height="52" rx="14" fill="#7c3aed"/>
+  <rect x="261" y="128" width="205" height="20" fill="#7c3aed"/>
+  <text x="363" y="128" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">PTC</text>
+  <text x="363" y="176" text-anchor="middle" font-size="12" font-weight="600" fill="#5b21b6">程序化工具调用</text>
+  <line x1="281" y1="192" x2="445" y2="192" stroke="#e2e8f0"/>
+  <text x="363" y="220" text-anchor="middle" font-size="12" fill="#334155">保留标准模式能力</text>
+  <text x="363" y="244" text-anchor="middle" font-size="12" fill="#334155">Code Mode SDK</text>
+  <text x="363" y="268" text-anchor="middle" font-size="12" fill="#334155">一次 run_code</text>
+  <text x="363" y="292" text-anchor="middle" font-size="12" fill="#334155">用 TS 组合多步工具</text>
+  <rect x="281" y="330" width="165" height="54" rx="8" fill="#ede9fe"/>
+  <text x="363" y="352" text-anchor="middle" font-size="11" fill="#5b21b6">减少模型往返</text>
+  <text x="363" y="370" text-anchor="middle" font-size="11" fill="#5b21b6">适合长调用链</text>
+  <text x="363" y="424" text-anchor="middle" font-size="11" fill="#64748b">信任度：常规+</text>
+
+  <rect x="482" y="96" width="205" height="360" rx="14" fill="#ffffff" stroke="#0f766e" stroke-width="2"/>
+  <rect x="482" y="96" width="205" height="52" rx="14" fill="#0f766e"/>
+  <rect x="482" y="128" width="205" height="20" fill="#0f766e"/>
+  <text x="584" y="128" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">极简</text>
+  <text x="584" y="176" text-anchor="middle" font-size="12" font-weight="600" fill="#115e59">只留两件工具</text>
+  <line x1="502" y1="192" x2="666" y2="192" stroke="#e2e8f0"/>
+  <text x="584" y="220" text-anchor="middle" font-size="12" fill="#334155">持久 Bash</text>
+  <text x="584" y="244" text-anchor="middle" font-size="12" fill="#334155">str_replace_editor</text>
+  <text x="584" y="268" text-anchor="middle" font-size="12" fill="#334155">工具选择负担最小</text>
+  <text x="584" y="292" text-anchor="middle" font-size="12" fill="#334155">路径明确时更直接</text>
+  <rect x="502" y="330" width="165" height="54" rx="8" fill="#ccfbf1"/>
+  <text x="584" y="352" text-anchor="middle" font-size="11" fill="#115e59">V4 Flash 公开</text>
+  <text x="584" y="370" text-anchor="middle" font-size="11" fill="#115e59">Code Agent 评测档</text>
+  <text x="584" y="424" text-anchor="middle" font-size="11" fill="#64748b">信任度：常规</text>
+
+  <rect x="703" y="96" width="197" height="360" rx="14" fill="#ffffff" stroke="#b91c1c" stroke-width="2"/>
+  <rect x="703" y="96" width="197" height="52" rx="14" fill="#b91c1c"/>
+  <rect x="703" y="128" width="197" height="20" fill="#b91c1c"/>
+  <text x="801" y="128" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">创造</text>
+  <text x="801" y="176" text-anchor="middle" font-size="12" font-weight="600" fill="#7f1d1d">高信任自改装</text>
+  <line x1="721" y1="192" x2="881" y2="192" stroke="#e2e8f0"/>
+  <text x="801" y="220" text-anchor="middle" font-size="12" fill="#334155">检查插件树</text>
+  <text x="801" y="244" text-anchor="middle" font-size="12" fill="#334155">临时挂载 / 卸载</text>
+  <text x="801" y="268" text-anchor="middle" font-size="12" fill="#334155">可运行模型写的插件</text>
+  <text x="801" y="292" text-anchor="middle" font-size="12" fill="#334155">用来创作自定义预设</text>
+  <rect x="721" y="330" width="161" height="54" rx="8" fill="#fee2e2"/>
+  <text x="801" y="352" text-anchor="middle" font-size="11" fill="#991b1b">不进默认三档</text>
+  <text x="801" y="370" text-anchor="middle" font-size="11" fill="#991b1b">研究 / 高级自动化</text>
+  <text x="801" y="424" text-anchor="middle" font-size="11" fill="#64748b">信任度：最高</text>
+
+  <text x="470" y="500" text-anchor="middle" font-size="12" fill="#475569">预设改的是「这个会话里装了什么」，不是另起一套 Agent。</text>
+</svg>

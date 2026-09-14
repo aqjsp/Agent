@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 480">
+  <rect x="0" y="0" width="780" height="480" rx="12" fill="#f5f7fa"/>
+  <rect x="0" y="0" width="780" height="480" rx="12" fill="none" stroke="#e0e0e0" stroke-width="1"/>
+  <defs>
+    <marker id="ar3" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#333"/>
+    </marker>
+    <marker id="ar3r" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#c62828"/>
+    </marker>
+  </defs>
+  <g transform="translate(30,30)">
+
+  <!-- 用户目标 -->
+  <rect x="260" y="10" width="180" height="36" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+  <text x="350" y="33" text-anchor="middle" font-size="13" font-weight="bold" fill="#2e7d32">用户目标 (user_goal)</text>
+  <line x1="350" y1="46" x2="350" y2="70" stroke="#333" stroke-width="2" marker-end="url(#ar3)"/>
+
+  <!-- Plan 节点 -->
+  <rect x="230" y="70" width="240" height="50" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+  <text x="350" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565c0">plan_step()</text>
+  <text x="350" y="110" text-anchor="middle" font-size="10" fill="#1565c0">LLM 生成步骤列表</text>
+  <line x1="350" y1="120" x2="350" y2="150" stroke="#333" stroke-width="2" marker-end="url(#ar3)"/>
+
+  <!-- 判断菱形 -->
+  <polygon points="350,150 440,190 350,230 260,190" fill="#fff9c4" stroke="#f9a825" stroke-width="2"/>
+  <text x="350" y="194" text-anchor="middle" font-size="11" font-weight="bold">should_continue?</text>
+
+  <!-- execute 分支 -->
+  <line x1="350" y1="230" x2="350" y2="260" stroke="#333" stroke-width="2" marker-end="url(#ar3)"/>
+  <text x="360" y="250" font-size="11" fill="#2e7d32">execute</text>
+
+  <rect x="220" y="260" width="260" height="50" rx="8" fill="#fce4ec" stroke="#c62828" stroke-width="2"/>
+  <text x="350" y="282" text-anchor="middle" font-size="13" font-weight="bold" fill="#c62828">execute_step()</text>
+  <text x="350" y="300" text-anchor="middle" font-size="10" fill="#c62828">调用工具 / LLM 处理</text>
+
+  <!-- 回到判断 -->
+  <line x1="220" y1="285" x2="150" y2="285" stroke="#333" stroke-width="2"/>
+  <line x1="150" y1="285" x2="150" y2="190" stroke="#333" stroke-width="2"/>
+  <line x1="150" y1="190" x2="255" y2="190" stroke="#333" stroke-width="2" marker-end="url(#ar3)"/>
+  <text x="140" y="240" font-size="10" fill="#333" text-anchor="end">继续执行</text>
+
+  <!-- respond 分支 -->
+  <line x1="440" y1="190" x2="550" y2="190" stroke="#333" stroke-width="2" marker-end="url(#ar3)"/>
+  <text x="490" y="183" font-size="11" fill="#e65100">respond</text>
+
+  <rect x="550" y="165" width="130" height="50" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+  <text x="615" y="187" text-anchor="middle" font-size="13" font-weight="bold" fill="#2e7d32">respond()</text>
+  <text x="615" y="205" text-anchor="middle" font-size="10" fill="#2e7d32">生成最终回答</text>
+
+  <!-- 重规划虚线 -->
+  <rect x="450" y="260" width="220" height="44" rx="8" fill="none" stroke="#c62828" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="560" y="278" text-anchor="middle" font-size="11" fill="#c62828">goal_check() 检测偏离</text>
+  <text x="560" y="295" text-anchor="middle" font-size="10" fill="#c62828">OFF_TRACK → 重新调用 plan_step()</text>
+  <line x1="450" y1="270" x2="350" y2="95" stroke="#c62828" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#ar3r)"/>
+
+  <!-- State 数据 -->
+  <rect x="20" y="70" width="160" height="160" rx="6" fill="#f5f5f5" stroke="#9e9e9e" stroke-width="1"/>
+  <text x="100" y="92" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">State (共享状态)</text>
+  <text x="30" y="115" font-size="10" fill="#555">• user_goal: str</text>
+  <text x="30" y="133" font-size="10" fill="#555">• plan: list[Step]</text>
+  <text x="30" y="151" font-size="10" fill="#555">• executed_steps: list</text>
+  <text x="30" y="169" font-size="10" fill="#555">• step_results: list</text>
+  <text x="30" y="187" font-size="10" fill="#555">• needs_replan: bool</text>
+  <text x="30" y="205" font-size="10" fill="#555">• response: str</text>
+
+  <!-- max_steps 提示 -->
+  <rect x="20" y="340" width="260" height="44" rx="6" fill="#fff9c4" stroke="#f9a825" stroke-width="1"/>
+  <text x="150" y="358" text-anchor="middle" font-size="11" fill="#e65100">安全限制: max_steps = len(plan) + 3</text>
+  <text x="150" y="375" text-anchor="middle" font-size="10" fill="#e65100">防止异常计划导致死循环</text>
+  </g>
+</svg>

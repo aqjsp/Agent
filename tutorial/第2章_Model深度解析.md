@@ -319,7 +319,7 @@ for tc in msg.tool_calls:
 
 ### 完整协议流程图
 
-![Function Calling 协议流程](image/function_calling_protocol.svg)
+![Function Calling 协议流程](../image/agent/function_calling_protocol.svg)
 
 这张图展示了 Model 和 Harness 之间的一次完整交互。注意几个要点：
 

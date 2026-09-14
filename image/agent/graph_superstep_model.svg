@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 540">
+  <rect width="840" height="540" rx="12" fill="#fafafa"/>
+  <g transform="translate(30,30)">
+    <!-- Title -->
+    <text x="390" y="20" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1a1a1a">Superstep 执行模型（BSP 风格）</text>
+    <text x="390" y="42" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#888">每个 superstep 内：读取快照 → 并行执行 → 合并写入 → Checkpoint → 解锁下一超步</text>
+
+    <!-- Three phases as boxes -->
+    <!-- Phase 1: Plan -->
+    <rect x="30" y="70" width="240" height="160" rx="10" fill="#e3f2fd" stroke="#2196F3" stroke-width="2"/>
+    <text x="150" y="95" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#1565c0">Phase 1: Plan</text>
+    <text x="55" y="118" font-family="Arial,sans-serif" font-size="11" fill="#555">1. 读取当前 State 快照</text>
+    <text x="55" y="138" font-family="Arial,sans-serif" font-size="11" fill="#555">2. 计算活跃节点集合</text>
+    <text x="55" y="158" font-family="Arial,sans-serif" font-size="11" fill="#555">3. 每个活跃节点获取读副本</text>
+    <text x="55" y="178" font-family="Arial,sans-serif" font-size="11" fill="#555">4. 同一超步内并行调度</text>
+    <text x="55" y="198" font-family="Arial,sans-serif" font-size="11" fill="#555">5. 节点间读隔离（旧快照）</text>
+
+    <!-- Arrow 1→2 -->
+    <polygon points="280,150 315,150 315,140 330,150 315,160 315,150" fill="#999"/>
+
+    <!-- Phase 2: Execute -->
+    <rect x="290" y="70" width="250" height="160" rx="10" fill="#e8f5e9" stroke="#4CAF50" stroke-width="2"/>
+    <text x="415" y="95" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#2e7d32">Phase 2: Execute</text>
+    <text x="310" y="118" font-family="Arial,sans-serif" font-size="11" fill="#555">Node A 执行 → 写入缓冲</text>
+    <text x="310" y="138" font-family="Arial,sans-serif" font-size="11" fill="#555">Node B 执行 → 写入缓冲</text>
+    <text x="310" y="158" font-family="Arial,sans-serif" font-size="11" fill="#555">Node C 执行 → 写入缓冲</text>
+    <text x="310" y="178" font-family="Arial,sans-serif" font-size="11" fill="#555">所有节点并发运行</text>
+    <text x="310" y="198" font-family="Arial,sans-serif" font-size="11" fill="#555">写入不立即生效，全部缓冲</text>
+
+    <!-- Parallel icon -->
+    <rect x="450" y="115" width="75" height="22" rx="4" fill="#4CAF50" opacity="0.2"/>
+    <text x="487" y="131" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#2e7d32">PARALLEL</text>
+
+    <!-- Arrow 2→3 -->
+    <polygon points="550,150 585,150 585,140 600,150 585,160 585,150" fill="#999"/>
+
+    <!-- Phase 3: Update -->
+    <rect x="560" y="70" width="240" height="160" rx="10" fill="#fff3e0" stroke="#FF9800" stroke-width="2"/>
+    <text x="680" y="95" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#e65100">Phase 3: Update</text>
+    <text x="585" y="118" font-family="Arial,sans-serif" font-size="11" fill="#555">1. 收集所有缓冲写入</text>
+    <text x="585" y="138" font-family="Arial,sans-serif" font-size="11" fill="#555">2. 对每个 State Key 应用 Reducer</text>
+    <text x="585" y="158" font-family="Arial,sans-serif" font-size="11" fill="#555">3. 生成新 State 版本</text>
+    <text x="585" y="178" font-family="Arial,sans-serif" font-size="11" fill="#555">4. Checkpoint: 序列化到存储</text>
+    <text x="585" y="198" font-family="Arial,sans-serif" font-size="11" fill="#555">5. 解除 Barrier → 下一超步</text>
+
+    <!-- Bottom flow: State evolution -->
+    <text x="390" y="270" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#333">State 逐超步演化</text>
+
+    <!-- Superstep 0 -->
+    <rect x="40" y="290" width="140" height="65" rx="8" fill="#fce4ec" stroke="#f44336" stroke-width="1"/>
+    <text x="110" y="310" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#c62828">Superstep 0</text>
+    <text x="110" y="328" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#555">User Input</text>
+    <text x="110" y="344" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#555">state = initial</text>
+
+    <!-- Arrow -->
+    <polygon points="185,322 195,322 195,316 202,322 195,328 195,322" fill="#ccc"/>
+
+    <!-- Superstep 1 -->
+    <rect x="200" y="290" width="140" height="65" rx="8" fill="#e8f5e9" stroke="#4CAF50" stroke-width="1"/>
+    <text x="270" y="310" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#2e7d32">Superstep 1</text>
+    <text x="270" y="328" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#555">LLM Reason</text>
+    <text x="270" y="344" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#555">+ new messages</text>
+
+    <!-- Arrow -->
+    <polygon points="345,322 355,322 355,316 362,322 355,328 355,322" fill="#ccc"/>
+
+    <!-- Superstep 2 -->
+    <rect x="360" y="290" width="140" height="65" rx="8" fill="#e3f2fd" stroke="#2196F3" stroke-width="1"/>
+    <text x="430" y="310" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#1565c0">Superstep 2</text>
+    <text x="430" y="328" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#555">Tool Exec</text>
+    <text x="430" y="344" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#555">+ tool results</text>
+
+    <!-- Arrow -->
+    <polygon points="505,322 515,322 515,316 522,322 515,328 515,322" fill="#ccc"/>
+
+    <!-- Superstep 3 -->
+    <rect x="520" y="290" width="140" height="65" rx="8" fill="#fff3e0" stroke="#FF9800" stroke-width="1"/>
+    <text x="590" y="310" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#e65100">Superstep 3</text>
+    <text x="590" y="328" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#555">Final Answer</text>
+    <text x="590" y="344" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#555">state.next = END</text>
+
+    <!-- Arrow -->
+    <polygon points="665,322 675,322 675,316 682,322 675,328 675,322" fill="#ccc"/>
+
+    <!-- Superstep 4 (END) -->
+    <rect x="680" y="290" width="110" height="65" rx="8" fill="#f5f5f5" stroke="#ccc" stroke-width="1"/>
+    <text x="735" y="310" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#999">END</text>
+    <text x="735" y="328" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#999">Checkpoint</text>
+    <text x="735" y="344" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#999">Complete</text>
+
+    <!-- Reducer explanation -->
+    <rect x="120" y="385" width="540" height="70" rx="8" fill="#f5f5f5"/>
+    <text x="390" y="407" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#333">Reducer 的作用：合并同一 Key 的并发写入</text>
+    <text x="390" y="427" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#555">两个节点同时返回 {"messages": [A], "messages": [B]}</text>
+    <text x="390" y="445" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#555">add_messages reducer 合并后：messages = [..., A, B] 而非覆盖</text>
+  </g>
+</svg>

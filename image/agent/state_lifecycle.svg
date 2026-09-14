@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <rect width="900" height="600" rx="12" fill="#fafafa"/>
+  <g transform="translate(40,40)">
+    <!-- Title -->
+    <text x="410" y="20" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1a1a1a">State 在 Superstep 中的生命周期</text>
+    <text x="410" y="42" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#888">读隔离 → 并行执行 → 写缓冲 → Reducer 合并 → 生成新版本 → Checkpoint</text>
+
+    <!-- Phase boxes -->
+    <!-- Phase 1: Read -->
+    <rect x="30" y="70" width="160" height="160" rx="10" fill="#e3f2fd" stroke="#2196F3" stroke-width="2"/>
+    <text x="110" y="95" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#1565c0">1. 读取快照</text>
+    <text x="55" y="118" font-family="Arial,sans-serif" font-size="11" fill="#555">所有活跃节点看到</text>
+    <text x="55" y="136" font-family="Arial,sans-serif" font-size="11" fill="#555">同一份 State_vN</text>
+    <rect x="55" y="150" width="110" height="60" rx="6" fill="#bbdefb"/>
+    <text x="110" y="172" text-anchor="middle" font-family="monospace" font-size="10" fill="#1565c0">State_vN</text>
+    <text x="110" y="186" text-anchor="middle" font-family="monospace" font-size="9" fill="#1565c0">(不可变快照)</text>
+
+    <!-- Arrow 1→2 -->
+    <polygon points="200,150 235,150 235,140 250,150 235,160 235,150" fill="#999"/>
+
+    <!-- Phase 2: Execute -->
+    <rect x="260" y="70" width="200" height="160" rx="10" fill="#e8f5e9" stroke="#4CAF50" stroke-width="2"/>
+    <text x="360" y="95" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#2e7d32">2. 并行执行</text>
+    <text x="285" y="118" font-family="Arial,sans-serif" font-size="10" fill="#555">节点返回部分更新 dict</text>
+
+    <rect x="280" y="132" width="75" height="35" rx="6" fill="#4CAF50" opacity="0.7"/>
+    <text x="317" y="148" text-anchor="middle" font-family="monospace" font-size="8" fill="white">Node A</text>
+    <text x="317" y="160" text-anchor="middle" font-family="monospace" font-size="7" fill="#e8f5e9">→ {msg, count}</text>
+
+    <rect x="280" y="175" width="75" height="35" rx="6" fill="#2196F3" opacity="0.7"/>
+    <text x="317" y="191" text-anchor="middle" font-family="monospace" font-size="8" fill="white">Node B</text>
+    <text x="317" y="203" text-anchor="middle" font-family="monospace" font-size="7" fill="#e3f2fd">→ {msg, status}</text>
+
+    <rect x="365" y="132" width="75" height="35" rx="6" fill="#FF9800" opacity="0.7"/>
+    <text x="402" y="148" text-anchor="middle" font-family="monospace" font-size="8" fill="white">Node C</text>
+    <text x="402" y="160" text-anchor="middle" font-family="monospace" font-size="7" fill="#fff3e0">→ {status}</text>
+
+    <rect x="410" y="185" width="36" height="20" rx="4" fill="#4CAF50" opacity="0.2"/>
+    <text x="428" y="199" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#2e7d32">并行</text>
+
+    <!-- Arrow 2→3 -->
+    <polygon points="470,150 505,150 505,140 520,150 505,160 505,150" fill="#999"/>
+
+    <!-- Phase 3: Buffer + Reducer -->
+    <rect x="530" y="70" width="260" height="160" rx="10" fill="#fff3e0" stroke="#FF9800" stroke-width="2"/>
+    <text x="660" y="95" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#e65100">3. Reducer 合并</text>
+    <text x="555" y="118" font-family="Arial,sans-serif" font-size="10" fill="#555">对每个 key 应用 Reducer：</text>
+
+    <!-- messages: add_messages -->
+    <rect x="555" y="128" width="230" height="24" rx="4" fill="#ffe0b2"/>
+    <text x="670" y="144" text-anchor="middle" font-family="monospace" font-size="9" fill="#e65100">messages: add_messages → 追加</text>
+
+    <!-- retry_count: operator.add -->
+    <rect x="555" y="156" width="230" height="24" rx="4" fill="#ffe0b2"/>
+    <text x="670" y="172" text-anchor="middle" font-family="monospace" font-size="9" fill="#e65100">retry_count: operator.add → 累加</text>
+
+    <!-- next_action: default -->
+    <rect x="555" y="184" width="230" height="24" rx="4" fill="#ffccbc"/>
+    <text x="670" y="200" text-anchor="middle" font-family="monospace" font-size="9" fill="#bf360c">next_action: LastValue → 覆盖</text>
+
+    <!-- Arrow 3→4 -->
+    <polygon points="740,150 760,150" fill="none" stroke="#999" stroke-width="1.5"/>
+
+    <!-- Bottom flow: State version evolution -->
+    <text x="410" y="275" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#333">State 版本演化 + Checkpoint 链</text>
+
+    <!-- State_vN -->
+    <rect x="40" y="300" width="120" height="60" rx="8" fill="#fce4ec" stroke="#f44336" stroke-width="1"/>
+    <text x="100" y="320" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#c62828">State_vN</text>
+    <text x="100" y="338" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#555">节点读取的快照</text>
+    <text x="100" y="350" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#888">不可变</text>
+
+    <polygon points="168,330 185,330 185,324 195,330 185,336 185,330" fill="#ccc"/>
+
+    <!-- Reducer merge -->
+    <rect x="200" y="295" width="140" height="70" rx="8" fill="#fff3e0" stroke="#FF9800" stroke-width="1.5"/>
+    <text x="270" y="318" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#e65100">Reducer 合并</text>
+    <text x="270" y="338" text-anchor="middle" font-family="monospace" font-size="9" fill="#555">old + new → merged</text>
+    <text x="270" y="353" text-anchor="middle" font-family="monospace" font-size="8" fill="#888">按 key 逐一合并</text>
+
+    <polygon points="348,330 365,330 365,324 375,330 365,336 365,330" fill="#ccc"/>
+
+    <!-- State_vN+1 -->
+    <rect x="380" y="300" width="120" height="60" rx="8" fill="#e8f5e9" stroke="#4CAF50" stroke-width="1.5"/>
+    <text x="440" y="320" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#2e7d32">State_vN+1</text>
+    <text x="440" y="338" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#555">新版本生成</text>
+    <text x="440" y="350" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#888">不可变</text>
+
+    <polygon points="508,330 525,330 525,324 535,330 525,336 525,330" fill="#ccc"/>
+
+    <!-- Checkpoint -->
+    <rect x="540" y="295" width="130" height="70" rx="8" fill="#e3f2fd" stroke="#2196F3" stroke-width="1.5"/>
+    <text x="605" y="318" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#1565c0">Checkpoint</text>
+    <text x="605" y="338" text-anchor="middle" font-family="monospace" font-size="9" fill="#555">序列化到存储</text>
+    <text x="605" y="353" text-anchor="middle" font-family="monospace" font-size="8" fill="#888">parent_config → vN</text>
+
+    <polygon points="678,330 695,330 695,324 705,330 695,336 695,330" fill="#ccc"/>
+
+    <!-- Next superstep -->
+    <rect x="710" y="300" width="90" height="60" rx="8" fill="#f5f5f5" stroke="#ccc" stroke-width="1"/>
+    <text x="755" y="320" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#666">下一超步</text>
+    <text x="755" y="340" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#999">解锁 barrier</text>
+    <text x="755" y="352" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#999">读取 vN+1</text>
+
+    <!-- Key insight box -->
+    <rect x="40" y="400" width="760" height="55" rx="8" fill="#e8f5e9" stroke="#4CAF50" stroke-width="1"/>
+    <text x="420" y="422" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#2e7d32">核心保证：读隔离 + 写缓冲 = 无锁并行</text>
+    <text x="420" y="442" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#555">同一 superstep 内，Node A 的输出不会影响 Node B 的输入 — 两个节点看到的 State 完全相同</text>
+
+    <!-- Immutable chain note -->
+    <rect x="40" y="470" width="760" height="40" rx="8" fill="#f5f5f5"/>
+    <text x="420" y="495" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#666">不可变链：State_v0 → State_v1 → State_v2 → ... 每个版本只能指向前一个，不能被修改</text>
+  </g>
+</svg>

@@ -334,7 +334,7 @@ def execute_tool_calls_parallel(tool_calls, tool_map, tool_configs):
 
 ### 完整的生产级 run_agent
 
-![生产级 ReAct 循环](image/production_react_loop.svg)
+![生产级 ReAct 循环](../image/agent/production_react_loop.svg)
 
 把错误恢复、权限检查整合。注意，生产版用串行而非并行执行 tool_calls——因为权限检查需要逐个处理：如果某个高权限工具需要确认，后续工具的执行结果可能依赖用户的确认决策。
 

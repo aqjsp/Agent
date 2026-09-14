@@ -14,7 +14,7 @@
 
 ## 1 三层记忆架构
 
-![三层记忆架构](../image/memory_architecture.svg)
+![三层记忆架构](../image/agent/memory_architecture.svg)
 
 ### 第一层：短期记忆（Working Memory）
 

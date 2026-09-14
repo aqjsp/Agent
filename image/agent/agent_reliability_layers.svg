@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 600" font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif">
+  <rect width="920" height="600" rx="16" fill="#f8fafc"/>
+  <text x="460" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Agent 可靠性防线分层</text>
+  <text x="460" y="68" text-anchor="middle" font-size="13" fill="#64748b">从单次调用到全局观测，每一层都负责切断一种故障传播</text>
+
+  <!-- Layer boxes -->
+  <rect x="90" y="105" width="740" height="72" rx="14" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+  <text x="130" y="135" font-size="15" font-weight="700" fill="#991b1b">L1 调用边界</text>
+  <text x="300" y="135" font-size="13" fill="#334155">Timeout / Error Classification / Idempotency</text>
+  <text x="300" y="158" font-size="12" fill="#64748b">每个 LLM、Tool、DB、Worker 调用都必须有明确失败语义</text>
+
+  <rect x="90" y="195" width="740" height="72" rx="14" fill="#ffedd5" stroke="#f97316" stroke-width="2"/>
+  <text x="130" y="225" font-size="15" font-weight="700" fill="#9a3412">L2 重试治理</text>
+  <text x="300" y="225" font-size="13" fill="#334155">Retry Budget / Backoff / Jitter</text>
+  <text x="300" y="248" font-size="12" fill="#64748b">只重试可恢复错误，并用全局预算防止重试风暴</text>
+
+  <rect x="90" y="285" width="740" height="72" rx="14" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="130" y="315" font-size="15" font-weight="700" fill="#b45309">L3 依赖保护</text>
+  <text x="300" y="315" font-size="13" fill="#334155">Circuit Breaker / Half-Open Probe / Fallback</text>
+  <text x="300" y="338" font-size="12" fill="#64748b">下游连续失败后停止调用，先保护系统，再降级产出</text>
+
+  <rect x="90" y="375" width="740" height="72" rx="14" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+  <text x="130" y="405" font-size="15" font-weight="700" fill="#15803d">L4 状态隔离</text>
+  <text x="300" y="405" font-size="13" fill="#334155">Bulkhead / Private State / Validation</text>
+  <text x="300" y="428" font-size="12" fill="#64748b">Worker 原始输出不能直接进入全局事实，只能通过验证映射</text>
+
+  <rect x="90" y="465" width="740" height="72" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="130" y="495" font-size="15" font-weight="700" fill="#1d4ed8">L5 全局观测</text>
+  <text x="300" y="495" font-size="13" fill="#334155">Fallback Rate / Circuit Open / Human Takeover</text>
+  <text x="300" y="518" font-size="12" fill="#64748b">不只看成功率，还要知道系统是否正在大面积降级</text>
+
+  <!-- vertical arrows -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b" />
+    </marker>
+  </defs>
+  <path d="M460 177 L460 195" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M460 267 L460 285" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M460 357 L460 375" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M460 447 L460 465" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- side labels -->
+  <rect x="25" y="105" width="45" height="432" rx="12" fill="#0f172a"/>
+  <text x="48" y="325" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" transform="rotate(-90 48 325)">从局部失败到全局治理</text>
+
+  <rect x="850" y="105" width="45" height="432" rx="12" fill="#334155"/>
+  <text x="873" y="325" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" transform="rotate(90 873 325)">每层都缩小故障半径</text>
+
+  <text x="460" y="575" text-anchor="middle" font-size="13" font-weight="700" fill="#334155">可靠性不是单个机制，而是一组分层防线</text>
+</svg>

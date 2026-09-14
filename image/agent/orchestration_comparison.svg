@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560">
+  <rect width="840" height="560" rx="12" fill="#fafafa"/>
+  <g transform="translate(30,30)">
+    <!-- Title -->
+    <text x="390" y="20" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1a1a1a">编排框架选型：执行模型决定了什么场景适合</text>
+    <text x="390" y="42" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#888">不是"谁更好"，是"谁的执行模型匹配任务的运行特征"</text>
+
+    <!-- Card 1: LangChain Pipeline -->
+    <rect x="30" y="70" width="250" height="195" rx="10" fill="#ffebee" stroke="#f44336" stroke-width="1.5"/>
+    <text x="155" y="95" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#c62828">LangChain LCEL</text>
+
+    <rect x="55" y="108" width="200" height="22" rx="4" fill="#ffcdd2"/>
+    <text x="155" y="124" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#b71c1c">执行模型：线性管道</text>
+    <text x="55" y="148" font-family="Arial,sans-serif" font-size="10" fill="#555">A → B → C → END</text>
+    <text x="55" y="166" font-family="Arial,sans-serif" font-size="10" fill="#555">每个节点执行一次</text>
+    <text x="55" y="184" font-family="Arial,sans-serif" font-size="10" fill="#555">无循环，无分支</text>
+    <text x="55" y="202" font-family="Arial,sans-serif" font-size="10" fill="#555">无持久化状态</text>
+    <rect x="80" y="220" width="150" height="22" rx="4" fill="#f44336" opacity="0.15"/>
+    <text x="155" y="236" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#c62828">RAG / 摘要 / 分类</text>
+
+    <!-- Card 2: CrewAI -->
+    <rect x="300" y="70" width="250" height="195" rx="10" fill="#fff3e0" stroke="#FF9800" stroke-width="1.5"/>
+    <text x="425" y="95" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#e65100">CrewAI</text>
+
+    <rect x="325" y="108" width="200" height="22" rx="4" fill="#ffe0b2"/>
+    <text x="425" y="124" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#e65100">执行模型：角色式顺序任务</text>
+    <text x="325" y="148" font-family="Arial,sans-serif" font-size="10" fill="#555">研究员 → 撰稿人 → 审校</text>
+    <text x="325" y="166" font-family="Arial,sans-serif" font-size="10" fill="#555">每个角色执行一次</text>
+    <text x="325" y="184" font-family="Arial,sans-serif" font-size="10" fill="#555">有工具，无真正循环</text>
+    <text x="325" y="202" font-family="Arial,sans-serif" font-size="10" fill="#555">上手快，控制精度低</text>
+    <rect x="350" y="220" width="150" height="22" rx="4" fill="#FF9800" opacity="0.15"/>
+    <text x="425" y="236" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#e65100">多角色写作协作</text>
+
+    <!-- Card 3: AutoGen -->
+    <rect x="570" y="70" width="225" height="195" rx="10" fill="#f3e5f5" stroke="#9C27B0" stroke-width="1.5"/>
+    <text x="682" y="95" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#6a1b9a">AutoGen</text>
+
+    <rect x="585" y="108" width="195" height="22" rx="4" fill="#e1bee7"/>
+    <text x="682" y="124" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#6a1b9a">执行模型：对话式消息协商</text>
+    <text x="585" y="148" font-family="Arial,sans-serif" font-size="10" fill="#555">Agent间对话驱动</text>
+    <text x="585" y="166" font-family="Arial,sans-serif" font-size="10" fill="#555">执行序列不可预测</text>
+    <text x="585" y="184" font-family="Arial,sans-serif" font-size="10" fill="#555">难以精确控制</text>
+    <text x="585" y="202" font-family="Arial,sans-serif" font-size="10" fill="#555">难以做确定性测试</text>
+    <rect x="610" y="220" width="145" height="22" rx="4" fill="#9C27B0" opacity="0.15"/>
+    <text x="682" y="236" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#6a1b9a">自主辩论 / 协商</text>
+
+    <!-- Card 4: Temporal/Prefect -->
+    <rect x="30" y="290" width="250" height="155" rx="10" fill="#e0e0e0" stroke="#666" stroke-width="1.5"/>
+    <text x="155" y="315" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#444">Temporal / Prefect</text>
+
+    <rect x="55" y="328" width="200" height="22" rx="4" fill="#eee"/>
+    <text x="155" y="344" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#555">执行模型：DAG + 确定性重放</text>
+    <text x="55" y="368" font-family="Arial,sans-serif" font-size="10" fill="#555">任务级重试和调度</text>
+    <text x="55" y="386" font-family="Arial,sans-serif" font-size="10" fill="#555">假设相同输入 → 相同输出</text>
+    <text x="55" y="404" font-family="Arial,sans-serif" font-size="10" fill="#555">这个假设对 LLM 不成立</text>
+    <rect x="80" y="420" width="150" height="22" rx="4" fill="#666" opacity="0.1"/>
+    <text x="155" y="436" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#555">业务工作流 / 数据管道</text>
+
+    <!-- Card 5: LangGraph (highlighted) -->
+    <rect x="300" y="290" width="495" height="155" rx="10" fill="#e8eaf6" stroke="#1a237e" stroke-width="2.5"/>
+    <rect x="305" y="295" width="485" height="145" rx="8" fill="#3F51B5" opacity="0.06"/>
+
+    <text x="547" y="315" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#1a237e">LangGraph ★</text>
+    <rect x="375" y="328" width="345" height="22" rx="4" fill="#c5cae9"/>
+    <text x="547" y="344" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#1a237e">执行模型：StateGraph + Superstep（BSP风格）</text>
+
+    <text x="330" y="372" font-family="Arial,sans-serif" font-size="10" fill="#555">独立运行时，不依赖任何框架</text>
+    <text x="330" y="390" font-family="Arial,sans-serif" font-size="10" fill="#555">支持循环、条件分支、持久化、HITL</text>
+    <text x="330" y="408" font-family="Arial,sans-serif" font-size="10" fill="#555">从断点恢复而非从头重放</text>
+    <text x="330" y="426" font-family="Arial,sans-serif" font-size="10" fill="#555">可用任何 LLM SDK 在节点内调用模型</text>
+
+    <rect x="570" y="370" width="205" height="55" rx="6" fill="#1a237e" opacity="0.1"/>
+    <text x="672" y="392" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="bold" fill="#1a237e">生产验证</text>
+    <text x="672" y="410" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#555">Klarna 8500万用户</text>
+    <text x="672" y="424" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#555">Uber · Elastic · J.P. Morgan</text>
+
+    <!-- Bottom: Decision guide -->
+    <rect x="100" y="470" width="580" height="28" rx="6" fill="#f5f5f5"/>
+    <text x="390" y="489" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#666">选型标准：任务有无循环 + 需要什么粒度的状态控制 → 而非功能列表对比</text>
+  </g>
+</svg>

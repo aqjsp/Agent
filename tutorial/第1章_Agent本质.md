@@ -107,7 +107,7 @@ Model 的迭代周期是月甚至年，Harness 的迭代周期是天甚至小时
 ### 一张图看清楚
 
 架构图
-![Agent架构图](image/agent_architecture.svg)
+![Agent架构图](../image/agent/agent_architecture.svg)
 
 交互通道中间那块"Function Calling"是 Model 和 Harness 之间的协议层。Model 不直接调用 Python 函数，它输出结构化的 `tool_calls` 对象，Harness 解析、执行、把结果拼回消息列表。这个协议使得 Model 和 Harness 可以独立演进——Model 换了，只要格式兼容，Harness 不用改；Harness 加了新工具，只要 description 写清楚，Model 自动学会使用。
 
@@ -133,7 +133,7 @@ LLM 的底层机制极其简单：给定一段文本，预测下一个 token。�
 
 这五个"不能"不是并列的——**根因是"不能执行动作"**，这直接导致不能获取实时信息（没法调 API）和不能持久化记忆（没法写存储）。不能自主规划又是因为没有动作能力就无法驱动循环。不能保证可靠是概率模型的固有属性，跟动作能力无关，但可以通过动作能力来部分弥补（调 API 验证）。
 
-![Model能力边界因果链](image/model_limitations_causal_chain.svg)
+![Model能力边界因果链](../image/agent/model_limitations_causal_chain.svg)
 
 ### 从因果链到检查清单
 
@@ -185,7 +185,7 @@ LLM 的底层机制极其简单：给定一段文本，预测下一个 token。�
 
 先不看代码，理解 Agent 的运行机制。Agent 的核心是一个循环：**Thought → Action → Observation → Thought → ...**，称为 ReAct 模式（Reasoning + Acting）。
 
-![ReAct循环](image/react_cycle.svg)
+![ReAct循环](../image/agent/react_cycle.svg)
 
 几个关键点：
 
@@ -348,7 +348,7 @@ def run_agent(user_message: str, max_iterations: int = 5) -> str:
 
 上面这三点，用一张图来看更清楚。当 `run_agent("北京今天天气怎么样？")` 执行时，`messages` 列表是这样一步步增长的：
 
-![Function Calling 数据流](image/function_calling_data_flow.svg)
+![Function Calling 数据流](../image/agent/function_calling_data_flow.svg)
 
 每一行对应 `messages` 列表中的一条消息。左边标注 `role`，右边标注是谁添加的——Model 还是 Harness。注意：Model 输出 `tool_calls` 时 `role` 仍然是 `assistant`——它只是普通回复，只不过内容里包含了结构化的工具调用请求。`role: tool` 的消息是 Harness 添加的。
 

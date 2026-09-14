@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 580" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="920" height="580" rx="12" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="460" y="38" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a1a2e">多 Agent 一致性架构全景</text>
+  
+  <!-- Layer 1: 图内一致性 -->
+  <rect x="40" y="60" width="840" height="120" rx="8" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+  <text x="60" y="88" font-size="15" font-weight="bold" fill="#2e7d32">层1：图内一致性 — Reducer 保证</text>
+  
+  <!-- StateGraph box -->
+  <rect x="70" y="100" width="200" height="60" rx="6" fill="#c8e6c9" stroke="#4caf50" stroke-width="1"/>
+  <text x="170" y="122" text-anchor="middle" font-size="12" font-weight="bold" fill="#2e7d32">StateGraph</text>
+  <text x="170" y="142" text-anchor="middle" font-size="11" fill="#555">Reducer 自动合并并行写入</text>
+  
+  <!-- Node A, B, C -->
+  <rect x="310" y="100" width="80" height="30" rx="4" fill="#fff" stroke="#4caf50" stroke-width="1"/>
+  <text x="350" y="120" text-anchor="middle" font-size="11" fill="#333">Node A</text>
+  <rect x="310" y="135" width="80" height="30" rx="4" fill="#fff" stroke="#4caf50" stroke-width="1"/>
+  <text x="350" y="155" text-anchor="middle" font-size="11" fill="#333">Node B</text>
+  
+  <!-- Reducer merge -->
+  <text x="430" y="130" font-size="20" fill="#4caf50">→</text>
+  <rect x="460" y="108" width="130" height="44" rx="6" fill="#a5d6a7" stroke="#4caf50" stroke-width="1.5"/>
+  <text x="525" y="128" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b5e20">Reducer 合并</text>
+  <text x="525" y="145" text-anchor="middle" font-size="10" fill="#333">追加/累加/自定义</text>
+  
+  <!-- State v_N -->
+  <text x="620" y="130" font-size="20" fill="#4caf50">→</text>
+  <rect x="650" y="108" width="100" height="44" rx="6" fill="#fff" stroke="#4caf50" stroke-width="1.5"/>
+  <text x="700" y="128" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b5e20">State v_N</text>
+  <text x="700" y="145" text-anchor="middle" font-size="10" fill="#555">一致 ✓</text>
+  
+  <!-- Guarantee label -->
+  <rect x="790" y="108" width="70" height="44" rx="4" fill="#2e7d32"/>
+  <text x="825" y="128" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">框架保证</text>
+  <text x="825" y="143" text-anchor="middle" font-size="10" fill="#c8e6c9">无需编码</text>
+  
+  <!-- Layer 2: 图间一致性 -->
+  <rect x="40" y="200" width="840" height="140" rx="8" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+  <text x="60" y="228" font-size="15" font-weight="bold" fill="#1565c0">层2：图间一致性 — 锁 / 乐观锁 / 协调器</text>
+  
+  <!-- Agent A -->
+  <rect x="70" y="245" width="140" height="70" rx="6" fill="#bbdefb" stroke="#2196f3" stroke-width="1"/>
+  <text x="140" y="270" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d47a1">Agent A</text>
+  <text x="140" y="290" text-anchor="middle" font-size="10" fill="#333">StateGraph A</text>
+  <text x="140" y="305" text-anchor="middle" font-size="10" fill="#555">写 x=15</text>
+  
+  <!-- Agent B -->
+  <rect x="70" y="245" width="0" height="0"/>
+  <rect x="240" y="245" width="140" height="70" rx="6" fill="#bbdefb" stroke="#2196f3" stroke-width="1"/>
+  <text x="310" y="270" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d47a1">Agent B</text>
+  <text x="310" y="290" text-anchor="middle" font-size="10" fill="#333">StateGraph B</text>
+  <text x="310" y="305" text-anchor="middle" font-size="10" fill="#555">写 x=12</text>
+  
+  <!-- Conflict resolution -->
+  <text x="410" y="280" font-size="16" fill="#1565c0">→</text>
+  <rect x="440" y="250" width="160" height="70" rx="6" fill="#90caf9" stroke="#2196f3" stroke-width="1.5"/>
+  <text x="520" y="272" text-anchor="middle" font-size="11" font-weight="bold" fill="#0d47a1">冲突解决</text>
+  <text x="520" y="290" text-anchor="middle" font-size="10" fill="#333">乐观锁：版本检查</text>
+  <text x="520" y="305" text-anchor="middle" font-size="10" fill="#333">悲观锁：先锁后写</text>
+  
+  <!-- External resource -->
+  <text x="630" y="280" font-size="16" fill="#1565c0">→</text>
+  <rect x="660" y="255" width="100" height="60" rx="6" fill="#fff" stroke="#2196f3" stroke-width="1.5"/>
+  <text x="710" y="280" text-anchor="middle" font-size="11" font-weight="bold" fill="#0d47a1">外部资源</text>
+  <text x="710" y="298" text-anchor="middle" font-size="10" fill="#555">DB / API / 文件</text>
+  
+  <!-- Guarantee label -->
+  <rect x="790" y="255" width="70" height="60" rx="4" fill="#1565c0"/>
+  <text x="825" y="278" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">需要编码</text>
+  <text x="825" y="298" text-anchor="middle" font-size="10" fill="#bbdefb">选方案</text>
+  
+  <!-- Layer 3: 系统间一致性 -->
+  <rect x="40" y="360" width="840" height="140" rx="8" fill="#fff3e0" stroke="#ff9800" stroke-width="2"/>
+  <text x="60" y="388" font-size="15" font-weight="bold" fill="#e65100">层3：系统间一致性 — 事件溯源 + 对账</text>
+  
+  <!-- State -->
+  <rect x="70" y="405" width="110" height="60" rx="6" fill="#ffe0b2" stroke="#ff9800" stroke-width="1"/>
+  <text x="125" y="428" text-anchor="middle" font-size="12" font-weight="bold" fill="#bf360c">State</text>
+  <text x="125" y="448" text-anchor="middle" font-size="10" fill="#555">source of truth</text>
+  
+  <!-- Event log -->
+  <text x="200" y="435" font-size="16" fill="#e65100">→</text>
+  <rect x="225" y="405" width="120" height="60" rx="6" fill="#ffcc80" stroke="#ff9800" stroke-width="1.5"/>
+  <text x="285" y="428" text-anchor="middle" font-size="11" font-weight="bold" fill="#bf360c">事件日志</text>
+  <text x="285" y="448" text-anchor="middle" font-size="10" fill="#555">append-only</text>
+  
+  <!-- Async sync -->
+  <text x="365" y="435" font-size="16" fill="#e65100">→</text>
+  <rect x="390" y="405" width="120" height="60" rx="6" fill="#ffcc80" stroke="#ff9800" stroke-width="1.5"/>
+  <text x="450" y="428" text-anchor="middle" font-size="11" font-weight="bold" fill="#bf360c">异步同步器</text>
+  <text x="450" y="448" text-anchor="middle" font-size="10" fill="#555">幂等写入</text>
+  
+  <!-- External systems -->
+  <text x="530" y="435" font-size="16" fill="#e65100">→</text>
+  <rect x="555" y="400" width="80" height="35" rx="4" fill="#fff" stroke="#ff9800" stroke-width="1"/>
+  <text x="595" y="422" text-anchor="middle" font-size="10" fill="#333">数据库</text>
+  <rect x="555" y="440" width="80" height="35" rx="4" fill="#fff" stroke="#ff9800" stroke-width="1"/>
+  <text x="595" y="462" text-anchor="middle" font-size="10" fill="#333">API / 消息</text>
+  
+  <!-- Reconciliation -->
+  <rect x="660" y="405" width="100" height="60" rx="6" fill="#fff3e0" stroke="#ff9800" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="710" y="428" text-anchor="middle" font-size="11" font-weight="bold" fill="#e65100">定期对账</text>
+  <text x="710" y="448" text-anchor="middle" font-size="10" fill="#555">一致性检查</text>
+  
+  <!-- Guarantee label -->
+  <rect x="790" y="405" width="70" height="60" rx="4" fill="#e65100"/>
+  <text x="825" y="428" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">最终一致</text>
+  <text x="825" y="448" text-anchor="middle" font-size="10" fill="#ffe0b2">+ 人工兜底</text>
+  
+  <!-- Bottom key insight -->
+  <rect x="40" y="520" width="840" height="45" rx="8" fill="#1a1a2e"/>
+  <text x="460" y="547" text-anchor="middle" font-size="13" fill="#fff" font-weight="bold">核心原则：LLM 不可重放 → 不依赖重试 → 幂等性是一切的基础</text>
+</svg>
