@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 640" font-family="system-ui, -apple-system, sans-serif">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 640" font-family="system-ui, -apple-system, sans-serif" width="940" height="640">
   <rect width="880" height="580" fill="#fafafa" rx="10"/>
   <text x="440" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1a1a2e">Agent = Model + Harness</text>
 

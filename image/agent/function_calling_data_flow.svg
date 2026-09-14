@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 640" font-family="monospace, system-ui, sans-serif">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 640" font-family="monospace, system-ui, sans-serif" width="820" height="640">
   <rect width="760" height="580" fill="#fafafa" rx="8"/>
   <text x="380" y="26" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a1a1a">Function Calling 数据流：messages 列表如何一步步增长</text>
 

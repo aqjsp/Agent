@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 500" font-family="system-ui, -apple-system, sans-serif">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 500" font-family="system-ui, -apple-system, sans-serif" width="920" height="500">
   <rect width="860" height="440" fill="#fafafa" rx="8"/>
 
   <text x="430" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a2e">Model "五个不能" 的因果链 → Harness 解法</text>

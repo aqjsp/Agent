@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 540" font-family="system-ui, -apple-system, sans-serif">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 540" font-family="system-ui, -apple-system, sans-serif" width="780" height="540">
   <rect width="720" height="480" fill="#fafafa" rx="8"/>
   <text x="360" y="26" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a1a1a">ReAct vs Plan-and-Execute 流程对比</text>
 

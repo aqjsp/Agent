@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 600">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 600" width="980" height="600">
   <rect width="980" height="600" rx="12" fill="#fafafa"/>
   <g transform="translate(70,60)">
     <text x="410" y="20" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1a1a1a">Token 分词流程：从文本到模型输入</text>

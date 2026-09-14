@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" width="1000" height="620">
   <rect width="1000" height="620" rx="12" fill="#fafafa"/>
   <g transform="translate(70,60)">
     <text x="420" y="20" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1a1a1a">MCP 三层架构与通信机制</text>

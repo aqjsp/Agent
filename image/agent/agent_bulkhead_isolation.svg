@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 620" font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 620" font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif" width="920" height="620">
   <rect width="920" height="620" rx="16" fill="#f8fafc"/>
   <text x="460" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Agent 舱壁隔离架构</text>
   <text x="460" y="68" text-anchor="middle" font-size="13" fill="#64748b">一个 Worker 的错误输出、慢调用、权限风险，不应该进入全局系统</text>

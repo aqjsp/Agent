@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" font-family="system-ui, -apple-system, sans-serif">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" font-family="system-ui, -apple-system, sans-serif" width="760" height="500">
   <rect width="700" height="440" fill="#fafafa" rx="8"/>
   <text x="350" y="26" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a1a1a">Agent 三层记忆架构</text>
 
