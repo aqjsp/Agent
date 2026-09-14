@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 260" width="580" height="260">
+  <defs>
+    <marker id="arr2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+  </defs>
+  <rect width="580" height="260" fill="white"/>
+  <text x="290" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a1a">ReAct 循环 + 校验闭环</text>
+  <!-- Thought -->
+  <rect x="180" y="50" width="200" height="50" fill="#e3f2fd" stroke="#1976d2" rx="8"/>
+  <text x="280" y="72" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565c0">Thought（推理）</text>
+  <text x="280" y="90" text-anchor="middle" font-size="10" fill="#666">分析当前状态，规划下一步</text>
+  <!-- Arrow down -->
+  <line x1="280" y1="100" x2="280" y2="125" stroke="#555" stroke-width="2" marker-end="url(#arr2)"/>
+  <!-- Action -->
+  <rect x="180" y="130" width="200" height="50" fill="#fff3e0" stroke="#e65100" rx="8"/>
+  <text x="280" y="152" text-anchor="middle" font-size="14" font-weight="bold" fill="#e65100">Action（行动）</text>
+  <text x="280" y="170" text-anchor="middle" font-size="10" fill="#666">调用工具 / 执行操作</text>
+  <!-- Arrow down -->
+  <line x1="280" y1="180" x2="280" y2="205" stroke="#555" stroke-width="2" marker-end="url(#arr2)"/>
+  <!-- Observation -->
+  <rect x="180" y="210" width="200" height="40" fill="#e8f5e9" stroke="#2e7d32" rx="8"/>
+  <text x="280" y="235" text-anchor="middle" font-size="14" font-weight="bold" fill="#2e7d32">Observation（观察）</text>
+  <!-- Loop arrow back to Thought -->
+  <path d="M380,230 L430,230 L430,75 L385,75" fill="none" stroke="#555" stroke-width="2" marker-end="url(#arr2)"/>
+  <text x="445" y="155" font-size="11" fill="#888" transform="rotate(-90 445 155)">循环直到完成</text>
+  <!-- Harness Guard on the left -->
+  <rect x="20" y="115" width="130" height="80" fill="#fce4ec" stroke="#c62828" rx="8" stroke-dasharray="5,3"/>
+  <text x="85" y="140" text-anchor="middle" font-size="12" font-weight="bold" fill="#c62828">Harness 守卫</text>
+  <text x="85" y="158" text-anchor="middle" font-size="10" fill="#c62828">约束 · 校验 · 限流</text>
+  <text x="85" y="173" text-anchor="middle" font-size="10" fill="#c62828">死循环检测 · 权限</text>
+  <line x1="150" y1="155" x2="178" y2="155" stroke="#c62828" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <!-- Termination -->
+  <rect x="430" y="210" width="130" height="40" fill="#f3e5f5" stroke="#6a1b9a" rx="8"/>
+  <text x="495" y="226" text-anchor="middle" font-size="12" font-weight="bold" fill="#6a1b9a">终止条件</text>
+  <text x="495" y="242" text-anchor="middle" font-size="10" fill="#6a1b9a">完成/超时/失败</text>
+  <line x1="380" y1="230" x2="428" y2="230" stroke="#6a1b9a" stroke-width="1.5" marker-end="url(#arr2)"/>
+</svg>

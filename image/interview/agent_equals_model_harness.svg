@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="600" height="320">
+  <defs>
+    <marker id="arr3" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+  </defs>
+  <rect width="600" height="320" fill="white"/>
+  <text x="300" y="28" text-anchor="middle" font-size="16" font-weight="bold">Agent = Model + Harness</text>
+  <!-- Model circle -->
+  <circle cx="120" cy="170" r="70" fill="#e8eaf6" stroke="#3f51b5" stroke-width="2"/>
+  <text x="120" y="162" text-anchor="middle" font-size="18" font-weight="bold" fill="#283593">Model</text>
+  <text x="120" y="182" text-anchor="middle" font-size="10" fill="#555">LLM 核心</text>
+  <text x="120" y="196" text-anchor="middle" font-size="9" fill="#888">推理 · 生成 · 理解</text>
+  <!-- Plus -->
+  <text x="230" y="178" text-anchor="middle" font-size="28" font-weight="bold" fill="#333">+</text>
+  <!-- Harness box -->
+  <rect x="270" y="45" width="300" height="250" fill="#fff8e1" stroke="#f57f17" stroke-width="2" rx="10"/>
+  <text x="420" y="70" text-anchor="middle" font-size="16" font-weight="bold" fill="#e65100">Harness</text>
+  <!-- Harness sub-boxes -->
+  <rect x="285" y="82" width="125" height="30" fill="#e3f2fd" stroke="#1976d2" rx="4"/>
+  <text x="347" y="102" text-anchor="middle" font-size="10" fill="#1565c0">上下文管理</text>
+  <rect x="425" y="82" width="125" height="30" fill="#e3f2fd" stroke="#1976d2" rx="4"/>
+  <text x="487" y="102" text-anchor="middle" font-size="10" fill="#1565c0">记忆与状态</text>
+  <rect x="285" y="122" width="125" height="30" fill="#fff3e0" stroke="#e65100" rx="4"/>
+  <text x="347" y="142" text-anchor="middle" font-size="10" fill="#e65100">工具系统</text>
+  <rect x="425" y="122" width="125" height="30" fill="#fff3e0" stroke="#e65100" rx="4"/>
+  <text x="487" y="142" text-anchor="middle" font-size="10" fill="#e65100">执行编排</text>
+  <rect x="285" y="162" width="125" height="30" fill="#e8f5e9" stroke="#2e7d32" rx="4"/>
+  <text x="347" y="182" text-anchor="middle" font-size="10" fill="#2e7d32">评估与观测</text>
+  <rect x="425" y="162" width="125" height="30" fill="#e8f5e9" stroke="#2e7d32" rx="4"/>
+  <text x="487" y="182" text-anchor="middle" font-size="10" fill="#2e7d32">约束与恢复</text>
+  <!-- Labels -->
+  <text x="287" y="210" font-size="9" fill="#1976d2">输入侧</text>
+  <text x="427" y="210" font-size="9" fill="#e65100">动作侧</text>
+  <!-- Arrow from Model to Harness -->
+  <line x1="190" y1="170" x2="268" y2="170" stroke="#555" stroke-width="2" marker-end="url(#arr3)"/>
+  <!-- Key insight -->
+  <rect x="285" y="225" width="265" height="55" fill="#fce4ec" stroke="#c62828" rx="5" stroke-dasharray="4,3"/>
+  <text x="417" y="245" text-anchor="middle" font-size="11" font-weight="bold" fill="#c62828">核心洞见</text>
+  <text x="417" y="262" text-anchor="middle" font-size="10" fill="#c62828">换模型 → 提升天花板</text>
+  <text x="417" y="276" text-anchor="middle" font-size="10" fill="#c62828">搭 Harness → 提升落地能力</text>
+</svg>

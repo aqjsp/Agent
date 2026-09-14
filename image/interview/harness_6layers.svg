@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 400" width="520" height="400">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+  </defs>
+  <rect width="520" height="400" fill="white"/>
+  <text x="260" y="28" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a1a1a">Harness 六层架构</text>
+  <!-- Input group bracket -->
+  <path d="M30,55 L20,55 L20,135 L30,135" fill="none" stroke="#1976d2" stroke-width="2"/>
+  <text x="15" y="99" text-anchor="middle" font-size="11" fill="#1976d2" transform="rotate(-90 15 99)">输入侧</text>
+  <!-- Layer 1 -->
+  <rect x="40" y="45" width="440" height="42" fill="#e3f2fd" stroke="#1976d2" rx="5"/>
+  <text x="60" y="62" font-size="13" font-weight="bold" fill="#1565c0">第一层</text>
+  <text x="130" y="62" font-size="13" fill="#333">上下文精细化管理</text>
+  <text x="420" y="62" font-size="11" fill="#666">让模型看到正确的东西</text>
+  <text x="60" y="79" font-size="10" fill="#888">按需加载 · 分层注入 · 动态裁剪</text>
+  <!-- Layer 4 -->
+  <rect x="40" y="97" width="440" height="42" fill="#e3f2fd" stroke="#1976d2" rx="5"/>
+  <text x="60" y="114" font-size="13" font-weight="bold" fill="#1565c0">第四层</text>
+  <text x="130" y="114" font-size="13" fill="#333">记忆与状态管理</text>
+  <text x="420" y="114" font-size="11" fill="#666">记住做到哪了</text>
+  <text x="60" y="131" font-size="10" fill="#888">工作记忆 · 短期记忆 · 长期记忆 · AGENTS.md</text>
+  <!-- Action group bracket -->
+  <path d="M30,155 L20,155 L20,235 L30,235" fill="none" stroke="#e65100" stroke-width="2"/>
+  <text x="15" y="199" text-anchor="middle" font-size="11" fill="#e65100" transform="rotate(-90 15 199)">动作侧</text>
+  <!-- Layer 2 -->
+  <rect x="40" y="145" width="440" height="42" fill="#fff3e0" stroke="#e65100" rx="5"/>
+  <text x="60" y="162" font-size="13" font-weight="bold" fill="#e65100">第二层</text>
+  <text x="130" y="162" font-size="13" fill="#333">工具系统</text>
+  <text x="420" y="162" font-size="11" fill="#666">让模型有手可用</text>
+  <text x="60" y="179" font-size="10" fill="#888">MCP协议 · 拦截器 · 沙箱 · Function Calling</text>
+  <!-- Layer 3 -->
+  <rect x="40" y="197" width="440" height="42" fill="#fff3e0" stroke="#e65100" rx="5"/>
+  <text x="60" y="214" font-size="13" font-weight="bold" fill="#e65100">第三层</text>
+  <text x="130" y="214" font-size="13" fill="#333">执行编排（Planning）</text>
+  <text x="420" y="214" font-size="11" fill="#666">按步骤行动</text>
+  <text x="60" y="231" font-size="10" fill="#888">ReAct · Plan-then-Execute · 状态机 · LangGraph</text>
+  <!-- Supervision group bracket -->
+  <path d="M30,255 L20,255 L20,335 L30,335" fill="none" stroke="#2e7d32" stroke-width="2"/>
+  <text x="15" y="299" text-anchor="middle" font-size="11" fill="#2e7d32" transform="rotate(-90 15 299)">监督侧</text>
+  <!-- Layer 5 -->
+  <rect x="40" y="247" width="440" height="42" fill="#e8f5e9" stroke="#2e7d32" rx="5"/>
+  <text x="60" y="264" font-size="13" font-weight="bold" fill="#2e7d32">第五层</text>
+  <text x="130" y="264" font-size="13" fill="#333">评估与观测</text>
+  <text x="420" y="264" font-size="11" fill="#666">做对了吗</text>
+  <text x="60" y="281" font-size="10" fill="#888">Eval集 · Trace链路追踪 · LangSmith · 成功率度量</text>
+  <!-- Layer 6 -->
+  <rect x="40" y="299" width="440" height="42" fill="#e8f5e9" stroke="#2e7d32" rx="5"/>
+  <text x="60" y="316" font-size="13" font-weight="bold" fill="#2e7d32">第六层</text>
+  <text x="130" y="316" font-size="13" fill="#333">约束与恢复</text>
+  <text x="420" y="316" font-size="11" fill="#666">不能做错、错了能回来</text>
+  <text x="60" y="333" font-size="10" fill="#888">硬约束 · 校验 · 失败恢复 · 检查点 · 重试</text>
+  <!-- Bottom annotation -->
+  <text x="260" y="370" text-anchor="middle" font-size="12" fill="#888">Agent = Model + Harness（六层覆盖 Model 之外的一切）</text>
+  <text x="260" y="390" text-anchor="middle" font-size="11" fill="#aaa">复利效应：每次犯错 → 修到对应层 → 永不再犯</text>
+</svg>

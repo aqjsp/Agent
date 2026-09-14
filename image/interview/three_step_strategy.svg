@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" width="560" height="300">
+  <defs>
+    <marker id="arr6" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+  </defs>
+  <rect width="560" height="300" fill="white"/>
+  <text x="280" y="28" text-anchor="middle" font-size="16" font-weight="bold">从零搭建 Harness：三步走策略</text>
+  <!-- Step 1 -->
+  <rect x="30" y="55" width="155" height="200" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" rx="10"/>
+  <rect x="45" y="65" width="125" height="28" fill="#2e7d32" rx="5"/>
+  <text x="107" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="white">第一步：工具层</text>
+  <text x="107" y="108" text-anchor="middle" font-size="11" font-weight="bold" fill="#333">1-2 周</text>
+  <line x1="50" y1="118" x2="165" y2="118" stroke="#a5d6a7" stroke-width="1"/>
+  <text x="55" y="138" font-size="10" fill="#333">✓ 加拦截器</text>
+  <text x="65" y="155" font-size="9" fill="#666">参数校验</text>
+  <text x="65" y="168" font-size="9" fill="#666">权限检查</text>
+  <text x="65" y="181" font-size="9" fill="#666">审计日志</text>
+  <text x="55" y="202" font-size="10" fill="#333">✓ 定义风险等级</text>
+  <text x="55" y="222" font-size="10" fill="#333">✓ 防止毁灭性操作</text>
+  <text x="55" y="245" font-size="9" fill="#2e7d32">最轻量，成本最低</text>
+  <!-- Arrow -->
+  <line x1="188" y1="155" x2="208" y2="155" stroke="#555" stroke-width="2" marker-end="url(#arr6)"/>
+  <!-- Step 2 -->
+  <rect x="210" y="55" width="155" height="200" fill="#fff3e0" stroke="#e65100" stroke-width="2" rx="10"/>
+  <rect x="225" y="65" width="125" height="28" fill="#e65100" rx="5"/>
+  <text x="287" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="white">第二步：框架层</text>
+  <text x="287" y="108" text-anchor="middle" font-size="11" font-weight="bold" fill="#333">2-4 周</text>
+  <line x1="230" y1="118" x2="345" y2="118" stroke="#ffcc80" stroke-width="1"/>
+  <text x="235" y="138" font-size="10" fill="#333">✓ 引入开发框架</text>
+  <text x="245" y="155" font-size="9" fill="#666">LangChain/LangGraph</text>
+  <text x="245" y="168" font-size="9" fill="#666">标准化Agent流程</text>
+  <text x="235" y="190" font-size="10" fill="#333">✓ 接入 Trace</text>
+  <text x="235" y="210" font-size="10" fill="#333">✓ 最小Eval集(10条)</text>
+  <text x="235" y="245" font-size="9" fill="#e65100">可观测 + 可评估</text>
+  <!-- Arrow -->
+  <line x1="368" y1="155" x2="388" y2="155" stroke="#555" stroke-width="2" marker-end="url(#arr6)"/>
+  <!-- Step 3 -->
+  <rect x="390" y="55" width="155" height="200" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="10"/>
+  <rect x="405" y="65" width="125" height="28" fill="#1976d2" rx="5"/>
+  <text x="467" y="84" text-anchor="middle" font-size="13" font-weight="bold" fill="white">第三步：平台层</text>
+  <text x="467" y="108" text-anchor="middle" font-size="11" font-weight="bold" fill="#333">1-3 月</text>
+  <line x1="410" y1="118" x2="525" y2="118" stroke="#90caf9" stroke-width="1"/>
+  <text x="415" y="138" font-size="10" fill="#333">✓ Eval集扩充</text>
+  <text x="415" y="158" font-size="10" fill="#333">✓ 断点续传</text>
+  <text x="415" y="178" font-size="10" fill="#333">✓ 错误恢复</text>
+  <text x="415" y="198" font-size="10" fill="#333">✓ 多Agent协作</text>
+  <text x="415" y="218" font-size="10" fill="#333">✓ 监控告警</text>
+  <text x="415" y="245" font-size="9" fill="#1565c0">生产级可靠性</text>
+  <!-- Bottom summary -->
+  <rect x="30" y="270" width="515" height="25" fill="#fafafa" stroke="#ddd" rx="4"/>
+  <text x="280" y="287" text-anchor="middle" font-size="11" fill="#555">递进关系：防毁灭 → 可观测可评估 → 可靠可恢复。每步都是上一步的基础</text>
+</svg>

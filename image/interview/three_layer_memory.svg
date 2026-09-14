@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 280" width="560" height="280">
+  <defs>
+    <marker id="arr4" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+  </defs>
+  <rect width="560" height="280" fill="white"/>
+  <text x="280" y="28" text-anchor="middle" font-size="16" font-weight="bold">三层记忆模型</text>
+  <!-- Working Memory -->
+  <rect x="30" y="55" width="150" height="90" fill="#e3f2fd" stroke="#1976d2" rx="8"/>
+  <text x="105" y="78" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565c0">工作记忆</text>
+  <text x="105" y="98" text-anchor="middle" font-size="11" fill="#333">上下文窗口</text>
+  <line x1="45" y1="108" x2="165" y2="108" stroke="#90caf9" stroke-width="1"/>
+  <text x="105" y="125" text-anchor="middle" font-size="9" fill="#666">当前对话历史</text>
+  <text x="105" y="138" text-anchor="middle" font-size="9" fill="#666">生命周期：当前轮</text>
+  <!-- Short-term Memory -->
+  <rect x="205" y="55" width="150" height="90" fill="#fff3e0" stroke="#e65100" rx="8"/>
+  <text x="280" y="78" text-anchor="middle" font-size="14" font-weight="bold" fill="#e65100">短期记忆</text>
+  <text x="280" y="98" text-anchor="middle" font-size="11" fill="#333">文件 / 数据库</text>
+  <line x1="220" y1="108" x2="340" y2="108" stroke="#ffcc80" stroke-width="1"/>
+  <text x="280" y="125" text-anchor="middle" font-size="9" fill="#666">progress.md</text>
+  <text x="280" y="138" text-anchor="middle" font-size="9" fill="#666">生命周期：当前任务</text>
+  <!-- Long-term Memory -->
+  <rect x="380" y="55" width="150" height="90" fill="#e8f5e9" stroke="#2e7d32" rx="8"/>
+  <text x="455" y="78" text-anchor="middle" font-size="14" font-weight="bold" fill="#2e7d32">长期记忆</text>
+  <text x="455" y="98" text-anchor="middle" font-size="11" fill="#333">配置文件 / 向量库</text>
+  <line x1="395" y1="108" x2="515" y2="108" stroke="#a5d6a7" stroke-width="1"/>
+  <text x="455" y="125" text-anchor="middle" font-size="9" fill="#666">AGENTS.md · 用户偏好</text>
+  <text x="455" y="138" text-anchor="middle" font-size="9" fill="#666">生命周期：跨会话</text>
+  <!-- Arrows between memories -->
+  <line x1="182" y1="100" x2="203" y2="100" stroke="#555" stroke-width="1.5" marker-end="url(#arr4)"/>
+  <line x1="357" y1="100" x2="378" y2="100" stroke="#555" stroke-width="1.5" marker-end="url(#arr4)"/>
+  <text x="193" y="92" font-size="9" fill="#888">溢出</text>
+  <text x="368" y="92" font-size="9" fill="#888">归档</text>
+  <!-- Capacity indicators -->
+  <rect x="45" y="155" width="120" height="12" fill="#bbdefb" rx="2"/>
+  <rect x="45" y="155" width="108" height="12" fill="#1976d2" rx="2"/>
+  <text x="105" y="164" text-anchor="middle" font-size="8" fill="white">90% 满</text>
+  <rect x="220" y="155" width="120" height="12" fill="#ffe0b2" rx="2"/>
+  <rect x="220" y="155" width="60" height="12" fill="#e65100" rx="2"/>
+  <text x="280" y="164" text-anchor="middle" font-size="8" fill="white">50%</text>
+  <rect x="395" y="155" width="120" height="12" fill="#c8e6c9" rx="2"/>
+  <rect x="395" y="155" width="18" height="12" fill="#2e7d32" rx="2"/>
+  <text x="455" y="164" text-anchor="middle" font-size="8" fill="#2e7d32">15%</text>
+  <!-- Key rules -->
+  <rect x="30" y="185" width="500" height="80" fill="#fafafa" stroke="#ddd" rx="5"/>
+  <text x="280" y="205" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">关键原则</text>
+  <text x="50" y="225" font-size="10" fill="#555">1. 工作记忆有限（4K-128K tokens），不能什么都塞 → 必须外化</text>
+  <text x="50" y="242" font-size="10" fill="#555">2. 三类记忆生命周期完全不同，混在一起就乱了 → 必须分层存</text>
+  <text x="50" y="259" font-size="10" fill="#555">3. 每次调用都注入长期记忆 → AGENTS.md / .cursorrules 是典型实现</text>
+</svg>
