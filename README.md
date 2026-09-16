@@ -23,7 +23,7 @@ image/          配图
 
 ## 架构系列
 
-图编排是后面各篇的底座，排在第 0 篇。第 9–20 篇还没写，目录在 [architecture/](architecture/README.md)。
+图编排是后面各篇的底座，排在第 0 篇。完整目录见 [architecture/](architecture/README.md)。
 
 - [第 0 篇：LangGraph 不是 LangChain 的插件](architecture/第0篇_图编排.md)
 - [第 1 篇：State 设计](architecture/第1篇_State设计.md)
@@ -34,6 +34,18 @@ image/          配图
 - [第 6 篇：级联故障](architecture/第6篇_级联故障.md)
 - [第 7 篇：评估](architecture/第7篇_评估.md)
 - [第 8 篇：安全](architecture/第8篇_安全.md)
+- [第 9 篇：Supervisor vs Swarm](architecture/第9篇_Supervisor.md)
+- [第 10 篇：通信架构](architecture/第10篇_通信.md)
+- [第 11 篇：权限模型](architecture/第11篇_权限.md)
+- [第 12 篇：编排框架](architecture/第12篇_编排框架.md)
+- [第 13 篇：可观测](architecture/第13篇_可观测.md)
+- [第 14 篇：成本](architecture/第14篇_成本.md)
+- [第 15 篇：部署](architecture/第15篇_部署.md)
+- [第 16 篇：沙箱](architecture/第16篇_沙箱.md)
+- [第 17 篇：MCP](architecture/第17篇_MCP.md)
+- [第 18 篇：A2A](architecture/第18篇_A2A.md)
+- [第 19 篇：自进化](architecture/第19篇_自进化.md)
+- [第 20 篇：终态](architecture/第20篇_终态.md)
 
 ## Harness
 
