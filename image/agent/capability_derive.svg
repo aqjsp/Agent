@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 420" width="920" height="420" font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif">
+  <rect width="920" height="420" rx="16" fill="#f8fafc"/>
+  <text x="460" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">票只能缩小派生，不能放大</text>
+  <text x="460" y="60" text-anchor="middle" font-size="13" fill="#64748b">Swarm 转交上一棒的票 = 放大；正确做法是会话服务按当前意图重签</text>
+
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrRed" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/>
+    </marker>
+    <marker id="arrGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#059669"/>
+    </marker>
+  </defs>
+
+  <rect x="40" y="88" width="200" height="88" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="140" y="122" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">用户登录态</text>
+  <text x="140" y="144" text-anchor="middle" font-size="11" fill="#1e40af">session · user=u12</text>
+  <text x="140" y="162" text-anchor="middle" font-size="11" fill="#1e40af">不是 Agent 票</text>
+
+  <path d="M240 132 H300" stroke="#64748b" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="300" y="80" width="240" height="104" rx="12" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text x="420" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">父票 Parent</text>
+  <text x="420" y="130" text-anchor="middle" font-size="12" fill="#334155">actions={orders.read}</text>
+  <text x="420" y="150" text-anchor="middle" font-size="12" fill="#334155">resource=order:9821 · 10min</text>
+  <text x="420" y="170" text-anchor="middle" font-size="11" fill="#64748b">发给 Supervisor，中心无退款 action</text>
+
+  <path d="M540 132 H600" stroke="#059669" stroke-width="2" marker-end="url(#arrGreen)"/>
+
+  <rect x="600" y="80" width="280" height="104" rx="12" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+  <text x="740" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#047857">合法派生 Child</text>
+  <text x="740" y="130" text-anchor="middle" font-size="12" fill="#334155">actions 求交 · 资源更具体</text>
+  <text x="740" y="150" text-anchor="middle" font-size="12" fill="#334155">expires 更早 · parent=父票</text>
+  <text x="740" y="170" text-anchor="middle" font-size="11" fill="#047857">Worker 结束立刻作废</text>
+
+  <rect x="80" y="232" width="760" height="148" rx="14" fill="#fff" stroke="#ef4444" stroke-width="2"/>
+  <text x="460" y="264" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">三种非法放大</text>
+  <rect x="110" y="284" width="210" height="72" rx="10" fill="#fee2e2"/>
+  <text x="215" y="312" text-anchor="middle" font-size="12" fill="#7f1d1d">交接时转交父票</text>
+  <text x="215" y="332" text-anchor="middle" font-size="11" fill="#991b1b">接待票没有退款，转交=放大</text>
+  <rect x="355" y="284" width="210" height="72" rx="10" fill="#fee2e2"/>
+  <text x="460" y="312" text-anchor="middle" font-size="12" fill="#7f1d1d">派生时加入新 action</text>
+  <text x="460" y="332" text-anchor="middle" font-size="11" fill="#991b1b">orders.read → refund.execute</text>
+  <rect x="600" y="284" width="210" height="72" rx="10" fill="#fee2e2"/>
+  <text x="705" y="312" text-anchor="middle" font-size="12" fill="#7f1d1d">HITL 改 System Prompt</text>
+  <text x="705" y="332" text-anchor="middle" font-size="11" fill="#991b1b">人点确认应签发新票</text>
+</svg>

@@ -1,40 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif" width="900" height="420">
-  <rect width="900" height="420" rx="12" fill="#f8fafc"/>
-  <text x="450" y="32" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">Supervisor vs Swarm：控制权在谁手里</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 520" width="920" height="520" font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif">
+  <rect width="920" height="520" rx="16" fill="#f8fafc"/>
+  <text x="460" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">Supervisor vs Swarm：控制权在谁手里</text>
+  <text x="460" y="60" text-anchor="middle" font-size="13" fill="#64748b">同一组 Worker，失败形态完全不同，不要用同一套监控去等</text>
 
-  <rect x="24" y="52" width="420" height="340" rx="10" fill="#fff" stroke="#1d4ed8" stroke-width="2"/>
-  <text x="234" y="82" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">Supervisor：中心调度</text>
-  <rect x="154" y="100" width="160" height="48" rx="8" fill="#dbeafe" stroke="#1d4ed8"/>
-  <text x="234" y="122" text-anchor="middle" font-size="13" fill="#1e3a8a">Supervisor</text>
-  <text x="234" y="140" text-anchor="middle" font-size="11" fill="#1e40af">拆任务 · 派活 · 收结果</text>
-  <rect x="48" y="200" width="110" height="44" rx="8" fill="#e2e8f0" stroke="#475569"/>
-  <text x="103" y="227" text-anchor="middle" font-size="12">Worker A 检索</text>
-  <rect x="179" y="200" width="110" height="44" rx="8" fill="#e2e8f0" stroke="#475569"/>
-  <text x="234" y="227" text-anchor="middle" font-size="12">Worker B 写稿</text>
-  <rect x="310" y="200" width="110" height="44" rx="8" fill="#e2e8f0" stroke="#475569"/>
-  <text x="365" y="227" text-anchor="middle" font-size="12">Worker C 审查</text>
-  <path d="M234 148 V200" stroke="#475569" stroke-width="1.6" marker-end="url(#a9)"/>
-  <path d="M180 148 L103 200" stroke="#475569" stroke-width="1.6"/>
-  <path d="M288 148 L365 200" stroke="#475569" stroke-width="1.6"/>
-  <text x="234" y="280" text-anchor="middle" font-size="12" fill="#334155">Worker 不互调。结果只回 Supervisor。</text>
-  <text x="234" y="304" text-anchor="middle" font-size="12" fill="#334155">审计清楚，瓶颈也清楚：上下文堆在中心。</text>
-  <text x="234" y="340" text-anchor="middle" font-size="12" fill="#1e3a8a">适合：步骤有依赖、要全局预算、要人工卡点</text>
-  <text x="234" y="364" text-anchor="middle" font-size="12" fill="#64748b">失败像：Supervisor 窗口爆、单点变慢拖全图</text>
+  <rect x="28" y="80" width="420" height="410" rx="14" fill="#fff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="238" y="112" text-anchor="middle" font-size="16" font-weight="700" fill="#1d4ed8">Supervisor · 中心调度</text>
+  <rect x="148" y="132" width="180" height="56" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="238" y="156" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">Supervisor</text>
+  <text x="238" y="176" text-anchor="middle" font-size="11" fill="#1e40af">拆任务 · 派活 · 收结果 · 说停</text>
+  <rect x="48" y="230" width="112" height="48" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="104" y="250" text-anchor="middle" font-size="12" fill="#0f172a">检索 Worker</text>
+  <text x="104" y="266" text-anchor="middle" font-size="10" fill="#475569">只回 Supervisor</text>
+  <rect x="182" y="230" width="112" height="48" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="238" y="250" text-anchor="middle" font-size="12" fill="#0f172a">写稿 Worker</text>
+  <text x="238" y="266" text-anchor="middle" font-size="10" fill="#475569">只回 Supervisor</text>
+  <rect x="316" y="230" width="112" height="48" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="372" y="250" text-anchor="middle" font-size="12" fill="#0f172a">审查 Worker</text>
+  <text x="372" y="266" text-anchor="middle" font-size="10" fill="#475569">只回 Supervisor</text>
+  <path d="M238 188 V230" stroke="#64748b" stroke-width="1.8"/>
+  <path d="M180 188 L104 230" stroke="#64748b" stroke-width="1.8"/>
+  <path d="M296 188 L372 230" stroke="#64748b" stroke-width="1.8"/>
+  <text x="238" y="318" text-anchor="middle" font-size="12" fill="#334155">Worker 之间默认不互调</text>
+  <text x="238" y="340" text-anchor="middle" font-size="12" fill="#334155">审计清楚：每一步都经中心</text>
+  <text x="238" y="372" text-anchor="middle" font-size="12" fill="#1d4ed8">适合：步骤有依赖 / 全局预算 / 固定 HITL</text>
+  <text x="238" y="400" text-anchor="middle" font-size="12" fill="#b45309">死法：中心窗口爆 · 单点变慢 · 重试风暴</text>
+  <text x="238" y="430" text-anchor="middle" font-size="12" fill="#64748b">闸：摘要协议、同类 Worker 并发上限、</text>
+  <text x="238" y="450" text-anchor="middle" font-size="12" fill="#64748b">高危工具不挂在中心自己身上</text>
 
-  <rect x="456" y="52" width="420" height="340" rx="10" fill="#fff" stroke="#047857" stroke-width="2"/>
-  <text x="666" y="82" text-anchor="middle" font-size="15" font-weight="700" fill="#065f46">Swarm：对等交接</text>
-  <rect x="500" y="118" width="120" height="44" rx="8" fill="#d1fae5" stroke="#047857"/>
-  <text x="560" y="145" text-anchor="middle" font-size="12">Agent 接待</text>
-  <rect x="712" y="118" width="120" height="44" rx="8" fill="#d1fae5" stroke="#047857"/>
-  <text x="772" y="145" text-anchor="middle" font-size="12">Agent 退款</text>
-  <rect x="606" y="210" width="120" height="44" rx="8" fill="#d1fae5" stroke="#047857"/>
-  <text x="666" y="237" text-anchor="middle" font-size="12">Agent 技术</text>
-  <path d="M620 140 H712" stroke="#047857" stroke-width="1.6"/>
-  <path d="M560 162 L666 210" stroke="#047857" stroke-width="1.6"/>
-  <path d="M772 162 L726 210" stroke="#047857" stroke-width="1.6"/>
-  <text x="666" y="290" text-anchor="middle" font-size="12" fill="#334155">谁手里有控制权，谁决定下一棒。</text>
-  <text x="666" y="314" text-anchor="middle" font-size="12" fill="#334155">没有全局视野，交接协议就是架构。</text>
-  <text x="666" y="350" text-anchor="middle" font-size="12" fill="#065f46">适合：意图会漂、角色对等、会话长</text>
-  <text x="666" y="374" text-anchor="middle" font-size="12" fill="#64748b">失败像：A↔B 踢皮球、环路、权限被交接放大</text>
+  <rect x="472" y="80" width="420" height="410" rx="14" fill="#fff" stroke="#059669" stroke-width="2"/>
+  <text x="682" y="112" text-anchor="middle" font-size="16" font-weight="700" fill="#047857">Swarm · 对等交接</text>
+  <rect x="500" y="140" width="120" height="48" rx="8" fill="#d1fae5" stroke="#059669" stroke-width="2"/>
+  <text x="560" y="160" text-anchor="middle" font-size="12" fill="#065f46">接待 Agent</text>
+  <text x="560" y="176" text-anchor="middle" font-size="10" fill="#047857">持有控制权</text>
+  <rect x="744" y="140" width="120" height="48" rx="8" fill="#d1fae5" stroke="#059669"/>
+  <text x="804" y="168" text-anchor="middle" font-size="12" fill="#065f46">退款 Agent</text>
+  <rect x="622" y="230" width="120" height="48" rx="8" fill="#d1fae5" stroke="#059669"/>
+  <text x="682" y="258" text-anchor="middle" font-size="12" fill="#065f46">技术 Agent</text>
+  <path d="M620 164 H744" stroke="#059669" stroke-width="1.8"/>
+  <path d="M560 188 L682 230" stroke="#059669" stroke-width="1.8"/>
+  <path d="M804 188 L742 230" stroke="#059669" stroke-width="1.8"/>
+  <text x="682" y="318" text-anchor="middle" font-size="12" fill="#334155">谁持有控制权，谁决定下一棒</text>
+  <text x="682" y="340" text-anchor="middle" font-size="12" fill="#334155">没有全局视野，协议就是架构</text>
+  <text x="682" y="372" text-anchor="middle" font-size="12" fill="#047857">适合：意图会漂 / 角色对等 / 长会话</text>
+  <text x="682" y="400" text-anchor="middle" font-size="12" fill="#b45309">死法：踢皮球 · 运行时环 · 权限求并</text>
+  <text x="682" y="430" text-anchor="middle" font-size="12" fill="#64748b">闸：handoff_log、同向交接上限、</text>
+  <text x="682" y="450" text-anchor="middle" font-size="12" fill="#64748b">交接后重算工具白名单</text>
 </svg>

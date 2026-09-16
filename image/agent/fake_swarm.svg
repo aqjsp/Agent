@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 480" width="920" height="480" font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif">
+  <rect width="920" height="480" rx="16" fill="#f8fafc"/>
+  <text x="460" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">假 Swarm：隐藏的中心还在</text>
+  <text x="460" y="60" text-anchor="middle" font-size="13" fill="#64748b">有没有一个节点被允许看见所有 Worker 的原文？有，就是 Supervisor</text>
+
+  <rect x="40" y="88" width="400" height="340" rx="14" fill="#fff" stroke="#ef4444" stroke-width="2"/>
+  <text x="240" y="120" text-anchor="middle" font-size="15" font-weight="700" fill="#b91c1c">表面上的交接</text>
+  <rect x="70" y="144" width="100" height="44" rx="8" fill="#d1fae5" stroke="#059669"/>
+  <text x="120" y="170" text-anchor="middle" font-size="12" fill="#065f46">接待</text>
+  <rect x="190" y="144" width="100" height="44" rx="8" fill="#d1fae5" stroke="#059669"/>
+  <text x="240" y="170" text-anchor="middle" font-size="12" fill="#065f46">退款</text>
+  <rect x="310" y="144" width="100" height="44" rx="8" fill="#d1fae5" stroke="#059669"/>
+  <text x="360" y="170" text-anchor="middle" font-size="12" fill="#065f46">技术</text>
+  <rect x="100" y="230" width="240" height="56" rx="10" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+  <text x="220" y="254" text-anchor="middle" font-size="13" font-weight="700" fill="#7f1d1d">隐藏协调函数</text>
+  <text x="220" y="274" text-anchor="middle" font-size="11" fill="#991b1b">每次交接都把全文打回来</text>
+  <text x="240" y="320" text-anchor="middle" font-size="13" fill="#334155">窗口问题一个没少</text>
+  <text x="240" y="344" text-anchor="middle" font-size="13" fill="#334155">环路问题倒是多了</text>
+  <text x="240" y="380" text-anchor="middle" font-size="12" fill="#b45309">识别：谁看见所有原文？</text>
+
+  <rect x="480" y="88" width="400" height="340" rx="14" fill="#fff" stroke="#059669" stroke-width="2"/>
+  <text x="680" y="120" text-anchor="middle" font-size="15" font-weight="700" fill="#047857">真 Swarm</text>
+  <rect x="510" y="144" width="100" height="44" rx="8" fill="#d1fae5" stroke="#059669" stroke-width="2"/>
+  <text x="560" y="170" text-anchor="middle" font-size="12" fill="#065f46">接待</text>
+  <rect x="630" y="144" width="100" height="44" rx="8" fill="#bbf7d0" stroke="#059669" stroke-width="2"/>
+  <text x="680" y="162" text-anchor="middle" font-size="12" fill="#065f46">退款</text>
+  <text x="680" y="178" text-anchor="middle" font-size="10" fill="#047857">持有控制权</text>
+  <rect x="750" y="144" width="100" height="44" rx="8" fill="#d1fae5" stroke="#059669"/>
+  <text x="800" y="170" text-anchor="middle" font-size="12" fill="#065f46">技术</text>
+  <text x="680" y="230" text-anchor="middle" font-size="13" fill="#334155">交接载荷：意图标签</text>
+  <text x="680" y="254" text-anchor="middle" font-size="13" fill="#334155">业务 id · 限长摘要</text>
+  <text x="680" y="278" text-anchor="middle" font-size="13" fill="#334155">原文进 Checkpoint，按需拉</text>
+  <text x="680" y="314" text-anchor="middle" font-size="13" fill="#047857">没有节点看见所有原文</text>
+  <text x="680" y="350" text-anchor="middle" font-size="12" fill="#64748b">闸仍要：handoff_log</text>
+  <text x="680" y="372" text-anchor="middle" font-size="12" fill="#64748b">同向交接上限 · 重算工具表</text>
+  <text x="680" y="394" text-anchor="middle" font-size="12" fill="#64748b">hop 看板单独一张</text>
+</svg>

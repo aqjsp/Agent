@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 440" width="920" height="440" font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif">
+  <rect width="920" height="440" rx="16" fill="#f8fafc"/>
+  <text x="460" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">子图边界就是通信边界</text>
+  <text x="460" y="60" text-anchor="middle" font-size="13" fill="#64748b">父图永远看不见 raw_hits。这不是优化，是隔离</text>
+
+  <rect x="40" y="88" width="280" height="300" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="180" y="120" text-anchor="middle" font-size="15" font-weight="700" fill="#1d4ed8">父图 ParentState</text>
+  <rect x="70" y="144" width="220" height="36" rx="8" fill="#fff" stroke="#2563eb"/>
+  <text x="180" y="167" text-anchor="middle" font-size="12" fill="#1e3a8a">user · status</text>
+  <rect x="70" y="192" width="220" height="36" rx="8" fill="#fff" stroke="#2563eb"/>
+  <text x="180" y="215" text-anchor="middle" font-size="12" fill="#1e3a8a">report_id 指针</text>
+  <rect x="70" y="240" width="220" height="36" rx="8" fill="#fff" stroke="#94a3b8" stroke-dasharray="4 3"/>
+  <text x="180" y="263" text-anchor="middle" font-size="12" fill="#94a3b8">看不见 raw_hits</text>
+  <text x="180" y="308" text-anchor="middle" font-size="12" fill="#334155">子图挂了，父图拿到</text>
+  <text x="180" y="328" text-anchor="middle" font-size="12" fill="#334155">失败状态，不是半截 JSON</text>
+  <text x="180" y="360" text-anchor="middle" font-size="12" fill="#1d4ed8">跨服务时 to_parent 做成消息</text>
+
+  <rect x="360" y="180" width="80" height="40" rx="8" fill="#fff" stroke="#64748b"/>
+  <text x="400" y="205" text-anchor="middle" font-size="12" fill="#334155">映射</text>
+
+  <rect x="480" y="88" width="400" height="300" rx="14" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+  <text x="680" y="120" text-anchor="middle" font-size="15" font-weight="700" fill="#047857">子图 ResearchState</text>
+  <rect x="510" y="144" width="340" height="36" rx="8" fill="#fff" stroke="#059669"/>
+  <text x="680" y="167" text-anchor="middle" font-size="12" fill="#065f46">query</text>
+  <rect x="510" y="192" width="340" height="36" rx="8" fill="#d1fae5" stroke="#059669"/>
+  <text x="680" y="215" text-anchor="middle" font-size="12" fill="#065f46">raw_hits 只活在子图里</text>
+  <rect x="510" y="240" width="340" height="36" rx="8" fill="#fff" stroke="#059669"/>
+  <text x="680" y="263" text-anchor="middle" font-size="12" fill="#065f46">summary ≤ 400 字</text>
+  <rect x="510" y="288" width="340" height="36" rx="8" fill="#fff" stroke="#059669"/>
+  <text x="680" y="311" text-anchor="middle" font-size="12" fill="#065f46">put_blob(hits) → report_id</text>
+  <text x="680" y="360" text-anchor="middle" font-size="12" fill="#64748b">对外只暴露输入输出 schema</text>
+</svg>

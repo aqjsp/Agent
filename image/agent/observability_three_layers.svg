@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 500" width="920" height="500" font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif">
+  <rect width="920" height="500" rx="16" fill="#f8fafc"/>
+  <text x="460" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">三层观测，别混在一个 log 文件里</text>
+  <text x="460" y="60" text-anchor="middle" font-size="13" fill="#64748b">解释性论文解决不了「哪一次交接开了退款工具」</text>
+
+  <rect x="40" y="88" width="840" height="100" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="70" y="128" font-size="16" font-weight="700" fill="#1e3a8a">L1 Trace</text>
+  <text x="180" y="128" font-size="14" fill="#1e40af">一次用户请求 = 一次 thread_id 上的一次 run</text>
+  <text x="70" y="158" font-size="13" fill="#334155">对得上 SLA、费用、是否 HITL。缺这一层，月账单对不上任何一次胡话。</text>
+  <text x="780" y="128" text-anchor="middle" font-size="12" fill="#1d4ed8">采样可降</text>
+  <text x="780" y="148" text-anchor="middle" font-size="12" fill="#1d4ed8">成功 1%</text>
+
+  <rect x="40" y="204" width="840" height="100" rx="14" fill="#d1fae5" stroke="#059669" stroke-width="2"/>
+  <text x="70" y="244" font-size="16" font-weight="700" fill="#065f46">L2 Span</text>
+  <text x="180" y="244" font-size="14" fill="#047857">图上的节点 / 一次工具调用</text>
+  <text x="70" y="274" font-size="13" fill="#334155">supervisor.route · research.search · tool:http_get · 开始结束、错误码、token、工具名</text>
+  <text x="780" y="244" text-anchor="middle" font-size="12" fill="#047857">错误 100%</text>
+  <text x="780" y="264" text-anchor="middle" font-size="12" fill="#047857">护栏 100%</text>
+
+  <rect x="40" y="320" width="840" height="100" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="70" y="360" font-size="16" font-weight="700" fill="#92400e">L3 State Diff</text>
+  <text x="220" y="360" font-size="14" fill="#b45309">这个 Superstep 改了哪些键</text>
+  <text x="70" y="390" font-size="13" fill="#334155">只记键名、前后哈希或短摘要、生产者节点。整包 dump 会把窗口问题变成磁盘问题。</text>
+  <text x="780" y="360" text-anchor="middle" font-size="12" fill="#b45309">框架默认</text>
+  <text x="780" y="380" text-anchor="middle" font-size="12" fill="#b45309">不给你这一层</text>
+
+  <text x="460" y="456" text-anchor="middle" font-size="13" fill="#0f172a">串起来：trace_id → span_id → checkpoint_id</text>
+  <text x="460" y="478" text-anchor="middle" font-size="12" fill="#64748b">控制面事件另打：护栏拒绝 · HITL · 交接 · 熔断 · 授权失败 · Checkpoint 写入失败</text>
+</svg>

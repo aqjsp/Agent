@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 420" width="920" height="420" font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif">
+  <rect width="920" height="420" rx="16" fill="#f8fafc"/>
+  <text x="460" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">控制面事件：业务 span 不够</text>
+  <text x="460" y="60" text-anchor="middle" font-size="13" fill="#64748b">这些事件级别至少 info；模型输出全文默认不进日志，进对象存储</text>
+
+  <rect x="40" y="88" width="200" height="100" rx="12" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="140" y="124" text-anchor="middle" font-size="14" font-weight="700" fill="#991b1b">护栏拒绝</text>
+  <text x="140" y="148" text-anchor="middle" font-size="12" fill="#7f1d1d">哪一层 · 规则 id</text>
+  <text x="140" y="168" text-anchor="middle" font-size="12" fill="#7f1d1d">截断后的输入哈希</text>
+
+  <rect x="260" y="88" width="200" height="100" rx="12" fill="#ffedd5" stroke="#f97316"/>
+  <text x="360" y="124" text-anchor="middle" font-size="14" font-weight="700" fill="#9a3412">HITL</text>
+  <text x="360" y="148" text-anchor="middle" font-size="12" fill="#7c2d12">interrupt 节点</text>
+  <text x="360" y="168" text-anchor="middle" font-size="12" fill="#7c2d12">等待时长 · 人的决策</text>
+
+  <rect x="480" y="88" width="200" height="100" rx="12" fill="#dbeafe" stroke="#3b82f6"/>
+  <text x="580" y="124" text-anchor="middle" font-size="14" font-weight="700" fill="#1d4ed8">交接</text>
+  <text x="580" y="148" text-anchor="middle" font-size="12" fill="#1e40af">from · to · reason</text>
+  <text x="580" y="168" text-anchor="middle" font-size="12" fill="#1e40af">第 9 篇 hop 看板</text>
+
+  <rect x="700" y="88" width="180" height="100" rx="12" fill="#fef3c7" stroke="#d97706"/>
+  <text x="790" y="124" text-anchor="middle" font-size="14" font-weight="700" fill="#b45309">熔断</text>
+  <text x="790" y="148" text-anchor="middle" font-size="12" fill="#92400e">打开 / 半开</text>
+  <text x="790" y="168" text-anchor="middle" font-size="12" fill="#92400e">第 6 篇按工具</text>
+
+  <rect x="40" y="212" width="200" height="100" rx="12" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="140" y="248" text-anchor="middle" font-size="14" font-weight="700" fill="#6d28d9">授权失败</text>
+  <text x="140" y="272" text-anchor="middle" font-size="12" fill="#5b21b6">cap_id · action</text>
+  <text x="140" y="292" text-anchor="middle" font-size="12" fill="#5b21b6">第 11 篇四元组</text>
+
+  <rect x="260" y="212" width="200" height="100" rx="12" fill="#fecaca" stroke="#b91c1c" stroke-width="2"/>
+  <text x="360" y="248" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">Checkpoint 写入失败</text>
+  <text x="360" y="272" text-anchor="middle" font-size="12" fill="#991b1b">比模型 500 更严重</text>
+  <text x="360" y="292" text-anchor="middle" font-size="12" fill="#991b1b">恢复链断了</text>
+
+  <rect x="480" y="212" width="400" height="100" rx="12" fill="#ecfdf5" stroke="#059669"/>
+  <text x="680" y="248" text-anchor="middle" font-size="14" font-weight="700" fill="#047857">正文怎么记</text>
+  <text x="680" y="272" text-anchor="middle" font-size="12" fill="#065f46">结构化字段，不要散文</text>
+  <text x="680" y="292" text-anchor="middle" font-size="12" fill="#065f46">日志只留 output_ref · 合规和成本都要求这样</text>
+
+  <text x="460" y="360" text-anchor="middle" font-size="13" fill="#0f172a">采样：成功路径 1%；护栏拒绝、HITL、错误 100%</text>
+  <text x="460" y="384" text-anchor="middle" font-size="12" fill="#64748b">Agent 的 token 日志比 web QPS 贵，全量正文会先打爆账单再打爆磁盘</text>
+</svg>

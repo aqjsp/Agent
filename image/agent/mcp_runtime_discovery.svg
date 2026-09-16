@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 520" width="920" height="520" font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif">
+  <rect width="920" height="520" rx="16" fill="#f8fafc"/>
+  <text x="460" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">MCP：工具从编译时依赖变成运行时发现</text>
+  <text x="460" y="60" text-anchor="middle" font-size="13" fill="#64748b">发现必须白名单，描述必须当不可信输入，调用必须另验票</text>
+
+  <defs>
+    <marker id="marr" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect x="40" y="88" width="180" height="80" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="130" y="118" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">Agent 图</text>
+  <text x="130" y="142" text-anchor="middle" font-size="11" fill="#1e40af">持有入口，不持有全世界</text>
+
+  <path d="M220 128 H270" stroke="#64748b" stroke-width="2" marker-end="url(#marr)"/>
+
+  <rect x="270" y="88" width="200" height="80" rx="12" fill="#fff" stroke="#0f172a" stroke-width="2"/>
+  <text x="370" y="118" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">白名单闸</text>
+  <text x="370" y="142" text-anchor="middle" font-size="11" fill="#334155">ALLOWED_SERVERS × TOOLS</text>
+
+  <path d="M470 128 H520" stroke="#64748b" stroke-width="2" marker-end="url(#marr)"/>
+
+  <rect x="520" y="80" width="160" height="96" rx="12" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+  <text x="600" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#047857">search MCP</text>
+  <text x="600" y="128" text-anchor="middle" font-size="11" fill="#065f46">web_search</text>
+  <text x="600" y="148" text-anchor="middle" font-size="11" fill="#64748b">STDIO 路径来自配置仓</text>
+  <text x="600" y="164" text-anchor="middle" font-size="11" fill="#64748b">不来自模型输出</text>
+
+  <rect x="720" y="80" width="160" height="96" rx="12" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+  <text x="800" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#047857">tickets MCP</text>
+  <text x="800" y="128" text-anchor="middle" font-size="11" fill="#065f46">ticket.get / comment</text>
+  <text x="800" y="148" text-anchor="middle" font-size="11" fill="#64748b">HTTP + TLS + 身份</text>
+  <text x="800" y="164" text-anchor="middle" font-size="11" fill="#64748b">不要扫端口「发现」</text>
+
+  <rect x="40" y="220" width="840" height="130" rx="14" fill="#fff" stroke="#ef4444" stroke-width="2"/>
+  <text x="460" y="252" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">动态工具表的四条新攻击面</text>
+  <text x="160" y="286" text-anchor="middle" font-size="12" fill="#7f1d1d">1. 工具描述进 prompt</text>
+  <text x="160" y="308" text-anchor="middle" font-size="11" fill="#991b1b">间接注入藏在 list 返回</text>
+  <text x="370" y="286" text-anchor="middle" font-size="12" fill="#7f1d1d">2. 列出 delete_repo</text>
+  <text x="370" y="308" text-anchor="middle" font-size="11" fill="#991b1b">发现≠授权，必须另验票</text>
+  <text x="580" y="286" text-anchor="middle" font-size="12" fill="#7f1d1d">3. 谁有权被连接</text>
+  <text x="580" y="308" text-anchor="middle" font-size="11" fill="#991b1b">技能市场投毒是同一类</text>
+  <text x="780" y="286" text-anchor="middle" font-size="12" fill="#7f1d1d">4. 配置即 shell</text>
+  <text x="780" y="308" text-anchor="middle" font-size="11" fill="#991b1b">STDIO 参数进 spawn</text>
+
+  <rect x="40" y="372" width="840" height="116" rx="14" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text x="460" y="404" text-anchor="middle" font-size="14" font-weight="700" fill="#1d4ed8">接到本系列的四刀</text>
+  <text x="160" y="436" text-anchor="middle" font-size="12" fill="#334155">第 3 篇：按票过滤再塞窗口</text>
+  <text x="370" y="436" text-anchor="middle" font-size="12" fill="#334155">第 6 篇：按服务器熔断</text>
+  <text x="580" y="436" text-anchor="middle" font-size="12" fill="#334155">第 13 篇：span 记 server/tool</text>
+  <text x="780" y="436" text-anchor="middle" font-size="12" fill="#334155">第 16 篇：STDIO 进程进沙箱</text>
+  <text x="460" y="464" text-anchor="middle" font-size="12" fill="#64748b">MCP 不发票，只是通道。协议不管白名单、描述消毒、验票，图必须管。</text>
+</svg>

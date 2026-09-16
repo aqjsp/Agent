@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 420" width="920" height="420" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="920" height="420" rx="16" fill="#f8fafc"/>
+  <text x="460" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">共享 State vs 消息传递</text>
+  <text x="460" y="60" text-anchor="middle" font-size="13" fill="#64748b">通道里跑的不只是字段，还有会被下一棒当成指令的自然语言</text>
+
+  <rect x="40" y="88" width="400" height="300" rx="14" fill="#fff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="240" y="120" text-anchor="middle" font-size="16" font-weight="700" fill="#1d4ed8">共享 State</text>
+  <rect x="90" y="140" width="300" height="70" rx="10" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="240" y="168" text-anchor="middle" font-size="13" fill="#1e3a8a">一张类型化图状态</text>
+  <text x="240" y="190" text-anchor="middle" font-size="12" fill="#1e40af">节点返回补丁 · Reducer 合并</text>
+  <text x="240" y="240" text-anchor="middle" font-size="13" fill="#334155">脏法：静默覆盖 · 窗口被通道喂胖</text>
+  <text x="240" y="264" text-anchor="middle" font-size="13" fill="#334155">间接注入变成全图广播</text>
+  <text x="240" y="300" text-anchor="middle" font-size="13" fill="#1d4ed8">该共享：指针、摘要、next_worker</text>
+  <text x="240" y="324" text-anchor="middle" font-size="13" fill="#64748b">原文进 blob / Checkpoint，不进 prompt</text>
+  <text x="240" y="356" text-anchor="middle" font-size="12" fill="#0f172a">适合：同一张图、同一进程、一次请求</text>
+
+  <rect x="480" y="88" width="400" height="300" rx="14" fill="#fff" stroke="#059669" stroke-width="2"/>
+  <text x="680" y="120" text-anchor="middle" font-size="16" font-weight="700" fill="#047857">消息传递</text>
+  <rect x="530" y="140" width="300" height="70" rx="10" fill="#d1fae5" stroke="#059669"/>
+  <text x="680" y="168" text-anchor="middle" font-size="13" fill="#065f46">A 的输出是 B 的输入</text>
+  <text x="680" y="190" text-anchor="middle" font-size="12" fill="#047857">不共享内存 · 各自 messages</text>
+  <text x="680" y="240" text-anchor="middle" font-size="13" fill="#334155">脏法：迟到消息打脸降级分支</text>
+  <text x="680" y="264" text-anchor="middle" font-size="13" fill="#334155">契约退化成散文 · 复盘要跨进程</text>
+  <text x="680" y="300" text-anchor="middle" font-size="13" fill="#047857">该传递：带 schema 的事件 + id</text>
+  <text x="680" y="324" text-anchor="middle" font-size="13" fill="#64748b">数量 / URL / 是否截断不要靠人话</text>
+  <text x="680" y="356" text-anchor="middle" font-size="12" fill="#0f172a">适合：跨服务、跨团队、跨生命周期</text>
+</svg>

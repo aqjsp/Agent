@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 520" width="920" height="520" font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif">
+  <rect width="920" height="520" rx="16" fill="#f8fafc"/>
+  <text x="460" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">三级隔离：票决定能不能跑，沙箱决定碰得到什么</text>
+  <text x="460" y="60" text-anchor="middle" font-size="13" fill="#64748b">挂 Docker socket 的「容器沙箱」隔离等于零</text>
+
+  <rect x="28" y="84" width="280" height="300" rx="14" fill="#fff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="168" y="116" text-anchor="middle" font-size="16" font-weight="700" fill="#1d4ed8">进程级</text>
+  <rect x="48" y="132" width="240" height="28" rx="6" fill="#dbeafe"/>
+  <text x="168" y="151" text-anchor="middle" font-size="11" fill="#1e3a8a">独立 UID · cgroup · seccomp</text>
+  <text x="168" y="192" text-anchor="middle" font-size="13" fill="#334155">只读根 · 无网络或白名单</text>
+  <text x="168" y="216" text-anchor="middle" font-size="13" fill="#334155">启动快，短 Python 片段</text>
+  <text x="168" y="256" text-anchor="middle" font-size="12" fill="#b45309">挡不住内核漏洞</text>
+  <text x="168" y="278" text-anchor="middle" font-size="12" fill="#b45309">进程仍在你的 VPC 里</text>
+  <text x="168" y="320" text-anchor="middle" font-size="12" fill="#64748b">延迟：毫秒</text>
+  <text x="168" y="344" text-anchor="middle" font-size="12" fill="#64748b">威胁：不小心 rm，不是逃逸</text>
+
+  <rect x="320" y="84" width="280" height="300" rx="14" fill="#fff" stroke="#059669" stroke-width="2"/>
+  <text x="460" y="116" text-anchor="middle" font-size="16" font-weight="700" fill="#047857">容器级</text>
+  <rect x="340" y="132" width="240" height="28" rx="6" fill="#d1fae5"/>
+  <text x="460" y="151" text-anchor="middle" font-size="11" fill="#065f46">每次调用一个短命容器</text>
+  <text x="460" y="192" text-anchor="middle" font-size="13" fill="#334155">空文件系统 · 网络策略</text>
+  <text x="460" y="216" text-anchor="middle" font-size="13" fill="#334155">镜像钉 digest，禁止 latest</text>
+  <text x="460" y="256" text-anchor="middle" font-size="12" fill="#b45309">供应链：镜像=边界</text>
+  <text x="460" y="278" text-anchor="middle" font-size="12" fill="#b45309">socket 一挂，隔离归零</text>
+  <text x="460" y="320" text-anchor="middle" font-size="12" fill="#64748b">延迟：百毫秒到秒</text>
+  <text x="460" y="344" text-anchor="middle" font-size="12" fill="#64748b">威胁：依赖投毒、出网</text>
+
+  <rect x="612" y="84" width="280" height="300" rx="14" fill="#fff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="752" y="116" text-anchor="middle" font-size="16" font-weight="700" fill="#6d28d9">VM / 微虚机</text>
+  <rect x="632" y="132" width="240" height="28" rx="6" fill="#ede9fe"/>
+  <text x="752" y="151" text-anchor="middle" font-size="11" fill="#5b21b6">Firecracker · Cloud Hypervisor</text>
+  <text x="752" y="192" text-anchor="middle" font-size="13" fill="#334155">模型生成的代码不可信</text>
+  <text x="752" y="216" text-anchor="middle" font-size="13" fill="#334155">且可能逃逸</text>
+  <text x="752" y="256" text-anchor="middle" font-size="12" fill="#b45309">延迟和密度更差</text>
+  <text x="752" y="278" text-anchor="middle" font-size="12" fill="#b45309">给高危租户 / 不信任插件</text>
+  <text x="752" y="320" text-anchor="middle" font-size="12" fill="#64748b">延迟：秒级冷启动可缓存</text>
+  <text x="752" y="344" text-anchor="middle" font-size="12" fill="#64748b">威胁：逃逸、侧信道</text>
+
+  <rect x="28" y="404" width="864" height="88" rx="14" fill="#fff" stroke="#0f172a" stroke-width="2"/>
+  <text x="460" y="436" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">给工具的不是 shell，是协议</text>
+  <text x="460" y="462" text-anchor="middle" font-size="13" fill="#334155">PyRun{source, timeout_ms, network=False, files_in[]} · 没有的字段模型编不出来 · 出网升 HITL 签发派生票</text>
+</svg>

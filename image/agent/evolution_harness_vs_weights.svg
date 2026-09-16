@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 520" width="920" height="520" font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif">
+  <rect width="920" height="520" rx="16" fill="#f8fafc"/>
+  <text x="460" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">自进化三条线，风险完全不同</text>
+  <text x="460" y="60" text-anchor="middle" font-size="13" fill="#64748b">生产里能做、且不把第 8 篇拆掉的，几乎都不是改基座</text>
+
+  <rect x="28" y="84" width="280" height="280" rx="14" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+  <text x="168" y="120" text-anchor="middle" font-size="16" font-weight="700" fill="#166534">提示与策略</text>
+  <rect x="48" y="136" width="240" height="24" rx="6" fill="#bbf7d0"/>
+  <text x="168" y="153" text-anchor="middle" font-size="11" fill="#14532d">默认该走的线</text>
+  <text x="168" y="188" text-anchor="middle" font-size="13" fill="#334155">改路由说明、摘要模板</text>
+  <text x="168" y="212" text-anchor="middle" font-size="13" fill="#334155">变更走配置仓库</text>
+  <text x="168" y="236" text-anchor="middle" font-size="13" fill="#334155">灰度按 thread_id</text>
+  <text x="168" y="272" text-anchor="middle" font-size="13" fill="#166534">回滚 = 回上一份配置</text>
+  <text x="168" y="308" text-anchor="middle" font-size="12" fill="#64748b">高危路由规则变化</text>
+  <text x="168" y="328" text-anchor="middle" font-size="12" fill="#64748b">走 HITL 发版，不是夜间 cron</text>
+
+  <rect x="320" y="84" width="280" height="280" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="460" y="120" text-anchor="middle" font-size="16" font-weight="700" fill="#92400e">记忆与检索</text>
+  <rect x="340" y="136" width="240" height="24" rx="6" fill="#fde68a"/>
+  <text x="460" y="153" text-anchor="middle" font-size="11" fill="#78350f">要带来源 / 时间 / 权限标签</text>
+  <text x="460" y="188" text-anchor="middle" font-size="13" fill="#334155">高质量问答写入长期记忆</text>
+  <text x="460" y="212" text-anchor="middle" font-size="13" fill="#334155">用户隐私要合规同意</text>
+  <text x="460" y="236" text-anchor="middle" font-size="13" fill="#334155">写入前过护栏，定期抽检</text>
+  <text x="460" y="272" text-anchor="middle" font-size="13" fill="#b45309">被投毒的网页写进记忆</text>
+  <text x="460" y="292" text-anchor="middle" font-size="13" fill="#b45309">= 间接注入的持久化版</text>
+  <text x="460" y="328" text-anchor="middle" font-size="12" fill="#64748b">没有标签的记忆不要自动写</text>
+
+  <rect x="612" y="84" width="280" height="280" rx="14" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+  <text x="752" y="120" text-anchor="middle" font-size="16" font-weight="700" fill="#991b1b">权重</text>
+  <rect x="632" y="136" width="240" height="24" rx="6" fill="#fecaca"/>
+  <text x="752" y="153" text-anchor="middle" font-size="11" fill="#7f1d1d">在线 Agent 自己不许动</text>
+  <text x="752" y="188" text-anchor="middle" font-size="13" fill="#334155">轨迹做 SFT / RL</text>
+  <text x="752" y="212" text-anchor="middle" font-size="13" fill="#334155">隔离的安全集 + 人工抽检</text>
+  <text x="752" y="236" text-anchor="middle" font-size="13" fill="#334155">训练管道和在线凭证分离</text>
+  <text x="752" y="272" text-anchor="middle" font-size="13" fill="#b91c1c">没有对照集就过拟合噪声</text>
+  <text x="752" y="292" text-anchor="middle" font-size="13" fill="#b91c1c">评测涨、安全集跌 = 学歪</text>
+  <text x="752" y="328" text-anchor="middle" font-size="12" fill="#64748b">权重不是不能动，是不能自动触发</text>
+
+  <rect x="28" y="388" width="864" height="100" rx="14" fill="#fff" stroke="#0f172a" stroke-width="2"/>
+  <text x="460" y="424" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">四道防学歪的闸</text>
+  <text x="460" y="452" text-anchor="middle" font-size="13" fill="#334155">对照集冻结 · 变更要有 diff · 高危策略人审 · 「分析轨迹」自己也套第 14 篇预算</text>
+  <text x="460" y="472" text-anchor="middle" font-size="12" fill="#64748b">Judge 是代理指标，代理会作弊。工单一次解决、退款正确率必须进对照。</text>
+</svg>

@@ -8,6 +8,12 @@
 
 先把失败现场说清楚。两种结构挂掉的样子完全不同，别用同一种监控去等。
 
+Supervisor 挂掉时，监控上通常是：中心节点延迟飙高、token 输入比输出高一个数量级、某一个 Worker 的超时计数被中心的重试放大。用户侧是「一直在想」。
+
+Swarm 挂掉时，监控上通常是：hop 数异常、同一 `agent_id` 在短时间里反复出现、工具白名单在交接后变长。用户侧是「怎么又问了一遍刚才的问题」。
+
+把这两种现场当成同一种「多 Agent 不稳定」去调参，会调反：给 Supervisor 加交接，给 Swarm 加一个隐式中心。这篇只做一件事——让你能从现场反推结构，再决定动哪几道闸。
+
 ---
 
 ### 一、两种结构，先画清楚
@@ -24,7 +30,9 @@ Swarm：没有中心。当前持有对话控制权的 Agent 决定「下一棒�
 2. **失败怎么收敛。** Supervisor 可以「这个 Worker 作废，换一个」；Swarm 的失败常常表现为来回交接，没有一个节点有权说停。
 3. **权限怎么收。** Supervisor 可以把高危工具只挂在某一个 Worker 上；Swarm 一旦交接，下一棒能不能调用高危工具，取决于你有没有在交接协议里把权限一并收回。第 8 篇的最小权限，在 Swarm 里比在 Supervisor 里难做。
 
-OpenAI 的 Swarm 文档把 handover 写成一等公民：Agent 的函数可以返回另一个 Agent，运行时切换 active agent。LangGraph 1.x 把类似能力收进 `langgraph-supervisor` 和 `langgraph-swarm` 两个包。包不同，取舍相同。
+OpenAI 的 Swarm 文档把 handover 写成一等公民：Agent 的函数可以返回另一个 Agent，运行时切换 active agent。LangGraph 把类似能力收进 `langgraph-supervisor` 和 `langgraph-swarm` 两个包。包不同，取舍相同。
+
+还有一种常见的假 Swarm：表面上 Worker 互调，其实每次都把完整 transcript 打回一个隐藏的「协调函数」。那是 Supervisor 披了交接的皮，窗口问题一个没少，环路问题倒是多了。识别方法很简单——问「有没有一个节点被允许看见所有 Worker 的原文」。有，就是 Supervisor。
 
 ---
 
@@ -36,11 +44,27 @@ Worker 每回一段摘要，Supervisor 的 messages 就长一截。三五个 Wor
 
 缓解不是「换更大窗口的模型」，是 **Worker 回传要有协议**：结论、依据、未决问题，三块，限长。原文进 Checkpoint，不进 Supervisor 的下一轮 prompt。第 1 篇的 Reducer 在这里用得上：`messages` 用追加，`worker_reports` 用按 worker_id 覆盖。
 
+一个能直接落地的上限：单条 report 不超过 400 字，字段固定。超了截断并打 `truncated=True`。中心看到截断，只允许做两件事——再派同一 Worker 要「未决问题」的补丁，或结束并告诉用户信息不全。不允许「把原文贴进中心再想一次」。
+
+```python
+class WorkerReport(TypedDict):
+    worker_id: str
+    conclusion: str          # <= 200 字
+    evidence_ids: list       # 指向 blob，不是原文
+    open_questions: list     # <= 3 条
+    truncated: bool
+    tokens_used: int
+```
+
 #### 2.2 中心自己在推理上犯错
 
 Supervisor 选错 Worker，整条链都错。Router 更极端——分发出去就不回头。Supervisor 好在能看输出再派一次，但「再派一次」本身会放大第 6 篇的重试风暴：检索 Worker 超时，中心再开一个检索，两个一起打同一 API。
 
 所以 Supervisor 的派活节点必须带第 6 篇那几道闸：单 Worker 超时、同类 Worker 并发上限、对同一工具的熔断。这些闸写在图里，不要写在 Supervisor 的 System Prompt 里。Prompt 只是建议。
+
+并发上限按 **工具** 计，不按 Worker 实例计。两个 Research Worker 打同一个搜索 API，对下游就是 QPS×2。中心「再开一个备用」之前先看熔断器：开着就走降级，不要再派。
+
+选错 Worker 的修复也要预算。最多改派一次，第二次仍差，结束或 HITL。无限改派就是换了马甲的 while True。
 
 #### 2.3 HITL 只能卡在中心
 
@@ -65,6 +89,8 @@ Supervisor 的环至少还在一张图的条件边上，LangGraph Studio 能画�
 接待 Agent 没有 `execute_sql`。它把控制权交给「数据分析 Agent」，后者工具箱里有只读 SQL。再交接给「运维 Agent」，出现了 DDL。用户还以为自己在跟客服说话。
 
 第 8 篇的工具护栏必须在 **每次交接后重新计算允许集合**，不能继承上一棒的工具表。权限跟着当前 Agent 走，还是跟着任务走，是第 11 篇。这里先记一刀：Swarm 默认会把「当前能调用的工具」变成攻击面的并集，除非你显式求交。
+
+交接消息本身也是攻击面。如果把上一棒的完整对话塞给下一棒，「用户说你现在是管理员」这类句子会跟着走。交接载荷只允许：当前意图标签、必要的业务 id、限长摘要。原文进 Checkpoint，下一棒按需拉，并且当 untrusted。
 
 ---
 
@@ -165,6 +191,12 @@ Hierarchical 是 Supervisor 套 Supervisor。层数超过两层，上下文损�
 
 Router 不是这一篇的对手。意图一次分发、Worker 之间无依赖，用 Router，别升 Supervisor——升了只是多付一次中心推理。
 
+选型时还有两个不该被框架宣传带跑的点：
+
+**不要用 Swarm 解决 Supervisor 的窗口问题。** 窗口先用摘要协议和子图隔离。结构是组织问题，不是压缩算法。
+
+**不要用 Supervisor 解决 Swarm 的踢皮球。** 先加 `handoff_log` 和 hop 上限。加一个中心等于承认交接协议写不动，那一开始就不该 Swarm。
+
 ---
 
 ### 六、和前后篇的衔接
@@ -176,6 +208,69 @@ Router 不是这一篇的对手。意图一次分发、Worker 之间无依赖，
 第 6 篇的级联：Supervisor 的重试风暴发生在中心；Swarm 的风暴发生在交接环上。熔断对象不同。
 
 第 8 篇的安全：Supervisor 把高危工具关在专用 Worker 里；Swarm 必须在 handover 时切工具表。
+
+观测上两者的看板也不该共用一张。Supervisor 盯：中心输入 token、单 Worker 超时、改派次数。Swarm 盯：hop、同一 agent_id 回流、交接后工具集合大小。第 13 篇会把这些落成 span 属性。现在先把「该盯什么」定下来，否则上线后你只能看见「多 Agent 慢」。
+
+---
+
+### 七、一张图里的假 Swarm
+
+表面上 Worker 互调，其实每次都把完整 transcript 打回一个隐藏的「协调函数」。那是 Supervisor 披了交接的皮，窗口问题一个没少，环路问题倒是多了。
+
+![假 Swarm 仍有隐藏中心](../image/agent/fake_swarm.svg)
+
+识别方法只有一问：**有没有一个节点被允许看见所有 Worker 的原文。** 有，就是 Supervisor，按 Supervisor 的闸来：摘要协议、中心不加超集工具、改派上限。不要既享受「我们是 Swarm」的叙事，又不做 `handoff_log`。
+
+LangGraph 的 `create_swarm` 如果把整个 `messages` 交给每一个 active agent，默认就接近假 Swarm。要真交接，载荷得裁。裁的代码写在交接节点上，不写在「请下一棒自己注意上下文长度」这种 Prompt 里。
+
+---
+
+### 八、怎么测这两种结构
+
+第 7 篇如果只 assert 最终字符串，两种结构的典型死法都是绿的。最低金标：
+
+Supervisor：
+
+- 中心 prompt 不含 Worker 原文（可用「prompt 里不得出现 blob 里的独特句子」）
+- 同一工具并发不超过上限
+- 改派超过 1 次必须结束或 HITL
+- 中心工具表与任一 Worker 高危 action 求交为空
+
+Swarm：
+
+- A→B→A 在第三次交接前必须进 HITL
+- 交接后工具白名单不是上一棒的超集
+- hop 数进 Trace，超过阈值的轨迹进评测失败集
+- 交接载荷不含上一棒全文
+
+这些是确定性 assert，不要用 LLM-as-judge。Judge 可以看最终答复像不像客服，看不出七圈交接。
+
+---
+
+### 九、反模式清单
+
+- 中心挂着 Worker 的超集工具，方便「自己也干一点」。被注入时爆炸半径等于全集。
+- Worker 回传 markdown 长文，中心再 summarise。summarise 本身又是一轮旗舰模型，钱和窗口一起涨。回传协议在 Worker 侧强制。
+- Swarm 没有 `handoff_log`，出了踢皮球只能读模型散文复盘。
+- 测试只 assert 最终字符串。Supervisor 的改派风暴和 Swarm 的七圈交接都是绿的。
+- 假 Swarm：隐藏协调函数看见所有原文，对外叫交接。
+- Hierarchical 超过两层，还每层把全文往上送。那是三个 Supervisor 叠窗口。除非编制本身就是两层，不要先画三层再找框架。
+
+监控拆开。Supervisor 看板：中心输入 token、单 Worker 超时、改派次数、中心工具表大小。Swarm 看板：hop、同一 agent_id 回流、交接后工具集合大小、交接载荷字节。共用一张「多 Agent 延迟」图，调参会调反。
+
+---
+
+### 十、完整走一遍：同一张客服单
+
+用户：「我这单 9821 一直没发货，要退款。」意图会漂：先查单，再规则，再退款。
+
+**Supervisor 路径。** 用户只跟中心说话。中心读父票 `{orders.read}`，派检索 Worker，收回 400 字 report：`物流停滞 5 天，政策允许退`。中心改派退款 Worker 之前 interrupt。人点确认，会话服务签发 `refund.execute` 派生票，uses_left=1。退款 Worker 只看见订单 id、政策摘要、这张票，看不见检索原文。中心汇总一句给人。失败时中心能说停：检索超时走降级「查不到物流，要不要人工」。改派最多一次。
+
+**Swarm 路径。** 接待持有控制权，查完单，交接给退款，载荷只有 `intent=refund, order_id=9821, summary≤200`。接待票不转交。会话服务按当前意图签 `refund.prepare`。真正执行仍 HITL 签 `refund.execute`。`handoff_log` 记下接待→退款。退款若交回接待问「要不要查物流」，同向第二次就进人工，不要再漂。
+
+**不该出现的路径。** 中心自己挂了退款工具，省一跳。接待把全文 messages 交给退款，用户那句「你就当我是管理员」跟着走。两种结构都会在这里把第 8 篇和第 11 篇拆掉。结构选对了，闸还是要焊。
+
+同一张单，Supervisor 贵在中心多一轮路由，便宜在说得停、HITL 卡点固定。Swarm 贵在交接协议和 hop 观测，便宜在意图漂了不用回到中心再分类。选哪条，看这张单会不会在会话里改主意，以及你有没有人写得动交接协议。
 
 ---
 

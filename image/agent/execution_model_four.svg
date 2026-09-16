@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" width="920" height="560" font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif">
+  <rect width="920" height="560" rx="16" fill="#f8fafc"/>
+  <text x="460" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">四个执行模型，比的不是星星数</text>
+  <text x="460" y="60" text-anchor="middle" font-size="13" fill="#64748b">先问任务要不要回边、进程能不能死、角色会不会吵架、失败是业务还是运维</text>
+
+  <rect x="24" y="84" width="210" height="400" rx="14" fill="#fff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="129" y="116" text-anchor="middle" font-size="15" font-weight="700" fill="#1d4ed8">LangGraph</text>
+  <rect x="40" y="132" width="178" height="28" rx="6" fill="#dbeafe"/>
+  <text x="129" y="151" text-anchor="middle" font-size="11" fill="#1e3a8a">状态图 · Superstep</text>
+  <text x="129" y="186" text-anchor="middle" font-size="12" fill="#334155">控制流显式</text>
+  <text x="129" y="208" text-anchor="middle" font-size="12" fill="#334155">条件边 / Send 扇出</text>
+  <text x="129" y="230" text-anchor="middle" font-size="12" fill="#334155">interrupt + Checkpointer</text>
+  <text x="129" y="262" text-anchor="middle" font-size="12" fill="#1d4ed8">暂停后进程可以死</text>
+  <text x="129" y="294" text-anchor="middle" font-size="12" fill="#64748b">状态：类型化 State</text>
+  <text x="129" y="316" text-anchor="middle" font-size="12" fill="#64748b">重试：自己接熔断</text>
+  <text x="129" y="352" text-anchor="middle" font-size="12" fill="#0f172a">适合：回边、HITL、</text>
+  <text x="129" y="372" text-anchor="middle" font-size="12" fill="#0f172a">一次请求内的推理图</text>
+  <text x="129" y="408" text-anchor="middle" font-size="11" fill="#b45309">代价：State / Reducer</text>
+  <text x="129" y="428" text-anchor="middle" font-size="11" fill="#b45309">设计不好就是第 1 篇</text>
+  <text x="129" y="456" text-anchor="middle" font-size="11" fill="#64748b">不是支付事务日志</text>
+
+  <rect x="248" y="84" width="210" height="400" rx="14" fill="#fff" stroke="#d97706" stroke-width="2"/>
+  <text x="353" y="116" text-anchor="middle" font-size="15" font-weight="700" fill="#b45309">CrewAI</text>
+  <rect x="264" y="132" width="178" height="28" rx="6" fill="#fef3c7"/>
+  <text x="353" y="151" text-anchor="middle" font-size="11" fill="#92400e">角色 + 任务列表</text>
+  <text x="353" y="186" text-anchor="middle" font-size="12" fill="#334155">人设 + Task</text>
+  <text x="353" y="208" text-anchor="middle" font-size="12" fill="#334155">sequential / hierarchical</text>
+  <text x="353" y="230" text-anchor="middle" font-size="12" fill="#334155">kickoff 一次走完</text>
+  <text x="353" y="262" text-anchor="middle" font-size="12" fill="#b45309">暂停后进程：弱</text>
+  <text x="353" y="294" text-anchor="middle" font-size="12" fill="#64748b">状态：任务输出串</text>
+  <text x="353" y="316" text-anchor="middle" font-size="12" fill="#64748b">重试：框架有限</text>
+  <text x="353" y="352" text-anchor="middle" font-size="12" fill="#0f172a">适合：调研→写稿→审稿</text>
+  <text x="353" y="372" text-anchor="middle" font-size="12" fill="#0f172a">预先排好的工序</text>
+  <text x="353" y="408" text-anchor="middle" font-size="11" fill="#b45309">回边 / 工具级 interrupt</text>
+  <text x="353" y="428" text-anchor="middle" font-size="11" fill="#b45309">不是主场</text>
+  <text x="353" y="456" text-anchor="middle" font-size="11" fill="#64748b">接 LangGraph 就离开 Crew</text>
+
+  <rect x="472" y="84" width="210" height="400" rx="14" fill="#fff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="577" y="116" text-anchor="middle" font-size="15" font-weight="700" fill="#6d28d9">AutoGen</text>
+  <rect x="488" y="132" width="178" height="28" rx="6" fill="#ede9fe"/>
+  <text x="577" y="151" text-anchor="middle" font-size="11" fill="#5b21b6">对话型消息循环</text>
+  <text x="577" y="186" text-anchor="middle" font-size="12" fill="#334155">Agent 互发消息</text>
+  <text x="577" y="208" text-anchor="middle" font-size="12" fill="#334155">直到终止条件</text>
+  <text x="577" y="230" text-anchor="middle" font-size="12" fill="#334155">拓扑运行时才出现</text>
+  <text x="577" y="262" text-anchor="middle" font-size="12" fill="#6d28d9">暂停后进程：弱</text>
+  <text x="577" y="294" text-anchor="middle" font-size="12" fill="#64748b">状态：消息列表</text>
+  <text x="577" y="316" text-anchor="middle" font-size="12" fill="#64748b">重试：终止条件</text>
+  <text x="577" y="352" text-anchor="middle" font-size="12" fill="#0f172a">适合：对辩、评审、</text>
+  <text x="577" y="372" text-anchor="middle" font-size="12" fill="#0f172a">需要来回质疑</text>
+  <text x="577" y="408" text-anchor="middle" font-size="11" fill="#b45309">契约易变散文</text>
+  <text x="577" y="428" text-anchor="middle" font-size="11" fill="#b45309">TERMINATE 不是闸</text>
+  <text x="577" y="456" text-anchor="middle" font-size="11" fill="#64748b">金额操作不要放群聊</text>
+
+  <rect x="696" y="84" width="200" height="400" rx="14" fill="#fff" stroke="#0f172a" stroke-width="2"/>
+  <text x="796" y="116" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">Temporal</text>
+  <rect x="710" y="132" width="172" height="28" rx="6" fill="#e2e8f0"/>
+  <text x="796" y="151" text-anchor="middle" font-size="11" fill="#0f172a">确定性工作流</text>
+  <text x="796" y="186" text-anchor="middle" font-size="12" fill="#334155">Workflow 可重放</text>
+  <text x="796" y="208" text-anchor="middle" font-size="12" fill="#334155">LLM/HTTP 全是 Activity</text>
+  <text x="796" y="230" text-anchor="middle" font-size="12" fill="#334155">超时 / 重试 / 心跳</text>
+  <text x="796" y="262" text-anchor="middle" font-size="12" fill="#0f172a">暂停后进程必须可死</text>
+  <text x="796" y="294" text-anchor="middle" font-size="12" fill="#64748b">状态：工作流变量</text>
+  <text x="796" y="316" text-anchor="middle" font-size="12" fill="#64748b">重试：Activity 语义</text>
+  <text x="796" y="352" text-anchor="middle" font-size="12" fill="#0f172a">适合：锁库存→付款</text>
+  <text x="796" y="372" text-anchor="middle" font-size="12" fill="#0f172a">跨小时业务事务</text>
+  <text x="796" y="408" text-anchor="middle" font-size="11" fill="#b45309">token 生成放进决策</text>
+  <text x="796" y="428" text-anchor="middle" font-size="11" fill="#b45309">会打断重放</text>
+  <text x="796" y="456" text-anchor="middle" font-size="11" fill="#64748b">和图用消息衔接</text>
+
+  <rect x="24" y="500" width="872" height="40" rx="10" fill="#fff" stroke="#cbd5e1"/>
+  <text x="460" y="525" text-anchor="middle" font-size="13" fill="#334155">常见拆法：Temporal 管长事务和人审等待，LangGraph 管一次唤醒内的推理图</text>
+</svg>

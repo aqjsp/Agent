@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 480" width="920" height="480" font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif">
+  <rect width="920" height="480" rx="16" fill="#f8fafc"/>
+  <text x="460" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">账单四层，别只骂模型单价</text>
+  <text x="460" y="60" text-anchor="middle" font-size="13" fill="#64748b">砍单价只动第一层的一部分；中心窗口和重试风暴在另外三层</text>
+
+  <rect x="40" y="88" width="200" height="280" rx="14" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+  <text x="140" y="120" text-anchor="middle" font-size="14" font-weight="700" fill="#991b1b">推理 Token</text>
+  <text x="140" y="150" text-anchor="middle" font-size="28" font-weight="700" fill="#b91c1c">62%</text>
+  <text x="140" y="180" text-anchor="middle" font-size="12" fill="#7f1d1d">常见归因：中心空转</text>
+  <text x="140" y="220" text-anchor="middle" font-size="12" fill="#334155">输入远大于输出</text>
+  <text x="140" y="242" text-anchor="middle" font-size="12" fill="#334155">历史 + Worker 摘要</text>
+  <text x="140" y="264" text-anchor="middle" font-size="12" fill="#334155">每轮塞回 Supervisor</text>
+  <text x="140" y="300" text-anchor="middle" font-size="12" fill="#1d4ed8">闸：摘要协议</text>
+  <text x="140" y="320" text-anchor="middle" font-size="12" fill="#1d4ed8">路由用小模型</text>
+  <text x="140" y="340" text-anchor="middle" font-size="12" fill="#1d4ed8">边上的 token 预算</text>
+
+  <rect x="260" y="88" width="200" height="280" rx="14" fill="#ffedd5" stroke="#f97316" stroke-width="2"/>
+  <text x="360" y="120" text-anchor="middle" font-size="14" font-weight="700" fill="#9a3412">工具 / 外部 API</text>
+  <text x="360" y="150" text-anchor="middle" font-size="28" font-weight="700" fill="#c2410c">21%</text>
+  <text x="360" y="180" text-anchor="middle" font-size="12" fill="#7c2d12">常见归因：搜索重试</text>
+  <text x="360" y="220" text-anchor="middle" font-size="12" fill="#334155">按次或按时长</text>
+  <text x="360" y="242" text-anchor="middle" font-size="12" fill="#334155">浏览器 / 代码执行</text>
+  <text x="360" y="264" text-anchor="middle" font-size="12" fill="#334155">第 6 篇重试风暴</text>
+  <text x="360" y="300" text-anchor="middle" font-size="12" fill="#1d4ed8">闸：熔断</text>
+  <text x="360" y="320" text-anchor="middle" font-size="12" fill="#1d4ed8">检索 hash 缓存</text>
+  <text x="360" y="340" text-anchor="middle" font-size="12" fill="#1d4ed8">工具次数预算</text>
+
+  <rect x="480" y="88" width="200" height="280" rx="14" fill="#fef9c3" stroke="#eab308" stroke-width="2"/>
+  <text x="580" y="120" text-anchor="middle" font-size="14" font-weight="700" fill="#854d0e">Checkpoint / 存储</text>
+  <text x="580" y="150" text-anchor="middle" font-size="28" font-weight="700" fill="#a16207">6%</text>
+  <text x="580" y="180" text-anchor="middle" font-size="12" fill="#713f12">正文塞进 State 会涨</text>
+  <text x="580" y="220" text-anchor="middle" font-size="12" fill="#334155">每 Superstep 一份快照</text>
+  <text x="580" y="242" text-anchor="middle" font-size="12" fill="#334155">回放也贵</text>
+  <text x="580" y="264" text-anchor="middle" font-size="12" fill="#334155">按节点边界写，不要每 token</text>
+  <text x="580" y="300" text-anchor="middle" font-size="12" fill="#1d4ed8">闸：指针 + blob</text>
+  <text x="580" y="320" text-anchor="middle" font-size="12" fill="#1d4ed8">32KB 检查表</text>
+  <text x="580" y="340" text-anchor="middle" font-size="12" fill="#1d4ed8">TTL / 冷热分层</text>
+
+  <rect x="700" y="88" width="180" height="280" rx="14" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="790" y="120" text-anchor="middle" font-size="14" font-weight="700" fill="#3730a3">观测</text>
+  <text x="790" y="150" text-anchor="middle" font-size="28" font-weight="700" fill="#4338ca">11%</text>
+  <text x="790" y="180" text-anchor="middle" font-size="12" fill="#312e81">全文入日志会先爆</text>
+  <text x="790" y="220" text-anchor="middle" font-size="12" fill="#334155">prompt 当 log</text>
+  <text x="790" y="242" text-anchor="middle" font-size="12" fill="#334155">比推理还贵</text>
+  <text x="790" y="264" text-anchor="middle" font-size="12" fill="#334155">合规也不允许</text>
+  <text x="790" y="300" text-anchor="middle" font-size="12" fill="#1d4ed8">闸：output_ref</text>
+  <text x="790" y="320" text-anchor="middle" font-size="12" fill="#1d4ed8">成功抽样</text>
+  <text x="790" y="340" text-anchor="middle" font-size="12" fill="#1d4ed8">错误全量</text>
+
+  <rect x="40" y="388" width="840" height="64" rx="12" fill="#fff" stroke="#cbd5e1"/>
+  <text x="460" y="416" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">前三项都是架构债，第四项才是「模型贵」</text>
+  <text x="460" y="438" text-anchor="middle" font-size="12" fill="#64748b">百分比来自有 span 之后的归因示例，不是行业均值。没有第 13 篇，你只能看见「gpt-4o 五万」。</text>
+</svg>

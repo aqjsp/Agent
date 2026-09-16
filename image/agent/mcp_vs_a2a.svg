@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 480" width="920" height="480" font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif">
+  <rect width="920" height="480" rx="16" fill="#f8fafc"/>
+  <text x="460" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">MCP 是工具，A2A 是任务</text>
+  <text x="460" y="60" text-anchor="middle" font-size="13" fill="#64748b">常被写成「都是协议」，层不一样。同一张图里的 Worker 不要为了跟上协议拆成 HTTP</text>
+
+  <rect x="40" y="88" width="400" height="280" rx="14" fill="#fff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="240" y="124" text-anchor="middle" font-size="18" font-weight="700" fill="#1d4ed8">MCP</text>
+  <rect x="80" y="144" width="320" height="36" rx="8" fill="#dbeafe"/>
+  <text x="240" y="168" text-anchor="middle" font-size="13" fill="#1e3a8a">函数调用 · tools/list · tools/call</text>
+  <text x="240" y="208" text-anchor="middle" font-size="13" fill="#334155">生命周期：一次 RPC</text>
+  <text x="240" y="232" text-anchor="middle" font-size="13" fill="#334155">发现：工具名和描述</text>
+  <text x="240" y="256" text-anchor="middle" font-size="13" fill="#334155">身份：服务器，不是任务票</text>
+  <text x="240" y="292" text-anchor="middle" font-size="13" fill="#1d4ed8">Agent 调搜索、读工单</text>
+  <text x="240" y="316" text-anchor="middle" font-size="13" fill="#1d4ed8">走 MCP</text>
+  <text x="240" y="348" text-anchor="middle" font-size="12" fill="#64748b">描述进 prompt = 新的注入面</text>
+
+  <rect x="480" y="88" width="400" height="280" rx="14" fill="#fff" stroke="#059669" stroke-width="2"/>
+  <text x="680" y="124" text-anchor="middle" font-size="18" font-weight="700" fill="#047857">A2A</text>
+  <rect x="520" y="144" width="320" height="36" rx="8" fill="#d1fae5"/>
+  <text x="680" y="168" text-anchor="middle" font-size="13" fill="#065f46">任务 · Agent Card · Task 生命周期</text>
+  <text x="680" y="208" text-anchor="middle" font-size="13" fill="#334155">提交 / 进行中 / 要输入 / 完成 / 失败</text>
+  <text x="680" y="232" text-anchor="middle" font-size="13" fill="#334155">结果可流式，可跨小时</text>
+  <text x="680" y="256" text-anchor="middle" font-size="13" fill="#334155">取消和超时谁说了算要写死</text>
+  <text x="680" y="292" text-anchor="middle" font-size="13" fill="#047857">客服把「这张工单」交给理赔</text>
+  <text x="680" y="316" text-anchor="middle" font-size="13" fill="#047857">走 A2A</text>
+  <text x="680" y="348" text-anchor="middle" font-size="12" fill="#64748b">Card 说「我会退款」≠ 这一次允许退</text>
+
+  <rect x="40" y="392" width="840" height="60" rx="12" fill="#fff" stroke="#cbd5e1"/>
+  <text x="460" y="428" text-anchor="middle" font-size="13" fill="#0f172a">两边都要：traceparent 穿过请求 · Task id 客户端生成保证幂等 · 身份发现和授权分开 · 正文走引用不走共享内存</text>
+</svg>
