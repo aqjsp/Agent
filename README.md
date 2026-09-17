@@ -12,6 +12,7 @@ image/          配图
 
 ## 教程
 
+- [Token、Embedding、RAG、Agent、MCP](tutorial/五大核心概念.md)
 - [第1章 Agent 本质](tutorial/第1章_Agent本质.md)
 - [第2章 Model 深度解析](tutorial/第2章_Model深度解析.md)
 - [第3章 Tool Use](tutorial/第3章_Tool_Use.md)
