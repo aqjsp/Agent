@@ -30,7 +30,7 @@ Agent（智能体）不是一个新概念，但在大模型时代它获得了全
 
 这是理解Agent最核心的等式：
 
-```
+```text
 Agent = Model + Harness
 ```
 
@@ -54,13 +54,13 @@ Agent = Model + Harness
 让我们看一个具体的例子。假设用户问："北京今天的天气怎么样？"
 
 **只用 Model：**
-```
+```text
 用户：北京今天的天气怎么样？
 LLM：我无法获取实时天气信息，我的知识截止于2024年...
 ```
 
 **Model + Harness (Agent)：**
-```
+```text
 用户：北京今天的天气怎么样？
 Agent [Thought]：我需要查询实时天气信息，我应该调用天气API。
 Agent [Action]：调用 weather_api(city="北京")
@@ -104,7 +104,7 @@ next_token = model.predict(context="今天天气")
 
 单次 next-token prediction 并不构成 Agent。Agent 的关键在于**循环**：
 
-```
+```text
 while goal_not_achieved:
     1. 观察当前状态 (Observation)
     2. 思考下一步行动 (Thought)
@@ -322,7 +322,7 @@ print(f"\n最终回答: {answer}")
 ```
 
 **运行输出示例：**
-```
+```text
 --- 迭代 1 ---
   工具调用: get_weather({'city': '北京'})
   工具结果: {"temp": 22, "condition": "晴", "humidity": 45}
@@ -458,7 +458,7 @@ ReAct（Reasoning + Acting）是 Agent 最经典的运行模式。它的核心�
 
 #### ReAct 的完整工作流程
 
-```
+```text
 用户：谁创建了Linux？他还在维护吗？
 
 [Thought 1] 我需要找到Linux的创建者，然后查询他是否还在维护。
@@ -587,7 +587,7 @@ print(result["messages"][-1].content)
 ```
 
 **运行输出示例：**
-```
+```text
 Linux是由Linus Torvalds于1991年创建的开源操作系统内核。从1991年到2024年，已经过了33年。
 ```
 
@@ -613,7 +613,7 @@ Linux是由Linus Torvalds于1991年创建的开源操作系统内核。从1991�
 
 没有记忆的 Agent 就像一个"金鱼脑"助手——每次对话都从零开始：
 
-```
+```text
 用户：我叫小明
 Agent：你好小明！
 
@@ -929,7 +929,7 @@ print(f"Agent: {r2['messages'][-1].content}")
 
 简单的 ReAct 循环对于单步任务够用，但面对复杂任务时，Agent 需要**先规划、再执行**：
 
-```
+```text
 用户：帮我写一篇关于量子计算最新进展的调研报告
 
 没有规划的Agent:
@@ -2042,7 +2042,7 @@ export OPENAI_API_KEY="your-api-key"
 
 ### C. 核心概念速查
 
-```
+```text
 Agent        = Model + Harness
 Model        = LLM (推理 + 决策)
 Harness      = Tools + Memory + Planning + Orchestration

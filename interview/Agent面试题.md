@@ -37,7 +37,7 @@ Harness Engineering 是给 AI Agent 装上"缰绳"的工程学科。LLM 很强�
 
 **核心等式：**
 
-```
+```text
 Agent = Model + Harness
 Harness = Agent − Model
 ```
@@ -254,7 +254,7 @@ def run_agent(task):
 **System Prompt 是 Harness 的"宪法"**——定义 Agent 的行为边界、角色、约束。它是最基础的 Harness 组件，也是最容易被忽视的。
 
 **好的 System Prompt 结构（推荐模板）：**
-```
+```text
 1. 角色定义：你是什么，你能做什么（2-3句话）
 2. 行为约束：你不能做什么（硬规则，5-8条）
 3. 工具使用指南：什么时候用哪个工具（每个工具一句话）
@@ -450,7 +450,7 @@ class GuardInterceptor:
 - 附上信息来源
 
 **实现原则：**
-```
+```text
 硬规则 → 代码层校验（拦截器、linter、CI检查）+ 提示词声明
 软建议 → 只在提示词中引导
 两者结合 → 提示词 + 代码双重保障
@@ -818,7 +818,7 @@ class DriftDetector:
 **核心思想：** 用有限状态机（FSM）约束 Agent 的行为路径，确保不会进入非法状态。自由度越低，可靠性越高。
 
 **典型工作流状态机：**
-```
+```text
 [规划] → [执行] → [检查] → [修正] → [完成]
    ↑                              │
    └──────────────────────────────┘
@@ -896,7 +896,7 @@ for step, subtask in enumerate(tasks):
 
 **思路：** 在 Agent 等待某个耗时操作（如搜索、API调用）时，同时让 LLM 预测可能的结果并开始准备下一步。
 
-```
+```text
 时间线：
 Agent调用搜索工具 ──────────────────── 等待结果（200ms）
                   LLM同时预测可能答案 ──── 准备下一步（50ms）
@@ -1213,7 +1213,7 @@ class EvalSuite:
 
 **有 Trace：** 看到每一步的完整足迹——做了什么决策、调了哪个工具、拿到什么返回、花了多少 token。调试从"猜"变成了"看"。
 
-```
+```json
 [Trace] Step 1: Thought - 需要查询天气
 [Trace] Step 2: Action  - weather_api(city="北京") 
 [Trace] Step 3: Result  - {"temp": 25, "condition": "晴"} ✓
@@ -1349,7 +1349,7 @@ class RecoveryManager:
 
 **监控维度——四个层面：**
 
-```
+```text
 Agent 监控
 ├── 业务指标
 │   ├── 任务成功率（按任务类型分）
@@ -1518,7 +1518,7 @@ result = app.invoke({"topic": "AI Agent Harness"})
 5. **生态网络效应**：用户和开发者社区，插件和工具生态
 
 **冰山水下模型：**
-```
+```text
 冰山水上（可见、可复制）：框架代码、架构模式、Prompt模板
 冰山水下（不可见、难复制）：
   - 1000+ 个 edge case 的处理经验

@@ -20,7 +20,7 @@
 
 ### Router 模式
 
-```
+```text
 用户 → Router Agent → Agent A（天气）
                    → Agent B（搜索）
                    → Agent C（计算）
@@ -72,7 +72,7 @@ Router 模式最大的风险是**分类错误无法自纠**。缓解方法：在
 
 ### Supervisor 模式
 
-```
+```text
 用户 → Supervisor → Worker A（搜索）→ 结果回 Supervisor
                   → Worker B（写代码）→ 结果回 Supervisor
                   → Worker C（审查）→ 结果回 Supervisor
@@ -87,7 +87,7 @@ Supervisor 做三件事：拆分任务、分配给 Worker、整合结果。和 R
 
 ### Swarm 模式
 
-```
+```text
 Agent A ←→ Agent B ←→ Agent C
   ↓              ↓           ↓
 完成时交出控制权给最合适的 Agent
@@ -101,7 +101,7 @@ Swarm 没有中心节点。每个 Agent 可以把控制权交给另一个 Agent�
 
 ### Hierarchical 模式
 
-```
+```text
          Top Supervisor
         /              \
   Mid Supervisor    Mid Supervisor
@@ -382,7 +382,7 @@ print(result["draft"])
 
 执行流程：
 
-```
+```text
 supervisor → researcher → supervisor → writer → supervisor → reviewer → supervisor → FINISH
 ```
 

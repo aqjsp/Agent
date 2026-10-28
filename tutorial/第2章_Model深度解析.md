@@ -22,7 +22,7 @@ LLM 的工作方式简单到让人怀疑：给定一段文本，预测下一个 
 
 **不加 CoT（Chain of Thought）的提示：**
 
-```
+```text
 请直接给出答案。
 ```
 
@@ -36,7 +36,7 @@ LLM 的工作方式简单到让人怀疑：给定一段文本，预测下一个 
 
 加 CoT 后：
 
-```
+```text
 A 管速率：1/5 池/小时
 B 管速率：1/4 池/小时
 排水速率：1/10 池/小时
@@ -85,7 +85,7 @@ CoT 的原理直接决定了 Harness 的两个设计选择：
 
 一个工程化的 System Prompt 至少包含四个部分：
 
-```
+```text
 1. 角色定义：你是谁、你能做什么
 2. 行为规则：遇到X应该怎么做、遇到Y应该怎么做
 3. 工具使用指南：什么时候用什么工具、输出格式要求
@@ -353,7 +353,7 @@ print(response.choices[0].message.content)
 
 输出：
 
-```
+```text
 我无法获取实时天气数据。请查看天气应用或网站获取北京今天的天气信息。
 ```
 
@@ -416,7 +416,7 @@ print("Model 输出 tool_calls:", msg.tool_calls)
 
 输出：
 
-```
+```text
 Model 输出 tool_calls: [ChatCompletionMessageToolCall(id='call_abc123', function=Function(arguments='{"city":"北京"}', name='get_weather'), type='function')]
 ```
 
@@ -457,7 +457,7 @@ print(response2.choices[0].message.content)
 
 输出：
 
-```
+```cpp
 工具返回: {'temp': '22', 'condition': 'Partly cloudy', 'humidity': '45'}
 北京今天天气：气温22°C，局部多云，湿度45%。
 ```

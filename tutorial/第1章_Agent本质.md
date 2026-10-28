@@ -62,7 +62,7 @@ Agent 不只是回答了问题，它**做了事情**。注意它在第三步才�
 
 这个等式是整份教程的骨架。后面所有章节都在拆解它的左半边和右半边。
 
-```
+```text
 Agent = Model + Harness
 ```
 
@@ -311,7 +311,7 @@ def run_agent(user_message: str, max_iterations: int = 5) -> str:
 
 运行 `run_agent("北京今天天气怎么样？")`，你会看到类似这样的输出：
 
-```
+```text
 --- 第 1 轮 ---
   Model 决定调用: get_weather({'city': '北京'})
   Harness 返回: {'temp': '22', 'condition': 'Partly cloudy', 'humidity': '45'}
@@ -323,7 +323,7 @@ def run_agent(user_message: str, max_iterations: int = 5) -> str:
 
 再试一个多工具协作的例子：`run_agent("北京和上海哪个更热？")`：
 
-```
+```text
 --- 第 1 轮 ---
   Model 决定调用: get_weather({'city': '北京'})
   Harness 返回: {'temp': '22', 'condition': 'Partly cloudy', 'humidity': '45'}

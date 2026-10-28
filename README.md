@@ -6,7 +6,7 @@
 
 ## 目录职责
 
-```
+```text
 tutorial/       入门教程：分章精读 + 一篇动手版，从概念到第一个能跑的 Agent
 architecture/   架构系列：每篇一个设计取舍，默认已读过教程
 harness/        案例拆解：拿真实开源 Harness 对照架构系列

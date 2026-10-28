@@ -162,7 +162,7 @@ TOOL_MAP 是本地注册——工具和 Agent 在同一个进程里。如果工�
 
 MCP（Model Context Protocol）做的就是这件事。它定义了工具的标准化描述格式和发现机制：
 
-```
+```text
 Agent → MCP Server: "你有什么工具？"
 MCP Server → Agent: [工具列表 + schema]
 Agent → MCP Server: "调用 get_weather，参数 {city: '北京'}"
@@ -247,7 +247,7 @@ def execute_with_retry(func, args, config, max_retries=None):
 
 运行效果：
 
-```
+```text
 --- 第 1 轮 ---
   Model 决定调用: get_weather({'city': '北京'})
   工具执行失败（第1次），1s 后重试: HTTPSConnectionPool timeout
@@ -401,7 +401,7 @@ def run_agent(user_message: str, max_iterations: int = 10) -> str:
 
 运行 `run_agent("北京和上海哪个更热？现在各多少度？")`：
 
-```
+```text
 --- 第 1 轮 ---
   get_weather → {"temp": "22", "condition": "Partly cloudy", "humidity": "45"}
   get_weather → {"temp": "28", "condition": "Sunny", "humidity": "65"}

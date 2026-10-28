@@ -114,7 +114,7 @@ Pydantic 的 `extra = "forbid"` 直接解决了上面的问题——任何未声
 
 #### 2.3 选型决策树
 
-```
+```text
 你的团队有强制 lint 流程吗？
 ├─ 是 → TypedDict 够用，零开销
 └─ 否 → Pydantic，extra="forbid" 防御性更强
@@ -306,7 +306,7 @@ LangGraph 的 superstep 模型保证了同一个超步内的并行安全。核�
 
 **写缓冲：** 节点的输出不立即写入 State，而是进入缓冲区。所有节点执行完毕后，框架统一对每个 key 应用 Reducer，生成新 State 版本。
 
-```
+```text
 Superstep N:
   ┌─────────────────────────────────────────────────────┐
   │ 读取: 所有节点看到 State_v5                          │
@@ -575,7 +575,7 @@ main_app = main_graph.compile(
 
 版本之间通过 Checkpoint 的 `parent_config` 链连接：
 
-```
+```text
 State_v0 (初始)
   ↓ parent_config
 State_v1 (superstep 1 后)
