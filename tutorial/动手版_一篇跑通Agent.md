@@ -1,6 +1,10 @@
-# Agent = Model + Harness 开发教程
+# 动手版：一篇跑通 Agent
 
-> 基于Python / LangChain 0.3+ / LangGraph 0.2+ 的完整Agent开发指南
+> 和第 1–7 章同一条主线，写法不同：分章教程讲为什么这样设计，这一篇把每一步压成能直接运行的代码，从第一次 Function Calling 一路写到端到端的 Research Agent，附环境搭建和概念速查。
+>
+> 两种读法：先通读这一篇跑通全流程，再回分章教程补原理；或者读完分章教程，用这一篇对照着自己敲一遍。
+>
+> 代码基于 LangChain 0.3+ / LangGraph 0.2+，在 LangGraph 1.x 上仍可运行。文中的 `set_entry_point("x")` 在新代码里更常写成 `add_edge(START, "x")`，两者等价。
 
 ---
 
