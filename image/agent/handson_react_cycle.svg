@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 500" font-family="Arial, sans-serif">
+  <!-- 背景 -->
+  <rect width="700" height="500" fill="#fafafa" rx="8"/>
+  <text x="350" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a1a2e">ReAct 循环</text>
+
+  <!-- 中心：Agent -->
+  <circle cx="350" cy="250" r="60" fill="#fff3e0" stroke="#ff6f00" stroke-width="3"/>
+  <text x="350" y="245" text-anchor="middle" font-size="16" font-weight="bold" fill="#e65100">Agent</text>
+  <text x="350" y="265" text-anchor="middle" font-size="11" fill="#f57c00">LLM + Harness</text>
+
+  <!-- Thought -->
+  <rect x="120" y="60" width="140" height="50" rx="25" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+  <text x="190" y="83" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565c0">Thought</text>
+  <text x="190" y="100" text-anchor="middle" font-size="10" fill="#1976d2">我需要搜索...</text>
+
+  <!-- Action -->
+  <rect x="440" y="60" width="140" height="50" rx="25" fill="#e8f5e9" stroke="#388e3c" stroke-width="2"/>
+  <text x="510" y="83" text-anchor="middle" font-size="14" font-weight="bold" fill="#2e7d32">Action</text>
+  <text x="510" y="100" text-anchor="middle" font-size="10" fill="#388e3c">调用 search_web()</text>
+
+  <!-- Observation -->
+  <rect x="440" y="390" width="140" height="50" rx="25" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
+  <text x="510" y="413" text-anchor="middle" font-size="14" font-weight="bold" fill="#6a1b9a">Observation</text>
+  <text x="510" y="430" text-anchor="middle" font-size="10" fill="#7b1fa2">搜索结果...</text>
+
+  <!-- Answer -->
+  <rect x="120" y="390" width="140" height="50" rx="25" fill="#fce4ec" stroke="#c2185b" stroke-width="2"/>
+  <text x="190" y="413" text-anchor="middle" font-size="14" font-weight="bold" fill="#c2185b">Answer</text>
+  <text x="190" y="430" text-anchor="middle" font-size="10" fill="#c2185b">最终回答</text>
+
+  <!-- 箭头：Thought -> Agent -->
+  <path d="M 230 100 Q 280 170 310 210" stroke="#1976d2" stroke-width="2" fill="none" marker-end="url(#arrowRight)"/>
+  <text x="240" y="155" font-size="10" fill="#1976d2" transform="rotate(-45, 240, 155)">推理</text>
+
+  <!-- 箭头：Agent -> Action -->
+  <path d="M 400 220 Q 430 170 450 100" stroke="#388e3c" stroke-width="2" fill="none" marker-end="url(#arrowRight)"/>
+  <text x="435" y="155" font-size="10" fill="#388e3c" transform="rotate(45, 435, 155)">执行</text>
+
+  <!-- 箭头：Action -> Observation -->
+  <path d="M 510 110 L 510 390" stroke="#7b1fa2" stroke-width="2" fill="none" marker-end="url(#arrowRight)"/>
+  <text x="520" y="250" font-size="10" fill="#7b1fa2">获取结果</text>
+
+  <!-- 箭头：Observation -> Agent -->
+  <path d="M 450 400 Q 420 340 400 290" stroke="#6a1b9a" stroke-width="2" fill="none" marker-end="url(#arrowRight)"/>
+  <text x="440" y="345" font-size="10" fill="#6a1b9a" transform="rotate(45, 440, 345)">反馈</text>
+
+  <!-- 箭头：Agent -> Answer -->
+  <path d="M 300 280 Q 270 340 240 390" stroke="#c2185b" stroke-width="2" fill="none" marker-end="url(#arrowRight)"/>
+  <text x="260" y="345" font-size="10" fill="#c2185b" transform="rotate(-45, 260, 345)">输出</text>
+
+  <!-- 循环标注 -->
+  <path d="M 80 140 Q 30 250 80 370" stroke="#90a4ae" stroke-width="1.5" fill="none" stroke-dasharray="5,5"/>
+  <text x="25" y="260" font-size="11" fill="#90a4ae" transform="rotate(-90, 25, 260)">循环直到目标达成</text>
+
+  <!-- 底部说明 -->
+  <rect x="100" y="460" width="500" height="30" rx="5" fill="#eceff1"/>
+  <text x="350" y="480" text-anchor="middle" font-size="12" fill="#546e7a">ReAct = 先推理(Thought) 再行动(Action) 观察结果(Observation) 循环往复</text>
+</svg>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="Arial, sans-serif">
+  <rect width="800" height="400" fill="#fafafa" rx="8"/>
+  <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a1a2e">ReAct vs Plan-and-Execute</text>
+
+  <!-- ReAct 模式 -->
+  <rect x="30" y="55" width="350" height="330" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+  <text x="205" y="80" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565c0">ReAct 模式</text>
+
+  <rect x="60" y="100" width="130" height="35" rx="6" fill="#bbdefb"/>
+  <text x="125" y="122" text-anchor="middle" font-size="11" fill="#1565c0">Thought</text>
+  <rect x="210" y="100" width="130" height="35" rx="6" fill="#c8e6c9"/>
+  <text x="275" y="122" text-anchor="middle" font-size="11" fill="#2e7d32">Action</text>
+  <rect x="60" y="150" width="130" height="35" rx="6" fill="#f8bbd0"/>
+  <text x="125" y="172" text-anchor="middle" font-size="11" fill="#c2185b">Observation</text>
+  <rect x="210" y="150" width="130" height="35" rx="6" fill="#bbdefb"/>
+  <text x="275" y="172" text-anchor="middle" font-size="11" fill="#1565c0">Thought</text>
+
+  <path d="M 190 117 L 210 117" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
+  <path d="M 125 135 L 125 150" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
+  <path d="M 275 135 L 275 150" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
+  <path d="M 190 167 L 210 167" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
+
+  <!-- 循环符号 -->
+  <text x="205" y="210" text-anchor="middle" font-size="30" fill="#1976d2">&#8635;</text>
+
+  <rect x="60" y="235" width="280" height="55" rx="6" fill="#fff3e0" stroke="#f57c00" stroke-width="1"/>
+  <text x="200" y="258" text-anchor="middle" font-size="11" font-weight="bold" fill="#e65100">特点：边想边做</text>
+  <text x="200" y="278" text-anchor="middle" font-size="10" fill="#f57c00">适合：简单任务、探索性任务</text>
+
+  <rect x="60" y="305" width="280" height="55" rx="6" fill="#ffebee" stroke="#e53935" stroke-width="1"/>
+  <text x="200" y="328" text-anchor="middle" font-size="11" font-weight="bold" fill="#c62828">缺点：缺乏全局视野</text>
+  <text x="200" y="348" text-anchor="middle" font-size="10" fill="#e53935">可能陷入无效循环、重复操作</text>
+
+  <!-- Plan-and-Execute 模式 -->
+  <rect x="420" y="55" width="350" height="330" rx="10" fill="#e8f5e9" stroke="#388e3c" stroke-width="2"/>
+  <text x="595" y="80" text-anchor="middle" font-size="15" font-weight="bold" fill="#2e7d32">Plan-and-Execute 模式</text>
+
+  <!-- Plan Phase -->
+  <rect x="450" y="100" width="290" height="50" rx="8" fill="#a5d6a7" stroke="#388e3c" stroke-width="1.5"/>
+  <text x="595" y="120" text-anchor="middle" font-size="12" font-weight="bold" fill="#1b5e20">Plan: 制定完整计划</text>
+  <text x="595" y="138" text-anchor="middle" font-size="10" fill="#2e7d32">Step1: 搜索... Step2: 分析... Step3: 撰写...</text>
+
+  <!-- Execute Steps -->
+  <rect x="450" y="165" width="85" height="35" rx="6" fill="#c8e6c9"/>
+  <text x="492" y="187" text-anchor="middle" font-size="10" fill="#2e7d32">Exec 1</text>
+  <rect x="545" y="165" width="85" height="35" rx="6" fill="#c8e6c9"/>
+  <text x="587" y="187" text-anchor="middle" font-size="10" fill="#2e7d32">Exec 2</text>
+  <rect x="640" y="165" width="85" height="35" rx="6" fill="#c8e6c9"/>
+  <text x="682" y="187" text-anchor="middle" font-size="10" fill="#2e7d32">Exec 3</text>
+
+  <path d="M 535 182 L 545 182" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
+  <path d="M 630 182 L 640 182" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
+
+  <!-- Re-Plan -->
+  <rect x="450" y="215" width="290" height="40" rx="8" fill="#fff9c4" stroke="#f9a825" stroke-width="1.5"/>
+  <text x="595" y="240" text-anchor="middle" font-size="11" font-weight="bold" fill="#f57f17">Re-Plan: 根据结果调整计划</text>
+
+  <!-- 最终输出 -->
+  <rect x="450" y="270" width="290" height="35" rx="8" fill="#a5d6a7"/>
+  <text x="595" y="292" text-anchor="middle" font-size="12" font-weight="bold" fill="#1b5e20">最终输出</text>
+
+  <!-- 连线 -->
+  <path d="M 595 150 L 595 165" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
+  <path d="M 595 200 L 595 215" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
+  <path d="M 595 255 L 595 270" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
+
+  <rect x="450" y="305" width="290" height="55" rx="6" fill="#fff3e0" stroke="#f57c00" stroke-width="1"/>
+  <text x="595" y="328" text-anchor="middle" font-size="11" font-weight="bold" fill="#e65100">特点：先规划后执行</text>
+  <text x="595" y="348" text-anchor="middle" font-size="10" fill="#f57c00">适合：复杂任务、多步骤任务</text>
+</svg>

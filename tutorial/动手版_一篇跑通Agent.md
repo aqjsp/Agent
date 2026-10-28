@@ -45,108 +45,9 @@ Agent = Model + Harness
 
 ### 1.3 Agent 架构全景图
 
-下面这张SVG图展示了Agent的完整架构，Model和Harness如何协作：
+下图展示了 Agent 的完整架构，Model和Harness如何协作：
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="Arial, sans-serif">
-  <!-- 背景 -->
-  <rect width="900" height="600" fill="#f8f9fa" rx="10"/>
-
-  <!-- 标题 -->
-  <text x="450" y="35" text-anchor="middle" font-size="22" font-weight="bold" fill="#1a1a2e">Agent = Model + Harness</text>
-
-  <!-- Model 区域 -->
-  <rect x="50" y="60" width="280" height="520" rx="12" fill="#e8eaf6" stroke="#3f51b5" stroke-width="2"/>
-  <text x="190" y="95" text-anchor="middle" font-size="20" font-weight="bold" fill="#3f51b5">Model (大脑)</text>
-
-  <!-- LLM Core -->
-  <rect x="80" y="115" width="220" height="80" rx="8" fill="#3f51b5" opacity="0.9"/>
-  <text x="190" y="150" text-anchor="middle" font-size="16" font-weight="bold" fill="white">LLM 核心</text>
-  <text x="190" y="175" text-anchor="middle" font-size="12" fill="#e8eaf6">Next-Token Prediction</text>
-
-  <!-- Reasoning -->
-  <rect x="80" y="215" width="220" height="70" rx="8" fill="#5c6bc0" opacity="0.85"/>
-  <text x="190" y="245" text-anchor="middle" font-size="14" font-weight="bold" fill="white">推理能力</text>
-  <text x="190" y="268" text-anchor="middle" font-size="11" fill="#e8eaf6">Chain-of-Thought / CoT</text>
-
-  <!-- Function Call Decision -->
-  <rect x="80" y="305" width="220" height="70" rx="8" fill="#7986cb" opacity="0.8"/>
-  <text x="190" y="335" text-anchor="middle" font-size="14" font-weight="bold" fill="white">函数调用决策</text>
-  <text x="190" y="358" text-anchor="middle" font-size="11" fill="#e8eaf6">Function Calling Protocol</text>
-
-  <!-- System Prompt -->
-  <rect x="80" y="395" width="220" height="70" rx="8" fill="#9fa8da" opacity="0.75"/>
-  <text x="190" y="425" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a1a2e">System Prompt</text>
-  <text x="190" y="448" text-anchor="middle" font-size="11" fill="#3f51b5">角色定义 / 约束 / 指令</text>
-
-  <!-- 知识截止 -->
-  <rect x="80" y="485" width="220" height="60" rx="8" fill="#c5cae9" opacity="0.7"/>
-  <text x="190" y="512" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a1a2e">参数化知识</text>
-  <text x="190" y="532" text-anchor="middle" font-size="11" fill="#3f51b5">训练数据中的世界知识</text>
-
-  <!-- Harness 区域 -->
-  <rect x="570" y="60" width="280" height="520" rx="12" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
-  <text x="710" y="95" text-anchor="middle" font-size="20" font-weight="bold" fill="#2e7d32">Harness (四肢/感官)</text>
-
-  <!-- Tools -->
-  <rect x="600" y="115" width="220" height="80" rx="8" fill="#4caf50" opacity="0.9"/>
-  <text x="710" y="150" text-anchor="middle" font-size="16" font-weight="bold" fill="white">工具系统 (Tools)</text>
-  <text x="710" y="175" text-anchor="middle" font-size="12" fill="#e8f5e9">搜索 / 代码执行 / API调用</text>
-
-  <!-- Memory -->
-  <rect x="600" y="215" width="220" height="80" rx="8" fill="#66bb6a" opacity="0.85"/>
-  <text x="710" y="250" text-anchor="middle" font-size="16" font-weight="bold" fill="white">记忆系统 (Memory)</text>
-  <text x="710" y="275" text-anchor="middle" font-size="12" fill="#e8f5e9">短期 / 长期 / 向量检索</text>
-
-  <!-- Planning -->
-  <rect x="600" y="315" width="220" height="80" rx="8" fill="#81c784" opacity="0.8"/>
-  <text x="710" y="350" text-anchor="middle" font-size="16" font-weight="bold" fill="white">规划系统 (Planning)</text>
-  <text x="710" y="375" text-anchor="middle" font-size="12" fill="#e8f5e9">任务分解 / 步骤编排</text>
-
-  <!-- Orchestration -->
-  <rect x="600" y="415" width="220" height="70" rx="8" fill="#a5d6a7" opacity="0.75"/>
-  <text x="710" y="445" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a1a2e">流程编排 (Orchestration)</text>
-  <text x="710" y="468" text-anchor="middle" font-size="11" fill="#2e7d32">ReAct / Plan-Execute / 反思</text>
-
-  <!-- Error Handling -->
-  <rect x="600" y="505" width="220" height="60" rx="8" fill="#c8e6c9" opacity="0.7"/>
-  <text x="710" y="532" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a1a2e">错误处理与护栏</text>
-  <text x="710" y="552" text-anchor="middle" font-size="11" fill="#2e7d32">重试 / 降级 / 安全边界</text>
-
-  <!-- 连接箭头：Model <-> Harness -->
-  <defs>
-    <marker id="arrowRight" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#ff6f00"/>
-    </marker>
-    <marker id="arrowLeft" markerWidth="10" markerHeight="7" refX="1" refY="3.5" orient="auto">
-      <polygon points="10 0, 0 3.5, 10 7" fill="#ff6f00"/>
-    </marker>
-  </defs>
-
-  <!-- 上方箭头：Model -> Harness (决策/指令) -->
-  <line x1="330" y1="250" x2="570" y2="250" stroke="#ff6f00" stroke-width="3" marker-end="url(#arrowRight)"/>
-  <rect x="380" y="228" width="140" height="24" rx="4" fill="#fff3e0" stroke="#ff6f00" stroke-width="1"/>
-  <text x="450" y="245" text-anchor="middle" font-size="12" font-weight="bold" fill="#e65100">决策 &amp; 指令</text>
-
-  <!-- 下方箭头：Harness -> Model (观察/结果) -->
-  <line x1="570" y1="370" x2="330" y2="370" stroke="#ff6f00" stroke-width="3" marker-end="url(#arrowLeft)"/>
-  <rect x="380" y="348" width="140" height="24" rx="4" fill="#fff3e0" stroke="#ff6f00" stroke-width="1"/>
-  <text x="450" y="365" text-anchor="middle" font-size="12" font-weight="bold" fill="#e65100">观察 &amp; 反馈</text>
-
-  <!-- User 入口 -->
-  <rect x="350" y="510" width="200" height="55" rx="25" fill="#fff8e1" stroke="#ffc107" stroke-width="2"/>
-  <text x="450" y="537" text-anchor="middle" font-size="15" font-weight="bold" fill="#f57f17">用户输入 (User)</text>
-  <text x="450" y="555" text-anchor="middle" font-size="11" fill="#f57f17">目标 / 问题 / 任务</text>
-
-  <!-- User -> Agent 箭头 -->
-  <line x1="450" y1="510" x2="450" y2="460" stroke="#ffc107" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowRight)"/>
-
-  <!-- Agent 输出 -->
-  <rect x="350" y="100" width="200" height="45" rx="20" fill="#fce4ec" stroke="#e91e63" stroke-width="2"/>
-  <text x="450" y="128" text-anchor="middle" font-size="14" font-weight="bold" fill="#c2185b">Agent 输出 (Response)</text>
-
-  <!-- Agent -> Output 箭头 -->
-  <line x1="450" y1="185" x2="450" y2="150" stroke="#e91e63" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowRight)"/>
-</svg>
+![Agent = Model + Harness](../image/agent/handson_agent_architecture.svg)
 
 ### 1.4 为什么 Model 单独不够？
 
@@ -287,65 +188,7 @@ tools = [
 
 **完整的 Function Calling 流程：**
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" font-family="Arial, sans-serif">
-  <!-- 背景 -->
-  <rect width="800" height="450" fill="#fafafa" rx="8"/>
-
-  <!-- 标题 -->
-  <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a1a2e">Function Calling 完整流程</text>
-
-  <!-- Step 1: 用户提问 -->
-  <rect x="30" y="55" width="160" height="55" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
-  <text x="110" y="78" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565c0">1. 用户提问</text>
-  <text x="110" y="98" text-anchor="middle" font-size="11" fill="#1976d2">"北京天气怎么样？"</text>
-
-  <!-- 箭头 1->2 -->
-  <line x1="190" y1="82" x2="225" y2="82" stroke="#546e7a" stroke-width="2" marker-end="url(#arrowRight)"/>
-
-  <!-- Step 2: LLM 决策 -->
-  <rect x="230" y="55" width="160" height="55" rx="8" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
-  <text x="310" y="78" text-anchor="middle" font-size="13" font-weight="bold" fill="#e65100">2. LLM 决策</text>
-  <text x="310" y="98" text-anchor="middle" font-size="11" fill="#f57c00">选择调用 get_weather</text>
-
-  <!-- 箭头 2->3 -->
-  <line x1="390" y1="82" x2="425" y2="82" stroke="#546e7a" stroke-width="2" marker-end="url(#arrowRight)"/>
-
-  <!-- Step 3: 执行工具 -->
-  <rect x="430" y="55" width="160" height="55" rx="8" fill="#e8f5e9" stroke="#388e3c" stroke-width="2"/>
-  <text x="510" y="78" text-anchor="middle" font-size="13" font-weight="bold" fill="#2e7d32">3. 执行工具</text>
-  <text x="510" y="98" text-anchor="middle" font-size="11" fill="#388e3c">Harness 调用天气API</text>
-
-  <!-- 箭头 3->4 -->
-  <line x1="590" y1="82" x2="625" y2="82" stroke="#546e7a" stroke-width="2" marker-end="url(#arrowRight)"/>
-
-  <!-- Step 4: 返回结果 -->
-  <rect x="630" y="55" width="145" height="55" rx="8" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
-  <text x="702" y="78" text-anchor="middle" font-size="13" font-weight="bold" fill="#6a1b9a">4. 返回结果</text>
-  <text x="702" y="98" text-anchor="middle" font-size="11" fill="#7b1fa2">{"temp": 22}</text>
-
-  <!-- Step 4 -> Step 5 的回环箭头 -->
-  <path d="M 702 110 L 702 150 L 400 150 L 400 180" stroke="#546e7a" stroke-width="2" fill="none" marker-end="url(#arrowRight)"/>
-  <rect x="470" y="138" width="160" height="20" rx="4" fill="#fafafa" stroke="#546e7a" stroke-width="1"/>
-  <text x="550" y="153" text-anchor="middle" font-size="10" fill="#546e7a">结果作为新消息传回LLM</text>
-
-  <!-- Step 5: LLM 生成最终回答 -->
-  <rect x="230" y="185" width="340" height="55" rx="8" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
-  <text x="400" y="208" text-anchor="middle" font-size="13" font-weight="bold" fill="#e65100">5. LLM 基于工具结果生成回答</text>
-  <text x="400" y="228" text-anchor="middle" font-size="11" fill="#f57c00">"北京今天天气晴朗，气温22°C"</text>
-
-  <!-- 箭头 5->6 -->
-  <line x1="400" y1="240" x2="400" y2="270" stroke="#546e7a" stroke-width="2" marker-end="url(#arrowRight)"/>
-
-  <!-- Step 6: 返回给用户 -->
-  <rect x="230" y="275" width="340" height="50" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
-  <text x="400" y="305" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565c0">6. 最终回答返回给用户</text>
-
-  <!-- 底部说明区域 -->
-  <rect x="30" y="350" width="740" height="85" rx="8" fill="#eceff1" stroke="#90a4ae" stroke-width="1"/>
-  <text x="400" y="375" text-anchor="middle" font-size="14" font-weight="bold" fill="#37474f">关键理解</text>
-  <text x="400" y="398" text-anchor="middle" font-size="12" fill="#546e7a">LLM 本身不执行工具 —— 它只输出"我想调用xxx工具"的结构化请求</text>
-  <text x="400" y="418" text-anchor="middle" font-size="12" fill="#546e7a">Harness 负责实际执行工具调用，并将结果拼回消息列表，让LLM继续推理</text>
-</svg>
+![Function Calling 完整流程](../image/agent/handson_function_calling_flow.svg)
 
 ### 2.5 代码实战：第一次 Function Calling
 
@@ -611,64 +454,7 @@ tools_schema = registry.get_openai_tools_schema()
 
 ReAct（Reasoning + Acting）是 Agent 最经典的运行模式。它的核心思想是：**先思考，再行动，观察结果，继续思考**。
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 500" font-family="Arial, sans-serif">
-  <!-- 背景 -->
-  <rect width="700" height="500" fill="#fafafa" rx="8"/>
-  <text x="350" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a1a2e">ReAct 循环</text>
-
-  <!-- 中心：Agent -->
-  <circle cx="350" cy="250" r="60" fill="#fff3e0" stroke="#ff6f00" stroke-width="3"/>
-  <text x="350" y="245" text-anchor="middle" font-size="16" font-weight="bold" fill="#e65100">Agent</text>
-  <text x="350" y="265" text-anchor="middle" font-size="11" fill="#f57c00">LLM + Harness</text>
-
-  <!-- Thought -->
-  <rect x="120" y="60" width="140" height="50" rx="25" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
-  <text x="190" y="83" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565c0">Thought</text>
-  <text x="190" y="100" text-anchor="middle" font-size="10" fill="#1976d2">我需要搜索...</text>
-
-  <!-- Action -->
-  <rect x="440" y="60" width="140" height="50" rx="25" fill="#e8f5e9" stroke="#388e3c" stroke-width="2"/>
-  <text x="510" y="83" text-anchor="middle" font-size="14" font-weight="bold" fill="#2e7d32">Action</text>
-  <text x="510" y="100" text-anchor="middle" font-size="10" fill="#388e3c">调用 search_web()</text>
-
-  <!-- Observation -->
-  <rect x="440" y="390" width="140" height="50" rx="25" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
-  <text x="510" y="413" text-anchor="middle" font-size="14" font-weight="bold" fill="#6a1b9a">Observation</text>
-  <text x="510" y="430" text-anchor="middle" font-size="10" fill="#7b1fa2">搜索结果...</text>
-
-  <!-- Answer -->
-  <rect x="120" y="390" width="140" height="50" rx="25" fill="#fce4ec" stroke="#c2185b" stroke-width="2"/>
-  <text x="190" y="413" text-anchor="middle" font-size="14" font-weight="bold" fill="#c2185b">Answer</text>
-  <text x="190" y="430" text-anchor="middle" font-size="10" fill="#c2185b">最终回答</text>
-
-  <!-- 箭头：Thought -> Agent -->
-  <path d="M 230 100 Q 280 170 310 210" stroke="#1976d2" stroke-width="2" fill="none" marker-end="url(#arrowRight)"/>
-  <text x="240" y="155" font-size="10" fill="#1976d2" transform="rotate(-45, 240, 155)">推理</text>
-
-  <!-- 箭头：Agent -> Action -->
-  <path d="M 400 220 Q 430 170 450 100" stroke="#388e3c" stroke-width="2" fill="none" marker-end="url(#arrowRight)"/>
-  <text x="435" y="155" font-size="10" fill="#388e3c" transform="rotate(45, 435, 155)">执行</text>
-
-  <!-- 箭头：Action -> Observation -->
-  <path d="M 510 110 L 510 390" stroke="#7b1fa2" stroke-width="2" fill="none" marker-end="url(#arrowRight)"/>
-  <text x="520" y="250" font-size="10" fill="#7b1fa2">获取结果</text>
-
-  <!-- 箭头：Observation -> Agent -->
-  <path d="M 450 400 Q 420 340 400 290" stroke="#6a1b9a" stroke-width="2" fill="none" marker-end="url(#arrowRight)"/>
-  <text x="440" y="345" font-size="10" fill="#6a1b9a" transform="rotate(45, 440, 345)">反馈</text>
-
-  <!-- 箭头：Agent -> Answer -->
-  <path d="M 300 280 Q 270 340 240 390" stroke="#c2185b" stroke-width="2" fill="none" marker-end="url(#arrowRight)"/>
-  <text x="260" y="345" font-size="10" fill="#c2185b" transform="rotate(-45, 260, 345)">输出</text>
-
-  <!-- 循环标注 -->
-  <path d="M 80 140 Q 30 250 80 370" stroke="#90a4ae" stroke-width="1.5" fill="none" stroke-dasharray="5,5"/>
-  <text x="25" y="260" font-size="11" fill="#90a4ae" transform="rotate(-90, 25, 260)">循环直到目标达成</text>
-
-  <!-- 底部说明 -->
-  <rect x="100" y="460" width="500" height="30" rx="5" fill="#eceff1"/>
-  <text x="350" y="480" text-anchor="middle" font-size="12" fill="#546e7a">ReAct = 先推理(Thought) 再行动(Action) 观察结果(Observation) 循环往复</text>
-</svg>
+![ReAct 循环](../image/agent/handson_react_cycle.svg)
 
 #### ReAct 的完整工作流程
 
@@ -809,43 +595,7 @@ Linux是由Linus Torvalds于1991年创建的开源操作系统内核。从1991�
 
 上面的代码构建了一个如下结构的图：
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" font-family="Arial, sans-serif">
-  <rect width="600" height="300" fill="#fafafa" rx="8"/>
-  <text x="300" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a2e">LangGraph ReAct Agent 状态图</text>
-
-  <!-- START -->
-  <circle cx="80" cy="150" r="20" fill="#4caf50"/>
-  <text x="80" y="155" text-anchor="middle" font-size="11" font-weight="bold" fill="white">START</text>
-
-  <!-- Agent Node -->
-  <rect x="180" y="110" width="120" height="80" rx="12" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
-  <text x="240" y="145" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565c0">agent</text>
-  <text x="240" y="168" text-anchor="middle" font-size="10" fill="#1976d2">LLM + Tool Decision</text>
-
-  <!-- Tools Node -->
-  <rect x="400" y="110" width="120" height="80" rx="12" fill="#e8f5e9" stroke="#388e3c" stroke-width="2"/>
-  <text x="460" y="145" text-anchor="middle" font-size="14" font-weight="bold" fill="#2e7d32">tools</text>
-  <text x="460" y="168" text-anchor="middle" font-size="10" fill="#388e3c">Execute Tools</text>
-
-  <!-- END -->
-  <circle cx="80" cy="260" r="20" fill="#f44336"/>
-  <text x="80" y="265" text-anchor="middle" font-size="11" font-weight="bold" fill="white">END</text>
-
-  <!-- START -> agent -->
-  <line x1="100" y1="150" x2="180" y2="150" stroke="#546e7a" stroke-width="2" marker-end="url(#arrowRight)"/>
-
-  <!-- agent -> tools (conditional) -->
-  <line x1="300" y1="130" x2="400" y2="130" stroke="#388e3c" stroke-width="2" marker-end="url(#arrowRight)"/>
-  <text x="350" y="122" text-anchor="middle" font-size="10" fill="#388e3c">has_tool_calls</text>
-
-  <!-- agent -> END (conditional) -->
-  <path d="M 200 190 Q 120 230 95 250" stroke="#f44336" stroke-width="2" fill="none" marker-end="url(#arrowRight)"/>
-  <text x="130" y="230" font-size="10" fill="#f44336">no_tool_calls</text>
-
-  <!-- tools -> agent -->
-  <path d="M 460 110 Q 460 60 240 60 Q 180 60 180 110" stroke="#1976d2" stroke-width="2" fill="none" marker-end="url(#arrowRight)"/>
-  <text x="320" y="55" text-anchor="middle" font-size="10" fill="#1976d2">loop back</text>
-</svg>
+![LangGraph ReAct Agent 状态图](../image/agent/handson_langgraph_react_graph.svg)
 
 ### 3.5 工具设计的最佳实践
 
@@ -878,62 +628,7 @@ Agent：抱歉，我不知道你的名字。  ← 忘了！
 
 ### 4.2 记忆的分类
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" font-family="Arial, sans-serif">
-  <rect width="800" height="420" fill="#fafafa" rx="8"/>
-  <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a1a2e">Agent 记忆系统分类</text>
-
-  <!-- 顶层：Memory -->
-  <rect x="300" y="50" width="200" height="50" rx="10" fill="#3f51b5" opacity="0.9"/>
-  <text x="400" y="80" text-anchor="middle" font-size="16" font-weight="bold" fill="white">Memory 记忆系统</text>
-
-  <!-- 短期记忆 -->
-  <rect x="80" y="150" width="280" height="45" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
-  <text x="220" y="178" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565c0">短期记忆 (Short-term)</text>
-
-  <!-- 长期记忆 -->
-  <rect x="440" y="150" width="280" height="45" rx="8" fill="#e8f5e9" stroke="#388e3c" stroke-width="2"/>
-  <text x="580" y="178" text-anchor="middle" font-size="14" font-weight="bold" fill="#2e7d32">长期记忆 (Long-term)</text>
-
-  <!-- 短期记忆分支 -->
-  <line x1="220" y1="195" x2="140" y2="230" stroke="#1976d2" stroke-width="1.5"/>
-  <line x1="220" y1="195" x2="300" y2="230" stroke="#1976d2" stroke-width="1.5"/>
-
-  <rect x="60" y="230" width="160" height="70" rx="6" fill="#bbdefb" stroke="#1976d2" stroke-width="1"/>
-  <text x="140" y="255" text-anchor="middle" font-size="12" font-weight="bold" fill="#1565c0">对话缓冲区</text>
-  <text x="140" y="275" text-anchor="middle" font-size="10" fill="#1976d2">Buffer Memory</text>
-  <text x="140" y="290" text-anchor="middle" font-size="9" fill="#546e7a">保留最近N轮对话</text>
-
-  <rect x="240" y="230" width="160" height="70" rx="6" fill="#bbdefb" stroke="#1976d2" stroke-width="1"/>
-  <text x="320" y="255" text-anchor="middle" font-size="12" font-weight="bold" fill="#1565c0">滑动窗口</text>
-  <text x="320" y="275" text-anchor="middle" font-size="10" fill="#1976d2">Sliding Window</text>
-  <text x="320" y="290" text-anchor="middle" font-size="9" fill="#546e7a">保留最近K个token</text>
-
-  <!-- 长期记忆分支 -->
-  <line x1="580" y1="195" x2="500" y2="230" stroke="#388e3c" stroke-width="1.5"/>
-  <line x1="580" y1="195" x2="660" y2="230" stroke="#388e3c" stroke-width="1.5"/>
-
-  <rect x="420" y="230" width="160" height="70" rx="6" fill="#c8e6c9" stroke="#388e3c" stroke-width="1"/>
-  <text x="500" y="255" text-anchor="middle" font-size="12" font-weight="bold" fill="#2e7d32">摘要记忆</text>
-  <text x="500" y="275" text-anchor="middle" font-size="10" fill="#388e3c">Summary Memory</text>
-  <text x="500" y="290" text-anchor="middle" font-size="9" fill="#546e7a">压缩历史对话为摘要</text>
-
-  <rect x="600" y="230" width="160" height="70" rx="6" fill="#c8e6c9" stroke="#388e3c" stroke-width="1"/>
-  <text x="680" y="255" text-anchor="middle" font-size="12" font-weight="bold" fill="#2e7d32">向量检索</text>
-  <text x="680" y="275" text-anchor="middle" font-size="10" fill="#388e3c">Vector Store + RAG</text>
-  <text x="680" y="290" text-anchor="middle" font-size="9" fill="#546e7a">语义相似度检索</text>
-
-  <!-- 底部：实现方式 -->
-  <rect x="60" y="330" width="680" height="75" rx="8" fill="#eceff1" stroke="#90a4ae" stroke-width="1"/>
-  <text x="400" y="355" text-anchor="middle" font-size="13" font-weight="bold" fill="#37474f">LangGraph 中的实现</text>
-  <text x="200" y="380" text-anchor="middle" font-size="11" fill="#546e7a">短期记忆：State + Messages</text>
-  <text x="400" y="380" text-anchor="middle" font-size="11" fill="#546e7a">会话持久化：Checkpointer</text>
-  <text x="600" y="380" text-anchor="middle" font-size="11" fill="#546e7a">长期记忆：Store + VectorDB</text>
-
-  <!-- 连线 -->
-  <line x1="220" y1="300" x2="200" y2="330" stroke="#90a4ae" stroke-width="1" stroke-dasharray="3,3"/>
-  <line x1="410" y1="300" x2="400" y2="330" stroke="#90a4ae" stroke-width="1" stroke-dasharray="3,3"/>
-  <line x1="600" y1="300" x2="600" y2="330" stroke="#90a4ae" stroke-width="1" stroke-dasharray="3,3"/>
-</svg>
+![Agent 记忆系统分类](../image/agent/handson_memory_types.svg)
 
 ### 4.3 对话记忆的几种策略
 
@@ -1263,76 +958,7 @@ print(f"Agent: {r2['messages'][-1].content}")
 
 ### 5.2 两种规划模式
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="Arial, sans-serif">
-  <rect width="800" height="400" fill="#fafafa" rx="8"/>
-  <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a1a2e">ReAct vs Plan-and-Execute</text>
-
-  <!-- ReAct 模式 -->
-  <rect x="30" y="55" width="350" height="330" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
-  <text x="205" y="80" text-anchor="middle" font-size="15" font-weight="bold" fill="#1565c0">ReAct 模式</text>
-
-  <rect x="60" y="100" width="130" height="35" rx="6" fill="#bbdefb"/>
-  <text x="125" y="122" text-anchor="middle" font-size="11" fill="#1565c0">Thought</text>
-  <rect x="210" y="100" width="130" height="35" rx="6" fill="#c8e6c9"/>
-  <text x="275" y="122" text-anchor="middle" font-size="11" fill="#2e7d32">Action</text>
-  <rect x="60" y="150" width="130" height="35" rx="6" fill="#f8bbd0"/>
-  <text x="125" y="172" text-anchor="middle" font-size="11" fill="#c2185b">Observation</text>
-  <rect x="210" y="150" width="130" height="35" rx="6" fill="#bbdefb"/>
-  <text x="275" y="172" text-anchor="middle" font-size="11" fill="#1565c0">Thought</text>
-
-  <path d="M 190 117 L 210 117" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
-  <path d="M 125 135 L 125 150" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
-  <path d="M 275 135 L 275 150" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
-  <path d="M 190 167 L 210 167" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
-
-  <!-- 循环符号 -->
-  <text x="205" y="210" text-anchor="middle" font-size="30" fill="#1976d2">&#8635;</text>
-
-  <rect x="60" y="235" width="280" height="55" rx="6" fill="#fff3e0" stroke="#f57c00" stroke-width="1"/>
-  <text x="200" y="258" text-anchor="middle" font-size="11" font-weight="bold" fill="#e65100">特点：边想边做</text>
-  <text x="200" y="278" text-anchor="middle" font-size="10" fill="#f57c00">适合：简单任务、探索性任务</text>
-
-  <rect x="60" y="305" width="280" height="55" rx="6" fill="#ffebee" stroke="#e53935" stroke-width="1"/>
-  <text x="200" y="328" text-anchor="middle" font-size="11" font-weight="bold" fill="#c62828">缺点：缺乏全局视野</text>
-  <text x="200" y="348" text-anchor="middle" font-size="10" fill="#e53935">可能陷入无效循环、重复操作</text>
-
-  <!-- Plan-and-Execute 模式 -->
-  <rect x="420" y="55" width="350" height="330" rx="10" fill="#e8f5e9" stroke="#388e3c" stroke-width="2"/>
-  <text x="595" y="80" text-anchor="middle" font-size="15" font-weight="bold" fill="#2e7d32">Plan-and-Execute 模式</text>
-
-  <!-- Plan Phase -->
-  <rect x="450" y="100" width="290" height="50" rx="8" fill="#a5d6a7" stroke="#388e3c" stroke-width="1.5"/>
-  <text x="595" y="120" text-anchor="middle" font-size="12" font-weight="bold" fill="#1b5e20">Plan: 制定完整计划</text>
-  <text x="595" y="138" text-anchor="middle" font-size="10" fill="#2e7d32">Step1: 搜索... Step2: 分析... Step3: 撰写...</text>
-
-  <!-- Execute Steps -->
-  <rect x="450" y="165" width="85" height="35" rx="6" fill="#c8e6c9"/>
-  <text x="492" y="187" text-anchor="middle" font-size="10" fill="#2e7d32">Exec 1</text>
-  <rect x="545" y="165" width="85" height="35" rx="6" fill="#c8e6c9"/>
-  <text x="587" y="187" text-anchor="middle" font-size="10" fill="#2e7d32">Exec 2</text>
-  <rect x="640" y="165" width="85" height="35" rx="6" fill="#c8e6c9"/>
-  <text x="682" y="187" text-anchor="middle" font-size="10" fill="#2e7d32">Exec 3</text>
-
-  <path d="M 535 182 L 545 182" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
-  <path d="M 630 182 L 640 182" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
-
-  <!-- Re-Plan -->
-  <rect x="450" y="215" width="290" height="40" rx="8" fill="#fff9c4" stroke="#f9a825" stroke-width="1.5"/>
-  <text x="595" y="240" text-anchor="middle" font-size="11" font-weight="bold" fill="#f57f17">Re-Plan: 根据结果调整计划</text>
-
-  <!-- 最终输出 -->
-  <rect x="450" y="270" width="290" height="35" rx="8" fill="#a5d6a7"/>
-  <text x="595" y="292" text-anchor="middle" font-size="12" font-weight="bold" fill="#1b5e20">最终输出</text>
-
-  <!-- 连线 -->
-  <path d="M 595 150 L 595 165" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
-  <path d="M 595 200 L 595 215" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
-  <path d="M 595 255 L 595 270" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
-
-  <rect x="450" y="305" width="290" height="55" rx="6" fill="#fff3e0" stroke="#f57c00" stroke-width="1"/>
-  <text x="595" y="328" text-anchor="middle" font-size="11" font-weight="bold" fill="#e65100">特点：先规划后执行</text>
-  <text x="595" y="348" text-anchor="middle" font-size="10" fill="#f57c00">适合：复杂任务、多步骤任务</text>
-</svg>
+![ReAct vs Plan-and-Execute](../image/agent/handson_react_vs_plan_execute.svg)
 
 ### 5.3 用 LangGraph 实现 Plan-and-Execute Agent
 
@@ -1602,106 +1228,7 @@ Multi-Agent 的核心思想：**让不同的Agent专注于自己擅长的领域�
 
 ### 6.2 四种协作模式
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 550" font-family="Arial, sans-serif">
-  <rect width="800" height="550" fill="#fafafa" rx="8"/>
-  <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a1a2e">Multi-Agent 协作模式</text>
-
-  <!-- 模式1: Router -->
-  <rect x="30" y="55" width="350" height="210" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
-  <text x="205" y="80" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565c0">1. Router (路由模式)</text>
-
-  <circle cx="205" cy="130" r="25" fill="#1976d2"/>
-  <text x="205" y="135" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Router</text>
-
-  <rect x="60" y="175" width="80" height="35" rx="6" fill="#bbdefb"/>
-  <text x="100" y="197" text-anchor="middle" font-size="10" fill="#1565c0">Agent A</text>
-  <rect x="165" y="175" width="80" height="35" rx="6" fill="#bbdefb"/>
-  <text x="205" y="197" text-anchor="middle" font-size="10" fill="#1565c0">Agent B</text>
-  <rect x="270" y="175" width="80" height="35" rx="6" fill="#bbdefb"/>
-  <text x="310" y="197" text-anchor="middle" font-size="10" fill="#1565c0">Agent C</text>
-
-  <line x1="180" y1="145" x2="100" y2="175" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
-  <line x1="205" y1="155" x2="205" y2="175" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
-  <line x1="230" y1="145" x2="310" y2="175" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
-
-  <text x="205" y="240" text-anchor="middle" font-size="10" fill="#546e7a">根据输入选择一个最合适的Agent</text>
-
-  <!-- 模式2: Supervisor -->
-  <rect x="420" y="55" width="350" height="210" rx="10" fill="#e8f5e9" stroke="#388e3c" stroke-width="2"/>
-  <text x="595" y="80" text-anchor="middle" font-size="14" font-weight="bold" fill="#2e7d32">2. Supervisor (监督模式)</text>
-
-  <circle cx="595" cy="130" r="25" fill="#388e3c"/>
-  <text x="595" y="135" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Supervisor</text>
-
-  <rect x="450" y="175" width="80" height="35" rx="6" fill="#c8e6c9"/>
-  <text x="490" y="197" text-anchor="middle" font-size="10" fill="#2e7d32">Worker1</text>
-  <rect x="555" y="175" width="80" height="35" rx="6" fill="#c8e6c9"/>
-  <text x="595" y="197" text-anchor="middle" font-size="10" fill="#2e7d32">Worker2</text>
-  <rect x="660" y="175" width="80" height="35" rx="6" fill="#c8e6c9"/>
-  <text x="700" y="197" text-anchor="middle" font-size="10" fill="#2e7d32">Worker3</text>
-
-  <line x1="570" y1="145" x2="490" y2="175" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
-  <line x1="595" y1="155" x2="595" y2="175" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
-  <line x1="620" y1="145" x2="700" y2="175" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
-
-  <!-- 反馈箭头 -->
-  <line x1="490" y1="210" x2="570" y2="148" stroke="#ff6f00" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrowRight)"/>
-  <line x1="700" y1="210" x2="620" y2="148" stroke="#ff6f00" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrowRight)"/>
-
-  <text x="595" y="240" text-anchor="middle" font-size="10" fill="#546e7a">Supervisor分配任务，收集结果，决定下一步</text>
-
-  <!-- 模式3: Swarm -->
-  <rect x="30" y="290" width="350" height="230" rx="10" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
-  <text x="205" y="315" text-anchor="middle" font-size="14" font-weight="bold" fill="#e65100">3. Swarm (群智模式)</text>
-
-  <circle cx="150" cy="380" r="25" fill="#ffb74d"/>
-  <text x="150" y="385" text-anchor="middle" font-size="10" font-weight="bold" fill="#e65100">Agent1</text>
-  <circle cx="260" cy="380" r="25" fill="#ffb74d"/>
-  <text x="260" y="385" text-anchor="middle" font-size="10" font-weight="bold" fill="#e65100">Agent2</text>
-  <circle cx="205" cy="450" r="25" fill="#ffb74d"/>
-  <text x="205" y="455" text-anchor="middle" font-size="10" font-weight="bold" fill="#e65100">Agent3</text>
-
-  <!-- 双向箭头 -->
-  <line x1="175" y1="375" x2="235" y2="375" stroke="#e65100" stroke-width="1.5" marker-end="url(#arrowRight)"/>
-  <line x1="235" y1="385" x2="175" y2="385" stroke="#e65100" stroke-width="1.5" marker-end="url(#arrowRight)"/>
-  <line x1="155" y1="405" x2="195" y2="435" stroke="#e65100" stroke-width="1.5" marker-end="url(#arrowRight)"/>
-  <line x1="255" y1="405" x2="215" y2="435" stroke="#e65100" stroke-width="1.5" marker-end="url(#arrowRight)"/>
-
-  <text x="205" y="500" text-anchor="middle" font-size="10" fill="#546e7a">Agent之间直接对话，互相交接</text>
-
-  <!-- 模式4: Hierarchical -->
-  <rect x="420" y="290" width="350" height="230" rx="10" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
-  <text x="595" y="315" text-anchor="middle" font-size="14" font-weight="bold" fill="#6a1b9a">4. Hierarchical (层级模式)</text>
-
-  <!-- 顶层 -->
-  <circle cx="595" cy="360" r="25" fill="#7b1fa2"/>
-  <text x="595" y="365" text-anchor="middle" font-size="9" font-weight="bold" fill="white">Manager</text>
-
-  <!-- 中层 -->
-  <circle cx="510" cy="410" r="20" fill="#9c27b0"/>
-  <text x="510" y="415" text-anchor="middle" font-size="8" fill="white">Lead1</text>
-  <circle cx="680" cy="410" r="20" fill="#9c27b0"/>
-  <text x="680" y="415" text-anchor="middle" font-size="8" fill="white">Lead2</text>
-
-  <!-- 底层 -->
-  <rect x="455" y="445" width="55" height="25" rx="4" fill="#ce93d8"/>
-  <text x="482" y="462" text-anchor="middle" font-size="8" fill="#4a148c">W1</text>
-  <rect x="520" y="445" width="55" height="25" rx="4" fill="#ce93d8"/>
-  <text x="547" y="462" text-anchor="middle" font-size="8" fill="#4a148c">W2</text>
-  <rect x="625" y="445" width="55" height="25" rx="4" fill="#ce93d8"/>
-  <text x="652" y="462" text-anchor="middle" font-size="8" fill="#4a148c">W3</text>
-  <rect x="690" y="445" width="55" height="25" rx="4" fill="#ce93d8"/>
-  <text x="717" y="462" text-anchor="middle" font-size="8" fill="#4a148c">W4</text>
-
-  <line x1="575" y1="375" x2="515" y2="400" stroke="#546e7a" stroke-width="1.5"/>
-  <line x1="615" y1="375" x2="675" y2="400" stroke="#546e7a" stroke-width="1.5"/>
-  <line x1="500" y1="430" x2="482" y2="445" stroke="#546e7a" stroke-width="1.5"/>
-  <line x1="520" y1="430" x2="547" y2="445" stroke="#546e7a" stroke-width="1.5"/>
-  <line x1="670" y1="430" x2="652" y2="445" stroke="#546e7a" stroke-width="1.5"/>
-  <line x1="690" y1="430" x2="717" y2="445" stroke="#546e7a" stroke-width="1.5"/>
-
-  <text x="595" y="500" text-anchor="middle" font-size="10" fill="#546e7a">层级分明的组织架构，逐级分配</text>
-</svg>
+![Multi-Agent 协作模式](../image/agent/handson_multi_agent_patterns.svg)
 
 ### 6.3 Supervisor 模式实战：Researcher + Coder + Reviewer
 
@@ -2065,82 +1592,7 @@ app = main_graph.compile()
 
 ### 7.2 系统架构
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" font-family="Arial, sans-serif">
-  <rect width="900" height="650" fill="#fafafa" rx="8"/>
-  <text x="450" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#1a1a2e">Research Agent 系统架构</text>
-
-  <!-- 用户层 -->
-  <rect x="350" y="50" width="200" height="45" rx="20" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
-  <text x="450" y="78" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565c0">用户输入</text>
-
-  <!-- Supervisor -->
-  <rect x="300" y="130" width="300" height="60" rx="10" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
-  <text x="450" y="158" text-anchor="middle" font-size="15" font-weight="bold" fill="#e65100">Supervisor Agent</text>
-  <text x="450" y="178" text-anchor="middle" font-size="11" fill="#f57c00">任务分配 / 进度管理 / 结果整合</text>
-
-  <!-- 三个Worker -->
-  <rect x="50" y="240" width="230" height="80" rx="10" fill="#e8f5e9" stroke="#388e3c" stroke-width="2"/>
-  <text x="165" y="268" text-anchor="middle" font-size="14" font-weight="bold" fill="#2e7d32">Researcher</text>
-  <text x="165" y="290" text-anchor="middle" font-size="10" fill="#388e3c">search_web / read_paper</text>
-  <text x="165" y="305" text-anchor="middle" font-size="10" fill="#388e3c">信息检索与整理</text>
-
-  <rect x="335" y="240" width="230" height="80" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
-  <text x="450" y="268" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565c0">Writer</text>
-  <text x="450" y="290" text-anchor="middle" font-size="10" fill="#1976d2">draft / revise</text>
-  <text x="450" y="305" text-anchor="middle" font-size="10" fill="#1976d2">撰写与润色报告</text>
-
-  <rect x="620" y="240" width="230" height="80" rx="10" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
-  <text x="735" y="268" text-anchor="middle" font-size="14" font-weight="bold" fill="#6a1b9a">Reviewer</text>
-  <text x="735" y="290" text-anchor="middle" font-size="10" fill="#7b1fa2">review / critique</text>
-  <text x="735" y="305" text-anchor="middle" font-size="10" fill="#7b1fa2">质量审核与建议</text>
-
-  <!-- 记忆层 -->
-  <rect x="50" y="370" width="800" height="80" rx="10" fill="#eceff1" stroke="#90a4ae" stroke-width="2"/>
-  <text x="450" y="398" text-anchor="middle" font-size="15" font-weight="bold" fill="#37474f">Memory Layer</text>
-
-  <rect x="80" y="410" width="180" height="30" rx="6" fill="#cfd8dc"/>
-  <text x="170" y="430" text-anchor="middle" font-size="11" fill="#37474f">短期: Chat History</text>
-
-  <rect x="300" y="410" width="220" height="30" rx="6" fill="#cfd8dc"/>
-  <text x="410" y="430" text-anchor="middle" font-size="11" fill="#37474f">中期: Checkpointer (SQLite)</text>
-
-  <rect x="560" y="410" width="260" height="30" rx="6" fill="#cfd8dc"/>
-  <text x="690" y="430" text-anchor="middle" font-size="11" fill="#37474f">长期: VectorDB (Chroma)</text>
-
-  <!-- 工具层 -->
-  <rect x="50" y="480" width="800" height="70" rx="10" fill="#fce4ec" stroke="#e91e63" stroke-width="2"/>
-  <text x="450" y="508" text-anchor="middle" font-size="15" font-weight="bold" fill="#c2185b">Tool Layer</text>
-
-  <rect x="80" y="520" width="130" height="22" rx="4" fill="#f8bbd0"/>
-  <text x="145" y="535" text-anchor="middle" font-size="10" fill="#c2185b">Tavily Search</text>
-  <rect x="230" y="520" width="130" height="22" rx="4" fill="#f8bbd0"/>
-  <text x="295" y="535" text-anchor="middle" font-size="10" fill="#c2185b">ArXiv API</text>
-  <rect x="380" y="520" width="130" height="22" rx="4" fill="#f8bbd0"/>
-  <text x="445" y="535" text-anchor="middle" font-size="10" fill="#c2185b">Python REPL</text>
-  <rect x="530" y="520" width="130" height="22" rx="4" fill="#f8bbd0"/>
-  <text x="595" y="535" text-anchor="middle" font-size="10" fill="#c2185b">File I/O</text>
-  <rect x="680" y="520" width="140" height="22" rx="4" fill="#f8bbd0"/>
-  <text x="750" y="535" text-anchor="middle" font-size="10" fill="#c2185b">Web Scraper</text>
-
-  <!-- 护栏层 -->
-  <rect x="50" y="575" width="800" height="55" rx="10" fill="#fff8e1" stroke="#ffc107" stroke-width="2"/>
-  <text x="450" y="600" text-anchor="middle" font-size="15" font-weight="bold" fill="#f57f17">Guardrails and Observability</text>
-
-  <rect x="80" y="610" width="150" height="15" rx="3" fill="#fff9c4"/>
-  <text x="155" y="621" text-anchor="middle" font-size="9" fill="#f57f17">Token Limit Control</text>
-  <rect x="250" y="610" width="150" height="15" rx="3" fill="#fff9c4"/>
-  <text x="325" y="621" text-anchor="middle" font-size="9" fill="#f57f17">Error Handling</text>
-  <rect x="420" y="610" width="150" height="15" rx="3" fill="#fff9c4"/>
-  <text x="495" y="621" text-anchor="middle" font-size="9" fill="#f57f17">LangSmith Tracing</text>
-  <rect x="590" y="610" width="150" height="15" rx="3" fill="#fff9c4"/>
-  <text x="665" y="621" text-anchor="middle" font-size="9" fill="#f57f17">Rate Limiting</text>
-
-  <!-- 连接线 -->
-  <line x1="450" y1="95" x2="450" y2="130" stroke="#546e7a" stroke-width="2" marker-end="url(#arrowRight)"/>
-  <line x1="350" y1="190" x2="165" y2="240" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
-  <line x1="450" y1="190" x2="450" y2="240" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
-  <line x1="550" y1="190" x2="735" y2="240" stroke="#546e7a" stroke-width="1.5" marker-end="url(#arrowRight)"/>
-</svg>
+![Research Agent 系统架构](../image/agent/handson_research_agent_architecture.svg)
 
 ### 7.3 完整代码
 
