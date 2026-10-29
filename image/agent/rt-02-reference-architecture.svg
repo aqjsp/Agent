@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" width="960" height="640" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#475569"/></marker></defs>
+<style>.h{font-size:20px;font-weight:700;fill:#0f172a}.t{font-size:15px;font-weight:600;fill:#0f172a}.s{font-size:12.5px;fill:#475569}.m{font-family:Menlo,Consolas,monospace;font-size:12px;fill:#1e293b}.l{stroke:#475569;stroke-width:1.5;fill:none;marker-end:url(#a)}.c{text-anchor:middle}</style>
+<rect width="960" height="640" fill="#fff"/>
+<text x="30" y="40" class="h">Agent Runtime 参考架构：每个部件都是一个可替换的接口</text>
+
+<rect x="30" y="80" width="160" height="230" rx="10" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="110" y="108" class="t c">事件来源</text>
+<g class="s c"><text x="110" y="138">用户消息 / IDE</text><text x="110" y="166">Webhook</text><text x="110" y="194">定时器 / cron</text><text x="110" y="222">审批结果</text><text x="110" y="250">MCP Task 完成</text><text x="110" y="278">子 Agent 回报</text></g>
+<path d="M190 150 L226 112" class="l"/>
+
+<rect x="230" y="70" width="700" height="64" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="250" y="100" class="t">Control Plane</text>
+<text x="250" y="122" class="s">身份与路由（同名 → 同一会话）· 唤醒 · 配额与预算 · 版本与发布</text>
+
+<path d="M580 134 L580 172" class="l"/>
+<text x="590" y="158" class="m">wake(session_id, event)</text>
+
+<rect x="230" y="176" width="700" height="160" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+<text x="250" y="204" class="t">Brain：Agent Loop（Harness，无状态，可随时重建）</text>
+<rect x="250" y="222" width="210" height="96" rx="8" fill="#fff" stroke="#2563eb"/>
+<text x="266" y="248" class="t">Context Engine</text>
+<text x="266" y="272" class="s">日志 → 上下文投影</text><text x="266" y="294" class="s">压缩 · 卸载 · 缓存友好</text>
+<rect x="475" y="222" width="210" height="96" rx="8" fill="#fff" stroke="#2563eb"/>
+<text x="491" y="248" class="t">Policy</text>
+<text x="491" y="272" class="s">权限 · 审批路由</text><text x="491" y="294" class="s">步数 · token · 墙钟预算</text>
+<rect x="700" y="222" width="210" height="96" rx="8" fill="#fff" stroke="#2563eb"/>
+<text x="716" y="248" class="t">Orchestrator</text>
+<text x="716" y="272" class="s">子 Agent · handoff</text><text x="716" y="294" class="s">并行 / 等待 / 取消</text>
+
+<path d="M345 336 L345 386" class="l"/><path d="M325 386 L325 340" class="l"/>
+<text x="352" y="366" class="m">emit / read</text>
+<path d="M580 336 L580 386" class="l"/>
+<text x="588" y="366" class="m">execute(name, input) → string</text>
+<path d="M815 336 L815 386" class="l"/>
+<text x="823" y="366" class="m">infer()</text>
+
+<rect x="230" y="390" width="220" height="110" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+<text x="246" y="418" class="t">Session Log</text>
+<text x="246" y="442" class="s">只追加的事件流</text><text x="246" y="464" class="s">Journal：步骤结果</text><text x="246" y="486" class="s">唯一的真相来源</text>
+<rect x="470" y="390" width="220" height="110" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+<text x="486" y="418" class="t">Action Gateway</text>
+<text x="486" y="442" class="s">工具 · MCP · A2A</text><text x="486" y="464" class="s">schema 校验 · 限流 · 超时</text><text x="486" y="486" class="s">凭证代理 · 结果整形</text>
+<rect x="710" y="390" width="220" height="110" rx="10" fill="#f3e8ff" stroke="#9333ea" stroke-width="1.5"/>
+<text x="726" y="418" class="t">Inference Serving</text>
+<text x="726" y="442" class="s">前缀缓存 / KV 驻留</text><text x="726" y="464" class="s">程序级调度</text><text x="726" y="486" class="s">会话亲和路由</text>
+
+<path d="M580 500 L580 536" class="l"/>
+<rect x="470" y="540" width="220" height="76" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+<text x="486" y="568" class="t">Hands：Sandbox 池</text>
+<text x="486" y="594" class="s">microVM · gVisor · OS 沙箱</text>
+
+<rect x="30" y="390" width="180" height="226" rx="10" fill="#f1f5f9" stroke="#64748b" stroke-dasharray="5 4"/>
+<text x="120" y="420" class="t c">横切关注点</text>
+<g class="s c"><text x="120" y="452">Tracing</text><text x="120" y="478">Metrics</text><text x="120" y="504">Cost 计量</text><text x="120" y="530">Eval / 回放</text><text x="120" y="556">Audit 审计</text></g>
+<text x="720" y="572" class="s">harness 不知道背后是容器、</text>
+<text x="720" y="594" class="s">手机还是模拟器，只认接口</text>
+</svg>

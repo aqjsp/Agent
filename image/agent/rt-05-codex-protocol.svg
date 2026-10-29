@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#475569"/></marker></defs>
+<style>.h{font-size:20px;font-weight:700;fill:#0f172a}.t{font-size:14px;font-weight:600;fill:#0f172a}.s{font-size:12px;fill:#475569}.m{font-family:Menlo,Consolas,monospace;font-size:12px;fill:#1e293b}.l{stroke:#475569;stroke-width:1.4;fill:none;marker-end:url(#a)}.q{stroke:#dc2626;stroke-width:1.6;fill:none;marker-end:url(#a)}.c{text-anchor:middle}</style>
+<rect width="960" height="560" fill="#fff"/>
+<text x="30" y="36" class="h">Codex App Server：Thread / Turn / Item 与双向 JSON-RPC</text>
+
+<rect x="40" y="56" width="180" height="36" rx="6" fill="#ede9fe" stroke="#7c3aed"/><text x="130" y="79" class="t c">Client（IDE/TUI/Web）</text>
+<rect x="440" y="56" width="160" height="36" rx="6" fill="#dbeafe" stroke="#2563eb"/><text x="520" y="79" class="t c">App Server / Harness</text>
+<path d="M130 92 L130 530" stroke="#94a3b8" stroke-dasharray="4 4"/>
+<path d="M520 92 L520 530" stroke="#94a3b8" stroke-dasharray="4 4"/>
+
+<rect x="512" y="268" width="16" height="64" fill="#fee2e2" stroke="#dc2626"/>
+
+<path d="M130 116 L516 116" class="l"/><text x="140" y="110" class="m">thread/start</text>
+<path d="M520 146 L134 146" class="l"/><text x="510" y="140" class="m" text-anchor="end">thread/started</text>
+<path d="M130 176 L516 176" class="l"/><text x="140" y="170" class="m">turn/start  "run tests and summarize failures"</text>
+<path d="M520 206 L134 206" class="l"/><text x="510" y="200" class="m" text-anchor="end">turn/started · item/*(userMessage)</text>
+<path d="M520 236 L134 236" class="l"/><text x="510" y="230" class="m" text-anchor="end">item/started(commandExecution)</text>
+<path d="M520 270 L134 270" class="q"/><text x="510" y="264" class="m" text-anchor="end" fill="#b91c1c">item/commandExecution/requestApproval</text>
+<text x="504" y="302" class="s" text-anchor="end" fill="#b91c1c">turn 暂停，等客户端回复</text>
+<path d="M130 330 L516 330" class="l"/><text x="140" y="324" class="m">{ "decision": "allow" }</text>
+<path d="M520 364 L134 364" class="l"/><text x="510" y="358" class="m" text-anchor="end">item/completed(commandExecution: pnpm test)</text>
+<path d="M520 398 L134 398" class="l"/><text x="510" y="392" class="m" text-anchor="end">item/agentMessage/delta  × N（流式）</text>
+<path d="M520 432 L134 432" class="l"/><text x="510" y="426" class="m" text-anchor="end">item/completed(agentMessage)</text>
+<path d="M520 466 L134 466" class="l"/><text x="510" y="460" class="m" text-anchor="end">turn/completed</text>
+<text x="140" y="512" class="s">一个请求 → 多条通知；服务端也能主动发请求（审批）</text>
+
+<rect x="640" y="110" width="290" height="300" rx="12" fill="#f8fafc" stroke="#64748b"/>
+<text x="656" y="134" class="t">Thread：持久会话容器</text>
+<text x="656" y="154" class="s">可创建 / 恢复 / 分叉 / 归档</text>
+<rect x="656" y="168" width="258" height="226" rx="10" fill="#eff6ff" stroke="#2563eb"/>
+<text x="672" y="192" class="t">Turn：一次用户输入引发的工作</text>
+<text x="672" y="212" class="s">内含多轮推理与工具调用</text>
+<rect x="672" y="226" width="226" height="40" rx="6" fill="#fff" stroke="#93c5fd"/><text x="684" y="251" class="s">Item：userMessage</text>
+<rect x="672" y="274" width="226" height="40" rx="6" fill="#fff" stroke="#93c5fd"/><text x="684" y="299" class="s">Item：commandExecution</text>
+<rect x="672" y="322" width="226" height="40" rx="6" fill="#fff" stroke="#93c5fd"/><text x="684" y="347" class="s">Item：fileChange / agentMessage …</text>
+<text x="672" y="382" class="s">…</text>
+
+<rect x="640" y="430" width="290" height="96" rx="10" fill="#fff" stroke="#cbd5e1"/>
+<text x="656" y="454" class="t">Item 生命周期</text>
+<rect x="656" y="468" width="74" height="28" rx="14" fill="#dbeafe"/><text x="693" y="487" class="s c">started</text>
+<rect x="752" y="468" width="74" height="28" rx="14" fill="#e0e7ff"/><text x="789" y="487" class="s c">delta*</text>
+<rect x="848" y="468" width="74" height="28" rx="14" fill="#dcfce7"/><text x="885" y="487" class="s c">completed</text>
+<path d="M730 482 L748 482" class="l"/><path d="M826 482 L844 482" class="l"/>
+<text x="656" y="516" class="s">started 即可渲染，completed 带最终负载</text>
+</svg>

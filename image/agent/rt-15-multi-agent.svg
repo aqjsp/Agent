@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#475569"/></marker></defs>
+<style>.h{font-size:20px;font-weight:700;fill:#0f172a}.t{font-size:14px;font-weight:600;fill:#0f172a}.s{font-size:12px;fill:#475569}.e{font-size:12px;fill:#b91c1c}.l{stroke:#475569;stroke-width:1.4;fill:none;marker-end:url(#a)}.c{text-anchor:middle}</style>
+<rect width="960" height="480" fill="#fff"/>
+<text x="30" y="36" class="h">多 Agent 本质是上下文分配：读可以并行，写尽量串行</text>
+
+<rect x="30" y="56" width="560" height="404" rx="10" fill="#f8fafc" stroke="#64748b"/>
+<text x="46" y="82" class="t">Orchestrator-Worker（Anthropic 研究系统）</text>
+<rect x="210" y="98" width="200" height="66" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+<text x="310" y="122" class="t c">Lead Agent</text><text x="310" y="142" class="s c">规划 · 拆分 · 汇总</text><text x="310" y="158" class="s c">上下文保持干净</text>
+<g class="s c">
+<rect x="46" y="236" width="150" height="96" rx="8" fill="#dcfce7" stroke="#16a34a"/><text x="121" y="260" class="t c">Subagent A</text><text x="121" y="282">独立上下文窗口</text><text x="121" y="302">3+ 工具并行</text><text x="121" y="322">探索用掉 ~数万 token</text>
+<rect x="235" y="236" width="150" height="96" rx="8" fill="#dcfce7" stroke="#16a34a"/><text x="310" y="260" class="t c">Subagent B</text><text x="310" y="282">独立上下文窗口</text><text x="310" y="302">独立沙箱 / 工具集</text><text x="310" y="322">独立预算</text>
+<rect x="424" y="236" width="150" height="96" rx="8" fill="#dcfce7" stroke="#16a34a"/><text x="499" y="260" class="t c">Subagent C</text><text x="499" y="282">独立上下文窗口</text><text x="499" y="302">轨迹写子会话日志</text><text x="499" y="322">可单独回放</text>
+</g>
+<path d="M250 164 L130 232" class="l"/><path d="M310 164 L310 232" class="l"/><path d="M370 164 L490 232" class="l"/>
+<path d="M150 236 L262 168" class="l" stroke="#16a34a"/><path d="M330 236 L330 168" class="l" stroke="#16a34a"/><path d="M470 236 L356 168" class="l" stroke="#16a34a"/>
+<text x="166" y="196" class="s">拉起 3–5 个</text><text x="420" y="196" class="s" fill="#15803d">压缩结论 1–2K token</text>
+<text x="46" y="364" class="s">Opus 4 主 + Sonnet 4 子：内部研究评测比单 Agent 高 90.2%</text>
+<text x="46" y="386" class="s">BrowseComp：token 用量一项解释 80% 表现差异</text>
+<text x="46" y="408" class="s">并行拉起 + 并行工具：复杂查询研究时间最多缩短 90%</text>
+<text x="46" y="430" class="e">代价：Agent ≈ 4× 对话 token，多 Agent ≈ 15×</text>
+
+<rect x="610" y="56" width="320" height="196" rx="10" fill="#fef2f2" stroke="#dc2626"/>
+<text x="626" y="82" class="t">反面：Cognition《Don't Build Multi-Agents》</text>
+<text x="626" y="106" class="s">做 Flappy Bird 克隆，拆给两个子 Agent：</text>
+<rect x="626" y="118" width="135" height="50" rx="6" fill="#fff" stroke="#dc2626"/><text x="693" y="140" class="s c">背景</text><text x="693" y="158" class="s c">做成了超级玛丽风</text>
+<rect x="779" y="118" width="135" height="50" rx="6" fill="#fff" stroke="#dc2626"/><text x="846" y="140" class="s c">小鸟</text><text x="846" y="158" class="s c">风格动作都对不上</text>
+<text x="626" y="194" class="s">子 Agent 看不到彼此的决策</text>
+<text x="626" y="214" class="s">动作隐含决策，冲突的决策 → 坏结果</text>
+<text x="626" y="236" class="s">主张：共享完整轨迹，而不只是消息</text>
+
+<rect x="610" y="268" width="320" height="192" rx="10" fill="#f0fdf4" stroke="#16a34a"/>
+<text x="626" y="294" class="t">两者不矛盾：看任务耦合度</text>
+<text x="626" y="318" class="s">广度优先研究：子任务独立，只需汇总</text>
+<text x="626" y="338" class="s">写代码：子任务大量隐含耦合</text>
+<text x="626" y="368" class="t">Runtime 共识</text>
+<text x="626" y="390" class="s">· 搜索 / 阅读 / 分析交给多个子 Agent</text>
+<text x="626" y="410" class="s">· 改代码、改状态只由一个 Agent 负责</text>
+<text x="626" y="430" class="s">· 共享状态走文件系统，不靠消息转述</text>
+<text x="626" y="450" class="s">· 子 Agent token 计入父会话预算</text>
+</svg>

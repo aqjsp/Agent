@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, sans-serif">
+<style>.h{font-size:20px;font-weight:700;fill:#0f172a}.t{font-size:14px;font-weight:600;fill:#0f172a}.s{font-size:12px;fill:#475569}.w{font-size:11.5px;fill:#fff}.c{text-anchor:middle}</style>
+<rect width="960" height="470" fill="#fff"/>
+<text x="30" y="36" class="h">推理服务侧：工具调用的停顿，让 KV-cache 与调度一起出问题</text>
+<rect x="560" y="50" width="14" height="14" fill="#2563eb"/><text x="580" y="62" class="s">prefill</text>
+<rect x="640" y="50" width="14" height="14" fill="#16a34a"/><text x="660" y="62" class="s">decode</text>
+<rect x="724" y="50" width="14" height="14" fill="#cbd5e1"/><text x="744" y="62" class="s">工具执行</text>
+<rect x="814" y="50" width="14" height="14" fill="#f59e0b"/><text x="834" y="62" class="s">排队等待</text>
+
+<text x="30" y="100" class="t">传统引擎：每次调用独立、先来先服务</text>
+<g>
+<rect x="30" y="112" width="70" height="30" fill="#2563eb"/><rect x="100" y="112" width="40" height="30" fill="#16a34a"/>
+<rect x="140" y="112" width="110" height="30" fill="#cbd5e1"/><text x="195" y="132" class="s c">tool</text>
+<rect x="250" y="112" width="70" height="30" fill="#f59e0b"/><text x="285" y="132" class="w c">排队</text>
+<rect x="320" y="112" width="110" height="30" fill="#2563eb"/><text x="375" y="132" class="w c">KV 被驱逐→重算</text>
+<rect x="430" y="112" width="40" height="30" fill="#16a34a"/>
+<rect x="470" y="112" width="110" height="30" fill="#cbd5e1"/><text x="525" y="132" class="s c">tool</text>
+<rect x="580" y="112" width="90" height="30" fill="#f59e0b"/><text x="625" y="132" class="w c">排队</text>
+<rect x="670" y="112" width="130" height="30" fill="#2563eb"/><text x="735" y="132" class="w c">更长的前缀重算</text>
+<rect x="800" y="112" width="40" height="30" fill="#16a34a"/>
+</g>
+<text x="850" y="132" class="s">轮数越多越糟</text>
+
+<text x="30" y="186" class="t">程序感知调度 + KV 保留（Autellix / Continuum）</text>
+<g>
+<rect x="30" y="198" width="70" height="30" fill="#2563eb"/><rect x="100" y="198" width="40" height="30" fill="#16a34a"/>
+<rect x="140" y="198" width="110" height="30" fill="#cbd5e1"/><text x="195" y="218" class="s c">tool · KV 钉住</text>
+<rect x="250" y="198" width="20" height="30" fill="#2563eb"/><rect x="270" y="198" width="40" height="30" fill="#16a34a"/>
+<rect x="310" y="198" width="110" height="30" fill="#cbd5e1"/><text x="365" y="218" class="s c">tool · KV 钉住</text>
+<rect x="420" y="198" width="20" height="30" fill="#2563eb"/><rect x="440" y="198" width="40" height="30" fill="#16a34a"/>
+</g>
+<text x="490" y="218" class="s">只 prefill 增量，不排到队尾 → 任务完成时间缩短</text>
+<path d="M140 240 L250 240" stroke="#7c3aed" stroke-width="2"/><text x="195" y="256" class="s c" fill="#7c3aed">TTL</text>
+
+<rect x="30" y="282" width="290" height="168" rx="10" fill="#eff6ff" stroke="#2563eb"/>
+<text x="46" y="306" class="t">InferCept（ICML 2024）</text>
+<text x="46" y="330" class="s">工具调用打断生成时，KV 是丢弃、</text>
+<text x="46" y="350" class="s">换出还是保留：按代价选</text>
+<text x="46" y="380" class="s">最早系统讨论「增强型 LLM」</text>
+<text x="46" y="400" class="s">被外部调用打断的推理问题</text>
+
+<rect x="335" y="282" width="290" height="168" rx="10" fill="#f5f3ff" stroke="#7c3aed"/>
+<text x="351" y="306" class="t">Autellix（2025）</text>
+<text x="351" y="330" class="s">整个 Agent 程序是调度单位</text>
+<text x="351" y="350" class="s">PLAS：优先累计服务时间少的程序</text>
+<text x="351" y="370" class="s">缓解程序级队头阻塞</text>
+<text x="351" y="390" class="s">多机路由考虑数据局部性</text>
+<text x="351" y="420" class="s">报告吞吐提升 4–15×</text>
+
+<rect x="640" y="282" width="290" height="168" rx="10" fill="#f0fdf4" stroke="#16a34a"/>
+<text x="656" y="306" class="t">Continuum（2025）</text>
+<text x="656" y="330" class="s">产生工具调用的请求：KV 钉在显存</text>
+<text x="656" y="350" class="s">TTL = f(重载代价, 驱逐带来的排队)</text>
+<text x="656" y="370" class="s">到期自动释放，保证极端情况稳健</text>
+<text x="656" y="390" class="s">+ 程序级先来先服务</text>
+<text x="656" y="420" class="s">Agent 侧要传 program_id / session_id</text>
+</svg>

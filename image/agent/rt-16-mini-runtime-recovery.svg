@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#475569"/></marker></defs>
+<style>.h{font-size:20px;font-weight:700;fill:#0f172a}.t{font-size:14px;font-weight:600;fill:#0f172a}.s{font-size:12px;fill:#475569}.e{font-size:12px;fill:#b91c1c}.g{font-size:12px;fill:#15803d}.m{font-family:Menlo,Consolas,monospace;font-size:12px;fill:#1e293b;white-space:pre}.l{stroke:#475569;stroke-width:1.4;fill:none;marker-end:url(#a)}.c{text-anchor:middle}</style>
+<rect width="960" height="520" fill="#fff"/>
+<text x="30" y="36" class="h">最小 Runtime 的崩溃恢复：日志里有什么，重启后就怎么走</text>
+
+<rect x="30" y="56" width="420" height="300" rx="10" fill="#fff7ed" stroke="#ea580c"/>
+<text x="46" y="82" class="t">第一次运行（CRASH_AFTER=send_email）</text>
+<g class="m" xml:space="preserve">
+<text x="46" y="110">user</text>
+<text x="46" y="134">llm:0   started → done   决定 run_python</text>
+<text x="46" y="158">tool:0  started → done   输出 5050</text>
+<text x="46" y="182">llm:1   started → done   决定 send_email</text>
+<text x="46" y="206">tool:1  started</text>
+</g>
+<rect x="40" y="218" width="400" height="56" rx="6" fill="#fee2e2" stroke="#dc2626"/>
+<text x="56" y="240" class="e">outbox 已写入 s-001:tool:1（邮件已发）</text>
+<text x="56" y="262" class="e">os._exit(1)：step_done 没写，exit=1</text>
+<text x="46" y="302" class="s">进程死在第六节那条缝里：副作用已生效，</text>
+<text x="46" y="324" class="s">日志只知道「开始过」</text>
+
+<rect x="490" y="56" width="440" height="300" rx="10" fill="#f0fdf4" stroke="#16a34a"/>
+<text x="506" y="82" class="t">第二次运行：run(log, sid) 从头重放</text>
+<g class="m" xml:space="preserve">
+<text x="506" y="110">llm:0   有 done → 返回记录，不调模型</text>
+<text x="506" y="134">tool:0  有 done → 返回记录，不跑 Python</text>
+<text x="506" y="158">llm:1   有 done → 返回记录</text>
+<text x="506" y="182">tool:1  只有 started</text>
+</g>
+<rect x="500" y="194" width="420" height="56" rx="6" fill="#dcfce7" stroke="#16a34a"/>
+<text x="516" y="216" class="g">声明可重试 → 再记 started，同一个键 s-001:tool:1 重做</text>
+<text x="516" y="238" class="g">下游发现键已存在 → 不重复发送</text>
+<g class="m" xml:space="preserve"><text x="506" y="278">llm:2   started → done   final</text></g>
+<text x="506" y="310" class="t">outbox.json 只有 1 封邮件 ✓</text>
+<text x="506" y="334" class="s">日志里 tool:1 出现两次 started：排查重试的证据</text>
+
+<path d="M450 206 L486 182" class="l"/>
+
+<rect x="30" y="376" width="900" height="124" rx="10" fill="#f8fafc" stroke="#64748b"/>
+<text x="46" y="402" class="t">Journal.step(key, fn, idempotent) 的三种情况</text>
+<rect x="46" y="416" width="270" height="68" rx="8" fill="#fff" stroke="#16a34a"/>
+<text x="181" y="440" class="t c">有 step_done</text><text x="181" y="462" class="s c">返回记录的结果（模型非确定性在此消解）</text>
+<rect x="331" y="416" width="300" height="68" rx="8" fill="#fff" stroke="#d97706"/>
+<text x="481" y="440" class="t c">只有 step_started</text><text x="481" y="462" class="s c">可重试：同键重做 · 不可重试：抛错要求人工对账</text>
+<rect x="646" y="416" width="268" height="68" rx="8" fill="#fff" stroke="#2563eb"/>
+<text x="780" y="440" class="t c">什么都没有</text><text x="780" y="462" class="s c">记 started → 执行 → 记 done</text>
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#475569"/></marker></defs>
+<style>.h{font-size:20px;font-weight:700;fill:#0f172a}.t{font-size:14px;font-weight:600;fill:#0f172a}.s{font-size:12px;fill:#475569}.m{font-family:Menlo,Consolas,monospace;font-size:11.5px;fill:#1e293b;white-space:pre}.l{stroke:#475569;stroke-width:1.4;fill:none;marker-end:url(#a)}.c{text-anchor:middle}</style>
+<rect width="960" height="520" fill="#fff"/>
+<text x="30" y="36" class="h">会话日志是真相，模型上下文只是它的一个投影</text>
+
+<rect x="30" y="56" width="380" height="440" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+<text x="46" y="82" class="t">Session Log（只追加，永不修改）</text>
+<g class="m" xml:space="preserve">
+<text x="46" y="110">#1  user           "修复登录超时"</text>
+<text x="46" y="134">#2  step_started   llm:0</text>
+<text x="46" y="158">#3  step_done      llm:0 → grep</text>
+<text x="46" y="182">#4  step_started   tool:0</text>
+<text x="46" y="206">#5  step_done      tool:0 (38KB 输出)</text>
+<text x="46" y="230">#6  approval_req   git push</text>
+<text x="46" y="254">#7  approval_ok    by alice</text>
+<text x="46" y="278">…</text>
+<text x="46" y="302">#41 compaction     v2, 覆盖 #1–#38</text>
+<text x="46" y="326">#42 step_done      llm:17</text>
+<text x="46" y="350">#43 sandbox_lost   sbx-7f2</text>
+<text x="46" y="374">#44 provisioned    sbx-a91</text>
+</g>
+<rect x="40" y="290" width="360" height="20" fill="none" stroke="#d97706" stroke-dasharray="4 3"/>
+<text x="46" y="410" class="s">原始事件全部保留：压缩只是投影规则变了</text>
+<text x="46" y="432" class="s">日志同时供给：恢复 · 观测 · 切片读回 · 离线记忆整理</text>
+<text x="46" y="454" class="s">「发生了什么」由日志记录</text>
+<text x="46" y="476" class="s">「模型知道什么」由投影决定</text>
+
+<path d="M414 260 L486 260" class="l" stroke-width="2.5"/>
+<rect x="420" y="214" width="62" height="30" rx="6" fill="#dbeafe" stroke="#2563eb"/>
+<text x="451" y="234" class="s c">project()</text>
+<text x="451" y="286" class="s c">版本化</text>
+
+<rect x="490" y="56" width="440" height="250" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="506" y="82" class="t">模型上下文（这一轮实际发送的内容）</text>
+<rect x="506" y="96" width="408" height="34" rx="6" fill="#fff" stroke="#93c5fd"/><text x="518" y="118" class="s">系统提示词 + 工具定义（稳定前缀，命中 KV-cache）</text>
+<rect x="506" y="138" width="408" height="34" rx="6" fill="#fff" stroke="#93c5fd"/><text x="518" y="160" class="s">压缩摘要（替代 #1–#38）</text>
+<rect x="506" y="180" width="408" height="34" rx="6" fill="#fff" stroke="#93c5fd"/><text x="518" y="202" class="s">tool:16 结果：头尾各 1KB，全文路径 /ws/.out/16.txt</text>
+<rect x="506" y="222" width="408" height="34" rx="6" fill="#fff" stroke="#93c5fd"/><text x="518" y="244" class="s">「沙箱已重建，工作区从快照恢复」</text>
+<text x="518" y="284" class="s">step_started、审批人等内部事件不进入上下文</text>
+
+<rect x="490" y="322" width="440" height="174" rx="10" fill="#f8fafc" stroke="#64748b"/>
+<text x="506" y="348" class="t">状态分四层，只有前三层能回滚</text>
+<rect x="506" y="362" width="100" height="56" rx="6" fill="#fef3c7" stroke="#d97706"/><text x="556" y="386" class="s c">会话日志</text><text x="556" y="404" class="s c">会话级</text>
+<rect x="612" y="362" width="100" height="56" rx="6" fill="#dcfce7" stroke="#16a34a"/><text x="662" y="386" class="s c">工作区</text><text x="662" y="404" class="s c">快照 · 挂载</text>
+<rect x="718" y="362" width="100" height="56" rx="6" fill="#ede9fe" stroke="#7c3aed"/><text x="768" y="386" class="s c">长期记忆</text><text x="768" y="404" class="s c">用户级</text>
+<rect x="824" y="362" width="90" height="56" rx="6" fill="#fee2e2" stroke="#dc2626"/><text x="869" y="386" class="s c">外部世界</text><text x="869" y="404" class="s c">不可回滚</text>
+<path d="M506 434 L818 434" stroke="#16a34a" stroke-width="3"/><text x="662" y="454" class="s c">Runtime 可以回滚 / 重建</text>
+<path d="M824 434 L914 434" stroke="#dc2626" stroke-width="3"/><text x="869" y="454" class="s c">只能幂等 / 补偿</text>
+<text x="506" y="482" class="s">持久执行的难题 = 前三层与第四层之间的一致性</text>
+</svg>

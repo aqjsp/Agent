@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#475569"/></marker></defs>
+<style>.h{font-size:20px;font-weight:700;fill:#0f172a}.t{font-size:13.5px;font-weight:600;fill:#0f172a}.s{font-size:12px;fill:#475569}.y{font-size:12px;fill:#15803d;font-weight:600}.n{font-size:12px;fill:#b91c1c;font-weight:600}.l{stroke:#475569;stroke-width:1.4;fill:none;marker-end:url(#a)}.c{text-anchor:middle}</style>
+<rect width="960" height="440" fill="#fff"/>
+<text x="30" y="36" class="h">选型：按顺序问五个问题</text>
+<g class="c">
+<rect x="30" y="60" width="168" height="78" rx="10" fill="#eff6ff" stroke="#2563eb"/><text x="114" y="86" class="t">① 生命超过</text><text x="114" y="106" class="t">一个请求？</text><text x="114" y="126" class="s">等待 / 定时 / 多轮</text>
+<rect x="213" y="60" width="168" height="78" rx="10" fill="#eff6ff" stroke="#2563eb"/><text x="297" y="86" class="t">② 执行模型</text><text x="297" y="106" class="t">生成的代码？</text><text x="297" y="126" class="s">shell / Python / 浏览器</text>
+<rect x="396" y="60" width="168" height="78" rx="10" fill="#eff6ff" stroke="#2563eb"/><text x="480" y="86" class="t">③ 有不可逆的</text><text x="480" y="106" class="t">外部副作用？</text><text x="480" y="126" class="s">发信 / 下单 / 部署</text>
+<rect x="579" y="60" width="168" height="78" rx="10" fill="#eff6ff" stroke="#2563eb"/><text x="663" y="86" class="t">④ 实例多且</text><text x="663" y="106" class="t">大多空闲？</text><text x="663" y="126" class="s">每用户 / 每工单一个</text>
+<rect x="762" y="60" width="168" height="78" rx="10" fill="#eff6ff" stroke="#2563eb"/><text x="846" y="86" class="t">⑤ 要自己</text><text x="846" y="106" class="t">掌控循环？</text><text x="846" y="126" class="s">控制流是核心竞争力</text>
+</g>
+<path d="M198 99 L209 99" class="l"/><path d="M381 99 L392 99" class="l"/><path d="M564 99 L575 99" class="l"/><path d="M747 99 L758 99" class="l"/>
+<g class="c">
+<text x="114" y="166" class="n">否</text><path d="M114 172 L114 196" class="l"/>
+<rect x="30" y="200" width="168" height="84" rx="8" fill="#f1f5f9" stroke="#64748b"/><text x="114" y="226" class="s">Framework + 普通</text><text x="114" y="246" class="s">Web 服务就够了</text><text x="114" y="266" class="s">不需要专门 Runtime</text>
+<text x="297" y="166" class="y">是</text><path d="M297 172 L297 196" class="l"/>
+<rect x="213" y="200" width="168" height="84" rx="8" fill="#dcfce7" stroke="#16a34a"/><text x="297" y="226" class="s">必须有沙箱</text><text x="297" y="246" class="s">harness 与沙箱分离</text><text x="297" y="266" class="s">出口代理注入凭证</text>
+<text x="480" y="166" class="y">是</text><path d="M480 172 L480 196" class="l"/>
+<rect x="396" y="200" width="168" height="84" rx="8" fill="#fef3c7" stroke="#d97706"/><text x="480" y="226" class="s">journal 级持久执行</text><text x="480" y="246" class="s">Runtime 生成幂等键</text><text x="480" y="266" class="s">checkpoint 不够</text>
+<text x="620" y="166" class="y">是</text><path d="M620 172 L620 196" class="l"/>
+<rect x="579" y="200" width="82" height="84" rx="8" fill="#fff7ed" stroke="#ea580c"/><text x="620" y="232" class="s">Actor 模型</text><text x="620" y="252" class="s">Durable</text><text x="620" y="270" class="s">Objects 类</text>
+<text x="706" y="166" class="n">否</text><path d="M706 172 L706 196" class="l"/>
+<rect x="665" y="200" width="82" height="84" rx="8" fill="#eff6ff" stroke="#2563eb"/><text x="706" y="232" class="s">会话 VM</text><text x="706" y="252" class="s">AgentCore</text><text x="706" y="270" class="s">Runtime 类</text>
+<text x="804" y="166" class="y">是</text><path d="M804 172 L804 196" class="l"/>
+<rect x="762" y="200" width="82" height="84" rx="8" fill="#f5f3ff" stroke="#7c3aed"/><text x="803" y="232" class="s">Framework</text><text x="803" y="252" class="s">+ 持久执行</text><text x="803" y="270" class="s">引擎</text>
+<text x="888" y="166" class="n">否</text><path d="M888 172 L888 196" class="l"/>
+<rect x="848" y="200" width="82" height="84" rx="8" fill="#f5f3ff" stroke="#7c3aed"/><text x="889" y="232" class="s">托管 Harness</text><text x="889" y="252" class="s">精力放在</text><text x="889" y="270" class="s">工具与评测</text>
+</g>
+<rect x="30" y="312" width="900" height="108" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="46" y="338" class="t">常见组合</text>
+<text x="46" y="362" class="s">内部问答助手：① 否 → LangGraph / Agents SDK 跑在现有服务里，加 tracing 即可</text>
+<text x="46" y="384" class="s">云端 coding Agent：② ③ 是、④ 否 → 会话 microVM + journal + 出口代理 + 审批挂起</text>
+<text x="46" y="406" class="s">每客户一个运营 Agent：① ③ ④ 是 → Actor Runtime + 持久定时 + 幂等工具 + 每会话出网策略</text>
+</svg>

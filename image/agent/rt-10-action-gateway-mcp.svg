@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#475569"/></marker></defs>
+<style>.h{font-size:20px;font-weight:700;fill:#0f172a}.t{font-size:14px;font-weight:600;fill:#0f172a}.s{font-size:12px;fill:#475569}.m{font-family:Menlo,Consolas,monospace;font-size:12px;fill:#1e293b;white-space:pre}.l{stroke:#475569;stroke-width:1.4;fill:none;marker-end:url(#a)}.c{text-anchor:middle}</style>
+<rect width="960" height="500" fill="#fff"/>
+<text x="30" y="36" class="h">Action Gateway：模型说「调用 X」到 X 真正执行之间</text>
+
+<rect x="30" y="66" width="120" height="56" rx="8" fill="#dbeafe" stroke="#2563eb"/><text x="90" y="92" class="t c">模型输出</text><text x="90" y="110" class="s c">tool_call</text>
+<path d="M150 94 L170 94" class="l"/>
+<g class="s c">
+<rect x="174" y="66" width="96" height="56" rx="8" fill="#fff" stroke="#dc2626"/><text x="222" y="90">Schema</text><text x="222" y="108">校验</text>
+<rect x="282" y="66" width="96" height="56" rx="8" fill="#fff" stroke="#dc2626"/><text x="330" y="90">权限</text><text x="330" y="108">检查</text>
+<rect x="390" y="66" width="96" height="56" rx="8" fill="#fff" stroke="#dc2626"/><text x="438" y="90">审批</text><text x="438" y="108">路由</text>
+<rect x="498" y="66" width="96" height="56" rx="8" fill="#fff" stroke="#dc2626"/><text x="546" y="90">凭证</text><text x="546" y="108">注入</text>
+<rect x="606" y="66" width="96" height="56" rx="8" fill="#fff" stroke="#dc2626"/><text x="654" y="90">超时 · 重试</text><text x="654" y="108">限流</text>
+<rect x="714" y="66" width="96" height="56" rx="8" fill="#fff" stroke="#dc2626"/><text x="762" y="90">结果整形</text><text x="762" y="108">截断 · 脱敏</text>
+<rect x="822" y="66" width="108" height="56" rx="8" fill="#fff" stroke="#dc2626"/><text x="876" y="90">审计</text><text x="876" y="108">落日志</text>
+</g>
+<path d="M270 94 L280 94" class="l"/><path d="M378 94 L388 94" class="l"/><path d="M486 94 L496 94" class="l"/><path d="M594 94 L604 94" class="l"/><path d="M702 94 L712 94" class="l"/><path d="M810 94 L820 94" class="l"/>
+<text x="174" y="144" class="s">任一环节失败 → 作为工具错误交还模型；需审批 → 会话挂起，协议级请求发给客户端</text>
+
+<rect x="30" y="166" width="440" height="314" rx="10" fill="#f8fafc" stroke="#64748b"/>
+<text x="46" y="192" class="t">MCP 2026-07-28：无状态核心</text>
+<text x="46" y="216" class="s">✗ initialize / initialized 握手　✗ Mcp-Session-Id</text>
+<text x="46" y="238" class="s">✓ 每个请求自带版本、客户端信息、能力（头 + _meta）</text>
+<text x="46" y="260" class="s">✓ 普通轮询负载均衡，按 Mcp-Method 头路由</text>
+<text x="46" y="282" class="s">✓ tools/list 按 ttlMs 缓存</text>
+<text x="46" y="304" class="s">✓ OAuth 2.1 + PKCE，RFC 8707 Resource Indicators</text>
+<text x="46" y="334" class="t">分工</text>
+<rect x="46" y="346" width="190" height="56" rx="8" fill="#fff" stroke="#2563eb"/><text x="141" y="370" class="t c">MCP（垂直）</text><text x="141" y="390" class="s c">Agent → 工具 / 数据</text>
+<rect x="262" y="346" width="190" height="56" rx="8" fill="#fff" stroke="#7c3aed"/><text x="357" y="370" class="t c">A2A（水平）</text><text x="357" y="390" class="s c">Agent → Agent</text>
+<text x="46" y="430" class="s">会话状态归 Runtime，不归工具协议；</text>
+<text x="46" y="452" class="s">跨调用要保持的东西，用显式句柄当参数传</text>
+
+<rect x="490" y="166" width="440" height="314" rx="10" fill="#f0fdf4" stroke="#16a34a"/>
+<text x="506" y="192" class="t">Tasks 扩展：长任务不再占着连接</text>
+<text x="506" y="216" class="m">tools/call → { task: "t-42" }   # 立即返回句柄</text>
+<g class="s c">
+<rect x="506" y="240" width="110" height="40" rx="20" fill="#dcfce7" stroke="#16a34a"/><text x="561" y="265">Working</text>
+<rect x="666" y="240" width="130" height="40" rx="20" fill="#fef3c7" stroke="#d97706"/><text x="731" y="265">Input_Required</text>
+<rect x="506" y="330" width="110" height="40" rx="20" fill="#e0f2fe" stroke="#0284c7"/><text x="561" y="355">Completed</text>
+<rect x="636" y="330" width="100" height="40" rx="20" fill="#fee2e2" stroke="#dc2626"/><text x="686" y="355">Failed</text>
+<rect x="756" y="330" width="110" height="40" rx="20" fill="#f1f5f9" stroke="#64748b"/><text x="811" y="355">Cancelled</text>
+</g>
+<path d="M616 254 L662 254" class="l"/><path d="M666 268 L620 268" class="l"/>
+<text x="920" y="300" class="s" text-anchor="end">补充输入后回到 Working</text>
+<path d="M561 280 L561 326" class="l"/><path d="M580 280 L676 326" class="l"/><path d="M600 278 L790 326" class="l"/>
+<text x="506" y="400" class="m">tasks/get     轮询状态与结果</text>
+<text x="506" y="422" class="m">tasks/update  任务中途补充输入</text>
+<text x="506" y="444" class="m">tasks/cancel  终止任务</text>
+<text x="506" y="468" class="s">任务状态存外部（Redis / Postgres / S3），任意实例可接手</text>
+</svg>

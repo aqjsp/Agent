@@ -2,7 +2,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 520" width="920" height="520" font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif">
   <rect width="920" height="520" rx="16" fill="#f8fafc"/>
   <text x="460" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">自进化三条线，风险完全不同</text>
-  <text x="460" y="60" text-anchor="middle" font-size="13" fill="#64748b">生产里能做、且不把第 8 篇拆掉的，几乎都不是改基座</text>
+  <text x="460" y="60" text-anchor="middle" font-size="13" fill="#64748b">生产里能做、且不把《安全》拆掉的，几乎都不是改基座</text>
 
   <rect x="28" y="84" width="280" height="280" rx="14" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
   <text x="168" y="120" text-anchor="middle" font-size="16" font-weight="700" fill="#166534">提示与策略</text>

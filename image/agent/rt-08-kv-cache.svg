@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, sans-serif">
+<style>.h{font-size:20px;font-weight:700;fill:#0f172a}.t{font-size:14px;font-weight:600;fill:#0f172a}.s{font-size:12px;fill:#475569}.w{font-size:12px;fill:#fff}.c{text-anchor:middle}</style>
+<rect width="960" height="500" fill="#fff"/>
+<text x="30" y="36" class="h">KV-cache 只认完全相同的前缀：一处改动，后面全部重算</text>
+<rect x="640" y="52" width="16" height="16" fill="#16a34a"/><text x="662" y="65" class="s">命中缓存（约 0.30 USD/MTok）</text>
+<rect x="640" y="74" width="16" height="16" fill="#dc2626"/><text x="662" y="87" class="s">重新 prefill（约 3 USD/MTok）</text>
+
+<text x="30" y="122" class="t">✓ 稳定前缀 + 只追加</text>
+<g><rect x="30" y="134" width="150" height="36" fill="#16a34a"/><text x="105" y="157" class="w c">系统提示词</text>
+<rect x="182" y="134" width="150" height="36" fill="#16a34a"/><text x="257" y="157" class="w c">工具定义</text>
+<rect x="334" y="134" width="130" height="36" fill="#16a34a"/><text x="399" y="157" class="w c">第 1 轮</text>
+<rect x="466" y="134" width="130" height="36" fill="#16a34a"/><text x="531" y="157" class="w c">第 2 轮</text>
+<rect x="598" y="134" width="130" height="36" fill="#16a34a"/><text x="663" y="157" class="w c">第 3 轮</text>
+<rect x="730" y="134" width="100" height="36" fill="#dc2626"/><text x="780" y="157" class="w c">新增</text></g>
+<text x="840" y="157" class="s">只算新增</text>
+
+<text x="30" y="210" class="t">✗ 系统提示词里放「当前时间：10:31:07」</text>
+<g><rect x="30" y="222" width="150" height="36" fill="#dc2626"/><text x="105" y="245" class="w c">系统提示词 ⏱</text>
+<rect x="182" y="222" width="150" height="36" fill="#dc2626"/><rect x="334" y="222" width="130" height="36" fill="#dc2626"/>
+<rect x="466" y="222" width="130" height="36" fill="#dc2626"/><rect x="598" y="222" width="130" height="36" fill="#dc2626"/><rect x="730" y="222" width="100" height="36" fill="#dc2626"/></g>
+<text x="840" y="245" class="s">全部重算</text>
+
+<text x="30" y="298" class="t">✗ 迭代中途按需增删工具 / JSON 序列化 key 顺序不稳定</text>
+<g><rect x="30" y="310" width="150" height="36" fill="#16a34a"/><text x="105" y="333" class="w c">系统提示词</text>
+<rect x="182" y="310" width="150" height="36" fill="#dc2626"/><text x="257" y="333" class="w c">工具定义 ±</text>
+<rect x="334" y="310" width="130" height="36" fill="#dc2626"/><rect x="466" y="310" width="130" height="36" fill="#dc2626"/>
+<rect x="598" y="310" width="130" height="36" fill="#dc2626"/><rect x="730" y="310" width="100" height="36" fill="#dc2626"/></g>
+<text x="840" y="333" class="s">工具后全算</text>
+
+<rect x="30" y="376" width="440" height="104" rx="10" fill="#f0fdf4" stroke="#16a34a"/>
+<text x="46" y="400" class="t">Runtime 侧的做法</text>
+<text x="46" y="422" class="s">确定性序列化 · 历史只追加 · 显式缓存断点</text>
+<text x="46" y="442" class="s">同一会话路由到同一推理 worker（会话亲和）</text>
+<text x="46" y="462" class="s">工具一直在，用解码掩码限制可选范围</text>
+
+<rect x="490" y="376" width="440" height="104" rx="10" fill="#eff6ff" stroke="#2563eb"/>
+<text x="506" y="400" class="t">按前缀掩码（Manus）</text>
+<text x="506" y="422" class="s">browser_open · browser_click · browser_scroll</text>
+<text x="506" y="442" class="s">shell_exec · shell_view　→ 一个前缀圈出一组工具</text>
+<text x="506" y="462" class="s">Agent 输入输出比约 100:1，命中率是第一指标</text>
+</svg>

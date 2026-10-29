@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#475569"/></marker></defs>
+<style>.h{font-size:20px;font-weight:700;fill:#0f172a}.t{font-size:14px;font-weight:600;fill:#0f172a}.s{font-size:12px;fill:#475569}.e{font-size:12px;fill:#b91c1c}.m{font-family:Menlo,Consolas,monospace;font-size:13px;font-weight:700;fill:#0f172a}.l{stroke:#475569;stroke-width:1.5;fill:none;marker-end:url(#a)}.d{stroke:#dc2626;stroke-width:1.5;fill:none;marker-end:url(#a)}.c{text-anchor:middle}</style>
+<rect width="960" height="540" fill="#fff"/>
+<text x="40" y="34" class="h">Agent Loop 是一个可挂起、可恢复的状态机</text>
+
+<rect x="300" y="64" width="180" height="48" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+<text x="390" y="86" class="m c">RETRY / BACKOFF</text><text x="390" y="104" class="s c">指数退避、换模型降级</text>
+
+<text x="130" y="128" class="s c">用户输入 / 中途转向</text>
+<path d="M130 134 L130 150" class="l"/>
+
+<rect x="40" y="152" width="180" height="64" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+<text x="130" y="178" class="m c">PREPARING</text><text x="130" y="200" class="s c">投影上下文 · 压缩 · 查预算</text>
+<rect x="300" y="152" width="180" height="64" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+<text x="390" y="178" class="m c">INFERRING</text><text x="390" y="200" class="s c">调用模型（流式）</text>
+<rect x="560" y="152" width="180" height="64" rx="8" fill="#fef3c7" stroke="#d97706"/>
+<text x="650" y="178" class="m c">POLICY_CHECK</text><text x="650" y="200" class="s c">权限 · 参数校验 · 风险</text>
+<rect x="800" y="152" width="140" height="64" rx="8" fill="#fef3c7" stroke="#d97706" stroke-dasharray="5 3"/>
+<text x="870" y="178" class="m c">WAITING</text><text x="870" y="200" class="s c">等审批，可挂起数天</text>
+
+<rect x="40" y="312" width="180" height="64" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+<text x="130" y="338" class="m c">OBSERVING</text><text x="130" y="360" class="s c">结果整形 · 截断 · 卸载</text>
+<rect x="300" y="312" width="180" height="64" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+<text x="390" y="338" class="m c">TURN_COMPLETED</text><text x="390" y="360" class="s c">返回最终回答</text>
+<rect x="560" y="312" width="180" height="64" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+<text x="650" y="338" class="m c">EXECUTING</text><text x="650" y="360" class="s c">沙箱 / 网关，可并行</text>
+<rect x="800" y="312" width="140" height="64" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-dasharray="5 3"/>
+<text x="870" y="338" class="m c">PROVISION</text><text x="870" y="360" class="s c">重新拿一个沙箱</text>
+
+<path d="M220 184 L296 184" class="l"/>
+<path d="M370 152 L370 116" class="d"/><text x="362" y="138" class="e" text-anchor="end">模型错误</text>
+<path d="M410 116 L410 148" class="l"/><text x="418" y="138" class="s">退避后重试</text>
+<path d="M480 184 L556 184" class="l"/><text x="518" y="176" class="s c">tool_calls</text>
+<path d="M740 184 L796 184" class="l"/><text x="768" y="176" class="s c">需审批</text>
+<path d="M390 216 L390 308" class="l"/><text x="398" y="268" class="s">无工具调用</text>
+<path d="M650 216 L650 308" class="l"/><text x="658" y="268" class="s">允许</text>
+<path d="M840 216 L716 308" class="l"/><text x="790" y="268" class="s">批准</text>
+<path d="M740 334 L796 334" class="d"/><text x="768" y="326" class="e c">沙箱丢失</text>
+<path d="M800 360 L744 360" class="l"/><text x="772" y="392" class="s c">重新执行</text>
+<path d="M650 376 L650 436 L130 436 L130 380" class="l"/>
+<text x="390" y="428" class="s c">工具结果（报错也作为观察交还给模型）</text>
+<path d="M130 312 L130 220" class="l"/><text x="138" y="270" class="s">下一轮</text>
+
+<rect x="40" y="462" width="900" height="56" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="56" y="486" class="s">每次状态迁移都写一条事件进会话日志；步数、token、墙钟时间上限放在模型够不着的地方。</text>
+<text x="56" y="506" class="s">用户中途插话在安全点（一次工具调用结束后）注入；Runtime 自身故障走红色路径，不直接喂给模型。</text>
+</svg>

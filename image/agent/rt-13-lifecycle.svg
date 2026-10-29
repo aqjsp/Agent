@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#475569"/></marker></defs>
+<style>.h{font-size:20px;font-weight:700;fill:#0f172a}.t{font-size:14px;font-weight:600;fill:#0f172a}.s{font-size:12px;fill:#475569}.l{stroke:#475569;stroke-width:1.4;fill:none;marker-end:url(#a)}.c{text-anchor:middle}</style>
+<rect width="960" height="500" fill="#fff"/>
+<text x="30" y="36" class="h">大多数 Agent 大多数时间在睡觉：两种生命周期模型</text>
+
+<rect x="30" y="56" width="440" height="424" rx="10" fill="#fff7ed" stroke="#ea580c"/>
+<text x="46" y="82" class="t">Actor 模型（Cloudflare：一个 Agent = 一个 Durable Object）</text>
+<text x="46" y="104" class="s">稳定名字 → 同一实例 · 内置 SQLite（最多 10GB）· 单写者</text>
+<path d="M60 160 L450 160" stroke="#94a3b8" stroke-width="2"/>
+<g>
+<rect x="60" y="146" width="40" height="28" fill="#ea580c"/><rect x="170" y="146" width="24" height="28" fill="#ea580c"/>
+<rect x="280" y="146" width="56" height="28" fill="#ea580c"/><rect x="410" y="146" width="20" height="28" fill="#ea580c"/>
+</g>
+<g class="s c"><text x="80" y="140">HTTP</text><text x="182" y="140">alarm</text><text x="308" y="140">WebSocket</text><text x="420" y="140">邮件</text></g>
+<text x="135" y="194" class="s c">休眠</text><text x="237" y="194" class="s c">休眠</text><text x="373" y="194" class="s c">休眠</text>
+<text x="46" y="226" class="s">■ 活跃（计费）　其余时间休眠，不计时长费用</text>
+
+<text x="46" y="262" class="t">一万个 Agent，每个 1% 时间活跃</text>
+<text x="46" y="286" class="s">VM / 容器：</text>
+<g fill="#94a3b8">
+<rect x="130" y="276" width="320" height="14" rx="3"/></g>
+<text x="290" y="310" class="s c">10,000 个常驻实例</text>
+<text x="46" y="338" class="s">Durable Objects：</text>
+<rect x="160" y="328" width="4" height="14" fill="#ea580c"/>
+<text x="176" y="340" class="s">任意时刻约 100 个在跑</text>
+<text x="46" y="378" class="s">this.schedule(秒 | Date | cron) → 复用同一个 alarm</text>
+<text x="46" y="400" class="s">子 Agent 共享父对象 alarm，SDK 记录归属再路由</text>
+<text x="46" y="430" class="t">适合：每客户 / 每工单 / 每线程一个 Agent</text>
+<text x="46" y="452" class="s">状态是一等公民，计算是临时的</text>
+
+<rect x="490" y="56" width="440" height="424" rx="10" fill="#eff6ff" stroke="#2563eb"/>
+<text x="506" y="82" class="t">会话即 microVM（AWS AgentCore Runtime）</text>
+<text x="506" y="104" class="s">每个 runtimeSessionId 一个专用 microVM，CPU/内存/FS 隔离</text>
+<g class="s c">
+<rect x="506" y="124" width="90" height="44" rx="8" fill="#fff" stroke="#2563eb"/><text x="551" y="150">首次 invoke</text>
+<rect x="616" y="124" width="90" height="44" rx="8" fill="#dbeafe" stroke="#2563eb"/><text x="661" y="150">Active</text>
+<rect x="726" y="124" width="90" height="44" rx="8" fill="#fff" stroke="#2563eb"/><text x="771" y="150">Idle</text>
+<rect x="836" y="124" width="80" height="44" rx="8" fill="#f1f5f9" stroke="#64748b"/><text x="876" y="150">销毁</text>
+</g>
+<path d="M596 146 L612 146" class="l"/><path d="M706 146 L722 146" class="l"/><path d="M816 146 L832 146" class="l"/>
+<path d="M771 168 C771 196 661 196 661 172" class="l"/><text x="716" y="206" class="s c">新请求</text>
+<text x="506" y="238" class="s">InvokeAgentRuntime（推理）与 InvokeAgentRuntimeCommand</text>
+<text x="506" y="258" class="s">（确定性 shell）作用于同一个容器</text>
+<text x="506" y="292" class="t">时长与持久化</text>
+<text x="506" y="314" class="s">microVM 会话最长 8 小时；Instances（自有 EC2）最长 14 天</text>
+<text x="506" y="336" class="s">文件系统可跨 stop/resume 保留：装好的包、构建产物都在</text>
+<text x="506" y="358" class="s">结束后整个 VM 销毁、内存清理，不污染下一个会话</text>
+<text x="506" y="380" class="s">2026-09 新版：弹性回收内存，按实际用量计费</text>
+<text x="506" y="430" class="t">适合：需要完整 OS、长时间重计算的 coding Agent</text>
+<text x="506" y="452" class="s">环境是一等公民</text>
+</svg>

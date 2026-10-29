@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#475569"/></marker></defs>
+<style>.h{font-size:20px;font-weight:700;fill:#0f172a}.t{font-size:15px;font-weight:600;fill:#0f172a}.s{font-size:12.5px;fill:#475569}.r{font-size:12.5px;fill:#b91c1c}.g{font-size:12.5px;fill:#15803d}.m{font-family:Menlo,Consolas,monospace;font-size:11.5px;fill:#1e293b;white-space:pre}.l{stroke:#475569;stroke-width:1.5;fill:none;marker-end:url(#a)}.c{text-anchor:middle}</style>
+<rect width="960" height="470" fill="#fff"/>
+<text x="30" y="40" class="h">Claude Managed Agents：从「一个容器里的宠物」到三个可替换接口</text>
+
+<text x="30" y="80" class="t">第一版：三样东西挤在一个容器里</text>
+<rect x="30" y="94" width="380" height="200" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="46" y="118" class="s">一个容器（pet）</text>
+<rect x="50" y="132" width="105" height="70" rx="8" fill="#fef3c7" stroke="#d97706"/><text x="102" y="172" class="t c">Session</text>
+<rect x="167" y="132" width="105" height="70" rx="8" fill="#dbeafe" stroke="#2563eb"/><text x="219" y="172" class="t c">Harness</text>
+<rect x="284" y="132" width="105" height="70" rx="8" fill="#dcfce7" stroke="#16a34a"/><text x="336" y="172" class="t c">Sandbox</text>
+<text x="50" y="230" class="r">✗ 容器挂了 = 会话丢了</text>
+<text x="50" y="252" class="r">✗ 调试要进到装着用户数据的容器</text>
+<text x="50" y="274" class="r">✗ 每个会话都先等容器拉起、仓库克隆完</text>
+<text x="30" y="324" class="s">连客户 VPC 只能打通网络，因为 harness</text>
+<text x="30" y="344" class="s">默认「要干活的东西都在我旁边」</text>
+
+<path d="M420 190 L470 190" class="l" stroke-width="3"/>
+
+<text x="490" y="80" class="t">拆开后：每个部件都是牲口（cattle）</text>
+<rect x="490" y="100" width="130" height="190" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+<text x="555" y="128" class="t c">Session</text>
+<text x="555" y="150" class="s c">只追加事件日志</text>
+<g fill="#fff" stroke="#d97706"><rect x="506" y="164" width="98" height="18" rx="3"/><rect x="506" y="188" width="98" height="18" rx="3"/><rect x="506" y="212" width="98" height="18" rx="3"/><rect x="506" y="236" width="98" height="18" rx="3"/></g>
+<text x="555" y="278" class="s c">在 harness 之外</text>
+
+<rect x="664" y="100" width="120" height="190" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+<text x="724" y="128" class="t c">Brain</text>
+<text x="724" y="150" class="s c">Claude + Harness</text>
+<text x="724" y="196" class="s c">无状态</text>
+<text x="724" y="218" class="s c">可多实例</text>
+
+<rect x="826" y="100" width="110" height="56" rx="8" fill="#dcfce7" stroke="#16a34a"/><text x="881" y="133" class="s c">沙箱 A</text>
+<rect x="826" y="166" width="110" height="56" rx="8" fill="#dcfce7" stroke="#16a34a"/><text x="881" y="199" class="s c">MCP 工具</text>
+<rect x="826" y="232" width="110" height="56" rx="8" fill="#dcfce7" stroke="#16a34a"/><text x="881" y="265" class="s c">客户 VPC</text>
+<text x="881" y="92" class="t c">Hands</text>
+
+<path d="M664 170 L624 170" class="l"/><path d="M624 200 L664 200" class="l"/>
+<path d="M784 128 L822 128" class="l"/><path d="M784 194 L822 194" class="l"/><path d="M784 260 L822 260" class="l"/>
+
+<rect x="490" y="310" width="446" height="124" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="506" y="334" class="m">emitEvent(id, event)    # 循环中写日志</text>
+<text x="506" y="356" class="m">wake(sessionId)         # harness 挂了，新实例接手</text>
+<text x="506" y="378" class="m">getSession(id)          # 读回日志，从最后一个事件继续</text>
+<text x="506" y="400" class="m">execute(name, input) → string   # 每只手都是工具</text>
+<text x="506" y="422" class="m">provision({resources})  # 沙箱挂了，换一个</text>
+
+<text x="30" y="390" class="g">✓ 首 token 延迟：P50 约 −60%，P95 超过 −90%</text>
+<text x="30" y="414" class="g">✓ 不碰沙箱的会话不再付容器启动成本</text>
+<text x="30" y="438" class="g">✓ 凭证在出口代理注入，沙箱和模型都看不到</text>
+</svg>

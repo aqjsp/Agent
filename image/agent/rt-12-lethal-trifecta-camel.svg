@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#475569"/></marker></defs>
+<style>.h{font-size:20px;font-weight:700;fill:#0f172a}.t{font-size:14px;font-weight:600;fill:#0f172a}.s{font-size:12px;fill:#475569}.e{font-size:12px;fill:#b91c1c}.m{font-family:Menlo,Consolas,monospace;font-size:11px;fill:#1e293b;white-space:pre}.l{stroke:#475569;stroke-width:1.4;fill:none;marker-end:url(#a)}.x{stroke:#dc2626;stroke-width:1.6;fill:none;stroke-dasharray:5 3;marker-end:url(#a)}.c{text-anchor:middle}</style>
+<rect width="960" height="500" fill="#fff"/>
+<text x="30" y="36" class="h">致命三要素，以及按设计切断它的 CaMeL</text>
+
+<circle cx="160" cy="190" r="86" fill="#fecaca" fill-opacity=".55" stroke="#dc2626"/>
+<circle cx="290" cy="190" r="86" fill="#fde68a" fill-opacity=".55" stroke="#d97706"/>
+<circle cx="225" cy="300" r="86" fill="#bfdbfe" fill-opacity=".55" stroke="#2563eb"/>
+<text x="120" y="160" class="t c">私有数据</text><text x="120" y="180" class="s c">邮件 · 仓库 · 客户</text>
+<text x="330" y="160" class="t c">不可信内容</text><text x="330" y="180" class="s c">网页 · issue · PDF</text>
+<text x="225" y="350" class="t c">对外通信</text><text x="225" y="370" class="s c">HTTP · 邮件 · PR</text>
+<text x="225" y="236" class="c" style="font-size:13px;font-weight:700;fill:#991b1b">三者同时</text>
+<text x="225" y="254" class="e c">= 可被外泄</text>
+<text x="30" y="420" class="s">任意两样可以接受。Runtime 目标：每个会话至少切断一条，</text>
+<text x="30" y="440" class="s">例如读过不可信网页后，出网自动降级到白名单。</text>
+<text x="30" y="468" class="s">分类器挡住 90% 不够：应用安全里 99% 也算不及格。</text>
+
+<rect x="460" y="56" width="470" height="424" rx="10" fill="#f8fafc" stroke="#64748b"/>
+<text x="476" y="82" class="t">CaMeL：控制流来自可信输入，不可信数据只能影响值</text>
+<rect x="476" y="98" width="140" height="44" rx="8" fill="#fff" stroke="#16a34a"/><text x="546" y="125" class="s c">用户请求（可信）</text>
+<path d="M616 120 L652 120" class="l"/>
+<rect x="656" y="98" width="258" height="44" rx="8" fill="#dcfce7" stroke="#16a34a"/><text x="785" y="118" class="t c">特权 LLM（P-LLM）</text><text x="785" y="136" class="s c">只看用户请求，输出一段计划代码</text>
+<path d="M785 142 L785 164" class="l"/>
+<rect x="476" y="168" width="438" height="118" rx="8" fill="#fff" stroke="#2563eb"/>
+<text x="490" y="190" class="m">notes = read_file("meeting.md")   # 不可信来源</text>
+<text x="490" y="212" class="m">info  = query_quarantined(notes, Schema)</text>
+<text x="490" y="234" class="m">doc   = fetch(info.doc_name)</text>
+<text x="490" y="256" class="m">send_email(to=info.email, attach=doc)  # 先查能力</text>
+<text x="490" y="278" class="s">CaMeL 解释器执行，维护数据流图：每个值依赖哪些来源</text>
+<rect x="476" y="298" width="200" height="74" rx="8" fill="#fef3c7" stroke="#d97706"/>
+<text x="576" y="320" class="t c">隔离 LLM（Q-LLM）</text><text x="576" y="340" class="s c">无工具权限</text><text x="576" y="358" class="s c">只把文本解析成 schema</text>
+<rect x="694" y="298" width="220" height="74" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+<text x="804" y="320" class="t c">能力策略检查</text><text x="804" y="340" class="s c">info.email 来自不可信源</text><text x="804" y="358" class="s c">→ 收件人不在白名单就拒绝</text>
+<text x="476" y="398" class="s">注入文字最多篡改 info 的值，改不了「调用哪个工具」</text>
+<text x="476" y="420" class="s">代价：下一步要由不可信内容决定时（典型如写代码），</text>
+<text x="476" y="440" class="s">这个模式就会受限。</text>
+<text x="476" y="466" class="s">按设计防注入，而不是按检测防注入。</text>
+</svg>

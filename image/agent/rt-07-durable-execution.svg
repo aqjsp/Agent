@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#475569"/></marker></defs>
+<style>.h{font-size:20px;font-weight:700;fill:#0f172a}.t{font-size:14px;font-weight:600;fill:#0f172a}.s{font-size:12px;fill:#475569}.e{font-size:12px;fill:#b91c1c}.g{font-size:12px;fill:#15803d}.l{stroke:#475569;stroke-width:1.4;fill:none;marker-end:url(#a)}.c{text-anchor:middle}</style>
+<rect width="960" height="560" fill="#fff"/>
+<text x="30" y="36" class="h">持久执行的两条路线，和它们都绕不过去的那条缝</text>
+
+<rect x="30" y="54" width="440" height="230" rx="10" fill="#eff6ff" stroke="#2563eb"/>
+<text x="46" y="80" class="t">路线一：Checkpoint（LangGraph）</text>
+<text x="46" y="100" class="s">在 super-step 边界存整份状态，恢复时加载最近一份</text>
+<g>
+<rect x="46" y="118" width="74" height="34" rx="6" fill="#fff" stroke="#2563eb"/><text x="83" y="140" class="s c">step 1</text>
+<rect x="136" y="118" width="74" height="34" rx="6" fill="#fff" stroke="#2563eb"/><text x="173" y="140" class="s c">step 2</text>
+<rect x="226" y="118" width="74" height="34" rx="6" fill="#fff" stroke="#dc2626"/><text x="263" y="140" class="e c">step 3 ✗</text>
+<circle cx="128" cy="135" r="6" fill="#2563eb"/><circle cx="218" cy="135" r="6" fill="#2563eb"/>
+</g>
+<text x="46" y="176" class="s">● = checkpoint。崩溃后从 step 3 第一行重新执行</text>
+<text x="46" y="202" class="t">durability 模式</text>
+<text x="46" y="224" class="s">sync：下一步前同步写完　最安全</text>
+<text x="46" y="244" class="s">async：与下一步并行写　可能丢最后一个</text>
+<text x="46" y="264" class="s">exit：只在退出时写　中途崩溃无法恢复</text>
+
+<rect x="490" y="54" width="440" height="230" rx="10" fill="#f0fdf4" stroke="#16a34a"/>
+<text x="506" y="80" class="t">路线二：Journal + Replay（Temporal / Restate）</text>
+<text x="506" y="100" class="s">记录每个非确定性操作的结果，恢复时重跑确定性代码</text>
+<rect x="506" y="118" width="190" height="96" rx="6" fill="#fff" stroke="#16a34a"/>
+<text x="518" y="138" class="t">Workflow（确定性）</text>
+<text x="518" y="160" class="s">Agent 循环 · handoff</text><text x="518" y="180" class="s">工具选择 · 等待审批</text><text x="518" y="200" class="s">纯计算工具</text>
+<rect x="724" y="118" width="190" height="96" rx="6" fill="#fff" stroke="#16a34a"/>
+<text x="736" y="138" class="t">Activity（记录结果）</text>
+<text x="736" y="160" class="s">模型调用</text><text x="736" y="180" class="s">做 I/O 的工具</text><text x="736" y="200" class="s">activity_as_tool()</text>
+<path d="M696 166 L720 166" class="l"/>
+<text x="506" y="240" class="g">模型输出一旦记下，重放时就是确定的数据</text>
+<text x="506" y="264" class="s">Activity 重试语义是「至少一次」</text>
+
+<rect x="30" y="302" width="900" height="236" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+<text x="46" y="328" class="t">两条路线共同的缝：副作用已经生效，「完成」还没记下</text>
+<path d="M60 380 L900 380" stroke="#94a3b8" stroke-width="2"/>
+<g class="s c">
+<circle cx="110" cy="380" r="7" fill="#2563eb"/><text x="110" y="364">记 step_started</text>
+<circle cx="290" cy="380" r="7" fill="#475569"/><text x="290" y="364">调用下游</text>
+<circle cx="470" cy="380" r="7" fill="#ea580c"/><text x="470" y="364">外部已生效（邮件已发）</text>
+<circle cx="830" cy="380" r="7" fill="#16a34a"/><text x="830" y="364">记 step_done</text>
+</g>
+<text x="640" y="388" class="c" style="font-size:16px;font-weight:700;fill:#b91c1c">✕ 崩溃</text>
+<rect x="470" y="394" width="360" height="10" fill="#fecaca"/>
+<text x="650" y="420" class="e c">恢复时 Runtime 只看到「开始过」：重做可能发两封，跳过可能一封没发</text>
+
+<text x="46" y="452" class="t">只能组合出来的「恰好一次」</text>
+<text x="46" y="476" class="s">① 幂等键由 Runtime 生成（session_id + step_id），跨重试不变，绝不让模型生成</text>
+<text x="46" y="496" class="s">② 下游按键去重（Idempotency-Key、唯一约束）　③ 下游不支持去重：先对账，查不清就挂起交给人</text>
+<text x="46" y="516" class="s">④ 不可逆动作放在审批之后并单独成步：interrupt() 之前的代码在恢复时会重跑</text>
+</svg>
