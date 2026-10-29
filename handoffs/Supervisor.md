@@ -4,7 +4,7 @@
 
 《安全》把注入、权限和护栏放在架构层。多 Agent 的第一道取舍是另一件事：**控制权在谁手里。**
 
-《Multi-Agent》列过 Router / Supervisor / Swarm / Hierarchical 四种名字。生产里真正反复撞车的，是后两种的灵魂差异：中心调度，还是对等交接。名字来自 LangGraph 的 `create_supervisor` 和 OpenAI 一度开源的 Swarm，但问题比框架更老——组织里该不该设一个项目经理。
+《多 Agent》列过 Router / Supervisor / Swarm / Hierarchical 四种名字。生产里真正反复撞车的，是后两种的灵魂差异：中心调度，还是对等交接。名字来自 LangGraph 的 `create_supervisor` 和 OpenAI 一度开源的 Swarm，但问题比框架更老——组织里该不该设一个项目经理。
 
 先把失败现场说清楚。两种结构挂掉的样子完全不同，别用同一种监控去等。
 

@@ -516,7 +516,7 @@ def run_agent(user_message: str, max_iterations: int = 5) -> str:
     return "达到最大迭代次数，Agent 终止。"
 ```
 
-和《Agent 本质》的裸机版本比，多了错误处理、工程化 System Prompt、更详细的 tools schema。这些改进全部来自本章的知识。
+和《Agent 本质》的裸机版本比，多了错误处理、工程化 System Prompt、更详细的 tools schema。这些改进全部来自这一篇的知识。
 
 ---
 
@@ -607,4 +607,4 @@ TOOLS_SCHEMA_PRECISE = [
 
 ---
 
-下一章深入 Harness 的核心组件——Tool Use。工具系统是 Harness 五大组件中最核心的一个，《Agent 本质》的因果链已经证明了这一点。我们将从裸机 ReAct 循环扩展到带错误处理、并行执行、重试策略的生产级实现。
+下一篇是《Tool Use》。工具系统是 Harness 五大组件中最核心的一个，《Agent 本质》的因果链已经证明了这一点。我们将从裸机 ReAct 循环扩展到带错误处理、并行执行、重试策略的生产级实现。

@@ -503,7 +503,7 @@ Agent 记住了"花生过敏"——不是通过 System Prompt 写死的，是通
 
 ### 实验二：加 Summary 后对比
 
-1. 用本章的 `MemoryAgent`（带三层记忆）
+1. 用这一篇的 `MemoryAgent`（带三层记忆）
 2. 同样的测试流程
 3. 对比结果——Agent 是否还能记住你的名字？
 
@@ -515,4 +515,4 @@ Agent 记住了"花生过敏"——不是通过 System Prompt 写死的，是通
 
 ---
 
-下一章深入 Harness 的第三个核心组件——Planning。工具系统让 Agent 能"动手"，记忆系统让 Agent 能"记住"，规划系统让 Agent 能"想清楚再做"。没有规划的 Agent 只能被动响应，遇到复杂任务就迷失方向。
+下一篇是《Planning》。工具系统让 Agent 能"动手"，记忆系统让 Agent 能"记住"，规划系统让 Agent 能"想清楚再做"。没有规划的 Agent 只能被动响应，遇到复杂任务就迷失方向。

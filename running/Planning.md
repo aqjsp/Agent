@@ -137,7 +137,7 @@ Plan-and-Execute 的优点是有全局视角——先想清楚再做，不容易
 
 ## 3 Plan-and-Execute 的实现
 
-手动实现 Plan-and-Execute Agent。核心是四个函数：规划、执行、判断完成、生成回答，用循环串起来。《Multi-Agent》会用 LangGraph 的 StateGraph 重新实现 Supervisor 模式——这里先理解原理。
+手动实现 Plan-and-Execute Agent。核心是四个函数：规划、执行、判断完成、生成回答，用循环串起来。《多 Agent》会用 LangGraph 的 StateGraph 重新实现 Supervisor 模式——这里先理解原理。
 
 ![](../image/agent/ch5_plan_execute_flow.svg)
 
@@ -468,4 +468,4 @@ Agent 在某个步骤反复执行，一直得不到满意的结果。比如搜�
 
 ---
 
-下一章进入 Multi-Agent 协作。当单个 Agent 的上下文窗口不够用、角色太多导致混淆、或工具太多导致选择准确率下降时，就需要把一个 Agent 拆成多个。
+下一篇是《多 Agent》。当单个 Agent 的上下文窗口不够用、角色太多导致混淆、或工具太多导致选择准确率下降时，就需要把一个 Agent 拆成多个。
